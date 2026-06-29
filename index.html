@@ -81,11 +81,11 @@ body {
 /* ══ TABS ══ */
 .tabs { background:white; border-bottom:2px solid var(--sand); display:flex; }
 .tab {
-  flex:1; padding:10px 6px; border:none; background:none;
-  font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:500;
-  color:var(--text-light); cursor:pointer;
+  flex:1; padding:10px 3px; border:none; background:none;
+  font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:500;
+  color:var(--text-light); cursor:pointer; white-space:nowrap;
   border-bottom:3px solid transparent; margin-bottom:-2px;
-  display:flex; align-items:center; justify-content:center; gap:5px;
+  display:flex; align-items:center; justify-content:center; gap:4px;
   transition:color .18s, border-color .18s;
 }
 .tab.on { color:var(--sea); border-bottom-color:var(--sea); font-weight:600; }
@@ -145,10 +145,18 @@ body {
 }
 .card-fr .ce { font-size:1.2rem; flex-shrink:0; }
 
-/* LA PHONÉTIQUE EST LE HÉROS */
+/* LE VRAI ALLEMAND (sous le français) */
+.card-de {
+  padding:2px 14px 0; font-size:0.97rem; font-weight:600;
+  color:var(--sea); line-height:1.4;
+  display:flex; align-items:baseline; gap:6px;
+}
+.card-de::before { content:'🇩🇪'; font-size:0.82rem; flex-shrink:0; }
+
+/* LA PHONÉTIQUE EST LE HÉROS (prononciation) */
 .card-ph {
-  padding:4px 14px 12px 14px;
-  font-size:1.15rem; font-weight:700;
+  padding:3px 14px 12px 14px;
+  font-size:1.13rem; font-weight:700;
   color:var(--sea-dark);
   line-height:1.4; letter-spacing:0.2px;
 }
@@ -299,8 +307,10 @@ mark { background:rgba(0,180,196,0.2); color:var(--sea-dark); border-radius:3px;
   font-size:0.74rem; font-weight:600;
   letter-spacing:0.4px; display:flex; align-items:center; gap:6px;
 }
-.say-fr { padding:12px 14px 4px; font-size:0.84rem; color:var(--text-light); line-height:1.45; }
-.say-ph { padding:4px 14px 12px; font-size:1.12rem; font-weight:700; color:var(--sea-dark); line-height:1.45; }
+.say-fr { padding:12px 14px 2px; font-size:0.84rem; color:var(--text-light); line-height:1.45; }
+.say-de { padding:2px 14px 0; font-size:0.95rem; font-weight:600; color:var(--sea); line-height:1.45; display:flex; align-items:baseline; gap:6px; }
+.say-de::before { content:'🇩🇪'; font-size:0.8rem; flex-shrink:0; }
+.say-ph { padding:3px 14px 12px; font-size:1.12rem; font-weight:700; color:var(--sea-dark); line-height:1.45; }
 .say-btns { padding:0 12px 12px; display:flex; gap:7px; justify-content:flex-end; }
 
 /* Bloc "ce que le CLIENT peut répondre" */
@@ -421,7 +431,7 @@ mark { background:rgba(0,180,196,0.2); color:var(--sea-dark); border-radius:3px;
     <div class="hdr-info" id="hInfo">
       <div class="stars">★★★★★</div>
       <h1>Beach Garden</h1>
-      <p>Guide Deutsch · Oral uniquement 🎧</p>
+      <p>Guide Deutsch · allemand + prononciation 🎧</p>
     </div>
     <div class="hdr-cat" id="hCat"></div>
   </div>
@@ -436,6 +446,7 @@ mark { background:rgba(0,180,196,0.2); color:var(--sea-dark); border-radius:3px;
 <div class="tabs">
   <button class="tab on" id="tab-ac" onclick="goTab('ac')">🛎️ Accueil</button>
   <button class="tab" id="tab-ph" onclick="goTab('ph')">💬 Phrases</button>
+  <button class="tab" id="tab-ba" onclick="goTab('ba')">🔢 Bases</button>
   <button class="tab" id="tab-qz" onclick="goTab('qz')">🎧 Quiz</button>
   <button class="tab" id="tab-fv" onclick="goTab('fv')">⭐ Favoris</button>
 </div>
@@ -461,6 +472,12 @@ mark { background:rgba(0,180,196,0.2); color:var(--sea-dark); border-radius:3px;
   </div>
 </div>
 
+<!-- VIEW BASES (rubrique formative) -->
+<div class="view" id="view-ba">
+  <div class="main" id="scrBaseCats"><div class="cat-grid" id="baseGrid"></div></div>
+  <div class="main" id="scrBasePh" style="display:none"><div id="basePhList"></div></div>
+</div>
+
 <!-- VIEW QUIZ -->
 <div class="view" id="view-qz">
   <div class="qz-inner" id="qzWrap"></div>
@@ -475,6 +492,7 @@ mark { background:rgba(0,180,196,0.2); color:var(--sea-dark); border-radius:3px;
 <div class="bnav">
   <button class="bnav-btn on" id="nav-ac" onclick="goTab('ac')"><span class="ni">🛎️</span>Accueil</button>
   <button class="bnav-btn" id="nav-ph" onclick="goTab('ph')"><span class="ni">💬</span>Phrases</button>
+  <button class="bnav-btn" id="nav-ba" onclick="goTab('ba')"><span class="ni">🔢</span>Bases</button>
   <button class="bnav-btn" id="nav-qz" onclick="goTab('qz')"><span class="ni">🎧</span>Quiz</button>
   <button class="bnav-btn" id="nav-fv" onclick="goTab('fv')"><span class="ni">⭐</span>Favoris</button>
 </div>
@@ -618,6 +636,74 @@ const P = [
   {c:5,e:"🧒",fr:"Il y a un mini-club pour les enfants et un club pour les ados.",de:"Es gibt einen Miniclub für Kinder und einen Club für Jugendliche.",ph:"Èss guibt aïnène Mini-kloub fuir Kindèr ount aïnène Kloub fuir Yougènt-likheu."},
   {c:6,e:"🚶",fr:"Tout visiteur doit se présenter à la réception ; une redevance s'applique au-delà de deux heures.",de:"Jeder Besucher muss sich an der Rezeption melden; nach zwei Stunden wird eine Gebühr fällig.",ph:"Yédèr Bézoukhèr mouss zikh an dèr Rétsèptsion mèldène; nakh tsvaï Chtoundène virt aïneu Guébüir fèllig."},
   {c:8,e:"🦪",fr:"On déguste les huîtres de Bouzigues au bord de l'étang de Thau.",de:"In Bouzigues isst man Austern direkt am Thau-See.",ph:"In Bouzig isst man Aoustèrn dirèkt am To-Zé."},
+
+  // ════════ BASES — Nombres (c:10) ════════
+  {c:10,e:"🔢",fr:"0 — zéro",de:"null",ph:"noul"},
+  {c:10,e:"🔢",fr:"1 — un",de:"eins",ph:"aïnss"},
+  {c:10,e:"🔢",fr:"2 — deux",de:"zwei",ph:"tsvaï"},
+  {c:10,e:"🔢",fr:"3 — trois",de:"drei",ph:"draï"},
+  {c:10,e:"🔢",fr:"4 — quatre",de:"vier",ph:"fir"},
+  {c:10,e:"🔢",fr:"5 — cinq",de:"fünf",ph:"fuunf"},
+  {c:10,e:"🔢",fr:"6 — six",de:"sechs",ph:"zèkss"},
+  {c:10,e:"🔢",fr:"7 — sept",de:"sieben",ph:"zibène"},
+  {c:10,e:"🔢",fr:"8 — huit",de:"acht",ph:"akht"},
+  {c:10,e:"🔢",fr:"9 — neuf",de:"neun",ph:"noïn"},
+  {c:10,e:"🔢",fr:"10 — dix",de:"zehn",ph:"tsèn"},
+  {c:10,e:"🔢",fr:"11 — onze",de:"elf",ph:"èlf"},
+  {c:10,e:"🔢",fr:"12 — douze",de:"zwölf",ph:"tsvelf"},
+  {c:10,e:"🔢",fr:"13 — treize",de:"dreizehn",ph:"draï-tsèn"},
+  {c:10,e:"🔢",fr:"14 — quatorze",de:"vierzehn",ph:"fir-tsèn"},
+  {c:10,e:"🔢",fr:"15 — quinze",de:"fünfzehn",ph:"fuunf-tsèn"},
+  {c:10,e:"🔢",fr:"16 — seize",de:"sechzehn",ph:"zèkh-tsèn"},
+  {c:10,e:"🔢",fr:"17 — dix-sept",de:"siebzehn",ph:"zib-tsèn"},
+  {c:10,e:"🔢",fr:"18 — dix-huit",de:"achtzehn",ph:"akht-tsèn"},
+  {c:10,e:"🔢",fr:"19 — dix-neuf",de:"neunzehn",ph:"noïn-tsèn"},
+  {c:10,e:"🔢",fr:"20 — vingt",de:"zwanzig",ph:"tsvann-tsig"},
+  {c:10,e:"🔢",fr:"21 — vingt-et-un",de:"einundzwanzig",ph:"aïn-ount-tsvann-tsig"},
+  {c:10,e:"🔢",fr:"22 — vingt-deux",de:"zweiundzwanzig",ph:"tsvaï-ount-tsvann-tsig"},
+  {c:10,e:"🔢",fr:"30 — trente",de:"dreißig",ph:"draï-ssig"},
+  {c:10,e:"🔢",fr:"40 — quarante",de:"vierzig",ph:"fir-tsig"},
+  {c:10,e:"🔢",fr:"50 — cinquante",de:"fünfzig",ph:"fuunf-tsig"},
+  {c:10,e:"🔢",fr:"60 — soixante",de:"sechzig",ph:"zèkh-tsig"},
+  {c:10,e:"🔢",fr:"70 — soixante-dix",de:"siebzig",ph:"zib-tsig"},
+  {c:10,e:"🔢",fr:"80 — quatre-vingts",de:"achtzig",ph:"akht-tsig"},
+  {c:10,e:"🔢",fr:"90 — quatre-vingt-dix",de:"neunzig",ph:"noïn-tsig"},
+  {c:10,e:"🔢",fr:"100 — cent",de:"hundert",ph:"houn-dèrt"},
+  {c:10,e:"🔢",fr:"1000 — mille",de:"tausend",ph:"taou-zènt"},
+
+  // ════════ BASES — Jours & Mois (c:11) ════════
+  {c:11,e:"📅",fr:"Lundi",de:"Montag",ph:"Mon-tag"},
+  {c:11,e:"📅",fr:"Mardi",de:"Dienstag",ph:"Dinss-tag"},
+  {c:11,e:"📅",fr:"Mercredi",de:"Mittwoch",ph:"Mitt-vorr"},
+  {c:11,e:"📅",fr:"Jeudi",de:"Donnerstag",ph:"Donèrs-tag"},
+  {c:11,e:"📅",fr:"Vendredi",de:"Freitag",ph:"Fraï-tag"},
+  {c:11,e:"📅",fr:"Samedi",de:"Samstag",ph:"Zamss-tag"},
+  {c:11,e:"📅",fr:"Dimanche",de:"Sonntag",ph:"Zon-tag"},
+  {c:11,e:"🗓️",fr:"Janvier",de:"Januar",ph:"Yanou-ar"},
+  {c:11,e:"🗓️",fr:"Février",de:"Februar",ph:"Fébrou-ar"},
+  {c:11,e:"🗓️",fr:"Mars",de:"März",ph:"Mèrts"},
+  {c:11,e:"🗓️",fr:"Avril",de:"April",ph:"April"},
+  {c:11,e:"🗓️",fr:"Mai",de:"Mai",ph:"Maï"},
+  {c:11,e:"🗓️",fr:"Juin",de:"Juni",ph:"Youni"},
+  {c:11,e:"🗓️",fr:"Juillet",de:"Juli",ph:"Youli"},
+  {c:11,e:"🗓️",fr:"Août",de:"August",ph:"Aou-goust"},
+  {c:11,e:"🗓️",fr:"Septembre",de:"September",ph:"Zèp-tèmbèr"},
+  {c:11,e:"🗓️",fr:"Octobre",de:"Oktober",ph:"Ok-tobèr"},
+  {c:11,e:"🗓️",fr:"Novembre",de:"November",ph:"No-vèmbèr"},
+  {c:11,e:"🗓️",fr:"Décembre",de:"Dezember",ph:"Dé-tsèmbèr"},
+
+  // ════════ BASES — Heure & moments (c:12) ════════
+  {c:12,e:"❓",fr:"Quelle heure est-il ?",de:"Wie spät ist es?",ph:"Vi chpèt ist èss?"},
+  {c:12,e:"🕙",fr:"Il est dix heures.",de:"Es ist zehn Uhr.",ph:"Èss ist tsèn Ouir."},
+  {c:12,e:"🕛",fr:"Midi",de:"Mittag",ph:"Mit-tag"},
+  {c:12,e:"🌙",fr:"Minuit",de:"Mitternacht",ph:"Mitèr-nakht"},
+  {c:12,e:"🌅",fr:"Le matin",de:"der Morgen",ph:"dèr Morgène"},
+  {c:12,e:"🌇",fr:"L'après-midi",de:"der Nachmittag",ph:"dèr Nakh-mitag"},
+  {c:12,e:"🌃",fr:"Le soir",de:"der Abend",ph:"dèr Abènt"},
+  {c:12,e:"📆",fr:"Aujourd'hui",de:"heute",ph:"hoïteu"},
+  {c:12,e:"➡️",fr:"Demain",de:"morgen",ph:"morgène"},
+  {c:12,e:"⬅️",fr:"Hier",de:"gestern",ph:"guèstèrn"},
+  {c:12,e:"⏱️",fr:"Maintenant",de:"jetzt",ph:"yètst"},
 ];
 
 /* Catégories — index numérique, pas de string avec & */
@@ -632,6 +718,10 @@ const CATS = [
   {id:7, name:"Urgences",             col:"#e8604a"},
   {id:8, name:"Région & Sorties",     col:"#3aaa6b"},
   {id:9, name:"Politesse",            col:"#c07830"},
+  // ── Rubrique « Bases » (apprentissage), affichée dans l'onglet 🔢 Bases
+  {id:10, name:"Nombres",         col:"#2d9fc5", grp:"base"},
+  {id:11, name:"Jours & Mois",    col:"#3aaa6b", grp:"base"},
+  {id:12, name:"Heure & moments", col:"#d4a017", grp:"base"},
 ];
 
 /* ══════════════════════════════════════
@@ -1019,9 +1109,10 @@ function togFav(key){
 /* ══ CARTE PHRASE ══ */
 function card(p,key,q){
   const f=favs.has(key);
-  const frTxt = q ? p.fr.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>') : p.fr;
+  const hl = s => q ? s.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>') : s;
   return `<div class="phrase-card${f?' fav':''}">
-    <div class="card-fr"><span class="ce">${p.e||'🗣️'}</span>${frTxt}</div>
+    <div class="card-fr"><span class="ce">${p.e||'🗣️'}</span>${hl(p.fr)}</div>
+    <div class="card-de">${hl(p.de)}</div>
     <div class="card-ph">${p.ph}</div>
     <div class="card-btns">
       <button class="btn-fav${f?' on':''}" data-fk="${key}" onclick="togFav('${key}')">${f?'⭐ Favori':'☆ Ajouter'}</button>
@@ -1037,7 +1128,7 @@ function renderCats(){
   P.forEach(p=>{ counts[p.c]=(counts[p.c]||0)+1; });
   const firstEmoji={};
   P.forEach(p=>{ if(!firstEmoji[p.c]) firstEmoji[p.c]=p.e; });
-  document.getElementById('catGrid').innerHTML = CATS.map(cat=>`
+  document.getElementById('catGrid').innerHTML = CATS.filter(c=>c.grp!=='base').map(cat=>`
     <div class="cat-card" style="border-bottom-color:${cat.col}" onclick="openCat(${cat.id})">
       <span class="cc-em">${firstEmoji[cat.id]||'📁'}</span>
       <div class="cc-nm">${cat.name}</div>
@@ -1045,20 +1136,40 @@ function renderCats(){
     </div>`).join('');
 }
 
+/* Grille des catégories « Bases » (onglet 🔢) */
+function renderBaseCats(){
+  const counts={}; P.forEach(p=>{ counts[p.c]=(counts[p.c]||0)+1; });
+  const firstEmoji={}; P.forEach(p=>{ if(!firstEmoji[p.c]) firstEmoji[p.c]=p.e; });
+  document.getElementById('baseGrid').innerHTML =
+    `<div class="flow-intro">📚 Les bases pour apprendre. Appuie sur une catégorie : chaque carte montre le français, l'allemand, la prononciation et l'audio.</div>` +
+    CATS.filter(c=>c.grp==='base').map(cat=>`
+      <div class="cat-card" style="border-bottom-color:${cat.col}" onclick="openCat(${cat.id})">
+        <span class="cc-em">${firstEmoji[cat.id]||'📚'}</span>
+        <div class="cc-nm">${cat.name}</div>
+        <span class="cc-ct">${counts[cat.id]||0} cartes</span>
+      </div>`).join('');
+}
+
 /* ══ OUVRIR CATÉGORIE — index numérique, zéro risque de bug ══ */
 function openCat(id){
   curCat=id;
-  document.getElementById('scrCats').style.display='none';
-  document.getElementById('scrSrch').style.display='none';
-  document.getElementById('scrPh').style.display='block';
   const cat=CATS.find(c=>c.id===id);
+  const isBase = !!(cat && cat.grp==='base');
+  if(isBase){
+    document.getElementById('scrBaseCats').style.display='none';
+    document.getElementById('scrBasePh').style.display='block';
+  } else {
+    document.getElementById('scrCats').style.display='none';
+    document.getElementById('scrSrch').style.display='none';
+    document.getElementById('scrPh').style.display='block';
+  }
   document.getElementById('backBtn').classList.add('on');
   document.getElementById('hInfo').style.display='none';
   document.getElementById('logoImg').style.opacity='0';
   document.getElementById('hCat').textContent=cat?cat.name:'';
   document.getElementById('hCat').classList.add('on');
   const items=P.map((p,i)=>({p,i})).filter(({p})=>p.c===id);
-  document.getElementById('phList').innerHTML=items.map(({p,i})=>card(p,'p'+i,'')).join('');
+  document.getElementById(isBase?'basePhList':'phList').innerHTML=items.map(({p,i})=>card(p,'p'+i,'')).join('');
 }
 
 /* ══ RETOUR (catégorie OU parcours) ══ */
@@ -1069,6 +1180,17 @@ function goBack(){
     curFlow=null; curStep=0;
     document.getElementById('scrFlows').style.display='block';
     document.getElementById('scrSteps').style.display='none';
+    document.getElementById('backBtn').classList.remove('on');
+    document.getElementById('hInfo').style.display='';
+    document.getElementById('logoImg').style.opacity='';
+    document.getElementById('hCat').classList.remove('on');
+    return;
+  }
+  // Retour depuis une catégorie « Bases »
+  if(curTab==='ba'){
+    curCat=null;
+    document.getElementById('scrBaseCats').style.display='block';
+    document.getElementById('scrBasePh').style.display='none';
     document.getElementById('backBtn').classList.remove('on');
     document.getElementById('hInfo').style.display='';
     document.getElementById('logoImg').style.opacity='';
@@ -1139,6 +1261,7 @@ function renderStep(){
       return `<div class="say-block">
         <div class="say-label">🗣️ ${b.label}</div>
         <div class="say-fr">${b.fr}</div>
+        <div class="say-de">${b.de}</div>
         <div class="say-ph">${b.ph}</div>
         <div class="say-btns">
           <button class="btn-fav${isFav?' on':''}" data-fk="${key}" onclick="togFav('${key}')">${isFav?'⭐ Favori':'☆ Ajouter'}</button>
@@ -1244,14 +1367,21 @@ function goTab(t){
     document.getElementById('scrPh').style.display='none';
     document.getElementById('scrSrch').style.display='none';
   }
+  if(t==='ba'){
+    curCat=null;
+    document.getElementById('scrBaseCats').style.display='block';
+    document.getElementById('scrBasePh').style.display='none';
+    renderBaseCats();
+  }
   if(t==='qz'){ if(qList.length===0) initQuiz(); renderQuiz(); }
   if(t==='fv') renderFavs();
 }
 
 /* ══ QUIZ ORAL ══
    On entend la phrase → on choisit le bon sens en français */
+function isBaseCat(c){ const cc=CATS.find(x=>x.id===c); return !!(cc && cc.grp==='base'); }
 function initQuiz(){
-  qList=[...P].sort(()=>Math.random()-.5).slice(0,10);
+  qList=P.filter(p=>!isBaseCat(p.c)).sort(()=>Math.random()-.5).slice(0,10);
   qIdx=0; qScore=0; qDone=false;
 }
 function renderQuiz(){
@@ -1277,7 +1407,7 @@ function renderQuiz(){
   }
   const q=qList[qIdx];
   // 3 mauvaises réponses françaises
-  const bad=P.filter(p=>p.fr!==q.fr).sort(()=>Math.random()-.5).slice(0,3);
+  const bad=P.filter(p=>p.fr!==q.fr && !isBaseCat(p.c)).sort(()=>Math.random()-.5).slice(0,3);
   const opts=[...bad,q].sort(()=>Math.random()-.5);
   const qi=P.indexOf(q);
   // index réel de la bonne réponse dans le tableau opts
