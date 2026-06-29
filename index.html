@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beach Garden — Sprechen Deutsch</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sea: #1a6b8a;
+  --sea-dark: #0e4a63;
+  --sea-light: #2d9fc5;
+  --turquoise: #00b4c4;
+  --sand: #f5e6c8;
+  --sand-light: #fdf6e8;
+  --sand-dark: #d4b896;
+  --text: #1a2e38;
+  --text-light: #5a7a88;
+  --green: #3aaa6b;
+  --coral: #e8604a;
+  --gold: #d4a017;
+  --shadow: 0 4px 20px rgba(26,107,138,0.12);
+  --shadow-lg: 0 8px 40px rgba(26,107,138,0.18);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--sand-light);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ══ HEADER ══ */
+.hdr {
+  background: linear-gradient(135deg, var(--sea-dark) 0%, var(--sea) 55%, var(--sea-light) 100%);
+  padding: 13px 16px 14px;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.22);
+}
+.hdr-top {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 11px; min-height: 46px;
+}
+.logo { height: 40px; filter: brightness(0) invert(1); flex-shrink: 0; }
+.logo-fb { display:none; font-family:'Playfair Display',serif; color:white; font-size:0.85rem; font-style:italic; flex-shrink:0; }
+.hdr-info { flex: 1; }
+.hdr-info h1 { font-family:'Playfair Display',serif; font-size:1rem; color:white; line-height:1.2; }
+.hdr-info p { font-size:0.67rem; color:rgba(255,255,255,0.68); margin-top:1px; }
+.stars { color: var(--gold); font-size:0.68rem; letter-spacing:1px; }
+.hdr-cat {
+  display:none; font-size:0.9rem; font-weight:600;
+  color:white; flex:1; text-align:center;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.hdr-cat.on { display:block; }
+.back-btn {
+  display:none; align-items:center; gap:4px;
+  background:rgba(255,255,255,0.18); border:none;
+  border-radius:20px; padding:6px 12px 6px 8px;
+  color:white; font-size:0.79rem;
+  font-family:'DM Sans',sans-serif; font-weight:500;
+  cursor:pointer; flex-shrink:0;
+}
+.back-btn.on { display:flex; }
+
+/* Barre recherche */
+.srch { position:relative; }
+.srch input {
+  width:100%; padding:8px 34px 8px 32px;
+  border-radius:20px; border:none;
+  background:rgba(255,255,255,0.16);
+  color:white; font-size:0.83rem;
+  font-family:'DM Sans',sans-serif; outline:none;
+}
+.srch input::placeholder { color:rgba(255,255,255,0.52); }
+.srch-ico { position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:0.9rem; pointer-events:none; }
+.srch-x { position:absolute; right:10px; top:50%; transform:translateY(-50%); background:none; border:none; color:rgba(255,255,255,0.6); font-size:0.95rem; cursor:pointer; display:none; }
+.srch-x.on { display:block; }
+
+/* ══ TABS ══ */
+.tabs { background:white; border-bottom:2px solid var(--sand); display:flex; }
+.tab {
+  flex:1; padding:10px 6px; border:none; background:none;
+  font-family:'DM Sans',sans-serif; font-size:0.78rem; font-weight:500;
+  color:var(--text-light); cursor:pointer;
+  border-bottom:3px solid transparent; margin-bottom:-2px;
+  display:flex; align-items:center; justify-content:center; gap:5px;
+  transition:color .18s, border-color .18s;
+}
+.tab.on { color:var(--sea); border-bottom-color:var(--sea); font-weight:600; }
+
+/* Stats */
+.stats {
+  background:white; padding:7px 16px;
+  display:flex; gap:14px; border-bottom:1px solid var(--sand);
+  font-size:0.73rem; color:var(--text-light);
+}
+.stat b { color:var(--sea); }
+.audio-test {
+  margin-left:auto; border:none; cursor:pointer;
+  background:linear-gradient(135deg,var(--sea),var(--sea-light));
+  color:white; border-radius:20px; padding:5px 12px;
+  font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:600;
+  -webkit-tap-highlight-color:transparent;
+}
+.audio-test:active { transform:scale(0.95); }
+
+/* ══ VIEWS ══ */
+.view { display:none; }
+.view.on { display:block; }
+.main { padding:13px 13px 88px; }
+
+/* ══ GRILLE CATÉGORIES ══ */
+.cat-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.cat-card {
+  background:white; border-radius:16px;
+  padding:17px 13px 15px;
+  box-shadow:var(--shadow); cursor:pointer;
+  transition:transform .14s, box-shadow .14s;
+  display:flex; flex-direction:column;
+  align-items:flex-start; gap:6px;
+  border-bottom:3px solid var(--sea);
+  position:relative; overflow:hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+.cat-card:active { transform:scale(0.96); box-shadow:var(--shadow-lg); }
+.cat-card::after { content:'›'; position:absolute; right:11px; bottom:13px; color:var(--sea); font-size:1.05rem; opacity:0.5; }
+.cc-em { font-size:1.8rem; line-height:1; }
+.cc-nm { font-size:0.79rem; font-weight:600; color:var(--text); line-height:1.3; }
+.cc-ct { font-size:0.69rem; color:var(--text-light); background:var(--sand); border-radius:20px; padding:2px 8px; }
+
+/* ══ CARTE PHRASE — mode oral ══ */
+.phrase-card {
+  background:white; border-radius:14px;
+  margin-bottom:10px; box-shadow:var(--shadow);
+  overflow:hidden; border-left:4px solid var(--sea);
+}
+.phrase-card.fav { border-left-color:var(--gold); }
+
+.card-fr {
+  padding:13px 14px 4px;
+  font-size:0.8rem; color:var(--text-light);
+  display:flex; align-items:center; gap:7px;
+}
+.card-fr .ce { font-size:1.2rem; flex-shrink:0; }
+
+/* LA PHONÉTIQUE EST LE HÉROS */
+.card-ph {
+  padding:4px 14px 12px 14px;
+  font-size:1.15rem; font-weight:700;
+  color:var(--sea-dark);
+  line-height:1.4; letter-spacing:0.2px;
+}
+
+.card-btns {
+  padding:0 12px 11px;
+  display:flex; gap:7px; justify-content:flex-end;
+  align-items:center;
+}
+.btn-listen {
+  background:linear-gradient(135deg, var(--sea), var(--sea-light));
+  color:white; border:none; border-radius:22px;
+  padding:8px 18px; font-size:0.82rem;
+  font-family:'DM Sans',sans-serif; font-weight:600;
+  cursor:pointer; display:flex; align-items:center; gap:6px;
+  box-shadow:0 2px 10px rgba(26,107,138,0.28);
+  transition:transform .12s;
+  letter-spacing:0.2px;
+}
+.btn-listen:active { transform:scale(0.95); }
+.btn-listen.playing { background:linear-gradient(135deg,var(--turquoise),var(--green)); }
+.btn-fav {
+  background:none; border:1.5px solid var(--sand-dark);
+  border-radius:20px; padding:5px 11px;
+  font-size:0.77rem; cursor:pointer;
+  font-family:'DM Sans',sans-serif; color:var(--text-light);
+  transition:all .18s;
+}
+.btn-fav.on { background:var(--gold); border-color:var(--gold); color:white; }
+.btn-slow {
+  background:var(--sand); color:var(--sea-dark);
+  border:1.5px solid var(--sand-dark); border-radius:22px;
+  padding:8px 13px; font-size:0.8rem;
+  font-family:'DM Sans',sans-serif; font-weight:600;
+  cursor:pointer; display:flex; align-items:center; gap:4px;
+  transition:transform .12s; -webkit-tap-highlight-color:transparent;
+}
+.btn-slow:active { transform:scale(0.95); }
+.btn-slow.playing { background:var(--turquoise); color:white; border-color:var(--turquoise); }
+
+/* ══ QUIZ ORAL ══ */
+.qz-inner { padding:13px 13px 88px; }
+.qcard { background:white; border-radius:18px; padding:20px 16px; box-shadow:var(--shadow-lg); margin-bottom:11px; }
+.qprog { background:var(--sand); border-radius:8px; height:5px; margin-bottom:13px; overflow:hidden; }
+.qprog-bar { height:100%; background:linear-gradient(90deg,var(--sea),var(--turquoise)); border-radius:8px; transition:width .4s; }
+.qlbl { font-size:0.7rem; text-transform:uppercase; letter-spacing:1.3px; color:var(--text-light); margin-bottom:12px; }
+
+/* Zone audio centrale dans le quiz */
+.q-audio-zone {
+  background:linear-gradient(135deg, var(--sea-dark), var(--sea));
+  border-radius:14px; padding:22px 16px;
+  text-align:center; margin-bottom:18px;
+}
+.q-audio-label { font-size:0.75rem; color:rgba(255,255,255,0.65); margin-bottom:12px; letter-spacing:0.5px; }
+.q-listen-btn {
+  background:rgba(255,255,255,0.18); border:2px solid rgba(255,255,255,0.4);
+  color:white; border-radius:50px; padding:12px 28px;
+  font-size:1rem; font-family:'DM Sans',sans-serif; font-weight:700;
+  cursor:pointer; transition:all .18s; letter-spacing:0.3px;
+  backdrop-filter:blur(4px);
+}
+.q-listen-btn:active { transform:scale(0.95); }
+.q-listen-btn.playing { background:rgba(255,255,255,0.28); border-color:white; }
+.q-emoji { font-size:1.8rem; display:block; margin-bottom:8px; }
+.q-instr { font-size:0.78rem; color:rgba(255,255,255,0.7); margin-top:10px; }
+.q-slow-btn {
+  margin-top:11px; background:rgba(255,255,255,0.12);
+  border:1.5px solid rgba(255,255,255,0.3); color:rgba(255,255,255,0.92);
+  border-radius:50px; padding:7px 18px; font-size:0.8rem;
+  font-family:'DM Sans',sans-serif; font-weight:600; cursor:pointer;
+  display:inline-block; -webkit-tap-highlight-color:transparent;
+}
+.q-slow-btn:active { transform:scale(0.95); }
+.q-slow-btn.playing { background:rgba(255,255,255,0.25); border-color:white; color:white; }
+
+.qopts { display:grid; gap:9px; }
+.qopt {
+  padding:13px 15px; border-radius:12px;
+  border:2px solid var(--sand-dark); background:var(--sand-light);
+  font-family:'DM Sans',sans-serif; font-size:0.88rem;
+  cursor:pointer; text-align:left; transition:all .18s; line-height:1.35;
+}
+.qopt:hover { border-color:var(--sea); background:rgba(26,107,138,0.04); }
+.qopt.correct { border-color:var(--green); background:rgba(58,170,107,0.09); color:var(--green); font-weight:600; }
+.qopt.wrong { border-color:var(--coral); background:rgba(232,96,74,0.09); color:var(--coral); }
+.qfb { margin-top:11px; padding:10px 13px; border-radius:11px; font-size:0.86rem; font-weight:500; display:none; }
+.qfb.on { display:block; }
+.qfb.c { background:rgba(58,170,107,0.1); color:var(--green); }
+.qfb.w { background:rgba(232,96,74,0.1); color:var(--coral); }
+.qnext { width:100%; margin-top:10px; background:linear-gradient(135deg,var(--sea),var(--sea-light)); color:white; border:none; border-radius:13px; padding:13px; font-size:0.9rem; font-weight:600; font-family:'DM Sans',sans-serif; cursor:pointer; display:none; box-shadow:var(--shadow); }
+.qnext.on { display:block; }
+.qresult { background:linear-gradient(135deg,var(--sea-dark),var(--sea)); color:white; border-radius:20px; padding:28px 20px; text-align:center; box-shadow:var(--shadow-lg); }
+.qresult h2 { font-family:'Playfair Display',serif; font-size:1.9rem; margin-bottom:6px; }
+.qresult p { color:rgba(255,255,255,0.76); margin-bottom:16px; font-size:0.9rem; line-height:1.5; }
+.qrestart { background:var(--gold); color:white; border:none; border-radius:12px; padding:11px 24px; font-size:0.9rem; font-weight:600; font-family:'DM Sans',sans-serif; cursor:pointer; }
+
+/* ══ FAVORIS ══ */
+.empty { text-align:center; padding:55px 20px; color:var(--text-light); }
+.empty .big { font-size:2.8rem; display:block; margin-bottom:11px; }
+.empty p { font-size:0.86rem; line-height:1.6; }
+
+/* Recherche */
+.sr-info { font-size:0.75rem; color:var(--text-light); padding:7px 4px 5px; }
+.nores { text-align:center; padding:48px 20px; color:var(--text-light); }
+.nores .big { font-size:2.5rem; display:block; margin-bottom:9px; }
+mark { background:rgba(0,180,196,0.2); color:var(--sea-dark); border-radius:3px; padding:0 2px; }
+
+/* ══ MODE ACCUEIL / DIALOGUE ══ */
+/* Liste des parcours */
+.flow-card {
+  background:white; border-radius:16px;
+  padding:18px 16px; margin-bottom:11px;
+  box-shadow:var(--shadow); cursor:pointer;
+  display:flex; align-items:center; gap:14px;
+  border-left:4px solid var(--sea);
+  transition:transform .14s, box-shadow .14s;
+  -webkit-tap-highlight-color:transparent;
+}
+.flow-card:active { transform:scale(0.98); box-shadow:var(--shadow-lg); }
+.flow-em { font-size:2rem; flex-shrink:0; }
+.flow-txt { flex:1; min-width:0; }
+.flow-nm { font-size:0.95rem; font-weight:600; color:var(--text); line-height:1.3; margin-bottom:3px; }
+.flow-desc { font-size:0.76rem; color:var(--text-light); line-height:1.4; }
+.flow-arrow { color:var(--sea); font-size:1.2rem; opacity:0.55; flex-shrink:0; }
+.flow-intro { font-size:0.8rem; color:var(--text-light); line-height:1.5; padding:2px 4px 14px; }
+
+/* Barre de progression d'étapes */
+.step-head {
+  display:flex; align-items:center; gap:8px;
+  margin-bottom:6px; flex-wrap:wrap;
+}
+.step-counter { font-size:0.74rem; color:var(--text-light); font-weight:600; }
+.step-dots { display:flex; gap:4px; flex:1; flex-wrap:wrap; }
+.step-dot { width:7px; height:7px; border-radius:50%; background:var(--sand-dark); transition:background .2s; }
+.step-dot.done { background:var(--sea-light); }
+.step-dot.cur { background:var(--sea); transform:scale(1.3); }
+
+/* Bloc "ce que TU dis" */
+.say-block {
+  background:white; border-radius:16px;
+  box-shadow:var(--shadow); overflow:hidden;
+  border-left:4px solid var(--sea);
+  margin-bottom:11px;
+}
+.say-label {
+  background:linear-gradient(135deg, var(--sea-dark), var(--sea));
+  color:white; padding:8px 14px;
+  font-size:0.74rem; font-weight:600;
+  letter-spacing:0.4px; display:flex; align-items:center; gap:6px;
+}
+.say-fr { padding:12px 14px 4px; font-size:0.84rem; color:var(--text-light); line-height:1.45; }
+.say-ph { padding:4px 14px 12px; font-size:1.12rem; font-weight:700; color:var(--sea-dark); line-height:1.45; }
+.say-btns { padding:0 12px 12px; display:flex; gap:7px; justify-content:flex-end; }
+
+/* Bloc "ce que le CLIENT peut répondre" */
+.hear-block {
+  background:#fef9f0; border-radius:16px;
+  border:1.5px dashed var(--sand-dark);
+  padding:12px 14px; margin-bottom:11px;
+}
+.hear-label { font-size:0.73rem; font-weight:600; color:var(--gold); letter-spacing:0.4px; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.hear-item { display:flex; align-items:baseline; gap:8px; padding:5px 0; border-bottom:1px solid rgba(212,184,150,0.3); }
+.hear-item:last-child { border-bottom:none; }
+.hear-de { font-size:0.86rem; font-weight:600; color:var(--text); }
+.hear-fr { font-size:0.77rem; color:var(--text-light); }
+
+/* Bloc info / mémo (pas de phrase, juste un rappel pour toi) */
+.memo-block {
+  background:rgba(0,180,196,0.07);
+  border-radius:14px; border-left:4px solid var(--turquoise);
+  padding:11px 14px; margin-bottom:11px;
+  font-size:0.82rem; color:var(--text); line-height:1.5;
+}
+.memo-block b { color:var(--sea-dark); }
+.memo-label { font-size:0.72rem; font-weight:700; color:var(--turquoise); letter-spacing:0.4px; margin-bottom:5px; }
+
+/* Navigation entre étapes */
+.step-nav { display:flex; gap:10px; margin-top:6px; }
+.step-prev, .step-next {
+  flex:1; border:none; border-radius:13px;
+  padding:13px; font-size:0.9rem; font-weight:600;
+  font-family:'DM Sans',sans-serif; cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+.step-prev { background:var(--sand); color:var(--text-light); }
+.step-prev:disabled { opacity:0.4; }
+.step-next { background:linear-gradient(135deg,var(--sea),var(--sea-light)); color:white; box-shadow:var(--shadow); }
+.step-next:active, .step-prev:active { transform:scale(0.97); }
+.step-title { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--text); margin:8px 0 12px; line-height:1.3; }
+
+/* ══ BOTTOM NAV ══ */
+.bnav {
+  position:fixed; bottom:0; left:0; right:0;
+  background:white; border-top:1px solid var(--sand);
+  display:flex; box-shadow:0 -3px 16px rgba(0,0,0,0.07); z-index:50;
+}
+.bnav-btn {
+  flex:1; border:none; background:none; padding:8px 6px 6px;
+  font-family:'DM Sans',sans-serif; font-size:0.66rem; font-weight:500;
+  color:var(--text-light); cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+  transition:color .18s; -webkit-tap-highlight-color:transparent;
+}
+.bnav-btn .ni { font-size:1.2rem; }
+.bnav-btn.on { color:var(--sea); }
+
+/* ══════════════════════════════════════
+   OPTIMISATION GRAND ÉCRAN / PC (poste de réception)
+   Mobile-first conservé ; on enrichit à partir de 760px.
+══════════════════════════════════════ */
+@media (min-width:760px){
+  html{ font-size:17.5px; }                 /* tout grossit (rem) → lisible à 1-2 m */
+  .hdr{ padding:16px 24px 17px; }
+  .hdr-top{ max-width:1080px; margin:0 auto 12px; min-height:54px; }
+  .logo{ height:48px; }
+  .hdr-info h1{ font-size:1.25rem; }
+  .hdr-info p{ font-size:0.78rem; }
+  .srch{ max-width:1080px; margin:0 auto; }
+  .srch input{ padding:11px 38px 11px 40px; font-size:0.95rem; }
+  .tabs{ max-width:1080px; margin:0 auto; border-bottom:none; gap:4px; padding:6px 24px 0; }
+  .tab{ font-size:0.95rem; padding:13px 10px; border-radius:12px 12px 0 0; }
+  .stats{ max-width:1080px; margin:0 auto; padding:9px 24px; font-size:0.82rem; }
+
+  /* Conteneur de contenu centré */
+  .main, .qz-inner{ max-width:1080px; margin:0 auto; padding:22px 24px 40px; }
+
+  /* Grille catégories multi-colonnes auto */
+  .cat-grid{ grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px; }
+  .cat-card{ padding:22px 18px 18px; }
+  .cc-em{ font-size:2.2rem; }
+  .cc-nm{ font-size:0.92rem; }
+
+  /* Phrases & parcours : 2 colonnes sur large écran */
+  #phList, #srList, #fvContent{ display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:14px; align-items:start; }
+  .phrase-card{ margin-bottom:0; }
+  .card-ph{ font-size:1.3rem; }
+  .card-fr{ font-size:0.9rem; }
+
+  /* Parcours dialogue : colonne lisible centrée */
+  #stepWrap{ max-width:760px; margin:0 auto; }
+  #flowGrid{ max-width:760px; margin:0 auto; }
+  .say-ph{ font-size:1.28rem; }
+  .qcard{ max-width:680px; margin:0 auto 11px; padding:26px 22px; }
+
+  /* La barre du bas devient inutile sur PC (les onglets du haut suffisent) */
+  .bnav{ display:none; }
+  .main{ padding-bottom:40px; }
+  .qz-inner{ padding-bottom:40px; }
+
+  /* Boutons un peu plus grands au survol souris */
+  .btn-listen, .btn-slow, .btn-fav{ font-size:0.9rem; }
+  .btn-listen{ padding:9px 20px; }
+}
+@media (min-width:760px){
+  .qz-inner{ padding-top:22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-top">
+    <button class="back-btn" id="backBtn" onclick="goBack()">← Retour</button>
+    <img class="logo" id="logoImg"
+      src="https://static.secureholiday.net/static/CMS/photos/000/062/000062239.png?w=600&format=webp"
+      alt="Les Méditerranées"
+      onerror="this.style.display='none';document.getElementById('logoFb').style.display='inline'">
+    <span class="logo-fb" id="logoFb">Les Méditerranées</span>
+    <div class="hdr-info" id="hInfo">
+      <div class="stars">★★★★★</div>
+      <h1>Beach Garden</h1>
+      <p>Guide Deutsch · Oral uniquement 🎧</p>
+    </div>
+    <div class="hdr-cat" id="hCat"></div>
+  </div>
+  <div class="srch">
+    <span class="srch-ico">🔍</span>
+    <input type="text" id="srchInput" placeholder="Rechercher une phrase…" oninput="onSearch(this.value)">
+    <button class="srch-x" id="srchX" onclick="clearSearch()">✕</button>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab on" id="tab-ac" onclick="goTab('ac')">🛎️ Accueil</button>
+  <button class="tab" id="tab-ph" onclick="goTab('ph')">💬 Phrases</button>
+  <button class="tab" id="tab-qz" onclick="goTab('qz')">🎧 Quiz</button>
+  <button class="tab" id="tab-fv" onclick="goTab('fv')">⭐ Favoris</button>
+</div>
+<div class="stats">
+  <div class="stat">⭐ <b id="stFav">0</b> favoris</div>
+  <div class="stat">🎯 Record : <b id="stScore">—</b></div>
+  <button class="audio-test" onclick="audioTest()">🔊 Tester l'audio</button>
+</div>
+
+<!-- VIEW ACCUEIL (parcours dialogue) -->
+<div class="view on" id="view-ac">
+  <div class="main" id="scrFlows"><div id="flowGrid"></div></div>
+  <div class="main" id="scrSteps" style="display:none"><div id="stepWrap"></div></div>
+</div>
+
+<!-- VIEW PHRASEBOOK -->
+<div class="view" id="view-ph">
+  <div class="main" id="scrCats"><div class="cat-grid" id="catGrid"></div></div>
+  <div class="main" id="scrPh" style="display:none"><div id="phList"></div></div>
+  <div class="main" id="scrSrch" style="display:none">
+    <div class="sr-info" id="srInfo"></div>
+    <div id="srList"></div>
+  </div>
+</div>
+
+<!-- VIEW QUIZ -->
+<div class="view" id="view-qz">
+  <div class="qz-inner" id="qzWrap"></div>
+</div>
+
+<!-- VIEW FAVORIS -->
+<div class="view" id="view-fv">
+  <div class="main" id="fvContent"></div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bnav">
+  <button class="bnav-btn on" id="nav-ac" onclick="goTab('ac')"><span class="ni">🛎️</span>Accueil</button>
+  <button class="bnav-btn" id="nav-ph" onclick="goTab('ph')"><span class="ni">💬</span>Phrases</button>
+  <button class="bnav-btn" id="nav-qz" onclick="goTab('qz')"><span class="ni">🎧</span>Quiz</button>
+  <button class="bnav-btn" id="nav-fv" onclick="goTab('fv')"><span class="ni">⭐</span>Favoris</button>
+</div>
+
+<!-- Voix allemandes pré-enregistrées (généré par generate_audio.ps1) -->
+<script src="audio_map.js" charset="utf-8"></script>
+<script>
+/* ══════════════════════════════════════
+   DONNÉES
+   de = texte allemand complet pour TTS
+   ph = phonétique française (héros visuel)
+══════════════════════════════════════ */
+const P = [
+  // ── Accueil & Arrivée
+  {c:0,e:"👋",fr:"Bonjour, bienvenue au camping Beach Garden !",de:"Guten Tag, herzlich willkommen im Camping Beach Garden!",ph:"Gouten-tag, hèrtslish vil-komène im Kamping Bitch-Gardène!"},
+  {c:0,e:"📋",fr:"Votre nom, s'il vous plaît ?",de:"Ihren Namen, bitte?",ph:"Irène Namène, biteu?"},
+  {c:0,e:"📅",fr:"Quelle est votre date d'arrivée ?",de:"Was ist Ihr Ankunftsdatum?",ph:"Vass ist ir Ankounfts-datom?"},
+  {c:0,e:"🗓️",fr:"Combien de nuits restez-vous ?",de:"Wie viele Nächte bleiben Sie bei uns?",ph:"Vi fileu Nèkteu blaïbène zi baï ounss?"},
+  {c:0,e:"🔑",fr:"Voici votre bracelet d'accès.",de:"Hier ist Ihr Zugangsarmband.",ph:"Hir ist ir Tsougangs-arm-band."},
+  {c:0,e:"🗺️",fr:"Voici le plan du camping.",de:"Hier ist der Campingplan.",ph:"Hir ist dèr Kamping-plan."},
+  {c:0,e:"📍",fr:"Votre emplacement est le numéro…",de:"Ihr Stellplatz hat die Nummer…",ph:"Ir Chtel-platss hat di Noumèr…"},
+  {c:0,e:"⏰",fr:"Vous pouvez stationner votre véhicule à partir de 12h. L'emplacement est garanti à 14h, et le mobil-home à 17h.",de:"Sie können Ihr Fahrzeug ab zwölf Uhr abstellen. Der Stellplatz ist ab vierzehn Uhr garantiert, und das Mobilheim ab siebzehn Uhr.",ph:"Zi keunen ir Far-tsoïg ap tsvelf Ouir ap-chtèlène. Dèr Chtel-platss ist ap fir-tsèn Ouir garan-tirt, ount dass Mobil-haïm ap zibttsèn Ouir."},
+  {c:0,e:"🚪",fr:"Le départ se fait avant 11h en emplacement, et avant 10h en mobil-home.",de:"Die Abreise ist vor elf Uhr auf dem Stellplatz, und vor zehn Uhr im Mobilheim.",ph:"Di Ap-raïzeu ist for èlf Ouir aouf dème Chtel-platss, ount for tsèn Ouir im Mobil-haïm."},
+  {c:0,e:"😊",fr:"Bon séjour parmi nous !",de:"Wir wünschen Ihnen einen schönen Aufenthalt!",ph:"Vir vuunchène irène aïnène cheunène Aoufèn-talt!"},
+  {c:0,e:"🚗",fr:"Avez-vous une voiture ?",de:"Haben Sie ein Auto dabei?",ph:"Habène zi aïn Aouto dabaï?"},
+  {c:0,e:"📧",fr:"Votre email de confirmation ?",de:"Wie lautet Ihre Bestätigungs-E-Mail-Adresse?",ph:"Vi laoutèt irreu Beu-chtètigungs-é-Mèïl-adrèsseu?"},
+
+  // ── Hébergements
+  {c:1,e:"🏠",fr:"Votre mobil-home a une terrasse.",de:"Ihr Mobilheim hat eine Terrasse.",ph:"Ir Mobil-haïm hat aïneu Tèrasse."},
+  {c:1,e:"❄️",fr:"Le mobil-home est climatisé.",de:"Das Mobilheim hat eine Klimaanlage.",ph:"Dass Mobil-haïm hat aïneu Klima-anlageu."},
+  {c:1,e:"🍳",fr:"La cuisine est entièrement équipée.",de:"Die Küche ist vollständig ausgestattet.",ph:"Di Kuicheu ist fol-chtèndig aous-guéchtatèt."},
+  {c:1,e:"⛺",fr:"Votre emplacement tente ou camping-car.",de:"Ihr Zelt- oder Wohnmobil-Stellplatz.",ph:"Ir Tsèlt- ödèr Von-mobil-Chtelplatss."},
+  {c:1,e:"🔌",fr:"La borne électrique est incluse.",de:"Der Stromanschluss ist inklusive.",ph:"Dèr Chtrom-an-chloss ist inklouziveu."},
+  {c:1,e:"👨‍👩‍👧",fr:"Ce mobil-home est pour quatre personnes.",de:"Dieses Mobilheim ist für vier Personen.",ph:"Dizèss Mobil-haïm ist fuir fir Pèrzonène."},
+  {c:1,e:"🏖️",fr:"La Maison des Sables est face à la mer.",de:"Das Maison des Sables liegt direkt am Meer.",ph:"Dass Mèzon-dé-Sableu light dirèkt am Mèr."},
+  {c:1,e:"🛏️",fr:"Les draps et serviettes sont inclus.",de:"Bettwäsche und Handtücher sind inklusive.",ph:"Bèt-vècheu ount Hant-tuichèr zint inklouziveu."},
+  {c:1,e:"🐕",fr:"Les chiens sont acceptés : 7 € par jour sur emplacement, 9 € en location.",de:"Hunde sind erlaubt: sieben Euro pro Tag auf dem Stellplatz, neun Euro in der Mietunterkunft.",ph:"Houndeu zint èr-laoubt: zibène Oy-ro pro Tag aouf dème Chtel-platss, noïn Oy-ro in dèr Mit-ountèr-kounft."},
+  {c:1,e:"📺",fr:"Le mobil-home a une télévision.",de:"Das Mobilheim hat einen Fernseher.",ph:"Dass Mobil-haïm hat aïnène Fèrn-zèuèr."},
+
+  // ── Réservation
+  {c:2,e:"📞",fr:"Avez-vous une réservation ?",de:"Haben Sie eine Reservierung?",ph:"Habène zi aïneu Rézèrvirong?"},
+  {c:2,e:"✅",fr:"Votre réservation est confirmée.",de:"Ihre Reservierung ist bestätigt.",ph:"Irreu Rézèrvirong ist beu-chtètigt."},
+  {c:2,e:"💶",fr:"Le tarif est de … euros par nuit.",de:"Der Preis beträgt … Euro pro Nacht.",ph:"Dèr Praïss beu-trègt … Oy-ro pro Nakht."},
+  {c:2,e:"💳",fr:"Acceptez-vous la carte bancaire ?",de:"Akzeptieren Sie Kreditkarte?",ph:"Ak-tsèp-tirène zi Krèdit-karteu?"},
+  {c:2,e:"❌",fr:"Annulation gratuite jusqu'à sept jours avant.",de:"Kostenlose Stornierung bis sieben Tage vor der Anreise.",ph:"Kostèn-lozeu Chtornirong biss zibène Tageu for dèr An-raïzeu."},
+  {c:2,e:"⬇️",fr:"Un acompte de trente pourcent est demandé.",de:"Eine Anzahlung von dreißig Prozent ist erforderlich.",ph:"Aïneu An-tsaloungt fon draïssig Protsènt ist ère-fordèrlikh."},
+  {c:2,e:"📅",fr:"Quelle est votre date de départ ?",de:"Wann reisen Sie ab?",ph:"Vann raïzène zi ap?"},
+  {c:2,e:"🔄",fr:"Souhaitez-vous prolonger votre séjour ?",de:"Möchten Sie Ihren Aufenthalt verlängern?",ph:"Meukhtène zi irène Aoufèn-talt fèr-lèngèrn?"},
+
+  // ── Piscines & Aquatique
+  {c:3,e:"🏊",fr:"La piscine est ouverte de neuf heures à dix-neuf heures.",de:"Das Schwimmbad ist von neun bis neunzehn Uhr geöffnet.",ph:"Dass Chvim-bad ist fon noïn biss noïntsèn Ouir guéeufnèt."},
+  {c:3,e:"🌊",fr:"Le parc aquatique est gratuit.",de:"Der Wasserpark ist kostenlos.",ph:"Dèr Vassèr-park ist kostèn-loss."},
+  {c:3,e:"🎢",fr:"Les toboggans sont ouverts l'après-midi.",de:"Die Rutschen sind nachmittags geöffnet.",ph:"Di Routchène zint nakh-mitagss guéeufnèt."},
+  {c:3,e:"🩱",fr:"Le slip de bain est obligatoire, pas de short.",de:"Badehosen sind Pflicht. Badeshorts sind nicht erlaubt.",ph:"Badeu-hozène zint Pflicht. Badeu-chortss zint nichtt ère-laoubt."},
+  {c:3,e:"🏊‍♂️",fr:"La piscine couverte est chauffée.",de:"Das Hallenbad ist beheizt.",ph:"Dass Halène-bad ist beu-haïtst."},
+  {c:3,e:"👶",fr:"La pataugeoire est réservée aux petits.",de:"Das Planschbecken ist für Kleinkinder.",ph:"Dass Planch-bèkène ist fuir Klaïn-kindèr."},
+  {c:3,e:"🛁",fr:"Le spa et jacuzzi sont au Bulle des Sables.",de:"Der Spa und der Whirlpool befinden sich im Bulle des Sables.",ph:"Dèr Chpa ount dèr Vouirl-poul beu-findène zikh im Bul-dé-Sableu."},
+  {c:3,e:"🚿",fr:"Les douches sont à côté de la piscine.",de:"Die Duschen befinden sich neben dem Schwimmbad.",ph:"Di Douchène beu-findène zikh nèbène dème Chvim-bad."},
+
+  // ── Plage & Mer
+  {c:4,e:"🏖️",fr:"L'accès à la plage est direct depuis le camping.",de:"Der Strandzugang ist direkt vom Campinggelände aus.",ph:"Dèr Chtrant-tsougang ist dirèkt fom Kamping-guélèndeu aous."},
+  {c:4,e:"👮",fr:"La plage est surveillée de dix heures à dix-huit heures.",de:"Der Strand wird von zehn bis achtzehn Uhr bewacht.",ph:"Dèr Chtrant virt fon tsèn biss akhttsèn Ouir beu-vakht."},
+  {c:4,e:"🪑",fr:"Les transats sont disponibles en location.",de:"Liegestühle können gegen eine Gebühr gemietet werden.",ph:"Ligeu-chtuïleu keunen guéguène aïneu Guébüir guémitèt vèrdène."},
+  {c:4,e:"⚠️",fr:"Attention, il y a des méduses aujourd'hui.",de:"Vorsicht, heute gibt es Quallen im Meer.",ph:"For-zikht, hoïteu guibt èss Kval-ène im Mèr."},
+  {c:4,e:"🚩",fr:"Drapeau rouge : baignade interdite.",de:"Rote Fahne bedeutet, Schwimmen ist verboten.",ph:"Roteu Faneu beu-doïtèt, Chvimène ist fèr-botène."},
+  {c:4,e:"🌊",fr:"La mer Méditerranée est magnifique !",de:"Das Mittelmeer ist wunderschön!",ph:"Dass Mitèl-mèr ist voundèr-cheun!"},
+  {c:4,e:"🚲",fr:"Une piste cyclable longe le bord de mer.",de:"Ein Radweg verläuft entlang der Küste.",ph:"Aïn Rad-vèk fèr-leuft ènt-lang dèr Kuusteu."},
+  {c:4,e:"⛅",fr:"Le sable est fin et chaud.",de:"Der Sand ist fein und warm.",ph:"Dèr Zant ist faïn ount varm."},
+
+  // ── Services & Équipements
+  {c:5,e:"📶",fr:"Le Wi-Fi est disponible partout.",de:"Das WLAN ist überall auf dem Campinggelände verfügbar.",ph:"Dass Vé-lan ist ubèr-al aouf dème Kamping-guélèndeu fèr-fuig-bar."},
+  {c:5,e:"💸",fr:"Le Wi-Fi est payant. Demandez le code à la réception.",de:"Das WLAN ist kostenpflichtig. Fragen Sie an der Rezeption nach dem Code.",ph:"Dass Vé-lan ist kostène-pflikhtig. Fragène zi an dèr Rètsèptsion nakh dème Kode."},
+  {c:5,e:"🍽️",fr:"Le restaurant est ouvert le soir à partir de dix-neuf heures.",de:"Das Restaurant ist abends ab neunzehn Uhr geöffnet.",ph:"Dass Rèstoran ist abèntss ap noïntsèn Ouir guéeufnèt."},
+  {c:5,e:"🥐",fr:"La boulangerie ouvre à huit heures.",de:"Die Bäckerei öffnet um acht Uhr.",ph:"Di Bèkèraï eufnèt oom akht Ouir."},
+  {c:5,e:"🛒",fr:"L'épicerie est ouverte de huit heures à vingt heures.",de:"Der Campingmarkt ist von acht bis zwanzig Uhr geöffnet.",ph:"Dèr Kamping-markt ist fon akht biss tsvantzig Ouir guéeufnèt."},
+  {c:5,e:"🚿",fr:"Les sanitaires sont sur votre droite.",de:"Die Sanitäranlagen befinden sich auf Ihrer rechten Seite.",ph:"Di Zanité-r-anlagène beu-findène zikh aouf irèr rèkhtène Zaïteu."},
+  {c:5,e:"🧺",fr:"La laverie est dans le bloc central.",de:"Die Waschküche befindet sich im Zentralgebäude.",ph:"Di Vach-kuicheu beu-findèt zikh im Tsèntral-guéboudeu."},
+  {c:5,e:"🚴",fr:"Vous pouvez louer des vélos ici.",de:"Sie können hier Fahrräder ausleihen.",ph:"Zi keunen hir Far-rèdèr aous-laïuène."},
+  {c:5,e:"🎭",fr:"Il y a des animations tous les soirs en saison.",de:"In der Saison gibt es jeden Abend Unterhaltungsprogramm.",ph:"In dèr Zaïzon guibt èss yèdène Abènt Ountèr-haltoungss-programm."},
+  {c:5,e:"👦",fr:"Le club enfants accueille les cinq à douze ans.",de:"Der Kinderclub nimmt Kinder von fünf bis zwölf Jahren auf.",ph:"Dèr Kindèr-kloub nimt Kindèr fon fuunf biss tsvelf Yarène aouf."},
+  {c:5,e:"🧖",fr:"Le spa propose des massages et un hammam.",de:"Der Spa bietet Massagen und ein Hammam an.",ph:"Dèr Chpa bitèt Massagène ount aïn Hamam an."},
+  {c:5,e:"🎾",fr:"Vous avez accès aux trois campings.",de:"Sie haben Zugang zu allen drei Campings.",ph:"Zi habène Tsougang tsou alène draï Kampingss."},
+  {c:5,e:"🅿️",fr:"Le parking se trouve à l'entrée.",de:"Der Parkplatz befindet sich am Eingang des Campings.",ph:"Dèr Park-platss beu-findèt zikh am Aïn-gang dèss Kampingss."},
+
+  // ── Règles & Sécurité
+  {c:6,e:"🌙",fr:"Le silence est obligatoire après vingt-deux heures.",de:"Ab zweiundzwanzig Uhr gilt Nachtruhe auf dem Camping.",ph:"Ap tsvèï-ount-tsvantzig Ouir guilt Nakht-rou aouf dème Kamping."},
+  {c:6,e:"🚗",fr:"La vitesse est limitée à dix kilomètres par heure.",de:"Die Höchstgeschwindigkeit beträgt zehn Kilometer pro Stunde.",ph:"Di Heukst-guéchvindighkaït beu-trègt tsèn Kilomètèr pro Chtounde."},
+  {c:6,e:"🚫",fr:"Le bracelet doit être porté en permanence.",de:"Das Armband muss jederzeit getragen werden.",ph:"Dass Arm-band mouss yèdèr-tsaït guétragène vèrdène."},
+  {c:6,e:"🗑️",fr:"Les poubelles se trouvent à l'entrée.",de:"Die Mülleimer befinden sich am Eingang des Campings.",ph:"Di Muul-aïmèr beu-findène zikh am Aïn-gang dèss Kampingss."},
+  {c:6,e:"♻️",fr:"Merci de trier vos déchets.",de:"Bitte trennen Sie Ihren Abfall.",ph:"Biteu trènène zi irène Apfal."},
+  {c:6,e:"🔥",fr:"Seuls les barbecues électriques sont autorisés.",de:"Nur Elektrogrills sind erlaubt.",ph:"Nour Élèktro-grilss zint èr-laoubt."},
+  {c:6,e:"🏃",fr:"Les enfants doivent être accompagnés la nuit.",de:"Kinder müssen nachts von Erwachsenen begleitet werden.",ph:"Kindèr muissène nakhts fon Èr-vakhzènène beu-glaïtèt vèrdène."},
+
+  // ── Urgences & Problèmes
+  {c:7,e:"🆘",fr:"En cas d'urgence, appelez le quinze ou le dix-huit.",de:"Im Notfall rufen Sie bitte fünfzehn oder achtzehn an.",ph:"Im Not-fal roufène zi biteu fuunftsèn ödèr akhttsèn an."},
+  {c:7,e:"🏥",fr:"Je vais appeler les secours immédiatement.",de:"Ich rufe sofort den Notdienst an.",ph:"Ikh roufeu zofort dène Not-dinst an."},
+  {c:7,e:"💊",fr:"La pharmacie la plus proche est à cinq cents mètres.",de:"Die nächste Apotheke ist fünfhundert Meter entfernt.",ph:"Di nèkhsteu Apoté-keu ist fuunfhoundèrt Mètèr ènt-fèrnt."},
+  {c:7,e:"🔧",fr:"Je vais envoyer quelqu'un pour réparer.",de:"Ich schicke jemanden vorbei, um das zu reparieren.",ph:"Ikh chikeu yèmandène forbèï, oom dass tsou rèparitène."},
+  {c:7,e:"🔇",fr:"Veuillez baisser le volume, s'il vous plaît.",de:"Bitte drehen Sie die Musik leiser.",ph:"Biteu drèuène zi di Mouzik laïzèr."},
+  {c:7,e:"🚔",fr:"Pour un vol, appelez le dix-sept.",de:"Bei einem Diebstahl rufen Sie bitte die siebzehn an.",ph:"Baï aïnème Dip-chtal roufène zi biteu di zibttsèn an."},
+  {c:7,e:"🔐",fr:"J'ai perdu mon bracelet.",de:"Ich habe mein Armband verloren.",ph:"Ikh habeu maïn Arm-band fèr-lorène."},
+  {c:7,e:"🚿",fr:"Il n'y a pas d'eau chaude dans le mobil-home.",de:"Im Mobilheim gibt es kein warmes Wasser.",ph:"Im Mobil-haïm guibt èss kaïn warmèss Vassèr."},
+
+  // ── Région & Sorties
+  {c:8,e:"🏘️",fr:"Le village de Marseillan est à sept kilomètres.",de:"Das Dorf Marseillan liegt sieben Kilometer entfernt.",ph:"Dass Dorf Marsèyan light zibène Kilomètèr ènt-fèrnt."},
+  {c:8,e:"⛵",fr:"Sète et son canal sont très pittoresques.",de:"Sète und sein Kanal sind sehr malerisch.",ph:"Sèt ount zaïn Kanal zint zèr malèrish."},
+  {c:8,e:"🚴",fr:"Une piste cyclable mène jusqu'à Marseillan.",de:"Ein Radweg führt bis nach Marseillan.",ph:"Aïn Rad-vèk fuirt biss nakh Marsèyan."},
+  {c:8,e:"🍷",fr:"Le Noilly Prat se déguste au port de Marseillan.",de:"Den Noilly Prat kann man im Hafen von Marseillan probieren.",ph:"Dène Noyay-Prat kan man im Hafène fon Marsèyan probièrène."},
+  {c:8,e:"🎡",fr:"Cap d'Agde est à dix minutes en voiture.",de:"Cap d'Agde ist zehn Minuten mit dem Auto entfernt.",ph:"Kap-d'Agdeu ist tsèn Minutène mit dème Aouto ènt-fèrnt."},
+  {c:8,e:"🌊",fr:"L'étang de Thau est à quelques minutes.",de:"Der Thau-See ist nur wenige Minuten entfernt.",ph:"Dèr To-Zé ist nour vènigeu Minutène ènt-fèrnt."},
+  {c:8,e:"🐚",fr:"Les huîtres de Thau sont délicieuses.",de:"Die Austern aus dem Thau-See sind köstlich.",ph:"Di Aoustèrne aous dème To-Zé zint keustlikh."},
+  {c:8,e:"🎪",fr:"Le marché de Marseillan a lieu le mardi matin.",de:"Der Markt von Marseillan findet dienstags morgens statt.",ph:"Dèr Markt fon Marsèyan findèt dinstaags morgèns chtat."},
+
+  // ── Politesse & Quotidien
+  {c:9,e:"🌞",fr:"Bonjour !",de:"Guten Morgen! Guten Tag!",ph:"Gouten-Morgène! Gouten-Tag!"},
+  {c:9,e:"🌙",fr:"Bonne nuit !",de:"Gute Nacht!",ph:"Gouteu-Nakht!"},
+  {c:9,e:"👋",fr:"Au revoir et bonne route !",de:"Auf Wiedersehen und gute Weiterreise!",ph:"Aouf-Vidèr-zèène ount gouteu Vaïtèr-raïzeu!"},
+  {c:9,e:"🙏",fr:"Merci beaucoup !",de:"Vielen Dank!",ph:"Filène-Dank!"},
+  {c:9,e:"😅",fr:"Je ne comprends pas l'allemand.",de:"Ich verstehe leider kein Deutsch.",ph:"Ikh fèr-chtèeu laïdèr kaïn Doïtch."},
+  {c:9,e:"🇫🇷",fr:"Parlez-vous français ?",de:"Sprechen Sie Französisch?",ph:"Chprèkhène zi Frant-seuzich?"},
+  {c:9,e:"🇬🇧",fr:"Parlez-vous anglais ?",de:"Sprechen Sie Englisch?",ph:"Chprèkhène zi Engliç?"},
+  {c:9,e:"✋",fr:"Un moment, s'il vous plaît.",de:"Einen Moment bitte.",ph:"Aïnène Momènt biteu."},
+  {c:9,e:"📍",fr:"Suivez-moi, je vous montre.",de:"Folgen Sie mir, ich zeige es Ihnen.",ph:"Folgène zi mir, ikh tsaïgueu èss irène."},
+  {c:9,e:"😊",fr:"Avez-vous d'autres questions ?",de:"Haben Sie noch weitere Fragen?",ph:"Habène zi nokh vaïtèrreu Fragène?"},
+  {c:9,e:"🎉",fr:"Passez d'excellentes vacances !",de:"Ich wünsche Ihnen einen schönen Urlaub!",ph:"Ikh vuuncheu irène aïnène cheunène Ourlaoup!"},
+  {c:9,e:"🔁",fr:"Pouvez-vous répéter, s'il vous plaît ?",de:"Könnten Sie das bitte wiederholen?",ph:"Keuntène zi dass biteu vidèr-holène?"},
+
+  // ── Ajouts basés sur le site officiel lesmediterranees.com
+  {c:0,e:"📆",fr:"Le camping est ouvert d'avril à octobre.",de:"Der Campingplatz ist von April bis Oktober geöffnet.",ph:"Dèr Kamping-platss ist fon April biss Oktobèr guéeufnèt."},
+  {c:1,e:"🛖",fr:"La Cabane Réserve accueille quatre à six personnes.",de:"Die Cabane Réserve bietet Platz für vier bis sechs Personen.",ph:"Di Kabane Rézèrve bitèt Platss fuir fir biss zèkss Pèrzonène."},
+  {c:1,e:"🏡",fr:"Le Garden Family est prévu pour six à huit personnes.",de:"Das Garden Family ist für sechs bis acht Personen.",ph:"Dass Gardène Fémili ist fuir zèkss biss akht Pèrzonène."},
+  {c:1,e:"🏊",fr:"La Villa La Coquille a sa propre piscine privée.",de:"Die Villa La Coquille hat ihren eigenen privaten Pool.",ph:"Di Villa La Kokiyeu hat irène aïguènène privatène Poul."},
+  {c:1,e:"🛏️",fr:"Draps et serviettes sont inclus, sauf en gamme Cosy.",de:"Bettwäsche und Handtücher sind inklusive, außer in der Cosy-Kategorie.",ph:"Bèt-vècheu ount Hant-tuichèr zint inklouziveu, aoussèr in dèr Kozi-katégori."},
+  {c:2,e:"🏷️",fr:"En réservant tôt, vous bénéficiez de moins dix pour cent.",de:"Bei früher Buchung erhalten Sie zehn Prozent Rabatt.",ph:"Baï fruïèr Boukhoung èr-haltène zi tsèn Protsènt Rabat."},
+  {c:3,e:"📏",fr:"La grande piscine du Beach Garden fait trente-trois mètres de long.",de:"Der große Pool im Beach Garden ist dreiunddreißig Meter lang.",ph:"Dèr greusseu Poul im Bitch-Gardène ist draï-ount-draïssig Mètèr lang."},
+  {c:3,e:"🛁",fr:"L'espace balnéo couvert propose une eau calme ou pétillante.",de:"Der überdachte Wellnessbereich bietet ruhiges oder sprudelndes Wasser.",ph:"Dèr ubèr-dakhteu Vèlnèss-béraïsh bitèt rouiguèss ödèr chproudèlndèss Vassèr."},
+  {c:5,e:"🍽️",fr:"Le restaurant Le Bistro a une vue panoramique sur la mer.",de:"Das Restaurant Le Bistro hat einen Panoramablick auf das Meer.",ph:"Dass Rèstoran Le Bistro hat aïnène Panorama-blik aouf dass Mèr."},
+  {c:5,e:"📶",fr:"Le Wi-Fi est gratuit dans les espaces communs.",de:"In den Gemeinschaftsbereichen ist das WLAN kostenlos.",ph:"In dène Guémaïn-chafts-béraïshène ist dass Vé-lan kostèn-loss."},
+  {c:5,e:"🧖",fr:"Le spa Bulle des Sables propose hammam, sauna, massages et nailbar.",de:"Das Spa Bulle des Sables bietet Hammam, Sauna, Massagen und ein Nagelstudio.",ph:"Dass Chpa Bul-dé-Sableu bitèt Hamam, Zaouna, Massagène ount aïn Naguèl-chtoudio."},
+  {c:5,e:"🏐",fr:"Il y a du beach-volley et de l'aquagym.",de:"Es gibt Beachvolleyball und Aquagym.",ph:"Èss guibt Bitch-volibal ount Akva-guim."},
+  {c:5,e:"🧒",fr:"Il y a un mini-club pour les enfants et un club pour les ados.",de:"Es gibt einen Miniclub für Kinder und einen Club für Jugendliche.",ph:"Èss guibt aïnène Mini-kloub fuir Kindèr ount aïnène Kloub fuir Yougènt-likheu."},
+  {c:6,e:"🚶",fr:"Tout visiteur doit se présenter à la réception ; une redevance s'applique au-delà de deux heures.",de:"Jeder Besucher muss sich an der Rezeption melden; nach zwei Stunden wird eine Gebühr fällig.",ph:"Yédèr Bézoukhèr mouss zikh an dèr Rétsèptsion mèldène; nakh tsvaï Chtoundène virt aïneu Guébüir fèllig."},
+  {c:8,e:"🦪",fr:"On déguste les huîtres de Bouzigues au bord de l'étang de Thau.",de:"In Bouzigues isst man Austern direkt am Thau-See.",ph:"In Bouzig isst man Aoustèrn dirèkt am To-Zé."},
+];
+
+/* Catégories — index numérique, pas de string avec & */
+const CATS = [
+  {id:0, name:"Accueil & Arrivée",    col:"#1a6b8a"},
+  {id:1, name:"Hébergements",         col:"#2d9fc5"},
+  {id:2, name:"Réservation",          col:"#d4a017"},
+  {id:3, name:"Piscines & Aquatique", col:"#00b4c4"},
+  {id:4, name:"Plage & Mer",          col:"#0e8a7a"},
+  {id:5, name:"Services",             col:"#6a5acd"},
+  {id:6, name:"Règles & Sécurité",    col:"#c05050"},
+  {id:7, name:"Urgences",             col:"#e8604a"},
+  {id:8, name:"Région & Sorties",     col:"#3aaa6b"},
+  {id:9, name:"Politesse",            col:"#c07830"},
+];
+
+/* ══════════════════════════════════════
+   PARCOURS DIALOGUE (mode Accueil)
+   Chaque étape a un type :
+   - say   : phrase que TU dis (de + ph + audio)
+   - hear  : ce que le client peut répondre (à comprendre)
+   - memo  : rappel pour toi (action, pas de phrase allemande)
+   Une étape peut combiner plusieurs blocs.
+══════════════════════════════════════ */
+const FLOWS = [
+  {
+    id:"passage",
+    em:"🚐",
+    name:"Client de passage (sans réservation)",
+    desc:"Camping-car / caravane qui arrive sans avoir réservé",
+    intro:"Déroulé complet de l'accueil d'un client en passage, de son arrivée jusqu'à la remise des bracelets.",
+    steps:[
+      {
+        title:"1 · Le client arrive",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Guten Tag, ich hätte gerne einen Stellplatz für ein Wohnmobil.", fr:"Bonjour, je voudrais un emplacement pour un camping-car."},
+            {de:"Haben Sie einen Platz für unseren Wohnwagen?", fr:"Avez-vous une place pour notre caravane ?"},
+          ]},
+          {t:"say", label:"Tu réponds", fr:"Bonjour, très bien ! Est-ce que vous êtes déjà venus chez nous ?", de:"Guten Tag, sehr gut! Waren Sie schon einmal bei uns?", ph:"Gouten-tag, zèr gout! Varène zi chon aïn-mal baï ounss?"},
+          {t:"say", label:"Tu enchaînes", fr:"Avez-vous une carte ACSI, ADAC ou ANWB ?", de:"Haben Sie eine ACSI-, ADAC- oder ANWB-Karte?", ph:"Habène zi aïneu A-Tsé-Èss-I-, A-Dé-A-Tsé- ödèr A-Èn-Vé-Bé-Karteu?"},
+          {t:"memo", label:"💡 Réflexe", html:"S'il est <b>déjà venu</b> → cherche sa fiche client avec son <b>nom de famille</b>."},
+          {t:"say", label:"Pour retrouver la fiche", fr:"Quel est votre nom de famille, s'il vous plaît ?", de:"Wie ist Ihr Nachname, bitte?", ph:"Vi ist ir Nakh-nameu, biteu?"},
+        ]
+      },
+      {
+        title:"2 · Remise du plan",
+        blocks:[
+          {t:"memo", label:"💡 Action", html:"Tu <b>imprimes un plan</b> des disponibilités et tu le donnes au client."},
+          {t:"say", label:"Tu expliques le plan", fr:"Voici le plan des disponibilités. Quand un numéro apparaît, l'emplacement est libre. Sans numéro, il est occupé.", de:"Hier ist der Plan mit den freien Plätzen. Wenn eine Nummer steht, ist der Platz frei. Ohne Nummer ist er belegt.", ph:"Hir ist dèr Plan mit dène fraïène Plètsène. Vèn aïneu Noumèr chtèt, ist dèr Platss fraï. Oneu Noumèr ist èr beu-lègt."},
+          {t:"say", label:"Tu donnes la consigne", fr:"Vous prenez le plan, vous y allez à pied, et vous revenez me voir après en avoir choisi deux.", de:"Nehmen Sie den Plan, gehen Sie zu Fuß hin, und kommen Sie zurück, wenn Sie zwei ausgewählt haben.", ph:"Nèmène zi dène Plan, guéène zi tsou Fouss hin, ount komène zi tsou-ruk, vèn zi tsvaï aous-guévèlt habène."},
+        ]
+      },
+      {
+        title:"3 · Option carte ACSI",
+        blocks:[
+          {t:"memo", label:"💡 Si carte ACSI", html:"Montre la <b>zone délimitée ACSI</b> sur le plan."},
+          {t:"say", label:"Tu montres la zone", fr:"Voici la zone qui délimite les emplacements ACSI.", de:"Hier ist der Bereich für die ACSI-Stellplätze.", ph:"Hir ist dèr Beu-raïsh fuir di A-Tsé-Èss-I-Chtel-plètseu."},
+          {t:"say", label:"Tu gardes la carte", fr:"Je garde votre carte ACSI ou votre carte d'identité, et vous réglez la veille de votre départ. Comme ça vous ne payez que les jours consommés !", de:"Ich behalte Ihre ACSI-Karte oder Ihren Ausweis, und Sie zahlen am Tag vor Ihrer Abreise. So zahlen Sie nur die Tage, die Sie bleiben!", ph:"Ikh beu-halteu ireu A-Tsé-Èss-I-Karteu ödèr irène Aous-vaïss, ount zi tsalène am Tag for irèr Ap-raïzeu. Zo tsalène zi nour di Tageu, di zi blaïbène!"},
+        ]
+      },
+      {
+        title:"4 · Informations client",
+        blocks:[
+          {t:"say", label:"Composition", fr:"Vous êtes combien d'adultes et combien d'enfants ?", de:"Wie viele Erwachsene und wie viele Kinder sind Sie?", ph:"Vi fileu Èr-vakhzèneu ount vi fileu Kindèr zint zi?"},
+          {t:"say", label:"Animal", fr:"Est-ce que vous avez un chien ?", de:"Haben Sie einen Hund dabei?", ph:"Habène zi aïnène Hount dabaï?"},
+          {t:"say", label:"Plaque", fr:"Il me faut votre numéro de plaque d'immatriculation, s'il vous plaît.", de:"Ich brauche bitte Ihr Kennzeichen.", ph:"Ikh braoukheu biteu ir Kèn-tsaïshène."},
+          {t:"say", label:"Téléphone", fr:"Votre numéro de téléphone, s'il vous plaît ?", de:"Ihre Telefonnummer, bitte?", ph:"Ireu Téléfone-noumèr, biteu?"},
+          {t:"say", label:"Email", fr:"Votre adresse email ?", de:"Ihre E-Mail-Adresse?", ph:"Ireu É-Mèïl-adrèsseu?"},
+          {t:"say", label:"Adresse", fr:"Et votre adresse de domicile, s'il vous plaît ?", de:"Und Ihre Wohnadresse, bitte?", ph:"Ount ireu Vone-adrèsseu, biteu?"},
+        ]
+      },
+      {
+        title:"5 · « Comment ça se passe au camping »",
+        blocks:[
+          {t:"say", label:"Les 3 campings", fr:"Nous sommes ici à la réception du Beach Garden. À côté il y a le Nouvelle Floride, et en face le Charlemagne. Avec vos bracelets, vous avez un accès complet aux trois campings !", de:"Wir sind hier an der Rezeption vom Beach Garden. Daneben ist der Nouvelle Floride, und gegenüber der Charlemagne. Mit Ihren Armbändern haben Sie vollen Zugang zu allen drei Campings!", ph:"Vir zint hir an dèr Rétsèptsion fom Bitch-Gardène. Da-nèbène ist dèr Nouvèl-Floride, ount guéguèn-ubèr dèr Charleumagne. Mit irène Arm-bèndèrn habène zi folène Tsougang tsou alène draï Kampingss!"},
+          {t:"say", label:"Code de la plage", fr:"Ici une porte bloque l'accès à la plage. Vous tapez ce code pour la déverrouiller. Elle fonctionne de 7h à 22h.", de:"Hier sperrt eine Tür den Zugang zum Strand. Sie geben diesen Code ein, um sie zu öffnen. Sie funktioniert von sieben bis zweiundzwanzig Uhr.", ph:"Hir chpèrt aïneu Tuir dène Tsougang tsoum Chtrant. Zi guébène dizène Kode aïn, oum zi tsou eufnène. Zi founk-tsionirt fon zibène biss tsvèï-ount-tsvantzig Ouir."},
+          {t:"say", label:"Application Tipiz", fr:"Je vous suggère de télécharger l'application Tipiz. Vous entrez ce mot de passe. Dedans, vous avez le planning des animations, les horaires, les menus, la météo, etc.", de:"Ich empfehle Ihnen, die App Tipiz herunterzuladen. Sie geben dieses Passwort ein. Darin finden Sie das Animationsprogramm, die Öffnungszeiten, die Menüs, das Wetter und mehr.", ph:"Ikh èmp-fèleu irène, di App Tipiz hèr-ountèr-tsou-ladène. Zi guébène dizèss Pass-vort aïn. Da-rin findène zi dass Animatsions-programm, di Eufnoungs-tsaïtène, di Ménuus, dass Vètèr ount mèr."},
+          {t:"say", label:"Bracelets", fr:"Voici vos bracelets : ceux-ci pour les adultes, et ceux-là pour les mineurs.", de:"Hier sind Ihre Armbänder: diese für die Erwachsenen, und diese für die Minderjährigen.", ph:"Hir zint ireu Arm-bèndèr: dizeu fuir di Èr-vakhzènène, ount dizeu fuir di Mindèr-yèrigène."},
+          {t:"say", label:"Vignette", fr:"Et cette vignette est à déposer sur le tableau de bord de votre véhicule.", de:"Und diese Vignette legen Sie bitte auf das Armaturenbrett Ihres Fahrzeugs.", ph:"Ount dizeu Vinyèteu lègène zi biteu aouf dass Armaturène-brèt irèss Far-tsoïgss."},
+        ]
+      },
+      {
+        title:"6 · Questions",
+        blocks:[
+          {t:"say", label:"Tu conclus", fr:"Est-ce que vous avez des questions ?", de:"Haben Sie noch Fragen?", ph:"Habène zi nokh Fragène?"},
+          {t:"say", label:"Pour finir", fr:"Parfait ! Je vous souhaite un excellent séjour parmi nous.", de:"Perfekt! Ich wünsche Ihnen einen schönen Aufenthalt bei uns.", ph:"Pèr-fèkt! Ikh vuuncheu irène aïnène cheunène Aoufèn-talt baï ounss."},
+        ]
+      },
+    ]
+  },
+
+  {
+    id:"depart",
+    em:"🧳",
+    name:"Départ / Check-out",
+    desc:"Le client rend le mobil-home ou quitte l'emplacement",
+    intro:"Comment accompagner un client qui part : état des lieux, restitution des bracelets et de la caution, au revoir.",
+    steps:[
+      {
+        title:"1 · Le client vient pour partir",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Guten Morgen, wir reisen heute ab.", fr:"Bonjour, nous partons aujourd'hui."},
+            {de:"Wir möchten gerne auschecken.", fr:"Nous voudrions faire le check-out."},
+          ]},
+          {t:"say", label:"Tu réponds", fr:"Bonjour ! J'espère que vous avez passé un bon séjour. Avez-vous bien rangé le mobil-home ?", de:"Guten Morgen! Ich hoffe, Sie hatten einen schönen Aufenthalt. Haben Sie das Mobilheim aufgeräumt?", ph:"Gouten-Morgène! Ikh hofeu, zi hatène aïnène cheunène Aoufèn-talt. Habène zi dass Mobil-haïm aouf-guéroïmt?"},
+        ]
+      },
+      {
+        title:"2 · État des lieux & restitution",
+        blocks:[
+          {t:"say", label:"Le ménage", fr:"Avez-vous fait le ménage de fin de séjour, ou souhaitez-vous que nous nous en occupions ?", de:"Haben Sie die Endreinigung gemacht, oder sollen wir das übernehmen?", ph:"Habène zi di Ènt-raïnigoung guémakht, ödèr zolène vir dass ubèr-nèmène?"},
+          {t:"memo", label:"💡 Action", html:"Vérifie l'<b>état du mobil-home</b> (propreté, casse) avant de rendre la caution."},
+          {t:"say", label:"Bracelets & clé", fr:"Pouvez-vous me rendre les bracelets et la clé, s'il vous plaît ?", de:"Können Sie mir bitte die Armbänder und den Schlüssel zurückgeben?", ph:"Keunen zi mir biteu di Arm-bèndèr ount dène Chluussèl tsou-ruk-guébène?"},
+        ]
+      },
+      {
+        title:"3 · Caution & au revoir",
+        blocks:[
+          {t:"say", label:"Tout est en ordre", fr:"Tout est en ordre, je vous rends votre caution.", de:"Alles ist in Ordnung, Sie bekommen Ihre Kaution zurück.", ph:"Aleuss ist in Ordnoung, zi beu-komène ireu Kaou-tsion tsou-ruk."},
+          {t:"hear", label:"Le client peut dire", items:[
+            {de:"Vielen Dank für alles, es war wunderschön!", fr:"Merci pour tout, c'était magnifique !"},
+            {de:"Können wir schon für nächstes Jahr buchen?", fr:"Peut-on déjà réserver pour l'année prochaine ?"},
+          ]},
+          {t:"say", label:"Pour finir", fr:"Merci de votre visite et bonne route ! À l'année prochaine, j'espère.", de:"Vielen Dank für Ihren Besuch und gute Heimreise! Bis nächstes Jahr, hoffentlich.", ph:"Filène-Dank fuir irène Beu-zoukh ount gouteu Haïm-raïzeu! Biss nèkhstèss Yar, hofènt-likh."},
+        ]
+      },
+    ]
+  },
+
+  {
+    id:"bruit",
+    em:"🌙",
+    name:"Réclamation : bruit la nuit",
+    desc:"Un client se plaint du bruit des voisins après 22h",
+    intro:"Gérer une plainte pour tapage : rassurer le client, rappeler la règle aux voisins, faire le suivi.",
+    steps:[
+      {
+        title:"1 · Le client se plaint",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Die Nachbarn sind viel zu laut, wir können nicht schlafen.", fr:"Les voisins font beaucoup trop de bruit, on ne peut pas dormir."},
+            {de:"Können Sie bitte etwas unternehmen?", fr:"Pouvez-vous faire quelque chose, s'il vous plaît ?"},
+          ]},
+          {t:"say", label:"Tu t'excuses", fr:"Je suis vraiment désolé pour le dérangement. Je vais m'en occuper tout de suite.", de:"Es tut mir wirklich leid für die Störung. Ich kümmere mich sofort darum.", ph:"Èss tout mir virk-likh laït fuir di Chteu-roung. Ikh kuumèreu mikh zofort da-roum."},
+        ]
+      },
+      {
+        title:"2 · Tu interviens auprès des voisins",
+        blocks:[
+          {t:"memo", label:"💡 Rappel", html:"Le <b>calme est obligatoire après 22h</b> (Nachtruhe)."},
+          {t:"say", label:"Tu rappelles la règle", fr:"Le calme est obligatoire à partir de 22h. Puis-je vous demander de baisser le bruit ?", de:"Ab zweiundzwanzig Uhr gilt bei uns Nachtruhe. Darf ich Sie bitten, leiser zu sein?", ph:"Ap tsvèï-ount-tsvantzig Ouir guilt baï ounss Nakht-rou. Darf ikh zi bitène, laïzèr tsou zaïn?"},
+        ]
+      },
+      {
+        title:"3 · Tu rassures le client",
+        blocks:[
+          {t:"say", label:"C'est réglé", fr:"C'est réglé, ils vont faire attention. N'hésitez pas à revenir me voir si cela recommence.", de:"Es ist erledigt, sie werden Rücksicht nehmen. Kommen Sie gerne wieder zu mir, falls es noch einmal passiert.", ph:"Èss ist èr-lèdikt, zi vèrdène Ruk-zikht nèmène. Komène zi gèrneu vidèr tsou mir, falss èss nokh aïn-mal pas-sirt."},
+        ]
+      },
+    ]
+  },
+
+  {
+    id:"technique",
+    em:"🔧",
+    name:"Problème technique mobil-home",
+    desc:"Pas d'eau chaude, clim en panne, électricité…",
+    intro:"Prendre en charge une panne dans l'hébergement : identifier, envoyer un technicien, faire le suivi.",
+    steps:[
+      {
+        title:"1 · Le client signale une panne",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Im Mobilheim gibt es kein warmes Wasser.", fr:"Il n'y a pas d'eau chaude dans le mobil-home."},
+            {de:"Die Klimaanlage funktioniert nicht.", fr:"La climatisation ne fonctionne pas."},
+          ]},
+          {t:"say", label:"Tu réponds", fr:"Oh, je suis désolé. Pouvez-vous me donner votre numéro d'emplacement ?", de:"Oh, das tut mir leid. Können Sie mir Ihre Stellplatznummer geben?", ph:"O, dass tout mir laït. Keunen zi mir ireu Chtel-platss-noumèr guébène?"},
+        ]
+      },
+      {
+        title:"2 · Tu organises la réparation",
+        blocks:[
+          {t:"say", label:"Tu envoies un technicien", fr:"J'envoie un technicien dès que possible.", de:"Ich schicke Ihnen so schnell wie möglich einen Techniker vorbei.", ph:"Ikh chikeu irène zo chnèl vi meuglikh aïnène Tèkhnikèr forbaï."},
+          {t:"say", label:"Le délai", fr:"Il passera dans l'heure.", de:"Er kommt innerhalb einer Stunde vorbei.", ph:"Èr komt inèr-halp aïnèr Chtoundeu forbaï."},
+        ]
+      },
+      {
+        title:"3 · Suivi & excuses",
+        blocks:[
+          {t:"say", label:"Tu t'assures", fr:"Est-ce que tout fonctionne à nouveau ?", de:"Funktioniert jetzt wieder alles?", ph:"Founk-tsionirt yètst vidèr aleuss?"},
+          {t:"say", label:"Tu t'excuses", fr:"Veuillez nous excuser pour la gêne occasionnée.", de:"Entschuldigen Sie bitte die Unannehmlichkeiten.", ph:"Ènt-chouldigène zi biteu di Oun-an-nèm-likh-kaïtène."},
+        ]
+      },
+    ]
+  },
+
+  {
+    id:"reservation-tel",
+    em:"📞",
+    name:"Réservation par téléphone",
+    desc:"Un client appelle pour réserver un séjour",
+    intro:"Prendre une réservation au téléphone : dates, nombre de personnes, tarif, acompte et confirmation par email.",
+    steps:[
+      {
+        title:"1 · Tu décroches",
+        blocks:[
+          {t:"say", label:"Tu décroches", fr:"Camping Beach Garden, bonjour ! Que puis-je faire pour vous ?", de:"Camping Beach Garden, guten Tag! Was kann ich für Sie tun?", ph:"Kamping Bitch-Gardène, gouten-tag! Vass kan ikh fuir zi toun?"},
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Ich möchte einen Stellplatz reservieren.", fr:"Je voudrais réserver un emplacement."},
+            {de:"Haben Sie im August noch etwas frei?", fr:"Avez-vous encore de la disponibilité en août ?"},
+          ]},
+        ]
+      },
+      {
+        title:"2 · Tu demandes les détails",
+        blocks:[
+          {t:"say", label:"Les dates", fr:"Pour quelles dates souhaitez-vous réserver ?", de:"Für welche Daten möchten Sie reservieren?", ph:"Fuir vèlcheu Datène meukhtène zi rézèrvirène?"},
+          {t:"say", label:"Les personnes", fr:"Vous êtes combien de personnes ?", de:"Wie viele Personen sind Sie?", ph:"Vi fileu Pèrzonène zint zi?"},
+          {t:"say", label:"Type d'hébergement", fr:"Préférez-vous un emplacement ou un mobil-home ?", de:"Möchten Sie lieber einen Stellplatz oder ein Mobilheim?", ph:"Meukhtène zi libèr aïnène Chtel-platss ödèr aïn Mobil-haïm?"},
+        ]
+      },
+      {
+        title:"3 · Tu confirmes",
+        blocks:[
+          {t:"say", label:"Tarif & acompte", fr:"Le tarif est de … euros par nuit. Nous demandons un acompte de trente pourcent.", de:"Der Preis beträgt … Euro pro Nacht. Wir benötigen eine Anzahlung von dreißig Prozent.", ph:"Dèr Praïss beu-trègt … Oy-ro pro Nakht. Vir beu-neutigène aïneu An-tsaloung fon draïssig Protsènt."},
+          {t:"say", label:"Confirmation email", fr:"Je vous envoie la confirmation par email. Quelle est votre adresse email ?", de:"Ich sende Ihnen die Bestätigung per E-Mail. Wie lautet Ihre E-Mail-Adresse?", ph:"Ikh zèndeu irène di Beu-chtètigoung pèr É-Mèïl. Vi laoutèt ireu É-Mèïl-adrèsseu?"},
+          {t:"say", label:"Pour finir", fr:"Merci de votre appel et à bientôt au Beach Garden !", de:"Vielen Dank für Ihren Anruf und bis bald im Beach Garden!", ph:"Filène-Dank fuir irène An-rouf ount biss balt im Bitch-Gardène!"},
+        ]
+      },
+    ]
+  },
+];
+
+/* ══ STATE ══ */
+let favs = new Set();
+try{ favs = new Set(JSON.parse(localStorage.getItem('bg_favs')||'[]')); }catch(e){ favs = new Set(); }
+function saveFavs(){ try{ localStorage.setItem('bg_favs', JSON.stringify([...favs])); }catch(e){} }
+let curTab = 'ac';
+let curCat = null;   // index numérique ou null
+let curFlow = null;  // id de parcours ou null
+let curStep = 0;
+let qList=[], qIdx=0, qScore=0, qDone=false;
+let curQOpts=[];
+let curBtn=null;   // bouton audio en cours (unifié)
+
+/* ══ AUDIO (ultra-robuste, multi-plateforme) ══ */
+let deVoice=null;
+let voicesReady=false;
+let audioUnlocked=false;
+
+function loadVoices(){
+  if(!window.speechSynthesis) return;
+  const voices=window.speechSynthesis.getVoices();
+  if(voices.length>0) voicesReady=true;
+  // Priorité : de-DE exact, puis n'importe quel allemand, sinon null (le navigateur prendra sa voix par défaut pour lang=de-DE)
+  deVoice = voices.find(v=>v.lang==='de-DE')
+         || voices.find(v=>v.lang && v.lang.toLowerCase().replace('_','-').startsWith('de'))
+         || null;
+}
+if(window.speechSynthesis){
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+  // Certains navigateurs ont besoin d'un coup de pouce
+  setTimeout(loadVoices, 300);
+  setTimeout(loadVoices, 1000);
+}
+
+/* Débloque l'audio iOS/Safari : une utterance vide au 1er tap utilisateur */
+function unlockAudio(){
+  if(audioUnlocked || !window.speechSynthesis) return;
+  try{
+    const silent=new SpeechSynthesisUtterance('');
+    silent.volume=0;
+    window.speechSynthesis.speak(silent);
+    audioUnlocked=true;
+  }catch(e){}
+}
+
+/* État de lecture (MP3 ou synthèse) */
+let curAudio=null;            // élément <audio> en cours
+let curBtnIdle='🔊 Écouter';  // libellé à restaurer sur le bouton courant
+
+function stopPlayback(){
+  if(curAudio){ try{ curAudio.pause(); }catch(e){} curAudio=null; }
+  if(window.speechSynthesis){ try{ window.speechSynthesis.cancel(); }catch(e){} }
+  if(curBtn){ curBtn.classList.remove('playing'); curBtn.innerHTML=curBtnIdle; curBtn=null; }
+}
+
+/* Fonction audio unique pour TOUTE l'app
+   → essaie d'abord le MP3 pré-généré (vrai allemand), sinon repli synthèse vocale */
+function speakDE(de, btn, labelIdle='🔊 Écouter', labelDone='🔊 Écouter', rate=0.85){
+  // Reclic sur le même bouton → stop
+  if(curBtn===btn){ stopPlayback(); return; }
+  stopPlayback();
+
+  btn.classList.add('playing'); btn.innerHTML='⏹ Stop';
+  curBtn=btn; curBtnIdle=labelIdle;
+
+  const src = (window.AUDIO && window.AUDIO[de]) ? window.AUDIO[de] : null;
+  if(src){
+    const a=new Audio(src);
+    a.playbackRate = (rate<0.7) ? 0.6 : 1.0;   // « lent » = ralenti, pitch préservé
+    try{ a.preservesPitch=true; a.mozPreservesPitch=true; a.webkitPreservesPitch=true; }catch(e){}
+    curAudio=a;
+    a.onended =()=>{ if(curBtn===btn){ btn.classList.remove('playing'); btn.innerHTML=labelDone; curBtn=null; } if(curAudio===a)curAudio=null; };
+    a.onerror =()=>{ if(curAudio===a)curAudio=null; ttsSpeak(de,btn,labelIdle,labelDone,rate); };
+    a.play().catch(()=>{ if(curAudio===a)curAudio=null; ttsSpeak(de,btn,labelIdle,labelDone,rate); });
+    return;
+  }
+  // Pas de MP3 pour cette phrase → repli synthèse vocale du navigateur
+  ttsSpeak(de,btn,labelIdle,labelDone,rate);
+}
+
+/* Repli : synthèse vocale du navigateur (seulement si le MP3 manque) */
+function ttsSpeak(de, btn, labelIdle, labelDone, rate){
+  if(!window.speechSynthesis){
+    if(curBtn===btn){ btn.classList.remove('playing'); btn.innerHTML=labelIdle; curBtn=null; }
+    return;
+  }
+  if(!voicesReady) loadVoices();
+  const u=new SpeechSynthesisUtterance(de);
+  u.lang='de-DE'; u.rate=rate; u.pitch=1.0; u.volume=1.0;
+  if(deVoice) u.voice=deVoice;
+  let started=false;
+  u.onstart=()=>{ started=true; };
+  u.onend=()=>{ if(curBtn===btn){ btn.classList.remove('playing'); btn.innerHTML=labelDone; curBtn=null; } };
+  u.onerror=(ev)=>{
+    if(curBtn===btn){ btn.classList.remove('playing'); btn.innerHTML=labelIdle; curBtn=null; }
+    if(ev && (ev.error==='interrupted' || ev.error==='canceled')) return;
+    console.warn('TTS error:', ev && ev.error);
+  };
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+  setTimeout(()=>{ if(!started && curBtn===btn){ try{ window.speechSynthesis.resume(); window.speechSynthesis.speak(u); }catch(e){} } }, 1200);
+}
+
+/* Alias pour le phrasebook / favoris */
+function speak(de, btn){ speakDE(de, btn, '🔊 Écouter', '🔊 Écouter'); }
+function speakSlow(de, btn, idle='🐢 Lent', done='🐢 Lent'){ speakDE(de, btn, idle, done, 0.55); }
+
+/* Résout une phrase à partir d'une clé : "p12" = P[12], "fpassage.2.1" = bloc d'un parcours */
+function phraseByKey(key){
+  if(!key) return null;
+  if(key[0]==='p') return P[+key.slice(1)] || null;
+  if(key[0]==='f'){
+    const m=key.slice(1).split('.');
+    const f=FLOWS.find(x=>x.id===m[0]); if(!f) return null;
+    const st=f.steps[+m[1]]; if(!st) return null;
+    return st.blocks[+m[2]] || null;
+  }
+  return null;
+}
+function speakKey(key, btn){ const p=phraseByKey(key); if(p&&p.de) speak(p.de, btn); }
+function speakSlowKey(key, btn){ const p=phraseByKey(key); if(p&&p.de) speakSlow(p.de, btn); }
+
+/* Test audio + diagnostic (bouton dédié) */
+function audioTest(){
+  const nClips = window.AUDIO ? Object.keys(window.AUDIO).length : 0;
+  const sample = "Guten Tag, herzlich willkommen im Camping Beach Garden!";
+  let msg="🔎 DIAGNOSTIC AUDIO\n\n";
+  if(nClips>0){
+    msg+="✅ Voix allemande pré-enregistrée active.\n";
+    msg+="• Clips audio chargés : "+nClips+"\n";
+    msg+="• L'app lit de vrais fichiers MP3 en allemand — aucun réglage requis sur ton appareil.\n\n";
+    msg+="▶️ Test : tu devrais entendre « Guten Tag… » avec un accent allemand.";
+  } else {
+    const okTTS = !!window.speechSynthesis;
+    msg+="⚠️ Les clips MP3 ne sont pas chargés (audio_map.js absent ou ouverture en local).\n";
+    msg+="• L'app va se rabattre sur la synthèse vocale du navigateur : "+(okTTS?"disponible":"INDISPONIBLE")+".\n";
+    msg+="→ Mets l'app en ligne (le lien GitHub Pages) pour charger les vraies voix.\n\n";
+    msg+="▶️ Test (repli) en cours…";
+  }
+  alert(msg);
+  // Joue l'échantillon via le moteur unifié (MP3 si dispo, sinon synthèse)
+  let dummy=document.getElementById('audioTestDummy');
+  if(!dummy){ dummy=document.createElement('span'); dummy.id='audioTestDummy'; dummy.style.display='none'; document.body.appendChild(dummy); }
+  speakDE(sample, dummy, '🔊', '🔊', 1.0);
+}
+
+/* Débloquer l'audio dès la 1ère interaction (crucial iOS) */
+document.addEventListener('click', unlockAudio, {once:false});
+document.addEventListener('touchstart', unlockAudio, {once:false});
+
+/* ══ FAVORIS ══ */
+function togFav(key){
+  favs.has(key)?favs.delete(key):favs.add(key);
+  saveFavs();
+  document.getElementById('stFav').textContent=favs.size;
+  document.querySelectorAll('[data-fk="'+key+'"]').forEach(b=>{
+    const on=favs.has(key);
+    b.classList.toggle('on',on);
+    b.textContent=on?'⭐ Favori':'☆ Ajouter';
+  });
+  if(curTab==='fv') renderFavs();
+}
+
+/* ══ CARTE PHRASE ══ */
+function card(p,key,q){
+  const f=favs.has(key);
+  const frTxt = q ? p.fr.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<mark>$1</mark>') : p.fr;
+  return `<div class="phrase-card${f?' fav':''}">
+    <div class="card-fr"><span class="ce">${p.e||'🗣️'}</span>${frTxt}</div>
+    <div class="card-ph">${p.ph}</div>
+    <div class="card-btns">
+      <button class="btn-fav${f?' on':''}" data-fk="${key}" onclick="togFav('${key}')">${f?'⭐ Favori':'☆ Ajouter'}</button>
+      <button class="btn-slow" onclick="speakSlowKey('${key}',this)">🐢 Lent</button>
+      <button class="btn-listen" onclick="speakKey('${key}',this)">🔊 Écouter</button>
+    </div>
+  </div>`;
+}
+
+/* ══ GRILLE CATÉGORIES ══ */
+function renderCats(){
+  const counts={};
+  P.forEach(p=>{ counts[p.c]=(counts[p.c]||0)+1; });
+  const firstEmoji={};
+  P.forEach(p=>{ if(!firstEmoji[p.c]) firstEmoji[p.c]=p.e; });
+  document.getElementById('catGrid').innerHTML = CATS.map(cat=>`
+    <div class="cat-card" style="border-bottom-color:${cat.col}" onclick="openCat(${cat.id})">
+      <span class="cc-em">${firstEmoji[cat.id]||'📁'}</span>
+      <div class="cc-nm">${cat.name}</div>
+      <span class="cc-ct">${counts[cat.id]||0} phrases</span>
+    </div>`).join('');
+}
+
+/* ══ OUVRIR CATÉGORIE — index numérique, zéro risque de bug ══ */
+function openCat(id){
+  curCat=id;
+  document.getElementById('scrCats').style.display='none';
+  document.getElementById('scrSrch').style.display='none';
+  document.getElementById('scrPh').style.display='block';
+  const cat=CATS.find(c=>c.id===id);
+  document.getElementById('backBtn').classList.add('on');
+  document.getElementById('hInfo').style.display='none';
+  document.getElementById('logoImg').style.opacity='0';
+  document.getElementById('hCat').textContent=cat?cat.name:'';
+  document.getElementById('hCat').classList.add('on');
+  const items=P.map((p,i)=>({p,i})).filter(({p})=>p.c===id);
+  document.getElementById('phList').innerHTML=items.map(({p,i})=>card(p,'p'+i,'')).join('');
+}
+
+/* ══ RETOUR (catégorie OU parcours) ══ */
+function goBack(){
+  stopPlayback();
+  // Retour depuis un parcours
+  if(curTab==='ac'){
+    curFlow=null; curStep=0;
+    document.getElementById('scrFlows').style.display='block';
+    document.getElementById('scrSteps').style.display='none';
+    document.getElementById('backBtn').classList.remove('on');
+    document.getElementById('hInfo').style.display='';
+    document.getElementById('logoImg').style.opacity='';
+    document.getElementById('hCat').classList.remove('on');
+    return;
+  }
+  // Retour depuis une catégorie de phrases
+  curCat=null;
+  document.getElementById('scrCats').style.display='block';
+  document.getElementById('scrPh').style.display='none';
+  document.getElementById('scrSrch').style.display='none';
+  document.getElementById('backBtn').classList.remove('on');
+  document.getElementById('hInfo').style.display='';
+  document.getElementById('logoImg').style.opacity='';
+  document.getElementById('hCat').classList.remove('on');
+  document.getElementById('srchInput').value='';
+  document.getElementById('srchX').classList.remove('on');
+}
+
+/* ══════════════════════════════════════
+   MODE ACCUEIL — PARCOURS DIALOGUE
+══════════════════════════════════════ */
+function renderFlows(){
+  document.getElementById('flowGrid').innerHTML =
+    `<div class="flow-intro">🛎️ Choisis une situation. Chaque parcours te guide étape par étape avec les phrases à dire en allemand (audio + prononciation) et ce que le client peut te répondre.</div>` +
+    FLOWS.map(f=>`
+      <div class="flow-card" onclick="openFlow('${f.id}')">
+        <span class="flow-em">${f.em}</span>
+        <div class="flow-txt">
+          <div class="flow-nm">${f.name}</div>
+          <div class="flow-desc">${f.desc}</div>
+        </div>
+        <span class="flow-arrow">›</span>
+      </div>`).join('');
+}
+
+function openFlow(id){
+  curFlow=id; curStep=0;
+  document.getElementById('scrFlows').style.display='none';
+  document.getElementById('scrSteps').style.display='block';
+  const f=FLOWS.find(x=>x.id===id);
+  document.getElementById('backBtn').classList.add('on');
+  document.getElementById('hInfo').style.display='none';
+  document.getElementById('logoImg').style.opacity='0';
+  document.getElementById('hCat').textContent=f.name;
+  document.getElementById('hCat').classList.add('on');
+  renderStep();
+}
+
+function renderStep(){
+  stopPlayback();
+  const f=FLOWS.find(x=>x.id===curFlow);
+  if(!f) return;
+  const step=f.steps[curStep];
+  const total=f.steps.length;
+
+  // Points de progression
+  let dots='';
+  for(let i=0;i<total;i++){
+    dots+=`<div class="step-dot ${i<curStep?'done':i===curStep?'cur':''}"></div>`;
+  }
+
+  // Blocs
+  const blocksHTML=step.blocks.map((b,bi)=>{
+    if(b.t==='say'){
+      const key=`f${curFlow}.${curStep}.${bi}`;
+      const isFav=favs.has(key);
+      return `<div class="say-block">
+        <div class="say-label">🗣️ ${b.label}</div>
+        <div class="say-fr">${b.fr}</div>
+        <div class="say-ph">${b.ph}</div>
+        <div class="say-btns">
+          <button class="btn-fav${isFav?' on':''}" data-fk="${key}" onclick="togFav('${key}')">${isFav?'⭐ Favori':'☆ Ajouter'}</button>
+          <button class="btn-slow" onclick="speakSlowKey('${key}',this)">🐢 Lent</button>
+          <button class="btn-listen" onclick="speakKey('${key}',this)">🔊 Écouter</button>
+        </div>
+      </div>`;
+    }
+    if(b.t==='hear'){
+      return `<div class="hear-block">
+        <div class="hear-label">👂 ${b.label} (à comprendre)</div>
+        ${b.items.map(it=>`<div class="hear-item"><span class="hear-de">${it.de}</span></div><div class="hear-fr">↳ ${it.fr}</div>`).join('')}
+      </div>`;
+    }
+    if(b.t==='memo'){
+      return `<div class="memo-block"><div class="memo-label">${b.label}</div>${b.html}</div>`;
+    }
+    return '';
+  }).join('');
+
+  document.getElementById('stepWrap').innerHTML=`
+    <div class="step-head">
+      <span class="step-counter">Étape ${curStep+1} / ${total}</span>
+      <div class="step-dots">${dots}</div>
+    </div>
+    <div class="step-title">${step.title}</div>
+    ${blocksHTML}
+    <div class="step-nav">
+      <button class="step-prev" onclick="prevStep()" ${curStep===0?'disabled':''}>← Précédent</button>
+      <button class="step-next" onclick="nextStep()">${curStep===total-1?'✓ Terminé':'Suivant →'}</button>
+    </div>`;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function nextStep(){
+  const f=FLOWS.find(x=>x.id===curFlow);
+  if(curStep < f.steps.length-1){ curStep++; renderStep(); }
+  else { goTab('ac'); } // Terminé → retour liste parcours
+}
+function prevStep(){
+  if(curStep>0){ curStep--; renderStep(); }
+}
+
+
+
+/* ══ RECHERCHE ══ */
+function onSearch(v){
+  document.getElementById('srchX').classList.toggle('on', v.length>0);
+  if(!v.trim()){
+    document.getElementById('scrSrch').style.display='none';
+    if(curCat!==null){ document.getElementById('scrPh').style.display='block'; }
+    else { document.getElementById('scrCats').style.display='block'; }
+    return;
+  }
+  if(curTab!=='ph') goTab('ph');
+  const q=v.toLowerCase();
+  const res=P.map((p,i)=>({p,i})).filter(({p})=>
+    p.fr.toLowerCase().includes(q)||p.ph.toLowerCase().includes(q)||p.de.toLowerCase().includes(q)
+  );
+  document.getElementById('scrCats').style.display='none';
+  document.getElementById('scrPh').style.display='none';
+  document.getElementById('scrSrch').style.display='block';
+  document.getElementById('backBtn').classList.remove('on');
+  document.getElementById('hInfo').style.display='';
+  document.getElementById('logoImg').style.opacity='';
+  document.getElementById('hCat').classList.remove('on');
+  document.getElementById('srInfo').textContent=res.length
+    ?`${res.length} résultat${res.length>1?'s':''} pour « ${v} »`:'';
+  document.getElementById('srList').innerHTML=res.length
+    ?res.map(({p,i})=>card(p,'p'+i,v)).join('')
+    :`<div class="nores"><span class="big">🔍</span><p>Aucun résultat pour <strong>« ${v} »</strong></p></div>`;
+}
+function clearSearch(){
+  document.getElementById('srchInput').value='';
+  onSearch('');
+}
+
+/* ══ NAVIGATION ONGLETS ══ */
+function goTab(t){
+  stopPlayback();
+  curBtn=null;
+  curTab=t;
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  document.getElementById('view-'+t).classList.add('on');
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+t).classList.add('on');
+  document.querySelectorAll('.bnav-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('nav-'+t).classList.add('on');
+  document.getElementById('backBtn').classList.remove('on');
+  document.getElementById('hInfo').style.display='';
+  document.getElementById('logoImg').style.opacity='';
+  document.getElementById('hCat').classList.remove('on');
+  if(t!=='ph'){ document.getElementById('srchInput').value=''; document.getElementById('srchX').classList.remove('on'); }
+  if(t==='ac'){
+    curFlow=null; curStep=0;
+    document.getElementById('scrFlows').style.display='block';
+    document.getElementById('scrSteps').style.display='none';
+    renderFlows();
+  }
+  if(t==='ph'){
+    curCat=null;
+    document.getElementById('scrCats').style.display='block';
+    document.getElementById('scrPh').style.display='none';
+    document.getElementById('scrSrch').style.display='none';
+  }
+  if(t==='qz'){ if(qList.length===0) initQuiz(); renderQuiz(); }
+  if(t==='fv') renderFavs();
+}
+
+/* ══ QUIZ ORAL ══
+   On entend la phrase → on choisit le bon sens en français */
+function initQuiz(){
+  qList=[...P].sort(()=>Math.random()-.5).slice(0,10);
+  qIdx=0; qScore=0; qDone=false;
+}
+function renderQuiz(){
+  const w=document.getElementById('qzWrap');
+  if(qIdx>=qList.length){
+    let prevBest=0;
+    try{ prevBest=parseInt(localStorage.getItem('bg_best')||'0',10)||0; }catch(e){}
+    const best=Math.max(qScore, prevBest);
+    try{ localStorage.setItem('bg_best', best); }catch(e){}
+    document.getElementById('stScore').textContent=best+'/10';
+    const isRecord = qScore>prevBest && qScore>0;
+    w.innerHTML=`<div class="qresult">
+      <h2>${qScore>=8?'🏆':qScore>=5?'👏':'💪'} ${qScore}/10</h2>
+      ${isRecord?'<p style="color:var(--gold);font-weight:600;margin-bottom:8px">🎉 Nouveau record !</p>':''}
+      <p>${qScore>=8
+        ?'Ausgezeichnet! Tu comprends très bien l\'allemand oral du camping !'
+        :qScore>=5
+        ?'Gut gemacht! Continue à t\'entraîner, tu progresses !'
+        :'Weiter üben! Écoute et répète encore, ça vient !'}</p>
+      <button class="qrestart" onclick="initQuiz();renderQuiz()">🔄 Rejouer</button>
+    </div>`;
+    return;
+  }
+  const q=qList[qIdx];
+  // 3 mauvaises réponses françaises
+  const bad=P.filter(p=>p.fr!==q.fr).sort(()=>Math.random()-.5).slice(0,3);
+  const opts=[...bad,q].sort(()=>Math.random()-.5);
+  const qi=P.indexOf(q);
+  // index réel de la bonne réponse dans le tableau opts
+  const correctPos=opts.indexOf(q);
+  w.innerHTML=`<div class="qcard">
+    <div class="qprog"><div class="qprog-bar" style="width:${(qIdx/10)*100}%"></div></div>
+    <div class="qlbl">🎧 Écoute et trouve le sens — ${qIdx+1} / 10</div>
+    <div class="q-audio-zone">
+      <span class="q-emoji">${q.e}</span>
+      <div class="q-audio-label">Appuie pour entendre la phrase</div>
+      <button class="q-listen-btn" id="qListenBtn" onclick="qSpeak(${qi},this)">🔊 Écouter la phrase</button>
+      <div class="q-instr">Puis choisis la bonne traduction ↓</div>
+      <button class="q-slow-btn" id="qSlowBtn" onclick="qSpeakSlow(${qi},this)">🐢 Plus lent</button>
+    </div>
+    <div class="qopts">${opts.map((o,oi)=>`<button class="qopt" onclick="ansQ(this,${oi},${correctPos})">${o.fr}</button>`).join('')}</div>
+    <div class="qfb" id="qfb"></div>
+    <button class="qnext" id="qnext" onclick="qIdx++;qDone=false;renderQuiz()">Suivant →</button>
+  </div>`;
+  // Mémoriser les options pour ansQ
+  curQOpts=opts;
+}
+
+function qSpeak(idx, btn){
+  speakDE(P[idx].de, btn, '🔊 Écouter la phrase', '🔊 Réécouter');
+}
+function qSpeakSlow(idx, btn){ speakSlow(P[idx].de, btn, '🐢 Plus lent', '🐢 Plus lent'); }
+
+function ansQ(btn, chosenPos, correctPos){
+  if(qDone) return; qDone=true;
+  const correctFr=curQOpts[correctPos].fr;
+  document.querySelectorAll('.qopt').forEach(b=>b.style.pointerEvents='none');
+  const fb=document.getElementById('qfb');
+  if(chosenPos===correctPos){
+    btn.classList.add('correct'); qScore++;
+    fb.className='qfb on c'; fb.textContent='✅ Richtig! Bonne réponse !';
+  } else {
+    btn.classList.add('wrong');
+    // colorier la bonne option en vert
+    const allOpts=document.querySelectorAll('.qopt');
+    if(allOpts[correctPos]) allOpts[correctPos].classList.add('correct');
+    fb.className='qfb on w'; fb.textContent='❌ Falsch. C\'était : '+correctFr;
+  }
+  document.getElementById('qnext').classList.add('on');
+}
+
+/* ══ FAVORIS ══ */
+function renderFavs(){
+  const el=document.getElementById('fvContent');
+  if(!favs.size){
+    el.innerHTML=`<div class="empty"><span class="big">☆</span><p>Aucun favori pour l'instant.<br>Appuie sur <strong>☆ Ajouter</strong> sur une phrase.</p></div>`;
+    return;
+  }
+  el.innerHTML=[...favs].map(key=>{ const p=phraseByKey(key); return p?card(p,key,''):''; }).join('');
+}
+
+/* ══ INIT ══ */
+document.getElementById('stFav').textContent=favs.size;
+try{ const b=parseInt(localStorage.getItem('bg_best'),10); if(!isNaN(b)) document.getElementById('stScore').textContent=b+'/10'; }catch(e){}
+renderCats();
+renderFlows();
+</script>
+</body>
+</html>
