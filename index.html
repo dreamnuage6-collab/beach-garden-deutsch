@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!--
+  Beach Garden Deutsch
+  © 2026 Omar Aznay Falkoun. Tous droits réservés.
+  Application conçue et créée par Omar Aznay Falkoun. Toute reproduction ou réutilisation,
+  totale ou partielle, sans son autorisation écrite est interdite.
+-->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +12,8 @@
 <title>Beach Garden Deutsch</title>
 <meta name="description" content="L'allemand de la réception du camping Beach Garden : leçons, situations guidées et guide de conversation avec de vraies voix allemandes.">
 <meta name="theme-color" content="#8E1B2E">
+<meta name="author" content="Omar Aznay Falkoun">
+<meta name="copyright" content="© 2026 Omar Aznay Falkoun">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BG Deutsch">
@@ -106,6 +114,7 @@ button{cursor:pointer; background:none; border:0; padding:0}
 .brand-mark{width:36px; height:36px; flex:0 0 36px}
 .logo{height:34px; width:auto; max-width:120px; object-fit:contain; filter:brightness(0) invert(1); flex:0 0 auto}
 .topbar .brand-name{color:#fff}
+@media (max-width:360px){ .topbar .brand-txt{display:none} .topbar .logo{height:30px!important} }
 @media (max-width:420px){ .topbar .logo{height:28px} .topbar .brand-name{font-size:15.5px} .topbar .brand-txt{padding-left:9px} .topbar{gap:8px} .topbar .chip{padding:6px 5px} }
 .topbar .brand-sub{color:rgba(255,255,255,.75)}
 .topbar .brand-txt{padding-left:11px; border-left:1px solid rgba(255,255,255,.3)}
@@ -456,6 +465,61 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 @keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(var(--r)); opacity:.8}}
 .view{animation:fadein .25s}
 
+/* ═════════ COMPTOIR ═════════ */
+.cp-g{margin-bottom:24px}
+.cp-h{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:20px; font-weight:600; margin:0 0 12px}
+.cp-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+@media (min-width:760px){ .cp-grid{grid-template-columns:repeat(3,1fr)} }
+.cp-tile{display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:64px; text-align:left; border:1px solid var(--line-2); border-radius:14px; background:#fff; padding:14px 16px; font-size:15.5px; font-weight:600; line-height:1.3; transition:border-color .15s, background .15s, transform .1s}
+.cp-tile .ic{color:var(--brand); flex:0 0 20px}
+.cp-tile:hover{border-color:var(--brand-200); background:var(--brand-50)}
+.cp-tile:active{transform:scale(.98)}
+.bigsheet{max-width:640px}
+.big{text-align:center; padding:6px 0 10px}
+.big-de{font-size:clamp(26px,6vw,40px); font-weight:700; line-height:1.25; color:var(--ink); margin:10px 0 12px}
+.big-ph{font-size:17px; color:var(--brand); font-style:italic; margin-bottom:10px}
+.big-fr{font-size:16px; color:var(--muted); margin-bottom:18px}
+.big-act{display:flex; gap:10px; justify-content:center; align-items:center}
+
+/* ═════════ PRONONCIATION À VOIX HAUTE ═════════ */
+.mic{width:96px; height:96px; border-radius:50%; background:var(--brand); color:#fff; display:grid; place-items:center; box-shadow:0 10px 30px rgba(142,27,46,.25); transition:transform .1s}
+.mic .ic{width:40px; height:40px}
+.mic:active{transform:scale(.95)}
+.mic.rec{animation:ring 1s ease-out infinite; background:var(--ko)}
+.mic-hint{font-size:15px; color:var(--muted); text-align:center; min-height:22px}
+.mic-hint.ok{color:var(--ok)} .mic-hint.mid{color:#B7791F} .mic-hint.ko{color:var(--ko)}
+.slow.rec{border-color:var(--ko); color:var(--ko)}
+
+/* ═════════ ANIMATION DE DÉMARRAGE ═════════ */
+#splash{position:fixed; inset:0; z-index:1000; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:radial-gradient(120% 80% at 50% 20%,#A3243A 0%,#7A1627 55%,#4E0C18 100%); color:#fff; transition:opacity .45s ease; cursor:pointer}
+#splash.gone{opacity:0; pointer-events:none}
+.sp-sun{position:relative; width:112px; height:112px; margin-top:-14vh; opacity:0; animation:spSun 1s cubic-bezier(.2,.8,.2,1) .15s forwards}
+.sp-sun img{width:100%; height:100%; display:block}
+.sp-sun::after{content:''; position:absolute; inset:-22px; border-radius:50%; border:1.5px solid rgba(255,255,255,.25); animation:spHalo 2.4s ease-out .6s infinite}
+.sp-title{margin-top:26px; text-align:center; font-family:var(--serif); font-size:34px; font-weight:600; letter-spacing:.01em; opacity:0; animation:spUp .8s ease .5s forwards}
+.sp-title span{display:block; margin-top:6px; font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.32em; text-transform:uppercase; color:rgba(255,255,255,.75)}
+.sp-sea{position:absolute; left:0; right:0; top:74vh; height:130vh; transform:translateY(30vh); animation:spRise 1.1s cubic-bezier(.2,.8,.2,1) forwards; transition:transform .85s cubic-bezier(.6,0,.3,1)}
+.sp-wave{position:absolute; left:0; width:200%; height:90px; animation:spSwell linear infinite}
+.sp-wave path{fill:#fff}
+.sp-wave.w1{top:-58px; opacity:.16; animation-duration:9s}
+.sp-wave.w2{top:-38px; opacity:.3; animation-duration:6.5s; animation-direction:reverse}
+.sp-wave.w3{top:-18px; animation-duration:4.5s}
+.sp-fill{position:absolute; left:0; right:0; top:70px; bottom:0; background:#fff}
+#splash.out .sp-sea{transform:translateY(-95vh)}
+#splash.out .sp-sun,#splash.out .sp-title{transition:opacity .3s; opacity:0!important; animation:none}
+@keyframes spSun{from{opacity:0; transform:scale(.6) translateY(24px)}to{opacity:1; transform:none}}
+@keyframes spHalo{0%{transform:scale(.85); opacity:.9}100%{transform:scale(1.35); opacity:0}}
+@keyframes spUp{from{opacity:0; transform:translateY(12px)}to{opacity:1; transform:none}}
+@keyframes spRise{to{transform:translateY(0)}}
+@keyframes spSwell{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){ .sp-sun,.sp-title{opacity:1} .sp-sea{transform:none} }
+
+/* Crédit */
+.credit{font-size:12.5px; color:var(--muted); line-height:1.6}
+.credit b{color:var(--ink-2); font-weight:600}
+.about .credit{margin-top:10px}
+
 /* ═════════ INSTALLATION ET PARTAGE ═════════ */
 .promo{display:flex; align-items:center; gap:14px; flex-wrap:wrap; border:1px solid var(--brand-200); background:var(--brand-50); border-radius:var(--r); padding:14px 16px; margin-bottom:22px}
 .promo-ic{font-size:30px; line-height:1}
@@ -511,6 +575,18 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 </head>
 <body>
 
+<!-- Animation de démarrage -->
+<div id="splash" aria-hidden="true">
+  <div class="sp-sun"><img src="brand/emblem-white.png" alt=""></div>
+  <div class="sp-title">Beach Garden<span>Deutsch</span></div>
+  <div class="sp-sea">
+    <svg class="sp-wave w1" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
+    <svg class="sp-wave w2" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
+    <svg class="sp-wave w3" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
+    <div class="sp-fill"></div>
+  </div>
+</div>
+
 <!-- Icônes (trait fin, couleur héritée) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -531,6 +607,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
     <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8" fill="currentColor"/></symbol>
     <symbol id="i-repeat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5"/></symbol>
     <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8v.1"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></symbol>
     <symbol id="i-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14.5" r="5.5"/><path d="M8.5 10 6 3h4l2 5 2-5h4l-2.5 7M12 12.3l.8 1.6 1.7.2-1.25 1.2.3 1.7-1.55-.8-1.55.8.3-1.7-1.25-1.2 1.7-.2z"/></symbol>
     <!-- Unités -->
     <symbol id="u0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 0 1 16 0M3 17h18M12 6.5V9M10 6.5h4M5 20h14"/></symbol>
@@ -564,6 +641,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
     <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub">Deutsch</div></div>
   </div>
   <button class="nav-btn" data-nav="learn"><svg class="ic"><use href="#i-learn"/></svg>Apprendre</button>
+  <button class="nav-btn" data-nav="comptoir"><svg class="ic"><use href="#u0"/></svg>Comptoir</button>
   <button class="nav-btn" data-nav="situ"><svg class="ic"><use href="#i-chat"/></svg>Situations</button>
   <button class="nav-btn" data-nav="phrases"><svg class="ic"><use href="#i-book"/></svg>Phrases</button>
   <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
@@ -588,6 +666,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 <!-- Navigation du bas (mobile) -->
 <nav class="bnav" aria-label="Navigation principale">
   <button class="nav-btn" data-nav="learn"><svg class="ic"><use href="#i-learn"/></svg>Apprendre</button>
+  <button class="nav-btn" data-nav="comptoir"><svg class="ic"><use href="#u0"/></svg>Comptoir</button>
   <button class="nav-btn" data-nav="situ"><svg class="ic"><use href="#i-chat"/></svg>Situations</button>
   <button class="nav-btn" data-nav="phrases"><svg class="ic"><use href="#i-book"/></svg>Phrases</button>
   <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
@@ -608,29 +687,29 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 ══════════════════════════════════════ */
 const P = [
   // ── Accueil & Arrivée
-  {c:0,e:"👋",fr:"Bonjour et bienvenue au camping Beach Garden !",de:"Guten Tag und herzlich willkommen auf dem Campingplatz Beach Garden!",ph:"Gouten-tag ount hèrtslich vil-komène aouf dème Kamping-platss Beach Garden!"},
+  {c:0,e:"👋",fr:"Bonjour et bienvenue au camping Beach Garden !",de:"Guten Tag und herzlich willkommen auf dem Campingplatz Beach Garden!",ph:"Gouten-tak ount hèrtslich vil-komène aouf dème Kamping-platss Beach Garden!"},
   {c:0,e:"📋",fr:"Votre nom, s'il vous plaît ?",de:"Ihren Namen, bitte?",ph:"Irène Namène, biteu?"},
   {c:0,e:"📅",fr:"Quelle est votre date d'arrivée ?",de:"Was ist Ihr Ankunftsdatum?",ph:"Vass ist ir Ankounfts-datom?"},
   {c:0,e:"🗓️",fr:"Combien de nuits restez-vous ?",de:"Wie viele Nächte bleiben Sie bei uns?",ph:"Vi fileu Nèchteu blaïbène zi baï ounss?"},
   {c:0,e:"🔑",fr:"Voici votre bracelet d'accès.",de:"Hier ist Ihr Zugangsarmband.",ph:"Hir ist ir Tsougangs-arm-bant."},
   {c:0,e:"🗺️",fr:"Voici le plan du camping.",de:"Hier ist der Campingplan.",ph:"Hir ist dèr Kamping-plan."},
   {c:0,e:"📍",fr:"Votre emplacement est le numéro…",de:"Ihr Stellplatz hat die Nummer…",ph:"Ir Chtel-platss hat di Noumèr…"},
-  {c:0,e:"⏰",fr:"Vous pouvez stationner votre véhicule à partir de 12 h. L'emplacement est garanti à partir de 14 h, et le mobil-home à partir de 17 h.",de:"Sie können Ihr Fahrzeug ab zwölf Uhr abstellen. Der Stellplatz ist ab vierzehn Uhr garantiert und das Mobilheim ab siebzehn Uhr.",ph:"Zi keunène ir Far-tsoïg ap tsvelf Ouir ap-chtèlène. Dèr Chtel-platss ist ap fir-tsèn Ouir garan-tirt ount dass Mobil-haïm ap zip-tsèn Ouir."},
-  {c:0,e:"🚪",fr:"Le départ se fait avant 11 h pour les emplacements, et avant 10 h pour les mobil-homes.",de:"Die Abreise erfolgt vor elf Uhr auf dem Stellplatz und vor zehn Uhr im Mobilheim.",ph:"Di Ap-raïzeu èr-folgt for èlf Ouir aouf dème Chtel-platss ount for tsèn Ouir im Mobil-haïm."},
-  {c:0,e:"😊",fr:"Bon séjour parmi nous !",de:"Wir wünschen Ihnen einen schönen Aufenthalt!",ph:"Vir vuunchène irène aïnène cheunène Aouf-ènt-halt!"},
+  {c:0,e:"⏰",fr:"Vous pouvez stationner votre véhicule à partir de 12 h. L'emplacement est garanti au plus tard à 14 h, et le mobil-home au plus tard à 17 h.",de:"Sie können Ihr Fahrzeug ab zwölf Uhr abstellen. Der Stellplatz ist spätestens um vierzehn Uhr fertig, das Mobilheim spätestens um siebzehn Uhr.",ph:"Zi keunène ir Far-tsoïg ap tsvelf Our ap-chtèlène. Dèr Chtel-platss ist chpè-tèstèns oum fir-tsèn Our fèrtich, dass Mobil-haïm chpè-tèstèns oum zip-tsèn Our."},
+  {c:0,e:"🚪",fr:"Le départ se fait entre 7 h et 11 h pour les emplacements, et entre 7 h et 10 h pour les mobil-homes.",de:"Die Abreise erfolgt zwischen sieben und elf Uhr auf dem Stellplatz und zwischen sieben und zehn Uhr im Mobilheim.",ph:"Di Ap-raïzeu èr-folgt tsvichène zibène ount èlf Our aouf dème Chtel-platss ount tsvichène zibène ount tsèn Our im Mobil-haïm."},
+  {c:0,e:"😊",fr:"Nous vous souhaitons un bon séjour !",de:"Wir wünschen Ihnen einen schönen Aufenthalt!",ph:"Vir vunchène irène aïnène cheunène Aouf-ènt-halt!"},
   {c:0,e:"🚗",fr:"Avez-vous une voiture ?",de:"Haben Sie ein Auto dabei?",ph:"Habène zi aïn Aouto dabaï?"},
   {c:0,e:"📧",fr:"Quelle est votre adresse e-mail de confirmation ?",de:"Wie lautet Ihre Bestätigungs-E-Mail-Adresse?",ph:"Vi laoutèt ireu Beu-chtè-tigoungs-I-Mèïl-adrèsseu?"},
 
   // ── Hébergements
   {c:1,e:"🏠",fr:"Votre mobil-home a une terrasse.",de:"Ihr Mobilheim hat eine Terrasse.",ph:"Ir Mobil-haïm hat aïneu Tèrasse."},
   {c:1,e:"❄️",fr:"Le mobil-home est climatisé.",de:"Das Mobilheim hat eine Klimaanlage.",ph:"Dass Mobil-haïm hat aïneu Klima-anlageu."},
-  {c:1,e:"🍳",fr:"La cuisine est entièrement équipée.",de:"Die Küche ist vollständig ausgestattet.",ph:"Di Kuicheu ist fol-chtèndig aous-guéchtatèt."},
+  {c:1,e:"🍳",fr:"La cuisine est entièrement équipée.",de:"Die Küche ist vollständig ausgestattet.",ph:"Di Kucheu ist fol-chtèndich aous-guéchtatèt."},
   {c:1,e:"⛺",fr:"Votre emplacement pour tente ou camping-car.",de:"Ihr Zelt- oder Wohnmobil-Stellplatz.",ph:"Ir Tsèlt- odèr Von-mobil-Chtelplatss."},
   {c:1,e:"🔌",fr:"La borne électrique est incluse.",de:"Der Stromanschluss ist inklusive.",ph:"Dèr Chtrom-an-chlouss ist inklouziveu."},
-  {c:1,e:"👨‍👩‍👧",fr:"Ce mobil-home est pour quatre personnes.",de:"Dieses Mobilheim ist für vier Personen.",ph:"Dizèss Mobil-haïm ist fuir fir Pèrzonène."},
+  {c:1,e:"👨‍👩‍👧",fr:"Ce mobil-home est pour quatre personnes.",de:"Dieses Mobilheim ist für vier Personen.",ph:"Dizèss Mobil-haïm ist fur fir Pèrzonène."},
   {c:1,e:"🏖️",fr:"La Maison des Sables est face à la mer.",de:"Das Maison des Sables liegt direkt am Meer.",ph:"Dass Maison des Sables likt dirèkt am Mèr."},
-  {c:1,e:"🛏️",fr:"Les draps et les serviettes sont inclus.",de:"Bettwäsche und Handtücher sind inklusive.",ph:"Bèt-vècheu ount Hant-tuichèr zint inklouziveu."},
-  {c:1,e:"🐕",fr:"Les chiens sont acceptés : 7 € par jour sur les emplacements, 9 € dans les locations.",de:"Hunde sind erlaubt: sieben Euro pro Tag auf dem Stellplatz, neun Euro in der Mietunterkunft.",ph:"Houndeu zint èr-laoubt: zibène Oï-ro pro Tag aouf dème Chtel-platss, noïn Oï-ro in dèr Mit-ountèr-kounft."},
+  {c:1,e:"🛏️",fr:"Les draps et les serviettes sont inclus.",de:"Bettwäsche und Handtücher sind inklusive.",ph:"Bèt-vècheu ount Hant-tuchèr zint inklouziveu."},
+  {c:1,e:"🐕",fr:"Les chiens sont acceptés : 7 € par jour sur les emplacements, 9 € dans les locations.",de:"Hunde sind erlaubt: sieben Euro pro Tag auf dem Stellplatz, neun Euro in der Mietunterkunft.",ph:"Houndeu zint èr-laoubt: zibène Oï-ro pro Tak aouf dème Chtel-platss, noïn Oï-ro in dèr Mit-ountèr-kounft."},
   {c:1,e:"🏕️",fr:"Nous proposons des emplacements standard, grand confort, en seconde ligne et en première ligne.",de:"Wir haben Standard-Stellplätze, Komfort-Stellplätze sowie Stellplätze in zweiter und in erster Reihe.",ph:"Vir habène Chtandart-Chtel-plètseu, Komfort-Chtel-plètseu zo-vi Chtel-plètseu in tsvaïtèr ount in èrstèr Raïeu."},
   {c:1,e:"📺",fr:"Le mobil-home a une télévision.",de:"Das Mobilheim hat einen Fernseher.",ph:"Dass Mobil-haïm hat aïnène Fèrn-zé-èr."},
 
@@ -639,77 +718,78 @@ const P = [
   {c:2,e:"✅",fr:"Votre réservation est confirmée.",de:"Ihre Reservierung ist bestätigt.",ph:"Ireu Rézèr-vi-roung ist beu-chtètigt."},
   {c:2,e:"💶",fr:"Le tarif est de … euros par nuit.",de:"Der Preis beträgt … Euro pro Nacht.",ph:"Dèr Praïss beu-trègt … Oï-ro pro Nakht."},
   {c:2,e:"💳",fr:"Vous payez par carte ou en espèces ?",de:"Zahlen Sie mit Karte oder bar?",ph:"Tsalène zi mit Karteu odèr bar?"},
-  {c:2,e:"❌",fr:"Annulation gratuite jusqu'à sept jours avant l'arrivée.",de:"Kostenlose Stornierung bis sieben Tage vor der Anreise.",ph:"Kostèn-lozeu Chtor-ni-roung biss zibène Tageu for dèr An-raïzeu."},
-  {c:2,e:"⬇️",fr:"Un acompte de 30 % est demandé.",de:"Eine Anzahlung von dreißig Prozent ist erforderlich.",ph:"Aïneu An-tsa-loung fon draïssig Protsènt ist èr-fordèr-lich."},
+  {c:2,e:"❌",fr:"L'annulation est sans frais jusqu'à 30 jours avant le jour d'arrivée.",de:"Bis dreißig Tage vor dem Anreisetag ist die Stornierung kostenlos.",ph:"Biss draïssich Tageu for dème An-raïzeu-tak ist di Chtor-ni-roung kostèn-loss."},
+  {c:2,e:"⬇️",fr:"Un acompte de 30 % est demandé.",de:"Eine Anzahlung von dreißig Prozent ist erforderlich.",ph:"Aïneu An-tsa-loung fon draïssich Protsènt ist èr-fordèr-lich."},
   {c:2,e:"📅",fr:"Quelle est votre date de départ ?",de:"Wann reisen Sie ab?",ph:"Vann raïzène zi ap?"},
   {c:2,e:"🔄",fr:"Souhaitez-vous prolonger votre séjour ?",de:"Möchten Sie Ihren Aufenthalt verlängern?",ph:"Meuchtène zi irène Aouf-ènt-halt fèr-lèngèrn?"},
 
   // ── Piscines & Aquatique
-  {c:3,e:"🏊",fr:"La piscine est ouverte de neuf heures à dix-neuf heures.",de:"Das Schwimmbad ist von neun bis neunzehn Uhr geöffnet.",ph:"Dass Chvim-bad ist fon noïn biss noïntsèn Ouir guéeufnèt."},
+  {c:3,e:"🏊",fr:"La piscine est ouverte de neuf heures à dix-neuf heures.",de:"Das Schwimmbad ist von neun bis neunzehn Uhr geöffnet.",ph:"Dass Chvim-bad ist fon noïn biss noïntsèn Our gué-eufnèt."},
   {c:3,e:"🌊",fr:"Le parc aquatique est gratuit.",de:"Der Wasserpark ist kostenlos.",ph:"Dèr Vassèr-park ist kostèn-loss."},
-  {c:3,e:"🎢",fr:"Les toboggans sont ouverts l'après-midi.",de:"Die Rutschen sind nachmittags geöffnet.",ph:"Di Routchène zint nakh-mitagss guéeufnèt."},
+  {c:3,e:"🎢",fr:"Les toboggans sont ouverts l'après-midi.",de:"Die Rutschen sind nachmittags geöffnet.",ph:"Di Routchène zint nakh-mitaks gué-eufnèt."},
   {c:3,e:"🩱",fr:"Le slip de bain est obligatoire ; les shorts de bain sont interdits.",de:"Badehosen sind Pflicht. Badeshorts sind nicht erlaubt.",ph:"Badeu-hozène zint Pflicht. Badeu-chortss zint nicht èr-laoubt."},
   {c:3,e:"🏊‍♂️",fr:"La piscine couverte est chauffée.",de:"Das Hallenbad ist beheizt.",ph:"Dass Halène-bad ist beu-haïtst."},
-  {c:3,e:"👶",fr:"La pataugeoire est réservée aux petits.",de:"Das Planschbecken ist für Kleinkinder.",ph:"Dass Planch-bèkène ist fuir Klaïn-kindèr."},
+  {c:3,e:"👶",fr:"La pataugeoire est réservée aux petits.",de:"Das Planschbecken ist für Kleinkinder.",ph:"Dass Planch-bèkène ist fur Klaïn-kindèr."},
   {c:3,e:"🛁",fr:"Le spa et le jacuzzi se trouvent à la Bulle des Sables.",de:"Das Spa und der Whirlpool befinden sich im Bulle des Sables.",ph:"Dass Chpa ount dèr Vouirl-poul beu-findène zich im Bulle des Sables."},
   {c:3,e:"🚿",fr:"Les douches sont à côté de la piscine.",de:"Die Duschen befinden sich neben dem Schwimmbad.",ph:"Di Douchène beu-findène zich nèbène dème Chvim-bad."},
 
   // ── Plage & Mer
   {c:4,e:"🏖️",fr:"L'accès à la plage est direct depuis le camping.",de:"Der Strandzugang ist direkt vom Campinggelände aus.",ph:"Dèr Chtrant-tsougang ist dirèkt fom Kamping-guélèndeu aous."},
-  {c:4,e:"👮",fr:"La plage est surveillée de dix heures à dix-huit heures.",de:"Der Strand wird von zehn bis achtzehn Uhr bewacht.",ph:"Dèr Chtrant virt fon tsèn biss akht-tsèn Ouir beu-vakht."},
-  {c:4,e:"🪑",fr:"Les transats sont disponibles en location.",de:"Liegestühle können gegen eine Gebühr gemietet werden.",ph:"Ligeu-chtuïleu keunène guéguène aïneu Guébur guémitèt vèrdène."},
+  {c:4,e:"👮",fr:"La plage est surveillée de dix heures à dix-huit heures.",de:"Der Strand wird von zehn bis achtzehn Uhr bewacht.",ph:"Dèr Chtrant virt fon tsèn biss akht-tsèn Our beu-vakht."},
+  {c:4,e:"🪑",fr:"Les transats sont disponibles en location.",de:"Liegestühle können gegen eine Gebühr gemietet werden.",ph:"Ligeu-chtuleu keunène guéguène aïneu Guébur guémitèt vèrdène."},
   {c:4,e:"⚠️",fr:"Attention, il y a des méduses aujourd'hui.",de:"Vorsicht, heute gibt es Quallen im Meer.",ph:"For-zicht, hoïteu guibt èss Kval-ène im Mèr."},
   {c:4,e:"🚩",fr:"Drapeau rouge : baignade interdite.",de:"Rote Flagge bedeutet: Baden verboten.",ph:"Roteu Flagueu beu-doïtèt: Badène fèr-botène."},
   {c:4,e:"🌊",fr:"La mer Méditerranée est magnifique !",de:"Das Mittelmeer ist wunderschön!",ph:"Dass Mitèl-mèr ist voundèr-cheun!"},
-  {c:4,e:"🚲",fr:"Une piste cyclable longe le bord de mer.",de:"Ein Radweg verläuft entlang der Küste.",ph:"Aïn Rad-vèk fèr-leuft ènt-lang dèr Kuusteu."},
+  {c:4,e:"🚲",fr:"Une piste cyclable longe le bord de mer.",de:"Ein Radweg verläuft entlang der Küste.",ph:"Aïn Rad-vèk fèr-leuft ènt-lang dèr Kusteu."},
   {c:4,e:"⛅",fr:"Le sable est fin et chaud.",de:"Der Sand ist fein und warm.",ph:"Dèr Zant ist faïn ount varm."},
 
   // ── Services & Équipements
-  {c:5,e:"📶",fr:"Le Wi-Fi est inclus dans tous les mobil-homes, sauf dans la gamme Cosy.",de:"Das WLAN ist in allen Mobilheimen inklusive, außer in der Cosy-Kategorie.",ph:"Dass Vé-lan ist in alène Mobil-haïmène inklouziveu, aoussèr in dèr Kozi-katégori."},
-  {c:5,e:"💸",fr:"Sur les emplacements, le Wi-Fi est payant. Demandez le code à la réception.",de:"Auf den Stellplätzen ist das WLAN kostenpflichtig. Fragen Sie an der Rezeption nach dem Code.",ph:"Aouf dène Chtel-plètsène ist dass Vé-lan kostène-pflichtig. Fragène zi an dèr Rètsèptsion nakh dème Kode."},
-  {c:5,e:"🍽️",fr:"Le restaurant est ouvert le soir à partir de dix-neuf heures.",de:"Das Restaurant ist abends ab neunzehn Uhr geöffnet.",ph:"Dass Rèstoran ist abèntss ap noïntsèn Ouir guéeufnèt."},
-  {c:5,e:"🥐",fr:"La boulangerie ouvre à huit heures.",de:"Die Bäckerei öffnet um acht Uhr.",ph:"Di Bèkèraï eufnèt oom akht Ouir."},
-  {c:5,e:"🛒",fr:"L'épicerie est ouverte de huit heures à vingt heures.",de:"Der Campingmarkt ist von acht bis zwanzig Uhr geöffnet.",ph:"Dèr Kamping-markt ist fon akht biss tsvan-tsig Ouir guéeufnèt."},
-  {c:5,e:"🚿",fr:"Les sanitaires sont sur votre droite.",de:"Die Sanitäranlagen befinden sich auf Ihrer rechten Seite.",ph:"Di Zanitèr-anlagène beu-findène zich aouf irèr rèkhtène Zaïteu."},
-  {c:5,e:"🧺",fr:"La laverie est dans le bloc central.",de:"Die Waschküche befindet sich im Zentralgebäude.",ph:"Di Vach-kuicheu beu-findèt zich im Tsèntral-guéboïdeu."},
+  {c:5,e:"📶",fr:"Le Wi-Fi est inclus dans tous les mobil-homes, sauf dans la gamme Cosy.",de:"Das WLAN ist in allen Mobilheimen inklusive, außer in der Cosy-Kategorie.",ph:"Dass Vé-lane ist in alène Mobil-haïmène inklouziveu, aoussèr in dèr Kozi-katégori."},
+  {c:5,e:"💸",fr:"Sur les emplacements, le Wi-Fi est payant. Demandez le code à la réception.",de:"Auf den Stellplätzen ist das WLAN kostenpflichtig. Fragen Sie an der Rezeption nach dem Code.",ph:"Aouf dène Chtel-plètsène ist dass Vé-lane kostène-pflichtich. Fragène zi an dèr Rètsèptsion nakh dème Kode."},
+  {c:5,e:"🍽️",fr:"Le restaurant est ouvert le soir à partir de dix-neuf heures.",de:"Das Restaurant ist abends ab neunzehn Uhr geöffnet.",ph:"Dass Rèstoran ist abèntss ap noïntsèn Our gué-eufnèt."},
+  {c:5,e:"🥐",fr:"La boulangerie ouvre à huit heures.",de:"Die Bäckerei öffnet um acht Uhr.",ph:"Di Bèkèraï eufnèt oom akht Our."},
+  {c:5,e:"🛒",fr:"L'épicerie est ouverte de huit heures à vingt heures.",de:"Der Campingmarkt ist von acht bis zwanzig Uhr geöffnet.",ph:"Dèr Kamping-markt ist fon akht biss tsvan-tsich Our gué-eufnèt."},
+  {c:5,e:"🚿",fr:"Les sanitaires sont sur votre droite.",de:"Die Sanitäranlagen befinden sich auf Ihrer rechten Seite.",ph:"Di Zanitèr-anlagène beu-findène zich aouf irèr rèchtène Zaïteu."},
+  {c:5,e:"🧺",fr:"La laverie est dans le bloc central.",de:"Die Waschküche befindet sich im Zentralgebäude.",ph:"Di Vach-kucheu beu-findèt zich im Tsèntral-guéboïdeu."},
   {c:5,e:"🚴",fr:"Vous pouvez louer des vélos ici.",de:"Sie können hier Fahrräder ausleihen.",ph:"Zi keunène hir Far-rèdèr aous-laïuène."},
   {c:5,e:"🎭",fr:"Il y a des animations tous les soirs en saison.",de:"In der Saison gibt es jeden Abend ein Unterhaltungsprogramm.",ph:"In dèr Zaïzon guibt èss yèdène Abènt aïn Ountèr-haltoungss-programm."},
-  {c:5,e:"👦",fr:"Le club enfants accueille les enfants de cinq à douze ans.",de:"Der Kinderclub nimmt Kinder von fünf bis zwölf Jahren auf.",ph:"Dèr Kindèr-kloub nimt Kindèr fon fuunf biss tsvelf Yarène aouf."},
+  {c:5,e:"👦",fr:"Le club enfants accueille les enfants de cinq à douze ans.",de:"Der Kinderclub nimmt Kinder von fünf bis zwölf Jahren auf.",ph:"Dèr Kindèr-kloub nimt Kindèr fon funf biss tsvelf Yarène aouf."},
   {c:5,e:"🧖",fr:"Le spa propose des massages et un hammam.",de:"Das Spa bietet Massagen und ein Hammam an.",ph:"Dass Chpa bitèt Massagène ount aïn Hamam an."},
   {c:5,e:"🎾",fr:"Vous avez accès aux trois campings.",de:"Sie haben Zugang zu allen drei Campingplätzen.",ph:"Zi habène Tsougang tsou alène draï Kamping-plètsène."},
   {c:5,e:"🅿️",fr:"Le parking se trouve à l'entrée.",de:"Der Parkplatz befindet sich am Eingang des Campingplatzes.",ph:"Dèr Park-platss beu-findèt zich am Aïn-gang dèss Kamping-platsèss."},
 
   // ── Règles & Sécurité
-  {c:6,e:"🌙",fr:"Le silence est obligatoire après vingt-deux heures.",de:"Ab zweiundzwanzig Uhr gilt Nachtruhe auf dem Campingplatz.",ph:"Ap tsvaï-ount-tsvan-tsig Ouir guilt Nakht-roueu aouf dème Kamping-platss."},
+  {c:6,e:"🌙",fr:"Le silence est obligatoire après vingt-deux heures.",de:"Ab zweiundzwanzig Uhr gilt Nachtruhe auf dem Campingplatz.",ph:"Ap tsvaï-ount-tsvan-tsich Our guilt Nakht-roueu aouf dème Kamping-platss."},
   {c:6,e:"🚗",fr:"La vitesse est limitée à dix kilomètres par heure.",de:"Die Höchstgeschwindigkeit beträgt zehn Kilometer pro Stunde.",ph:"Di Heukst-guéchvindich-kaït beu-trègt tsèn Kilomètèr pro Chtoundeu."},
   {c:6,e:"🚫",fr:"Le bracelet doit être porté en permanence.",de:"Das Armband muss jederzeit getragen werden.",ph:"Dass Arm-band mouss yèdèr-tsaït guétragène vèrdène."},
   {c:6,e:"🗑️",fr:"Les poubelles se trouvent à l'entrée.",de:"Die Mülleimer befinden sich am Eingang des Campingplatzes.",ph:"Di Mul-aïmèr beu-findène zich am Aïn-gang dèss Kamping-platsèss."},
   {c:6,e:"♻️",fr:"Merci de trier vos déchets.",de:"Bitte trennen Sie Ihren Abfall.",ph:"Biteu trènène zi irène Apfal."},
   {c:6,e:"🔥",fr:"Seuls les barbecues électriques sont autorisés.",de:"Nur Elektrogrills sind erlaubt.",ph:"Nour Élèktro-grilss zint èr-laoubt."},
-  {c:6,e:"🏃",fr:"Les enfants doivent être accompagnés la nuit.",de:"Kinder müssen nachts von Erwachsenen begleitet werden.",ph:"Kindèr muissène nakhts fon Èr-vakhzènène beu-glaïtèt vèrdène."},
+  {c:6,e:"🏃",fr:"Les enfants doivent être accompagnés la nuit.",de:"Kinder müssen nachts von Erwachsenen begleitet werden.",ph:"Kindèr mussène nakhts fon Èr-vakhzènène beu-glaïtèt vèrdène."},
 
   // ── Urgences & Problèmes
   {c:7,e:"🆘",fr:"En cas d'urgence, appelez le quinze ou le dix-huit.",de:"Im Notfall rufen Sie bitte die Fünfzehn oder die Achtzehn an.",ph:"Im Not-fal roufène zi biteu di Funf-tsèn odèr di Akht-tsèn an."},
   {c:7,e:"🏥",fr:"Je vais appeler les secours immédiatement.",de:"Ich rufe sofort den Notdienst an.",ph:"Ich roufeu zofort dène Not-dinst an."},
-  {c:7,e:"💊",fr:"La pharmacie la plus proche est à cinq cents mètres.",de:"Die nächste Apotheke ist fünfhundert Meter entfernt.",ph:"Di nèchsteu Apoté-keu ist fuunfhoundèrt Mètèr ènt-fèrnt."},
+  {c:7,e:"💊",fr:"La pharmacie la plus proche est à cinq cents mètres.",de:"Die nächste Apotheke ist fünfhundert Meter entfernt.",ph:"Di nèchsteu Apoté-keu ist funfhoundèrt Mètèr ènt-fèrnt."},
   {c:7,e:"🔧",fr:"Je vais envoyer quelqu'un pour réparer.",de:"Ich schicke jemanden vorbei, um das zu reparieren.",ph:"Ich chikeu yèmandène forbaï, oom dass tsou rèparirène."},
   {c:7,e:"🔇",fr:"Veuillez baisser le volume, s'il vous plaît.",de:"Bitte drehen Sie die Musik leiser.",ph:"Biteu drèuène zi di Mouzik laïzèr."},
   {c:7,e:"🚔",fr:"En cas de vol, appelez le dix-sept.",de:"Bei einem Diebstahl rufen Sie bitte die Siebzehn an.",ph:"Baï aïnème Dip-chtal roufène zi biteu di zip-tsèn an."},
+  {c:7,e:"🚪",fr:"Autorisez-vous notre technicien à entrer dans le mobil-home, même en votre absence ?",de:"Erlauben Sie unserem Techniker, das Mobilheim zu betreten, auch wenn Sie nicht da sind?",ph:"Èr-laoubène zi ounzèrème Tèchnikèr, dass Mobil-haïm tsou beu-trètène, aoukh vèn zi nicht da zint?"},
   {c:7,e:"🔐",fr:"J'ai perdu mon bracelet.",de:"Ich habe mein Armband verloren.",ph:"Ich habeu maïn Arm-band fèr-lorène."},
   {c:7,e:"🚿",fr:"Il n'y a pas d'eau chaude dans le mobil-home.",de:"Im Mobilheim gibt es kein warmes Wasser.",ph:"Im Mobil-haïm guibt èss kaïn varmèss Vassèr."},
 
   // ── Région & Sorties
-  {c:8,e:"🏘️",fr:"Le village de Marseillan est à sept kilomètres.",de:"Das Dorf Marseillan liegt sieben Kilometer entfernt.",ph:"Dass Dorf Marsèyan likt zibène Kilomètèr ènt-fèrnt."},
-  {c:8,e:"⛵",fr:"Sète et son canal sont très pittoresques.",de:"Sète und sein Kanal sind sehr malerisch.",ph:"Sèt ount zaïn Kanal zint zèr malèrish."},
-  {c:8,e:"🚴",fr:"Une piste cyclable mène jusqu'à Marseillan.",de:"Ein Radweg führt bis nach Marseillan.",ph:"Aïn Rad-vèk fuirt biss nakh Marsèyan."},
-  {c:8,e:"🍷",fr:"Le Noilly Prat se déguste au port de Marseillan.",de:"Den Noilly Prat kann man im Hafen von Marseillan probieren.",ph:"Dène Noyay-Prat kan man im Hafène fon Marsèyan probirène."},
-  {c:8,e:"🎡",fr:"Le Cap d'Agde est à dix minutes en voiture.",de:"Cap d'Agde ist zehn Minuten mit dem Auto entfernt.",ph:"Kap-d'Agdeu ist tsèn Minutène mit dème Aouto ènt-fèrnt."},
-  {c:8,e:"🌊",fr:"L'étang de Thau est à quelques minutes.",de:"Der Thau-See ist nur wenige Minuten entfernt.",ph:"Dèr To-Zé ist nour vènigeu Minutène ènt-fèrnt."},
-  {c:8,e:"🐚",fr:"Les huîtres de Thau sont délicieuses.",de:"Die Austern aus dem Thau-See sind köstlich.",ph:"Di Aoustèrne aous dème To-Zé zint keustlich."},
-  {c:8,e:"🎪",fr:"Le marché de Marseillan a lieu le mardi matin.",de:"Der Markt von Marseillan findet dienstags morgens statt.",ph:"Dèr Markt fon Marsèyan findèt dinss-taks morgèns chtat."},
+  {c:8,e:"🏘️",fr:"Le village de Marseillan est à sept kilomètres.",de:"Das Dorf Marseillan liegt sieben Kilometer entfernt.",ph:"Dass Dorf Marseillan likt zibène Kilomètèr ènt-fèrnt."},
+  {c:8,e:"⛵",fr:"Sète et son canal sont très pittoresques.",de:"Sète und sein Kanal sind sehr malerisch.",ph:"Sète ount zaïn Kanal zint zèr malèrich."},
+  {c:8,e:"🚴",fr:"Une piste cyclable mène jusqu'à Marseillan.",de:"Ein Radweg führt bis nach Marseillan.",ph:"Aïn Rad-vèk furt biss nakh Marseillan."},
+  {c:8,e:"🍷",fr:"Le Noilly Prat se déguste au port de Marseillan.",de:"Den Noilly Prat kann man im Hafen von Marseillan probieren.",ph:"Dène Noilly Prat kan man im Hafène fon Marseillan probirène."},
+  {c:8,e:"🎡",fr:"Le Cap d'Agde est à dix minutes en voiture.",de:"Cap d'Agde ist zehn Minuten mit dem Auto entfernt.",ph:"Cap d'Agde ist tsèn Minutène mit dème Aouto ènt-fèrnt."},
+  {c:8,e:"🌊",fr:"L'étang de Thau est à quelques minutes.",de:"Der Thau-See ist nur wenige Minuten entfernt.",ph:"Dèr Thau-Zé ist nour vènigeu Minutène ènt-fèrnt."},
+  {c:8,e:"🐚",fr:"Les huîtres de Thau sont délicieuses.",de:"Die Austern aus dem Thau-See sind köstlich.",ph:"Di Aoustèrne aous dème Thau-Zé zint keust-lich."},
+  {c:8,e:"🎪",fr:"Le marché de Marseillan a lieu le mardi matin.",de:"Der Markt von Marseillan findet dienstags morgens statt.",ph:"Dèr Markt fon Marseillan findèt dinss-taks morgèns chtat."},
 
   // ── Politesse & Quotidien
-  {c:9,e:"🌞",fr:"Bonjour !",de:"Guten Morgen! Guten Tag!",ph:"Gouten-Morgène! Gouten-Tag!"},
+  {c:9,e:"🌞",fr:"Bonjour ! (le matin, puis dans la journée)",de:"Guten Morgen! Guten Tag!",ph:"Gouten-Morgène! Gouten-Tak!"},
   {c:9,e:"🌙",fr:"Bonne nuit !",de:"Gute Nacht!",ph:"Gouteu-Nakht!"},
   {c:9,e:"👋",fr:"Au revoir et bonne route !",de:"Auf Wiedersehen und gute Weiterreise!",ph:"Aouf-Vidèr-zèène ount gouteu Vaïtèr-raïzeu!"},
   {c:9,e:"🙏",fr:"Merci beaucoup !",de:"Vielen Dank!",ph:"Filène-Dank!"},
@@ -717,44 +797,68 @@ const P = [
   {c:9,e:"🇫🇷",fr:"Parlez-vous français ?",de:"Sprechen Sie Französisch?",ph:"Chprèchène zi Frant-seuzich?"},
   {c:9,e:"🇬🇧",fr:"Parlez-vous anglais ?",de:"Sprechen Sie Englisch?",ph:"Chprèchène zi Èng-lich?"},
   {c:9,e:"✋",fr:"Un moment, s'il vous plaît.",de:"Einen Moment bitte.",ph:"Aïnène Momènt biteu."},
-  {c:9,e:"📍",fr:"Suivez-moi, je vous montre.",de:"Folgen Sie mir, ich zeige es Ihnen.",ph:"Folgène zi mir, ich tsaïgueu èss irène."},
+  {c:9,e:"🙋",fr:"Avez-vous une question ?",de:"Haben Sie eine Frage?",ph:"Habène zi aïneu Frageu?"},
   {c:9,e:"😊",fr:"Avez-vous d'autres questions ?",de:"Haben Sie noch weitere Fragen?",ph:"Habène zi nokh vaïtèrreu Fragène?"},
-  {c:9,e:"🎉",fr:"Passez d'excellentes vacances !",de:"Ich wünsche Ihnen einen schönen Urlaub!",ph:"Ich vuuncheu irène aïnène cheunène Ourlaoup!"},
+  {c:9,e:"🎉",fr:"Passez d'excellentes vacances !",de:"Ich wünsche Ihnen einen schönen Urlaub!",ph:"Ich vuncheu irène aïnène cheunène Ourlaoup!"},
   {c:9,e:"🔁",fr:"Pouvez-vous répéter, s'il vous plaît ?",de:"Könnten Sie das bitte wiederholen?",ph:"Keuntène zi dass biteu vidèr-holène?"},
 
   // ── Ajouts basés sur le site officiel lesmediterranees.com
-  {c:0,e:"📆",fr:"Le camping est ouvert d'avril à octobre.",de:"Der Campingplatz ist von April bis Oktober geöffnet.",ph:"Dèr Kamping-platss ist fon April biss Oktobèr guéeufnèt."},
-  {c:1,e:"🛖",fr:"La Cabane Réserve accueille de quatre à six personnes.",de:"Die Cabane Réserve bietet Platz für vier bis sechs Personen.",ph:"Di Kabane Rézèrve bitèt Platss fuir fir biss zèkss Pèrzonène."},
-  {c:1,e:"🏡",fr:"Le Garden Family est prévu pour six à huit personnes.",de:"Das Garden Family ist für sechs bis acht Personen.",ph:"Dass Gardène Fémili ist fuir zèkss biss akht Pèrzonène."},
-  {c:1,e:"🏊",fr:"La Villa La Coquille dispose de sa propre piscine privée.",de:"Die Villa La Coquille hat einen eigenen privaten Pool.",ph:"Di Villa La Coquille hat aïnène aïguènène privatène Poul."},
-  {c:1,e:"🛏️",fr:"Les draps et les serviettes sont inclus, sauf dans la gamme Cosy.",de:"Bettwäsche und Handtücher sind inklusive, außer in der Cosy-Kategorie.",ph:"Bèt-vècheu ount Hant-tuichèr zint inklouziveu, aoussèr in dèr Kozi-katégori."},
-  {c:2,e:"🏷️",fr:"En réservant tôt, vous bénéficiez de 10 % de réduction.",de:"Bei früher Buchung erhalten Sie zehn Prozent Rabatt.",ph:"Baï fruïèr Boukhoung èr-haltène zi tsèn Protsènt Rabat."},
-  {c:3,e:"📏",fr:"La grande piscine du Beach Garden fait trente-trois mètres de long.",de:"Der große Pool im Beach Garden ist dreiunddreißig Meter lang.",ph:"Dèr greusseu Poul im Beach Garden ist draï-ount-draïssig Mètèr lang."},
+  {c:0,e:"📆",fr:"Le camping est ouvert d'avril à octobre.",de:"Der Campingplatz ist von April bis Oktober geöffnet.",ph:"Dèr Kamping-platss ist fon April biss Oktobèr gué-eufnèt."},
+  {c:1,e:"🛖",fr:"La Cabane Réserve accueille de quatre à six personnes.",de:"Die Cabane Réserve bietet Platz für vier bis sechs Personen.",ph:"Di Cabane Réserve bitèt Platss fur fir biss zèkss Pèrzonène."},
+  {c:1,e:"🏡",fr:"Le Garden Family est prévu pour six à huit personnes.",de:"Das Garden Family ist für sechs bis acht Personen.",ph:"Dass Garden Family ist fur zèkss biss akht Pèrzonène."},
+  {c:1,e:"🏊",fr:"La Villa La Coquille dispose de sa propre piscine.",de:"Die Villa La Coquille hat einen eigenen privaten Pool.",ph:"Di Villa La Coquille hat aïnène aïguènène privatène Poul."},
+  {c:1,e:"🛏️",fr:"Les draps et les serviettes sont inclus, sauf dans la gamme Cosy.",de:"Bettwäsche und Handtücher sind inklusive, außer in der Cosy-Kategorie.",ph:"Bèt-vècheu ount Hant-tuchèr zint inklouziveu, aoussèr in dèr Kozi-katégori."},
+  {c:2,e:"🏷️",fr:"En réservant tôt, vous bénéficiez de 10 % de réduction.",de:"Bei früher Buchung erhalten Sie zehn Prozent Rabatt.",ph:"Baï fruèr Boukhoung èr-haltène zi tsèn Protsènt Rabat."},
+  {c:3,e:"📏",fr:"La grande piscine du Beach Garden fait trente-trois mètres de long.",de:"Der große Pool im Beach Garden ist dreiunddreißig Meter lang.",ph:"Dèr greusseu Poul im Beach Garden ist draï-ount-draïssich Mètèr lang."},
   {c:3,e:"🛁",fr:"L'espace balnéo couvert propose une eau calme ou pétillante.",de:"Der überdachte Wellnessbereich bietet ruhiges oder sprudelndes Wasser.",ph:"Dèr ubèr-dakhteu Vèlnèss-béraïch bitèt rouiguèss odèr chproudèlndèss Vassèr."},
   {c:5,e:"🍽️",fr:"Le restaurant Le Bistro a une vue panoramique sur la mer.",de:"Das Restaurant Le Bistro hat einen Panoramablick auf das Meer.",ph:"Dass Rèstoran Le Bistro hat aïnène Panorama-blik aouf dass Mèr."},
-  {c:5,e:"🍹",fr:"Au bar, trente minutes de Wi-Fi sont offertes toutes les six heures.",de:"An der Bar sind alle sechs Stunden dreißig Minuten WLAN gratis.",ph:"An dèr Bar zint aleu zèkss Chtoundène draïssig Minoutène Vé-lan gratiss."},
+  {c:5,e:"🍹",fr:"Au bar, trente minutes de Wi-Fi sont offertes toutes les six heures.",de:"An der Bar sind alle sechs Stunden dreißig Minuten WLAN gratis.",ph:"An dèr Bar zint aleu zèkss Chtoundène draïssich Minoutène Vé-lane gratiss."},
   {c:5,e:"🧖",fr:"Le spa Bulle des Sables propose hammam, sauna, massages et bar à ongles.",de:"Das Spa Bulle des Sables bietet Hammam, Sauna, Massagen und ein Nagelstudio.",ph:"Dass Chpa Bulle des Sables bitèt Hamam, Zaouna, Massagène ount aïn Naguèl-chtoudio."},
   {c:5,e:"🏐",fr:"Il y a du beach-volley et de l'aquagym.",de:"Es gibt Beachvolleyball und Aquagym.",ph:"Èss guibt Beach-volibal ount Akva-guim."},
-  {c:5,e:"🧒",fr:"Il y a un mini-club pour les enfants et un club pour les ados.",de:"Es gibt einen Miniclub für Kinder und einen Club für Jugendliche.",ph:"Èss guibt aïnène Mini-kloub fuir Kindèr ount aïnène Kloub fuir Yougènt-licheu."},
+  {c:5,e:"🧒",fr:"Il y a un mini-club pour les enfants et un club pour les ados.",de:"Es gibt einen Miniclub für Kinder und einen Club für Jugendliche.",ph:"Èss guibt aïnène Mini-kloub fur Kindèr ount aïnène Kloub fur Yougènt-licheu."},
   {c:6,e:"🚶",fr:"Tout visiteur doit se présenter à la réception ; une redevance s'applique au-delà de deux heures.",de:"Jeder Besucher muss sich an der Rezeption melden; nach zwei Stunden wird eine Gebühr fällig.",ph:"Yédèr Beu-zoukhèr mouss zich an dèr Rétsèptsion mèldène; nakh tsvaï Chtoundène virt aïneu Guébur fèlich."},
-  {c:8,e:"🦪",fr:"On déguste les huîtres de Bouzigues au bord de l'étang de Thau.",de:"In Bouzigues isst man Austern direkt am Thau-See.",ph:"In Bouzig isst man Aoustèrn dirèkt am To-Zé."},
+  {c:8,e:"🦪",fr:"On déguste les huîtres de Bouzigues au bord de l'étang de Thau.",de:"In Bouzigues isst man Austern direkt am Thau-See.",ph:"In Bouzigues isst man Aoustèrn dirèkt am Thau-Zé."},
 
   // ── Règlement intérieur, FAQ et CGV (source : lesmediterranees.com)
-  {c:0,e:"🌃",fr:"Vous pouvez arriver jusqu'à 23 h au plus tard.",de:"Sie können spätestens bis dreiundzwanzig Uhr anreisen.",ph:"Zi keunène chpè-tèstèns biss draï-ount-tsvan-tsig Ouir an-raïzène."},
-  {c:0,e:"🧹",fr:"En location, le départ se fait entre 8 h et 10 h. Après 10 h, une nuit supplémentaire peut être facturée.",de:"In der Mietunterkunft erfolgt die Abreise zwischen acht und zehn Uhr. Nach zehn Uhr kann eine zusätzliche Nacht berechnet werden.",ph:"In dèr Mit-ountèr-kounft èr-folgt di Ap-raïzeu tsvichène akht ount tsèn Ouir. Nakh tsèn Ouir kan aïneu tsou-sèts-licheu Nakht beu-rèchnèt vèrdène."},
+  {c:0,e:"🌃",fr:"Vous pouvez arriver jusqu'à 23 h au plus tard.",de:"Sie können spätestens bis dreiundzwanzig Uhr anreisen.",ph:"Zi keunène chpè-tèstèns biss draï-ount-tsvan-tsich Our an-raïzène."},
+  {c:0,e:"🧹",fr:"En location, le départ se fait entre 7 h et 10 h. Après 10 h, une nuit supplémentaire peut être facturée.",de:"In der Mietunterkunft erfolgt die Abreise zwischen sieben und zehn Uhr. Nach zehn Uhr kann eine zusätzliche Nacht berechnet werden.",ph:"In dèr Mit-ountèr-kounft èr-folgt di Ap-raïzeu tsvichène zibène ount tsèn Our. Nakh tsèn Our kan aïneu tsou-sèts-licheu Nakht beu-rèchnèt vèrdène."},
   {c:0,e:"💰",fr:"La caution vous est restituée si le logement est propre et l'inventaire complet.",de:"Sie erhalten die Kaution zurück, wenn die Unterkunft sauber und das Inventar vollständig ist.",ph:"Zi èr-haltène di Kaou-tsion tsou-ruk, vèn di Ountèr-kounft zaoubèr ount dass Invèntar fol-chtèndich ist."},
   {c:2,e:"🧾",fr:"À plus de 30 jours de l'arrivée, un acompte de 30 % est demandé ; à moins de 30 jours, le séjour est réglé en totalité.",de:"Bei einer Buchung mehr als dreißig Tage vor der Anreise zahlen Sie dreißig Prozent an, bei weniger als dreißig Tagen den gesamten Betrag.",ph:"Baï aïnèr Boukhoung mèr als draïssich Tageu for dèr An-raïzeu tsalène zi draïssich Protsènt an, baï vènigèr als draïssich Taguène dène guézamtène Beu-trak."},
   {c:2,e:"✍️",fr:"Toute modification doit être demandée par écrit au moins 30 jours avant l'arrivée, selon les disponibilités.",de:"Änderungen müssen mindestens dreißig Tage vor der Anreise schriftlich beantragt werden, je nach Verfügbarkeit.",ph:"Èndèroungène mussène mindèstèns draïssich Tageu for dèr An-raïzeu chrift-lich beu-an-trakt vèrdène, yé nakh Fèr-fug-bar-kaït."},
   {c:2,e:"🏛️",fr:"La taxe de séjour est fixée par la commune.",de:"Die Kurtaxe wird von der Gemeinde festgelegt.",ph:"Di Kour-takseu virt fon dèr Guémaïndeu fèst-guélègt."},
   {c:1,e:"🐶",fr:"Un seul chien est accepté, ou deux petits chiens de moins de 10 kg.",de:"Erlaubt ist ein Hund oder zwei kleine Hunde unter zehn Kilo.",ph:"Èr-laoubt ist aïn Hount odèr tsvaï klaïneu Houndeu ountèr tsèn Kilo."},
+  {c:1,e:"⛔",fr:"Les chiens de catégorie 1 et 2 sont interdits dans le camping.",de:"Hunde der Kategorien eins und zwei, sogenannte Listenhunde, sind auf dem Campingplatz verboten.",ph:"Houndeu dèr Katégorine aïnss ount tsvaï, zo-guénantène Listène-houndeu, zint aouf dème Kamping-platss fèr-botène."},
   {c:1,e:"💉",fr:"Les chiens doivent être tenus en laisse et vaccinés. Merci de nous présenter le carnet de vaccination.",de:"Hunde müssen an der Leine geführt werden und geimpft sein. Bitte zeigen Sie uns den Impfpass.",ph:"Houndeu mussène an dèr Laïneu guéfurt vèrdène ount gué-impft zaïn. Biteu tsaïguène zi ouns dène Impf-pass."},
   {c:3,e:"👙",fr:"Pour les femmes, maillot une pièce ou bikini ; pour les hommes, slip de bain.",de:"Für Damen ist ein Badeanzug oder ein Bikini erlaubt, für Herren eine Badehose.",ph:"Fur Damène ist aïn Badeu-an-tsouk odèr aïn Bikini èr-laoubt, fur Hèrène aïneu Badeu-hozeu."},
   {c:3,e:"🐾",fr:"Les animaux sont interdits dans l'espace piscine.",de:"Tiere sind im Poolbereich verboten.",ph:"Tireu zint im Poul-beu-raïch fèr-botène."},
-  {c:6,e:"🚧",fr:"De 23 h à 7 h, le portail est fermé et la circulation est interdite.",de:"Von dreiundzwanzig bis sieben Uhr ist die Einfahrt geschlossen und das Fahren verboten.",ph:"Fon draï-ount-tsvan-tsig biss zibène Ouir ist di Aïn-fart guéchlossène ount dass Farène fèr-botène."},
+  {c:6,e:"🚧",fr:"De 23 h à 7 h, le portail est fermé et la circulation est interdite.",de:"Von dreiundzwanzig bis sieben Uhr ist die Einfahrt geschlossen und das Fahren verboten.",ph:"Fon draï-ount-tsvan-tsich biss zibène Our ist di Aïn-fart guéchlossène ount dass Farène fèr-botène."},
   {c:6,e:"🚙",fr:"Un seul véhicule est autorisé par emplacement ; les autres se garent sur le parking.",de:"Pro Stellplatz ist nur ein Fahrzeug erlaubt; weitere Fahrzeuge parken bitte auf dem Parkplatz.",ph:"Pro Chtel-platss ist nour aïn Far-tsoïg èr-laoubt; vaïtèreu Far-tsoïgeu parkène biteu aouf dème Park-platss."},
   {c:6,e:"🍖",fr:"Les barbecues à charbon sont strictement interdits.",de:"Holzkohlegrills sind streng verboten.",ph:"Holts-koleu-grilss zint chtrèng fèr-botène."},
   {c:6,e:"🎟️",fr:"Pour un visiteur, l'accès aux piscines et aux animations coûte 10 € par personne et par jour.",de:"Für Besucher kostet der Zugang zu den Pools und zum Animationsprogramm zehn Euro pro Person und Tag.",ph:"Fur Beu-zoukhèr kostèt dèr Tsougang tsou dène Poulss ount tsoum Animatsions-programm tsèn Oï-ro pro Pèrzone ount Tak."},
-  {c:6,e:"🕚",fr:"Les visiteurs doivent quitter le camping au plus tard à 23 h.",de:"Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen.",ph:"Beu-zoukhèr mussène dène Kamping-platss chpè-tèstèns oum draï-ount-tsvan-tsig Ouir fèr-lassène."},
+  {c:6,e:"🕚",fr:"Les visiteurs doivent quitter le camping au plus tard à 23 h.",de:"Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen.",ph:"Beu-zoukhèr mussène dène Kamping-platss chpè-tèstèns oum draï-ount-tsvan-tsich Our fèr-lassène."},
+
+  // ── Cautions (consignes de la réception)
+  {c:1,e:"🔐",fr:"Pour le mobil-home, la caution est de 300 €, en espèces ou par carte uniquement.",de:"Für das Mobilheim beträgt die Kaution dreihundert Euro, nur bar oder mit Karte.",ph:"Fur dass Mobil-haïm beu-trègt di Kaou-tsion draï-houndèrt Oï-ro, nour bar odèr mit Karteu."},
+  {c:1,e:"🔌",fr:"Sur les emplacements, nous prêtons des adaptateurs électriques et des raccordements d'eau contre une caution de 20 €.",de:"Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro.",ph:"Fur di Chtel-plètseu fèr-laïène vir Adaptèr fur dène Chtrom- ount Vassèr-an-chlouss guéguène aïneu Kaou-tsion fon tsvan-tsich Oï-ro."},
+  {c:1,e:"🔌",fr:"Avez-vous besoin d'un adaptateur électrique ?",de:"Brauchen Sie einen Stromadapter?",ph:"Braoukhène zi aïnène Chtrom-adaptèr?"},
+
+  // ════════ COMPRENDRE LES CLIENTS (c:13) — questions fréquentes ════════
+  {c:13,e:"🚻",fr:"Où sont les toilettes ?",de:"Wo sind die Toiletten?",ph:"Vo zint di Toalètène?"},
+  {c:13,e:"🏊",fr:"À quelle heure ouvre la piscine ?",de:"Wann öffnet das Schwimmbad?",ph:"Vann eufnèt dass Chvim-bad?"},
+  {c:13,e:"🥖",fr:"Où pouvons-nous acheter du pain ?",de:"Wo können wir Brötchen kaufen?",ph:"Vo keunène vir Breut-chène kaoufène?"},
+  {c:13,e:"📶",fr:"Y a-t-il du Wi-Fi ici ?",de:"Gibt es hier WLAN?",ph:"Guibt èss hir Vé-lane?"},
+  {c:13,e:"🔑",fr:"Quel est le mot de passe du Wi-Fi ?",de:"Wie lautet das WLAN-Passwort?",ph:"Vi laoutèt dass Vé-lane-Pass-vort?"},
+  {c:13,e:"🏖️",fr:"Où est la plage ?",de:"Wo ist der Strand?",ph:"Vo ist dèr Chtrant?"},
+  {c:13,e:"⏰",fr:"Pouvons-nous partir plus tard ?",de:"Können wir später abreisen?",ph:"Keunène vir chpètèr ap-raïzène?"},
+  {c:13,e:"🗝️",fr:"Nous avons perdu la clé.",de:"Wir haben den Schlüssel verloren.",ph:"Vir habène dène Chlussèl fèr-lorène."},
+  {c:13,e:"🗑️",fr:"Où pouvons-nous jeter nos déchets ?",de:"Wo können wir unseren Müll entsorgen?",ph:"Vo keunène vir ounzèrène Mul ènt-zorguène?"},
+  {c:13,e:"🔌",fr:"Avez-vous un adaptateur électrique ?",de:"Haben Sie einen Adapter für den Strom?",ph:"Habène zi aïnène Adaptèr fur dène Chtrom?"},
+  {c:13,e:"🎭",fr:"Y a-t-il une animation ce soir ?",de:"Gibt es heute Abend eine Animation?",ph:"Guibt èss hoïteu Abènt aïneu Animatsion?"},
+  {c:13,e:"🛒",fr:"Où se trouve le supermarché le plus proche ?",de:"Wo ist der nächste Supermarkt?",ph:"Vo ist dèr nèchsteu Zoupèr-markt?"},
+  {c:13,e:"💳",fr:"Puis-je payer par carte ?",de:"Kann ich mit Karte bezahlen?",ph:"Kan ich mit Karteu beu-tsalène?"},
+  {c:13,e:"🧹",fr:"Le mobil-home n'est pas propre.",de:"Das Mobilheim ist nicht sauber.",ph:"Dass Mobil-haïm ist nicht zaoubèr."},
+  {c:13,e:"🚿",fr:"La douche ne fonctionne pas.",de:"Die Dusche funktioniert nicht.",ph:"Di Doucheu founk-tsionirt nicht."},
+  {c:13,e:"🚗",fr:"Où pouvons-nous garer notre deuxième voiture ?",de:"Wo können wir unser zweites Auto parken?",ph:"Vo keunène vir ounzèr tsvaïtèss Aouto parkène?"},
 
   // ════════ BASES — Nombres (c:10) ════════
   {c:10,e:"🔢",fr:"0 — zéro",de:"null",ph:"noul"},
@@ -762,7 +866,7 @@ const P = [
   {c:10,e:"🔢",fr:"2 — deux",de:"zwei",ph:"tsvaï"},
   {c:10,e:"🔢",fr:"3 — trois",de:"drei",ph:"draï"},
   {c:10,e:"🔢",fr:"4 — quatre",de:"vier",ph:"fir"},
-  {c:10,e:"🔢",fr:"5 — cinq",de:"fünf",ph:"fuunf"},
+  {c:10,e:"🔢",fr:"5 — cinq",de:"fünf",ph:"funf"},
   {c:10,e:"🔢",fr:"6 — six",de:"sechs",ph:"zèkss"},
   {c:10,e:"🔢",fr:"7 — sept",de:"sieben",ph:"zibène"},
   {c:10,e:"🔢",fr:"8 — huit",de:"acht",ph:"akht"},
@@ -772,32 +876,32 @@ const P = [
   {c:10,e:"🔢",fr:"12 — douze",de:"zwölf",ph:"tsvelf"},
   {c:10,e:"🔢",fr:"13 — treize",de:"dreizehn",ph:"draï-tsèn"},
   {c:10,e:"🔢",fr:"14 — quatorze",de:"vierzehn",ph:"fir-tsèn"},
-  {c:10,e:"🔢",fr:"15 — quinze",de:"fünfzehn",ph:"fuunf-tsèn"},
-  {c:10,e:"🔢",fr:"16 — seize",de:"sechzehn",ph:"zèkh-tsèn"},
+  {c:10,e:"🔢",fr:"15 — quinze",de:"fünfzehn",ph:"funf-tsèn"},
+  {c:10,e:"🔢",fr:"16 — seize",de:"sechzehn",ph:"zèch-tsèn"},
   {c:10,e:"🔢",fr:"17 — dix-sept",de:"siebzehn",ph:"zib-tsèn"},
   {c:10,e:"🔢",fr:"18 — dix-huit",de:"achtzehn",ph:"akht-tsèn"},
   {c:10,e:"🔢",fr:"19 — dix-neuf",de:"neunzehn",ph:"noïn-tsèn"},
-  {c:10,e:"🔢",fr:"20 — vingt",de:"zwanzig",ph:"tsvann-tsig"},
-  {c:10,e:"🔢",fr:"21 — vingt et un",de:"einundzwanzig",ph:"aïn-ount-tsvann-tsig"},
-  {c:10,e:"🔢",fr:"22 — vingt-deux",de:"zweiundzwanzig",ph:"tsvaï-ount-tsvann-tsig"},
-  {c:10,e:"🔢",fr:"30 — trente",de:"dreißig",ph:"draï-ssig"},
-  {c:10,e:"🔢",fr:"40 — quarante",de:"vierzig",ph:"fir-tsig"},
-  {c:10,e:"🔢",fr:"50 — cinquante",de:"fünfzig",ph:"fuunf-tsig"},
-  {c:10,e:"🔢",fr:"60 — soixante",de:"sechzig",ph:"zèkh-tsig"},
-  {c:10,e:"🔢",fr:"70 — soixante-dix",de:"siebzig",ph:"zib-tsig"},
-  {c:10,e:"🔢",fr:"80 — quatre-vingts",de:"achtzig",ph:"akht-tsig"},
-  {c:10,e:"🔢",fr:"90 — quatre-vingt-dix",de:"neunzig",ph:"noïn-tsig"},
+  {c:10,e:"🔢",fr:"20 — vingt",de:"zwanzig",ph:"tsvan-tsich"},
+  {c:10,e:"🔢",fr:"21 — vingt et un",de:"einundzwanzig",ph:"aïn-ount-tsvan-tsich"},
+  {c:10,e:"🔢",fr:"22 — vingt-deux",de:"zweiundzwanzig",ph:"tsvaï-ount-tsvan-tsich"},
+  {c:10,e:"🔢",fr:"30 — trente",de:"dreißig",ph:"draï-ssich"},
+  {c:10,e:"🔢",fr:"40 — quarante",de:"vierzig",ph:"fir-tsich"},
+  {c:10,e:"🔢",fr:"50 — cinquante",de:"fünfzig",ph:"funf-tsich"},
+  {c:10,e:"🔢",fr:"60 — soixante",de:"sechzig",ph:"zèch-tsich"},
+  {c:10,e:"🔢",fr:"70 — soixante-dix",de:"siebzig",ph:"zib-tsich"},
+  {c:10,e:"🔢",fr:"80 — quatre-vingts",de:"achtzig",ph:"akht-tsich"},
+  {c:10,e:"🔢",fr:"90 — quatre-vingt-dix",de:"neunzig",ph:"noïn-tsich"},
   {c:10,e:"🔢",fr:"100 — cent",de:"hundert",ph:"houn-dèrt"},
   {c:10,e:"🔢",fr:"1 000 — mille",de:"tausend",ph:"taou-zènt"},
 
   // ════════ BASES — Jours & Mois (c:11) ════════
-  {c:11,e:"📅",fr:"Lundi",de:"Montag",ph:"Mon-tag"},
-  {c:11,e:"📅",fr:"Mardi",de:"Dienstag",ph:"Dinss-tag"},
+  {c:11,e:"📅",fr:"Lundi",de:"Montag",ph:"Mon-tak"},
+  {c:11,e:"📅",fr:"Mardi",de:"Dienstag",ph:"Dinss-tak"},
   {c:11,e:"📅",fr:"Mercredi",de:"Mittwoch",ph:"Mit-vokh"},
-  {c:11,e:"📅",fr:"Jeudi",de:"Donnerstag",ph:"Donèrs-tag"},
-  {c:11,e:"📅",fr:"Vendredi",de:"Freitag",ph:"Fraï-tag"},
-  {c:11,e:"📅",fr:"Samedi",de:"Samstag",ph:"Zamss-tag"},
-  {c:11,e:"📅",fr:"Dimanche",de:"Sonntag",ph:"Zon-tag"},
+  {c:11,e:"📅",fr:"Jeudi",de:"Donnerstag",ph:"Donèrs-tak"},
+  {c:11,e:"📅",fr:"Vendredi",de:"Freitag",ph:"Fraï-tak"},
+  {c:11,e:"📅",fr:"Samedi",de:"Samstag",ph:"Zamss-tak"},
+  {c:11,e:"📅",fr:"Dimanche",de:"Sonntag",ph:"Zon-tak"},
   {c:11,e:"🗓️",fr:"Janvier",de:"Januar",ph:"Yanou-ar"},
   {c:11,e:"🗓️",fr:"Février",de:"Februar",ph:"Fébrou-ar"},
   {c:11,e:"🗓️",fr:"Mars",de:"März",ph:"Mèrts"},
@@ -813,11 +917,11 @@ const P = [
 
   // ════════ BASES — Heure & moments (c:12) ════════
   {c:12,e:"❓",fr:"Quelle heure est-il ?",de:"Wie spät ist es?",ph:"Vi chpèt ist èss?"},
-  {c:12,e:"🕙",fr:"Il est dix heures.",de:"Es ist zehn Uhr.",ph:"Èss ist tsèn Ouir."},
-  {c:12,e:"🕛",fr:"Midi",de:"Mittag",ph:"Mit-tag"},
+  {c:12,e:"🕙",fr:"Il est dix heures.",de:"Es ist zehn Uhr.",ph:"Èss ist tsèn Our."},
+  {c:12,e:"🕛",fr:"Midi",de:"Mittag",ph:"Mit-tak"},
   {c:12,e:"🌙",fr:"Minuit",de:"Mitternacht",ph:"Mitèr-nakht"},
   {c:12,e:"🌅",fr:"Le matin",de:"der Morgen",ph:"dèr Morgène"},
-  {c:12,e:"🌇",fr:"L'après-midi",de:"der Nachmittag",ph:"dèr Nakh-mitag"},
+  {c:12,e:"🌇",fr:"L'après-midi",de:"der Nachmittag",ph:"dèr Nakh-mitak"},
   {c:12,e:"🌃",fr:"Le soir",de:"der Abend",ph:"dèr Abènt"},
   {c:12,e:"📆",fr:"Aujourd'hui",de:"heute",ph:"hoïteu"},
   {c:12,e:"➡️",fr:"Demain",de:"morgen",ph:"morgène"},
@@ -838,6 +942,7 @@ const CATS = [
   {id:8, name:"Région et sorties",     col:"#3aaa6b"},
   {id:9, name:"Politesse",            col:"#c07830"},
   // ── Rubrique « Bases » (apprentissage), affichée dans l'onglet 🔢 Bases
+  {id:13, name:"Comprendre les clients", col:"#8E1B2E"},
   {id:10, name:"Nombres",         col:"#2d9fc5", grp:"base"},
   {id:11, name:"Jours et mois",    col:"#3aaa6b", grp:"base"},
   {id:12, name:"Heures et moments", col:"#d4a017", grp:"base"},
@@ -866,7 +971,7 @@ const FLOWS = [
             {de:"Guten Tag, ich hätte gerne einen Stellplatz für ein Wohnmobil.", fr:"Bonjour, je voudrais un emplacement pour un camping-car."},
             {de:"Haben Sie einen Platz für unseren Wohnwagen?", fr:"Avez-vous une place pour notre caravane ?"},
           ]},
-          {t:"say", label:"Tu réponds", fr:"Bonjour, très bien ! Est-ce que vous êtes déjà venus chez nous ?", de:"Guten Tag, sehr gut! Waren Sie schon einmal bei uns?", ph:"Gouten-tag, zèr gout! Varène zi chon aïn-mal baï ounss?"},
+          {t:"say", label:"Tu réponds", fr:"Bonjour, très bien ! Êtes-vous déjà venus chez nous ?", de:"Guten Tag, sehr gut! Waren Sie schon einmal bei uns?", ph:"Gouten-tak, zèr gout! Varène zi chon aïn-mal baï ounss?"},
           {t:"say", label:"Tu enchaînes", fr:"Avez-vous une carte ACSI, ADAC ou ANWB ?", de:"Haben Sie eine ACSI-, ADAC- oder ANWB-Karte?", ph:"Habène zi aïneu A-Tsé-Èss-I-, A-Dé-A-Tsé- odèr A-Èn-Vé-Bé-Karteu?"},
           {t:"memo", label:"💡 Réflexe", html:"S'il est <b>déjà venu</b> → cherche sa fiche client avec son <b>nom de famille</b>."},
           {t:"say", label:"Pour retrouver la fiche", fr:"Quel est votre nom de famille, s'il vous plaît ?", de:"Wie ist Ihr Nachname, bitte?", ph:"Vi ist ir Nakh-nameu, biteu?"},
@@ -884,8 +989,8 @@ const FLOWS = [
         title:"3 · Option carte ACSI",
         blocks:[
           {t:"memo", label:"💡 Si carte ACSI", html:"Montre la <b>zone délimitée ACSI</b> sur le plan."},
-          {t:"say", label:"Tu montres la zone", fr:"Voici la zone réservée aux emplacements ACSI.", de:"Hier ist der Bereich für die ACSI-Stellplätze.", ph:"Hir ist dèr Beu-raïch fuir di A-Tsé-Èss-I-Chtel-plètseu."},
-          {t:"say", label:"Tu gardes la carte", fr:"Je garde votre carte ACSI ou votre pièce d'identité, et vous réglez la veille de votre départ. Ainsi, vous ne payez que les jours passés chez nous !", de:"Ich behalte Ihre ACSI-Karte oder Ihren Ausweis, und Sie zahlen am Tag vor Ihrer Abreise. So zahlen Sie nur die Tage, die Sie bleiben!", ph:"Ich beu-halteu ireu A-Tsé-Èss-I-Karteu odèr irène Aous-vaïss, ount zi tsalène am Tag for irèr Ap-raïzeu. Zo tsalène zi nour di Tageu, di zi blaïbène!"},
+          {t:"say", label:"Tu montres la zone", fr:"Voici la zone réservée aux emplacements ACSI.", de:"Hier ist der Bereich für die ACSI-Stellplätze.", ph:"Hir ist dèr Beu-raïch fur di A-Tsé-Èss-I-Chtel-plètseu."},
+          {t:"say", label:"Tu gardes la carte", fr:"Je garde votre carte ACSI ou votre pièce d'identité, et vous réglez la veille de votre départ. Ainsi, vous ne payez que les jours passés chez nous !", de:"Ich behalte Ihre ACSI-Karte oder Ihren Ausweis, und Sie zahlen am Tag vor Ihrer Abreise. So zahlen Sie nur die Tage, die Sie bleiben!", ph:"Ich beu-halteu ireu A-Tsé-Èss-I-Karteu odèr irène Aous-vaïss, ount zi tsalène am Tak for irèr Ap-raïzeu. Zo tsalène zi nour di Tageu, di zi blaïbène!"},
         ]
       },
       {
@@ -893,6 +998,7 @@ const FLOWS = [
         blocks:[
           {t:"say", label:"Composition", fr:"Combien d'adultes et combien d'enfants êtes-vous ?", de:"Wie viele Erwachsene und wie viele Kinder sind Sie?", ph:"Vi fileu Èr-vakhzèneu ount vi fileu Kindèr zint zi?"},
           {t:"say", label:"Animal", fr:"Avez-vous un chien avec vous ?", de:"Haben Sie einen Hund dabei?", ph:"Habène zi aïnène Hount dabaï?"},
+          {t:"memo", label:"💡 Chiens", html:"Les chiens de <b>catégorie 1 et 2</b> sont <b>interdits dans le camping</b>."},
           {t:"say", label:"Plaque", fr:"Il me faut votre numéro de plaque d'immatriculation, s'il vous plaît.", de:"Ich brauche bitte Ihr Kennzeichen.", ph:"Ich braoukheu biteu ir Kèn-tsaïchène."},
           {t:"say", label:"Téléphone", fr:"Votre numéro de téléphone, s'il vous plaît ?", de:"Ihre Telefonnummer, bitte?", ph:"Ireu Téléfone-noumèr, biteu?"},
           {t:"say", label:"E-mail", fr:"Votre adresse e-mail ?", de:"Ihre E-Mail-Adresse?", ph:"Ireu I-Mèïl-adrèsseu?"},
@@ -903,9 +1009,11 @@ const FLOWS = [
         title:"5 · Présentation du camping",
         blocks:[
           {t:"say", label:"Les 3 campings", fr:"Nous sommes ici à la réception du Beach Garden. Juste à côté se trouve le Nouvelle Floride et, en face, le Charlemagne. Avec vos bracelets, vous avez accès aux trois campings !", de:"Wir sind hier an der Rezeption des Beach Garden. Direkt daneben liegt der Nouvelle Floride und gegenüber der Charlemagne. Mit Ihren Armbändern haben Sie Zugang zu allen drei Campingplätzen!", ph:"Vir zint hir an dèr Rétsèptsion dèss Beach Garden. Dirèkt da-nèbène likt dèr Nouvelle Floride ount guéguèn-ubèr dèr Charlemagne. Mit irène Arm-bèndèrn habène zi Tsougang tsou alène draï Kamping-plètsène!"},
-          {t:"say", label:"Code de la plage", fr:"Ici, une porte ferme l'accès à la plage. Tapez ce code pour l'ouvrir. Elle fonctionne de 7 h à 22 h.", de:"Hier sperrt eine Tür den Zugang zum Strand. Sie geben diesen Code ein, um sie zu öffnen. Sie funktioniert von sieben bis zweiundzwanzig Uhr.", ph:"Hir chpèrt aïneu Tuir dène Tsougang tsoum Chtrant. Zi guébène dizène Kode aïn, oum zi tsou eufnène. Zi founk-tsionirt fon zibène biss tsvaï-ount-tsvan-tsig Ouir."},
-          {t:"say", label:"Application Tipiz", fr:"Je vous conseille de télécharger l'application Tipiz et d'y saisir ce mot de passe. Vous y trouverez le programme des animations, les horaires d'ouverture, les menus, la météo, etc.", de:"Ich empfehle Ihnen, die App Tipiz herunterzuladen. Sie geben dieses Passwort ein. Darin finden Sie das Animationsprogramm, die Öffnungszeiten, die Menüs, das Wetter und mehr.", ph:"Ich èmp-fèleu irène, di App Tipiz hèr-ountèr-tsou-ladène. Zi guébène dizèss Pass-vort aïn. Da-rin findène zi dass Animatsions-programm, di Eufnoungs-tsaïtène, di Ménuus, dass Vètèr ount mèr."},
-          {t:"say", label:"Bracelets", fr:"Voici vos bracelets : ceux-ci pour les adultes, et ceux-là pour les mineurs.", de:"Hier sind Ihre Armbänder: diese für die Erwachsenen, und diese für die Minderjährigen.", ph:"Hir zint ireu Arm-bèndèr: dizeu fuir di Èr-vakhzènène, ount dizeu fuir di Mindèr-yèrigène."},
+          {t:"say", label:"Code de la plage", fr:"Ici, une porte ferme l'accès à la plage. Tapez ce code pour l'ouvrir. Elle fonctionne de 7 h à 22 h.", de:"Hier sperrt eine Tür den Zugang zum Strand. Sie geben diesen Code ein, um sie zu öffnen. Sie funktioniert von sieben bis zweiundzwanzig Uhr.", ph:"Hir chpèrt aïneu Tur dène Tsougang tsoum Chtrant. Zi guébène dizène Kode aïn, oum zi tsou eufnène. Zi founk-tsionirt fon zibène biss tsvaï-ount-tsvan-tsich Our."},
+          {t:"say", label:"Application Tipiz", fr:"Je vous conseille de télécharger l'application Tipiz et d'y saisir ce mot de passe. Vous y trouverez le programme des animations, les horaires d'ouverture, les menus, la météo, etc.", de:"Ich empfehle Ihnen, die App Tipiz herunterzuladen. Sie geben dieses Passwort ein. Darin finden Sie das Animationsprogramm, die Öffnungszeiten, die Menüs, das Wetter und mehr.", ph:"Ich èmp-fèleu irène, di App Tipiz hèr-ountèr-tsou-ladène. Zi guébène dizèss Pass-vort aïn. Da-rin findène zi dass Animatsions-programm, di Eufnoungs-tsaïtène, di Ménus, dass Vètèr ount mèr."},
+          {t:"say", label:"Bracelets", fr:"Voici vos bracelets : ceux-ci pour les adultes, et ceux-là pour les mineurs.", de:"Hier sind Ihre Armbänder: diese für die Erwachsenen, und diese für die Minderjährigen.", ph:"Hir zint ireu Arm-bèndèr: dizeu fur di Èr-vakhzènène, ount dizeu fur di Mindèr-yèrigène."},
+          {t:"say", label:"Adaptateurs et raccordement d'eau", fr:"Sur les emplacements, nous prêtons des adaptateurs électriques et des raccordements d'eau contre une caution de 20 €.", de:"Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro.", ph:"Fur di Chtel-plètseu fèr-laïène vir Adaptèr fur dène Chtrom- ount Vassèr-an-chlouss guéguène aïneu Kaou-tsion fon tsvan-tsich Oï-ro."},
+          {t:"say", label:"Horaire de départ", fr:"Le départ se fait entre 7 h et 11 h pour les emplacements, et entre 7 h et 10 h pour les mobil-homes.", de:"Die Abreise erfolgt zwischen sieben und elf Uhr auf dem Stellplatz und zwischen sieben und zehn Uhr im Mobilheim.", ph:"Di Ap-raïzeu èr-folgt tsvichène zibène ount èlf Our aouf dème Chtel-platss ount tsvichène zibène ount tsèn Our im Mobil-haïm."},
           {t:"say", label:"Vignette", fr:"Et cette vignette est à placer sur le tableau de bord de votre véhicule.", de:"Und diese Vignette legen Sie bitte auf das Armaturenbrett Ihres Fahrzeugs.", ph:"Ount dizeu Vinyèteu lègène zi biteu aouf dass Armaturène-brèt irèss Far-tsoïgss."},
         ]
       },
@@ -913,7 +1021,7 @@ const FLOWS = [
         title:"6 · Questions",
         blocks:[
           {t:"say", label:"Tu conclus", fr:"Avez-vous des questions ?", de:"Haben Sie noch Fragen?", ph:"Habène zi nokh Fragène?"},
-          {t:"say", label:"Pour finir", fr:"Parfait ! Je vous souhaite un excellent séjour parmi nous.", de:"Perfekt! Ich wünsche Ihnen einen schönen Aufenthalt bei uns.", ph:"Pèr-fèkt! Ich vuuncheu irène aïnène cheunène Aouf-ènt-halt baï ounss."},
+          {t:"say", label:"Pour finir", fr:"Parfait ! Je vous souhaite un excellent séjour parmi nous.", de:"Perfekt! Ich wünsche Ihnen einen schönen Aufenthalt bei uns.", ph:"Pèr-fèkt! Ich vuncheu irène aïnène cheunène Aouf-ènt-halt baï ounss."},
         ]
       },
     ]
@@ -924,7 +1032,7 @@ const FLOWS = [
     em:"🧳",
     name:"Départ (check-out)",
     desc:"Le client rend le mobil-home ou quitte l'emplacement",
-    intro:"Comment accompagner un client qui part : état des lieux, restitution des bracelets et de la caution, au revoir.",
+    intro:"Gérer le départ d'un client à la réception : état des lieux, restitution des bracelets et de la caution, au revoir.",
     steps:[
       {
         title:"1 · Le client vient pour partir",
@@ -937,22 +1045,22 @@ const FLOWS = [
         ]
       },
       {
-        title:"2 · État des lieux & restitution",
+        title:"2 · État des lieux et restitution",
         blocks:[
           {t:"say", label:"Le ménage", fr:"Avez-vous fait le ménage de fin de séjour, ou souhaitez-vous que nous nous en occupions ?", de:"Haben Sie die Endreinigung gemacht, oder sollen wir das übernehmen?", ph:"Habène zi di Ènt-raïnigoung guémakht, odèr zolène vir dass ubèr-nèmène?"},
           {t:"memo", label:"💡 Action", html:"Vérifie l'<b>état du mobil-home</b> (propreté, casse) avant de rendre la caution."},
-          {t:"say", label:"Bracelets & clé", fr:"Pouvez-vous me rendre les bracelets et la clé, s'il vous plaît ?", de:"Können Sie mir bitte die Armbänder und den Schlüssel zurückgeben?", ph:"Keunen zi mir biteu di Arm-bèndèr ount dène Chluussèl tsou-ruk-guébène?"},
+          {t:"say", label:"Bracelets et clé", fr:"Pouvez-vous me rendre les bracelets et la clé, s'il vous plaît ?", de:"Können Sie mir bitte die Armbänder und den Schlüssel zurückgeben?", ph:"Keunène zi mir biteu di Arm-bèndèr ount dène Chlussèl tsou-ruk-guébène?"},
         ]
       },
       {
-        title:"3 · Caution & au revoir",
+        title:"3 · Caution et au revoir",
         blocks:[
           {t:"say", label:"Tout est en ordre", fr:"Tout est en ordre, je vous rends votre caution.", de:"Alles ist in Ordnung, Sie bekommen Ihre Kaution zurück.", ph:"Aleuss ist in Ordnoung, zi beu-komène ireu Kaou-tsion tsou-ruk."},
           {t:"hear", label:"Le client peut dire", items:[
             {de:"Vielen Dank für alles, es war wunderschön!", fr:"Merci pour tout, c'était magnifique !"},
             {de:"Können wir schon für nächstes Jahr buchen?", fr:"Peut-on déjà réserver pour l'année prochaine ?"},
           ]},
-          {t:"say", label:"Pour finir", fr:"Merci de votre visite et bonne route ! À l'année prochaine, j'espère.", de:"Vielen Dank für Ihren Besuch und gute Heimreise! Bis nächstes Jahr, hoffentlich.", ph:"Filène-Dank fuir irène Beu-zoukh ount gouteu Haïm-raïzeu! Biss nèchstèss Yar, hofènt-lich."},
+          {t:"say", label:"Pour finir", fr:"Merci de votre visite et bonne route ! À l'année prochaine, j'espère.", de:"Vielen Dank für Ihren Besuch und gute Heimreise! Bis nächstes Jahr, hoffentlich.", ph:"Filène-Dank fur irène Beu-zoukh ount gouteu Haïm-raïzeu! Biss nèchstèss Yar, hofènt-lich."},
         ]
       },
     ]
@@ -963,7 +1071,7 @@ const FLOWS = [
     em:"🌙",
     name:"Réclamation : bruit nocturne",
     desc:"Un client se plaint du bruit de ses voisins après 22 h",
-    intro:"Gérer une plainte pour tapage : rassurer le client, rappeler la règle aux voisins, faire le suivi.",
+    intro:"Gérer une plainte pour tapage : rassurer le client, faire intervenir la sécurité, appeler les voisins pour leur rappeler la règle, puis faire le suivi.",
     steps:[
       {
         title:"1 · Le client se plaint",
@@ -972,18 +1080,31 @@ const FLOWS = [
             {de:"Die Nachbarn sind viel zu laut, wir können nicht schlafen.", fr:"Les voisins font beaucoup trop de bruit, on ne peut pas dormir."},
             {de:"Können Sie bitte etwas unternehmen?", fr:"Pouvez-vous faire quelque chose, s'il vous plaît ?"},
           ]},
-          {t:"say", label:"Tu t'excuses", fr:"Je suis vraiment désolé pour ce désagrément. Je m'en occupe tout de suite.", de:"Es tut mir wirklich leid wegen der Störung. Ich kümmere mich sofort darum.", ph:"Èss tout mir virk-lich laït vègène dèr Chteu-roung. Ich kuumèreu mich zofort da-roum."},
+          {t:"say", label:"Tu t'excuses", fr:"Je suis vraiment désolé pour ce désagrément. Je m'en occupe tout de suite.", de:"Es tut mir wirklich leid wegen der Störung. Ich kümmere mich sofort darum.", ph:"Èss tout mir virk-lich laït vègène dèr Chteu-roung. Ich kumèreu mich zofort da-roum."},
         ]
       },
       {
-        title:"2 · Tu interviens auprès des voisins",
+        title:"2 · Tu fais intervenir la sécurité",
         blocks:[
-          {t:"memo", label:"💡 Rappel", html:"Le <b>calme est obligatoire après 22 h</b> (<i>Nachtruhe</i>)."},
-          {t:"say", label:"Tu rappelles la règle", fr:"Chez nous, le calme est de rigueur à partir de 22 h. Puis-je vous demander de faire moins de bruit ?", de:"Ab zweiundzwanzig Uhr gilt bei uns Nachtruhe. Darf ich Sie bitten, leiser zu sein?", ph:"Ap tsvaï-ount-tsvan-tsig Ouir guilt baï ounss Nakht-rou. Darf ich zi bitène, laïzèr tsou zaïn?"},
+          {t:"memo", label:"💡 Action", html:"Préviens la <b>sécurité</b> en donnant le <b>numéro d'emplacement</b> concerné. Rappel : le <b>calme est obligatoire après 22 h</b> (<i>Nachtruhe</i>)."},
+          {t:"say", label:"Tu rassures le client", fr:"J'envoie la sécurité tout de suite.", de:"Ich schicke sofort den Sicherheitsdienst vorbei.", ph:"Ich chikeu zofort dène Zichèr-haïts-dinst forbaï."},
         ]
       },
       {
-        title:"3 · Tu rassures le client",
+        title:"3 · Tu appelles les voisins",
+        blocks:[
+          {t:"memo", label:"💡 Action", html:"En parallèle, <b>appelle les voisins</b> depuis la réception pour leur rappeler la règle."},
+          {t:"say", label:"Au téléphone", fr:"Bonsoir, ici la réception du Beach Garden.", de:"Guten Abend, hier spricht die Rezeption des Beach Garden.", ph:"Gouten Abènt, hir chpricht di Rétsèptsion dèss Beach Garden."},
+          {t:"say", label:"Tu rappelles la règle", fr:"Chez nous, le calme est de rigueur à partir de 22 h. Puis-je vous demander de faire moins de bruit ?", de:"Ab zweiundzwanzig Uhr gilt bei uns Nachtruhe. Darf ich Sie bitten, leiser zu sein?", ph:"Ap tsvaï-ount-tsvan-tsich Our guilt baï ounss Nakht-rou. Darf ich zi bitène, laïzèr tsou zaïn?"},
+          {t:"hear", label:"Les voisins peuvent dire", items:[
+            {de:"Entschuldigung, wir sind sofort leiser.", fr:"Pardon, nous faisons moins de bruit tout de suite."},
+            {de:"Wir wussten das nicht, es tut uns leid.", fr:"Nous ne le savions pas, nous sommes désolés."},
+          ]},
+          {t:"say", label:"Pour finir", fr:"Merci beaucoup, bonne soirée !", de:"Vielen Dank, einen schönen Abend noch!", ph:"Filène-Dank, aïnène cheunène Abènt nokh!"},
+        ]
+      },
+      {
+        title:"4 · Tu rassures le client",
         blocks:[
           {t:"say", label:"C'est réglé", fr:"C'est réglé, ils vont faire attention. N'hésitez pas à revenir me voir si cela recommence.", de:"Es ist erledigt, sie werden Rücksicht nehmen. Kommen Sie gerne wieder zu mir, falls es noch einmal passiert.", ph:"Èss ist èr-lèdikt, zi vèrdène Ruk-zicht nèmène. Komène zi gèrneu vidèr tsou mir, falss èss nokh aïn-mal pas-sirt."},
         ]
@@ -996,7 +1117,7 @@ const FLOWS = [
     em:"🔧",
     name:"Problème technique dans le mobil-home",
     desc:"Pas d'eau chaude, clim en panne, électricité…",
-    intro:"Prendre en charge une panne dans l'hébergement : identifier, envoyer un technicien, faire le suivi.",
+    intro:"Prendre en charge une panne dans l'hébergement : identifier le problème, demander l'autorisation d'entrer au client, envoyer un technicien, faire le suivi.",
     steps:[
       {
         title:"1 · Le client signale une panne",
@@ -1005,7 +1126,7 @@ const FLOWS = [
             {de:"Im Mobilheim gibt es kein warmes Wasser.", fr:"Il n'y a pas d'eau chaude dans le mobil-home."},
             {de:"Die Klimaanlage funktioniert nicht.", fr:"La climatisation ne fonctionne pas."},
           ]},
-          {t:"say", label:"Tu réponds", fr:"Oh, je suis désolé. Pouvez-vous me donner votre numéro d'emplacement ?", de:"Oh, das tut mir leid. Können Sie mir Ihre Stellplatznummer geben?", ph:"O, dass tout mir laït. Keunen zi mir ireu Chtel-platss-noumèr guébène?"},
+          {t:"say", label:"Tu réponds", fr:"Oh, je suis désolé. Pouvez-vous me donner votre numéro d'emplacement ?", de:"Oh, das tut mir leid. Können Sie mir Ihre Stellplatznummer geben?", ph:"O, dass tout mir laït. Keunène zi mir ireu Chtel-platss-noumèr guébène?"},
         ]
       },
       {
@@ -1013,10 +1134,17 @@ const FLOWS = [
         blocks:[
           {t:"say", label:"Tu envoies un technicien", fr:"J'envoie un technicien dès que possible.", de:"Ich schicke Ihnen so schnell wie möglich einen Techniker vorbei.", ph:"Ich chikeu irène zo chnèl vi meuglich aïnène Tèchnikèr forbaï."},
           {t:"say", label:"Le délai", fr:"Il passera dans l'heure.", de:"Er kommt innerhalb einer Stunde vorbei.", ph:"Èr komt inèr-halp aïnèr Chtoundeu forbaï."},
+          {t:"memo", label:"💡 Obligatoire", html:"Demande <b>toujours</b> au client l'<b>autorisation</b> de laisser le technicien entrer, <b>même s'il n'est pas là</b>."},
+          {t:"say", label:"L'autorisation", fr:"Autorisez-vous notre technicien à entrer dans le mobil-home, même en votre absence ?", de:"Erlauben Sie unserem Techniker, das Mobilheim zu betreten, auch wenn Sie nicht da sind?", ph:"Èr-laoubène zi ounzèrème Tèchnikèr, dass Mobil-haïm tsou beu-trètène, aoukh vèn zi nicht da zint?"},
+          {t:"hear", label:"Le client peut dire", items:[
+            {de:"Ja, natürlich.", fr:"Oui, bien sûr."},
+            {de:"Nur, wenn wir da sind, bitte.", fr:"Seulement quand nous sommes là, s'il vous plaît."},
+          ]},
+          {t:"say", label:"S'il veut être présent", fr:"Très bien. À quelle heure serez-vous là ?", de:"Sehr gut. Um wie viel Uhr sind Sie da?", ph:"Zèr gout. Oum vi fil Our zint zi da?"},
         ]
       },
       {
-        title:"3 · Suivi & excuses",
+        title:"3 · Suivi et excuses",
         blocks:[
           {t:"say", label:"Tu t'assures", fr:"Tout fonctionne-t-il à nouveau ?", de:"Funktioniert jetzt wieder alles?", ph:"Founk-tsionirt yètst vidèr aleuss?"},
           {t:"say", label:"Tu t'excuses", fr:"Veuillez nous excuser pour la gêne occasionnée.", de:"Entschuldigen Sie bitte die Unannehmlichkeiten.", ph:"Ènt-chouldigène zi biteu di Oun-an-nèm-lich-kaïtène."},
@@ -1030,12 +1158,12 @@ const FLOWS = [
     em:"📞",
     name:"Réservation par téléphone",
     desc:"Un client appelle pour réserver un séjour",
-    intro:"Prendre une réservation au téléphone : dates, nombre de personnes, tarif, acompte et confirmation par email.",
+    intro:"Prendre une réservation au téléphone : dates, nombre de personnes, tarif, acompte et confirmation par e-mail.",
     steps:[
       {
         title:"1 · Tu décroches",
         blocks:[
-          {t:"say", label:"Tu décroches", fr:"Camping Beach Garden, bonjour ! Que puis-je faire pour vous ?", de:"Camping Beach Garden, guten Tag! Was kann ich für Sie tun?", ph:"Kamping Beach Garden, gouten-tag! Vass kan ich fuir zi toun?"},
+          {t:"say", label:"Tu décroches", fr:"Camping Beach Garden, bonjour ! Que puis-je faire pour vous ?", de:"Camping Beach Garden, guten Tag! Was kann ich für Sie tun?", ph:"Kamping Beach Garden, gouten-tak! Vass kan ich fur zi toun?"},
           {t:"hear", label:"Le client dit", items:[
             {de:"Ich möchte einen Stellplatz reservieren.", fr:"Je voudrais réserver un emplacement."},
             {de:"Haben Sie im August noch etwas frei?", fr:"Vous reste-t-il de la place en août ?"},
@@ -1053,9 +1181,9 @@ const FLOWS = [
       {
         title:"3 · Tu confirmes",
         blocks:[
-          {t:"say", label:"Tarif & acompte", fr:"Le tarif est de … euros par nuit. Nous demandons un acompte de 30 %.", de:"Der Preis beträgt … Euro pro Nacht. Wir benötigen eine Anzahlung von dreißig Prozent.", ph:"Dèr Praïss beu-trègt … Oï-ro pro Nakht. Vir beu-neutigène aïneu An-tsa-loung fon draïssig Protsènt."},
+          {t:"say", label:"Tarif et acompte", fr:"Le tarif est de … euros par nuit. Nous demandons un acompte de 30 %.", de:"Der Preis beträgt … Euro pro Nacht. Wir benötigen eine Anzahlung von dreißig Prozent.", ph:"Dèr Praïss beu-trègt … Oï-ro pro Nakht. Vir beu-neutigène aïneu An-tsa-loung fon draïssich Protsènt."},
           {t:"say", label:"Confirmation par e-mail", fr:"Je vous envoie la confirmation par e-mail. Quelle est votre adresse e-mail ?", de:"Ich sende Ihnen die Bestätigung per E-Mail. Wie lautet Ihre E-Mail-Adresse?", ph:"Ich zèndeu irène di Beu-chtètigoung pèr I-Mèïl. Vi laoutèt ireu I-Mèïl-adrèsseu?"},
-          {t:"say", label:"Pour finir", fr:"Merci de votre appel et à bientôt au Beach Garden !", de:"Vielen Dank für Ihren Anruf und bis bald im Beach Garden!", ph:"Filène-Dank fuir irène An-rouf ount biss balt im Beach Garden!"},
+          {t:"say", label:"Pour finir", fr:"Merci de votre appel et à bientôt au Beach Garden !", de:"Vielen Dank für Ihren Anruf und bis bald im Beach Garden!", ph:"Filène-Dank fur irène An-rouf ount biss balt im Beach Garden!"},
         ]
       },
     ]
@@ -1074,7 +1202,7 @@ const FLOWS = [
             {de:"Guten Tag, wir haben eine Reservierung auf den Namen Müller.", fr:"Bonjour, nous avons une réservation au nom de Müller."},
             {de:"Wir sind gerade angekommen.", fr:"Nous venons d'arriver."},
           ]},
-          {t:"say", label:"Tu accueilles", fr:"Bonjour et bienvenue ! À quel nom avez-vous réservé ?", de:"Guten Tag und herzlich willkommen! Auf welchen Namen haben Sie reserviert?", ph:"Gouten-tag ount hèrtslich vil-komène! Aouf vèlchène Namène habène zi rézèr-virt?"},
+          {t:"say", label:"Tu accueilles", fr:"Bonjour et bienvenue ! À quel nom avez-vous réservé ?", de:"Guten Tag und herzlich willkommen! Auf welchen Namen haben Sie reserviert?", ph:"Gouten-tak ount hèrtslich vil-komène! Aouf vèlchène Namène habène zi rézèr-virt?"},
           {t:"say", label:"Tu confirmes", fr:"Votre réservation est confirmée.", de:"Ihre Reservierung ist bestätigt.", ph:"Ireu Rézèr-vi-roung ist beu-chtètigt."},
         ]
       },
@@ -1084,8 +1212,12 @@ const FLOWS = [
           {t:"say", label:"Véhicule", fr:"Il me faut votre numéro de plaque d'immatriculation, s'il vous plaît.", de:"Ich brauche bitte Ihr Kennzeichen.", ph:"Ich braoukheu biteu ir Kèn-tsaïchène."},
           {t:"memo", label:"💡 Règle", html:"<b>Un seul véhicule</b> par emplacement ou location : les autres se garent sur le parking."},
           {t:"say", label:"Deuxième voiture", fr:"Un seul véhicule est autorisé par emplacement ; les autres se garent sur le parking.", de:"Pro Stellplatz ist nur ein Fahrzeug erlaubt; weitere Fahrzeuge parken bitte auf dem Parkplatz.", ph:"Pro Chtel-platss ist nour aïn Far-tsoïg èr-laoubt; vaïtèreu Far-tsoïgeu parkène biteu aouf dème Park-platss."},
+          {t:"memo", label:"💡 Chiens", html:"Les chiens de <b>catégorie 1 et 2</b> sont <b>interdits dans le camping</b>."},
           {t:"say", label:"Chien", fr:"Avez-vous un chien ? Dans ce cas, j'ai besoin de son carnet de vaccination.", de:"Haben Sie einen Hund dabei? Dann brauche ich bitte den Impfpass.", ph:"Habène zi aïnène Hount dabaï? Dann braoukheu ich biteu dène Impf-pass."},
           {t:"say", label:"Paiement", fr:"Vous payez par carte ou en espèces ?", de:"Zahlen Sie mit Karte oder bar?", ph:"Tsalène zi mit Karteu odèr bar?"},
+          {t:"memo", label:"💡 Cautions", html:"<b>Mobil-home</b> : caution de <b>300 €</b>, en espèces ou par carte uniquement. <b>Emplacement</b> : adaptateur électrique ou raccordement d'eau contre <b>20 €</b> de caution."},
+          {t:"say", label:"Caution mobil-home", fr:"Pour le mobil-home, la caution est de 300 €, en espèces ou par carte uniquement.", de:"Für das Mobilheim beträgt die Kaution dreihundert Euro, nur bar oder mit Karte.", ph:"Fur dass Mobil-haïm beu-trègt di Kaou-tsion draï-houndèrt Oï-ro, nour bar odèr mit Karteu."},
+          {t:"say", label:"Adaptateur (emplacement)", fr:"Avez-vous besoin d'un adaptateur électrique ?", de:"Brauchen Sie einen Stromadapter?", ph:"Braoukhène zi aïnène Chtrom-adaptèr?"},
         ]
       },
       {
@@ -1099,7 +1231,7 @@ const FLOWS = [
       {
         title:"4 · Les règles essentielles",
         blocks:[
-          {t:"say", label:"Circulation", fr:"De 23 h à 7 h, le portail est fermé et la circulation est interdite.", de:"Von dreiundzwanzig bis sieben Uhr ist die Einfahrt geschlossen und das Fahren verboten.", ph:"Fon draï-ount-tsvan-tsig biss zibène Ouir ist di Aïn-fart guéchlossène ount dass Farène fèr-botène."},
+          {t:"say", label:"Circulation", fr:"De 23 h à 7 h, le portail est fermé et la circulation est interdite.", de:"Von dreiundzwanzig bis sieben Uhr ist die Einfahrt geschlossen und das Fahren verboten.", ph:"Fon draï-ount-tsvan-tsich biss zibène Our ist di Aïn-fart guéchlossène ount dass Farène fèr-botène."},
           {t:"say", label:"Vitesse", fr:"La vitesse est limitée à dix kilomètres par heure.", de:"Die Höchstgeschwindigkeit beträgt zehn Kilometer pro Stunde.", ph:"Di Heukst-guéchvindich-kaït beu-trègt tsèn Kilomètèr pro Chtoundeu."},
           {t:"say", label:"Piscine", fr:"Le slip de bain est obligatoire ; les shorts de bain sont interdits.", de:"Badehosen sind Pflicht. Badeshorts sind nicht erlaubt.", ph:"Badeu-hozène zint Pflicht. Badeu-chortss zint nicht èr-laoubt."},
           {t:"say", label:"Barbecue", fr:"Seuls les barbecues électriques sont autorisés.", de:"Nur Elektrogrills sind erlaubt.", ph:"Nour Élèktro-grilss zint èr-laoubt."},
@@ -1108,9 +1240,9 @@ const FLOWS = [
       {
         title:"5 · Le départ et bon séjour",
         blocks:[
-          {t:"say", label:"Départ", fr:"En location, le départ se fait entre 8 h et 10 h. Après 10 h, une nuit supplémentaire peut être facturée.", de:"In der Mietunterkunft erfolgt die Abreise zwischen acht und zehn Uhr. Nach zehn Uhr kann eine zusätzliche Nacht berechnet werden.", ph:"In dèr Mit-ountèr-kounft èr-folgt di Ap-raïzeu tsvichène akht ount tsèn Ouir. Nakh tsèn Ouir kan aïneu tsou-sèts-licheu Nakht beu-rèchnèt vèrdène."},
+          {t:"say", label:"Départ", fr:"En location, le départ se fait entre 7 h et 10 h. Après 10 h, une nuit supplémentaire peut être facturée.", de:"In der Mietunterkunft erfolgt die Abreise zwischen sieben und zehn Uhr. Nach zehn Uhr kann eine zusätzliche Nacht berechnet werden.", ph:"In dèr Mit-ountèr-kounft èr-folgt di Ap-raïzeu tsvichène zibène ount tsèn Our. Nakh tsèn Our kan aïneu tsou-sèts-licheu Nakht beu-rèchnèt vèrdène."},
           {t:"say", label:"Caution", fr:"La caution vous est restituée si le logement est propre et l'inventaire complet.", de:"Sie erhalten die Kaution zurück, wenn die Unterkunft sauber und das Inventar vollständig ist.", ph:"Zi èr-haltène di Kaou-tsion tsou-ruk, vèn di Ountèr-kounft zaoubèr ount dass Invèntar fol-chtèndich ist."},
-          {t:"say", label:"Pour finir", fr:"Bon séjour parmi nous !", de:"Wir wünschen Ihnen einen schönen Aufenthalt!", ph:"Vir vuunchène irène aïnène cheunène Aouf-ènt-halt!"},
+          {t:"say", label:"Pour finir", fr:"Nous vous souhaitons un bon séjour !", de:"Wir wünschen Ihnen einen schönen Aufenthalt!", ph:"Vir vunchène irène aïnène cheunène Aouf-ènt-halt!"},
         ]
       },
     ]
@@ -1139,7 +1271,7 @@ const FLOWS = [
           {t:"memo", label:"💡 À savoir", html:"Au-delà de <b>2 heures</b> de visite, ou pour accéder aux <b>piscines</b> et aux animations, le visiteur paie à la réception."},
           {t:"say", label:"La règle", fr:"Tout visiteur doit se présenter à la réception ; une redevance s'applique au-delà de deux heures.", de:"Jeder Besucher muss sich an der Rezeption melden; nach zwei Stunden wird eine Gebühr fällig.", ph:"Yédèr Beu-zoukhèr mouss zich an dèr Rétsèptsion mèldène; nakh tsvaï Chtoundène virt aïneu Guébur fèlich."},
           {t:"say", label:"Le tarif", fr:"Pour un visiteur, l'accès aux piscines et aux animations coûte 10 € par personne et par jour.", de:"Für Besucher kostet der Zugang zu den Pools und zum Animationsprogramm zehn Euro pro Person und Tag.", ph:"Fur Beu-zoukhèr kostèt dèr Tsougang tsou dène Poulss ount tsoum Animatsions-programm tsèn Oï-ro pro Pèrzone ount Tak."},
-          {t:"say", label:"L'horaire", fr:"Les visiteurs doivent quitter le camping au plus tard à 23 h.", de:"Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen.", ph:"Beu-zoukhèr mussène dène Kamping-platss chpè-tèstèns oum draï-ount-tsvan-tsig Ouir fèr-lassène."},
+          {t:"say", label:"L'horaire", fr:"Les visiteurs doivent quitter le camping au plus tard à 23 h.", de:"Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen.", ph:"Beu-zoukhèr mussène dène Kamping-platss chpè-tèstèns oum draï-ount-tsvan-tsich Our fèr-lassène."},
         ]
       },
       {
@@ -1151,6 +1283,143 @@ const FLOWS = [
       },
     ]
   },
+  {
+    id:"menage",
+    em:"🧹",
+    name:"Réclamation : ménage",
+    desc:"Un client trouve son mobil-home mal nettoyé",
+    intro:"Rassurer le client, faire intervenir le service ménage rapidement et s'assurer que tout est réglé.",
+    steps:[
+      {
+        title:"1 · Le client se plaint",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Das Mobilheim ist nicht sauber.", fr:"Le mobil-home n'est pas propre."},
+            {de:"Im Badezimmer ist es schmutzig.", fr:"La salle de bain est sale."},
+          ]},
+          {t:"say", label:"Tu t'excuses", fr:"Je suis vraiment désolé. Quel est le numéro de votre mobil-home ?", de:"Das tut mir sehr leid. Welche Nummer hat Ihr Mobilheim?", ph:"Dass tout mir zèr laït. Vèlcheu Noumèr hat ir Mobil-haïm?"},
+        ]
+      },
+      {
+        title:"2 · Tu organises le nettoyage",
+        blocks:[
+          {t:"memo", label:"💡 Action", html:"Préviens le <b>service ménage</b> en donnant le <b>numéro du mobil-home</b>."},
+          {t:"say", label:"L'autorisation", fr:"Autorisez-vous notre équipe à entrer dans le mobil-home, même en votre absence ?", de:"Erlauben Sie unserem Team, das Mobilheim zu betreten, auch wenn Sie nicht da sind?", ph:"Èr-laoubène zi ounzèrème Tim, dass Mobil-haïm tsou beu-trètène, aoukh vèn zi nicht da zint?"},
+          {t:"say", label:"Tu rassures", fr:"J'envoie quelqu'un tout de suite pour faire le ménage.", de:"Ich schicke sofort jemanden zum Putzen vorbei.", ph:"Ich chikeu zofort yèmandène tsoum Poutsène forbaï."},
+        ]
+      },
+      {
+        title:"3 · Le suivi",
+        blocks:[
+          {t:"say", label:"Le délai", fr:"Ce sera fait dans l'heure. Revenez me voir si quelque chose ne va pas.", de:"Das wird innerhalb einer Stunde erledigt. Kommen Sie gerne wieder, wenn etwas nicht in Ordnung ist.", ph:"Dass virt inèr-halp aïnèr Chtoundeu èr-lèdikt. Komène zi gèrneu vidèr, vèn ètvass nicht in Ordnoung ist."},
+          {t:"say", label:"Tu t'excuses", fr:"Veuillez nous excuser pour la gêne occasionnée.", de:"Entschuldigen Sie bitte die Unannehmlichkeiten.", ph:"Ènt-chouldigène zi biteu di Oun-an-nèm-lich-kaïtène."},
+        ]
+      },
+    ]
+  },
+
+  {
+    id:"animations",
+    em:"🎭",
+    name:"Les animations du soir",
+    desc:"Un client demande ce qui est prévu ce soir",
+    intro:"Présenter les animations, les clubs pour les enfants et les ados, et indiquer où trouver le programme.",
+    steps:[
+      {
+        title:"1 · Le client demande",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Gibt es heute Abend eine Animation?", fr:"Y a-t-il une animation ce soir ?"},
+            {de:"Was gibt es für die Kinder?", fr:"Qu'y a-t-il pour les enfants ?"},
+          ]},
+          {t:"say", label:"Tu réponds", fr:"Oui ! Ce soir, il y a un spectacle à … heures.", de:"Ja! Heute Abend gibt es um … Uhr eine Show.", ph:"Ya! Hoïteu Abènt guibt èss oum … Our aïneu Chô."},
+        ]
+      },
+      {
+        title:"2 · Enfants et ados",
+        blocks:[
+          {t:"say", label:"Club enfants", fr:"Le club enfants accueille les enfants de cinq à douze ans.", de:"Der Kinderclub nimmt Kinder von fünf bis zwölf Jahren auf.", ph:"Dèr Kindèr-kloub nimt Kindèr fon funf biss tsvelf Yarène aouf."},
+          {t:"say", label:"Ados", fr:"Il y a un mini-club pour les enfants et un club pour les ados.", de:"Es gibt einen Miniclub für Kinder und einen Club für Jugendliche.", ph:"Èss guibt aïnène Mini-kloub fur Kindèr ount aïnène Kloub fur Yougènt-licheu."},
+        ]
+      },
+      {
+        title:"3 · Le programme",
+        blocks:[
+          {t:"say", label:"Application Tipiz", fr:"Tout le programme se trouve dans l'application Tipiz.", de:"Das ganze Programm finden Sie in der App Tipiz.", ph:"Dass gantseu Programm findène zi in dèr App Tipiz."},
+          {t:"say", label:"Chaque soir", fr:"Il y a des animations tous les soirs en saison.", de:"In der Saison gibt es jeden Abend ein Unterhaltungsprogramm.", ph:"In dèr Zaïzon guibt èss yèdène Abènt aïn Ountèr-haltoungss-programm."},
+        ]
+      },
+    ]
+  },
+
+  {
+    id:"spa",
+    em:"🧖",
+    name:"Réserver au spa",
+    desc:"Un client souhaite un massage à la Bulle des Sables",
+    intro:"Présenter le spa Bulle des Sables, trouver un créneau et encaisser.",
+    steps:[
+      {
+        title:"1 · La demande",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Ich möchte eine Massage buchen.", fr:"Je voudrais réserver un massage."},
+            {de:"Wann hat das Spa geöffnet?", fr:"Quand le spa est-il ouvert ?"},
+          ]},
+          {t:"say", label:"Tu présentes", fr:"Le spa Bulle des Sables propose hammam, sauna, massages et bar à ongles.", de:"Das Spa Bulle des Sables bietet Hammam, Sauna, Massagen und ein Nagelstudio.", ph:"Dass Chpa Bulle des Sables bitèt Hamam, Zaouna, Massagène ount aïn Naguèl-chtoudio."},
+        ]
+      },
+      {
+        title:"2 · Le créneau",
+        blocks:[
+          {t:"memo", label:"💡 Action", html:"Vérifie les <b>disponibilités du spa</b> avant de confirmer le créneau."},
+          {t:"say", label:"Tu demandes", fr:"Pour quel jour et à quelle heure ?", de:"Für welchen Tag und um wie viel Uhr?", ph:"Fur vèlchène Tak ount oum vi fil Our?"},
+          {t:"say", label:"Tu confirmes", fr:"Je vous réserve un créneau à … heures.", de:"Ich reserviere Ihnen einen Termin um … Uhr.", ph:"Ich rézèr-vireu irène aïnène Tèrmine oum … Our."},
+        ]
+      },
+      {
+        title:"3 · Les infos pratiques",
+        blocks:[
+          {t:"say", label:"Le lieu", fr:"Le spa et le jacuzzi se trouvent à la Bulle des Sables.", de:"Das Spa und der Whirlpool befinden sich im Bulle des Sables.", ph:"Dass Chpa ount dèr Vouirl-poul beu-findène zich im Bulle des Sables."},
+          {t:"say", label:"Paiement", fr:"Vous payez par carte ou en espèces ?", de:"Zahlen Sie mit Karte oder bar?", ph:"Tsalène zi mit Karteu odèr bar?"},
+        ]
+      },
+    ]
+  },
+
+  {
+    id:"restaurant",
+    em:"🍽️",
+    name:"Réserver au restaurant",
+    desc:"Un client veut une table au Bistro",
+    intro:"Réserver une table au restaurant Le Bistro : horaires, nombre de personnes, confirmation.",
+    steps:[
+      {
+        title:"1 · La demande",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Können wir heute Abend einen Tisch reservieren?", fr:"Pouvons-nous réserver une table pour ce soir ?"},
+            {de:"Ab wann ist das Restaurant geöffnet?", fr:"À partir de quelle heure le restaurant est-il ouvert ?"},
+          ]},
+          {t:"say", label:"Les horaires", fr:"Le restaurant est ouvert le soir à partir de dix-neuf heures.", de:"Das Restaurant ist abends ab neunzehn Uhr geöffnet.", ph:"Dass Rèstoran ist abèntss ap noïntsèn Our gué-eufnèt."},
+        ]
+      },
+      {
+        title:"2 · La réservation",
+        blocks:[
+          {t:"say", label:"Tu demandes", fr:"Bien sûr ! Pour combien de personnes ?", de:"Natürlich! Für wie viele Personen?", ph:"Natur-lich! Fur vi fileu Pèrzonène?"},
+          {t:"say", label:"Tu confirmes", fr:"C'est noté : une table pour … personnes à … heures.", de:"Notiert: ein Tisch für … Personen um … Uhr.", ph:"No-tirt: aïn Tich fur … Pèrzonène oum … Our."},
+        ]
+      },
+      {
+        title:"3 · Pour finir",
+        blocks:[
+          {t:"say", label:"La vue", fr:"Le restaurant Le Bistro a une vue panoramique sur la mer.", de:"Das Restaurant Le Bistro hat einen Panoramablick auf das Meer.", ph:"Dass Rèstoran Le Bistro hat aïnène Panorama-blik aouf dass Mèr."},
+          {t:"say", label:"Pour finir", fr:"Je vous souhaite une excellente soirée !", de:"Ich wünsche Ihnen einen schönen Abend!", ph:"Ich vuncheu irène aïnène cheunène Abènt!"},
+        ]
+      },
+    ]
+  },
 ];
 
 /* ══════════════════════════════════════
@@ -1158,6 +1427,7 @@ const FLOWS = [
 ══════════════════════════════════════ */
 const UNITS = {
   0:"Accueillir, enregistrer et orienter les clients",
+  13:"Les questions que posent souvent les clients",
   9:"Les formules de politesse indispensables",
   10:"Compter de 0 à 1 000",
   2:"Dates, tarifs, acompte et annulation",
@@ -1171,19 +1441,26 @@ const UNITS = {
   7:"Réagir vite en cas de problème",
   8:"Conseiller des sorties aux alentours",
 };
-const ORDER = [0,9,10,2,1,11,5,3,4,12,6,7,8];
+const ORDER = [0,9,13,10,2,1,11,5,3,4,12,6,7,8];
 /* ══════════════════════════════════════
    MÉMO RÈGLEMENT (règlement intérieur, FAQ et CGV de lesmediterranees.com + consignes de la réception)
 ══════════════════════════════════════ */
 const RULES = [
   ['🕐','Arrivée et départ',[
-    'Véhicule sur le camping dès <b>12 h</b> ; emplacement garanti à <b>14 h</b>, mobil-home à <b>17 h</b>.',
+    'Véhicule sur le camping dès <b>12 h</b>.',
+    'Emplacement garanti <b>au plus tard à 14 h</b> ; mobil-home garanti <b>au plus tard à 17 h</b>.',
     'Arrivée possible jusqu\'à <b>23 h</b> au plus tard.',
-    'Départ avant <b>11 h</b> sur les emplacements, entre <b>8 h et 10 h</b> en location. Après 10 h, une nuit supplémentaire peut être facturée.',
+    'Départ des emplacements : <b>entre 7 h et 11 h</b> grand maximum.',
+    'Départ des mobil-homes : <b>entre 7 h et 10 h</b> grand maximum. Au-delà, une nuit supplémentaire peut être facturée.',
+  ]],
+  ['🔐','Cautions',[
+    'Mobil-home : caution de <b>300 €</b>, en espèces ou par carte <b>uniquement</b>.',
+    'Emplacement : <b>adaptateurs électriques</b> et <b>raccordements d\'eau</b> prêtés contre une caution de <b>20 €</b>, en espèces ou par carte.',
     'La caution est restituée si le logement est <b>propre</b> et l\'<b>inventaire complet</b>.',
   ]],
   ['💳','Réservation et paiement',[
     'Plus de 30 jours avant l\'arrivée : <b>acompte de 30 %</b>. Moins de 30 jours : <b>totalité du séjour</b>.',
+    'Annulation <b>sans frais jusqu\'à 30 jours</b> avant le jour d\'arrivée.',
     'Toute modification se demande <b>par écrit</b>, au moins 30 jours avant l\'arrivée, selon les disponibilités.',
     'La taxe de séjour est fixée par la commune.',
     'Au comptoir, c\'est toi qui demandes : <b>« Vous payez par carte ou en espèces ? »</b>',
@@ -1197,7 +1474,8 @@ const RULES = [
     'Un chien, ou <b>deux petits chiens</b> de moins de 10 kg.',
     '<b>7 €</b> par jour sur emplacement, <b>9 €</b> par jour en location.',
     'Chiens tenus <b>en laisse</b> et <b>vaccinés</b> : carnet de vaccination à présenter à l\'arrivée.',
-    'Non acceptés dans les locations de catégories 1 et 2, et <b>interdits dans l\'espace piscine</b>.',
+    'Chiens de <b>catégorie 1 et 2</b> (chiens dits dangereux) <b>interdits dans tout le camping</b>.',
+    'Animaux <b>interdits dans l\'espace piscine</b>.',
   ]],
   ['🏊','Piscines',[
     '<b>Shorts de bain interdits</b> : maillot une pièce ou bikini pour les femmes, slip de bain pour les hommes.',
@@ -1217,7 +1495,7 @@ const RULES = [
     'Départ du camping au plus tard à <b>23 h</b>.',
   ]],
 ];
-const UEM = {0:'🛎️',9:'🤝',10:'🔢',2:'📅',1:'🏠',11:'🗓️',5:'🍽️',3:'🏊',4:'🏖️',12:'🕐',6:'📋',7:'🆘',8:'🗺️'};
+const UEM = {13:'👂',0:'🛎️',9:'🤝',10:'🔢',2:'📅',1:'🏠',11:'🗓️',5:'🍽️',3:'🏊',4:'🏖️',12:'🕐',6:'📋',7:'🆘',8:'🗺️'};
 const emo = e => `<span class="emo" aria-hidden="true">${e}</span>`;
 
 const catById = id => CATS.find(c=>c.id===id);
@@ -1250,7 +1528,7 @@ const yesterday = () => { const d=new Date(); d.setDate(d.getDate()-1); return y
 /* ══════════════════════════════════════
    ÉTAT (sauvegardé sur l'appareil)
 ══════════════════════════════════════ */
-const DEF = {xp:0, day:'', dayXp:0, streak:0, last:'', lessons:{}, mistakes:[], goal:20, name:'', phon:true, sfx:true, flowsDone:{}};
+const DEF = {xp:0, day:'', dayXp:0, streak:0, last:'', lessons:{}, mistakes:[], goal:20, name:'', phon:true, sfx:true, speak:true, speakOff:0, flowsDone:{}};
 let S = {...DEF};
 try{ S = {...DEF, ...JSON.parse(localStorage.getItem('bgd_state')||'{}')}; }catch(e){}
 let favs = new Set();
@@ -1359,7 +1637,7 @@ function byKey(key){
    UI COMMUNE
 ══════════════════════════════════════ */
 let toastT;
-function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('on'),2600); }
+function toast(msg){ const t=$('#toast'); t.textContent=msg.replace(/ ([!?;])/g,'\u202F$1').replace(/ :/g,'\u00A0:'); t.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('on'),2600); }
 function modal({title, text, ok, okCls='', cancel}){
   return new Promise(res=>{
     const m=document.createElement('div'); m.className='modal';
@@ -1414,7 +1692,7 @@ function renderChrome(){
 ══════════════════════════════════════ */
 function route(){
   const [view='learn', a='', b=''] = location.hash.replace(/^#\/?/,'').split('/').map(decodeURIComponent);
-  return {view:['learn','situ','phrases','profile'].includes(view)?view:'learn', a, b};
+  return {view:['learn','comptoir','situ','phrases','profile'].includes(view)?view:'learn', a, b};
 }
 function go(h){ if(location.hash!==h) location.hash=h; else render(); }
 window.addEventListener('hashchange', ()=>{ stopAudio(); render(); window.scrollTo(0,0); });
@@ -1426,6 +1704,7 @@ function render(){
   if(r.view==='situ') m.innerHTML = r.a ? viewFlow(r.a, +r.b||0) : viewFlows();
   if(r.view==='phrases') m.innerHTML = r.a==='cat' ? viewCat(+r.b) : viewPhrases();
   if(r.view==='profile') m.innerHTML=viewProfile();
+  if(r.view==='comptoir') m.innerHTML=viewComptoir();
   const qi=$('#q'); if(qi) qi.value=searchQ;
   renderChrome();
 }
@@ -1537,6 +1816,7 @@ function phraseBody(p, key, q){
     <div class="pc-act">
       <button class="play" data-act="play" data-key="${key}" aria-label="Écouter">${icon('i-spk')}</button>
       <button class="slow" data-act="slow" data-key="${key}" aria-label="Écouter lentement">Lent</button>
+      ${SR && S.speak!==false?`<button class="slow" data-act="pmic" data-key="${key}" aria-label="Répéter à voix haute">🎤 Répéter</button>`:''}
       <button class="fav${f?' on':''}" data-act="fav" data-key="${key}" aria-pressed="${f}" aria-label="${f?'Retirer des favoris':'Ajouter aux favoris'}" title="${f?'Retirer des favoris':'Ajouter aux favoris'}">${icon('i-star')}</button>
     </div>`;
 }
@@ -1643,14 +1923,128 @@ function viewProfile(){
     <div class="card" style="padding:0 20px">
       <div class="setting"><div class="s-tx"><b>Prononciation à la française</b><small>Afficher l'aide sous chaque phrase allemande</small></div>
         <button class="switch" role="switch" aria-checked="${S.phon}" data-act="toggle" data-k="phon" aria-label="Prononciation à la française"></button></div>
+      ${SR?`<div class="setting"><div class="s-tx"><b>Exercices à voix haute</b><small>Le téléphone écoute ta prononciation (micro et internet nécessaires)</small></div>
+        <button class="switch" role="switch" aria-checked="${S.speak!==false}" data-act="toggle" data-k="speak" aria-label="Exercices à voix haute"></button></div>`:''}
       <div class="setting"><div class="s-tx"><b>Effets sonores</b><small>Sons discrets pendant les leçons</small></div>
         <button class="switch" role="switch" aria-checked="${S.sfx}" data-act="toggle" data-k="sfx" aria-label="Effets sonores"></button></div>
       <div class="setting"><div class="s-tx"><b>Voix allemandes</b><small>${nClips} phrases enregistrées par une voix native</small></div>
         <button class="btn sec sm" data-act="test">${icon('i-spk')}Tester</button></div>
     </div>
     <button class="danger" style="margin-top:18px" data-act="reset">Réinitialiser ma progression</button>
-    <p class="about">Beach Garden Deutsch · Camping Les Méditerranées, Marseillan-Plage<br>${P.length} phrases et ${FLOWS.length} situations guidées.</p>
+    <p class="about">Beach Garden Deutsch · Camping Les Méditerranées, Marseillan-Plage<br>${P.length} phrases et ${FLOWS.length} situations guidées.
+      <span class="credit" style="display:block">© 2026 Omar Aznay Falkoun</span></p>
   </div>`);
+}
+
+
+/* ══════════════════════════════════════
+   MODE COMPTOIR : les phrases du quotidien, en un geste, affichées en grand pour le client
+══════════════════════════════════════ */
+const COMPTOIR = [
+  ['👋','Accueil',[
+    ['Bienvenue','Guten Tag und herzlich willkommen auf dem Campingplatz Beach Garden!'],
+    ['Votre nom ?','Ihren Namen, bitte?'],
+    ['Avez-vous une réservation ?','Haben Sie eine Reservierung?'],
+    ['Votre plaque d\'immatriculation','Ich brauche bitte Ihr Kennzeichen.'],
+    ['Un moment, s\'il vous plaît','Einen Moment bitte.'],
+    ['Avez-vous une question ?','Haben Sie eine Frage?'],
+  ]],
+  ['💳','Paiement et cautions',[
+    ['Carte ou espèces ?','Zahlen Sie mit Karte oder bar?'],
+    ['Tarif par nuit','Der Preis beträgt … Euro pro Nacht.'],
+    ['Caution mobil-home : 300 €','Für das Mobilheim beträgt die Kaution dreihundert Euro, nur bar oder mit Karte.'],
+    ['Adaptateurs électricité et eau : 20 € de caution','Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro.'],
+  ]],
+  ['🕐','Horaires et infos',[
+    ['Horaires d\'arrivée','Sie können Ihr Fahrzeug ab zwölf Uhr abstellen. Der Stellplatz ist spätestens um vierzehn Uhr fertig, das Mobilheim spätestens um siebzehn Uhr.'],
+    ['Horaires de départ','Die Abreise erfolgt zwischen sieben und elf Uhr auf dem Stellplatz und zwischen sieben und zehn Uhr im Mobilheim.'],
+    ['Voici le plan','Hier ist der Campingplan.'],
+    ['Numéro d\'emplacement','Ihr Stellplatz hat die Nummer…'],
+    ['Wi-Fi des mobil-homes','Das WLAN ist in allen Mobilheimen inklusive, außer in der Cosy-Kategorie.'],
+    ['Wi-Fi offert au bar','An der Bar sind alle sechs Stunden dreißig Minuten WLAN gratis.'],
+    ['Bracelet obligatoire','Das Armband muss jederzeit getragen werden.'],
+    ['Silence à partir de 22 h','Ab zweiundzwanzig Uhr gilt Nachtruhe auf dem Campingplatz.'],
+  ]],
+  ['🗣️','Se comprendre',[
+    ['Pouvez-vous répéter ?','Könnten Sie das bitte wiederholen?'],
+    ['Parlez-vous anglais ?','Sprechen Sie Englisch?'],
+    ['Je ne parle pas allemand','Ich verstehe leider kein Deutsch.'],
+  ]],
+  ['🆘','Urgences et problèmes',[
+    ['J\'appelle les secours','Ich rufe sofort den Notdienst an.'],
+    ['Numéros d\'urgence : 15 ou 18','Im Notfall rufen Sie bitte die Fünfzehn oder die Achtzehn an.'],
+    ['J\'envoie un technicien','Ich schicke Ihnen so schnell wie möglich einen Techniker vorbei.'],
+    ['Autorisation d\'entrer (technicien)','Erlauben Sie unserem Techniker, das Mobilheim zu betreten, auch wenn Sie nicht da sind?'],
+    ['J\'envoie la sécurité','Ich schicke sofort den Sicherheitsdienst vorbei.'],
+  ]],
+  ['🌞','Au revoir',[
+    ['Bon séjour','Wir wünschen Ihnen einen schönen Aufenthalt!'],
+    ['Merci beaucoup','Vielen Dank!'],
+    ['Au revoir, bonne route','Auf Wiedersehen und gute Weiterreise!'],
+  ]],
+];
+let DE_INDEX=null;
+function findByDe(de){
+  if(!DE_INDEX){ DE_INDEX={}; allSearchable().forEach(x=>{ if(!DE_INDEX[x.p.de]) DE_INDEX[x.p.de]=x; }); }
+  return DE_INDEX[de]||null;
+}
+function viewComptoir(){
+  return tfr(`<div class="wrap wide view">
+    <h1 class="h1">Comptoir 🛎️</h1>
+    <p class="lead">Un client devant toi ? Touche une phrase : l'application la dit en allemand et l'affiche en grand pour qu'il puisse la lire.</p>
+    ${COMPTOIR.map(([e,t,items])=>`<section class="cp-g"><h2 class="cp-h">${emo(e)}${t}</h2><div class="cp-grid">
+      ${items.map(([l,de])=>{ const x=findByDe(de); return x?`<button class="cp-tile" data-act="cp" data-key="${x.key}"><span>${esc(l)}</span>${icon('i-spk')}</button>`:''; }).join('')}
+    </div></section>`).join('')}
+  </div>`);
+}
+function showBig(key){
+  const p=byKey(key); if(!p) return;
+  const m=sheet(tfr(`<div class="big">
+      <span class="eyebrow">En allemand</span>
+      <div class="big-de" lang="de">${esc(p.de)}</div>
+      ${S.phon&&p.ph?`<div class="big-ph">${esc(p.ph)}</div>`:''}
+      <div class="big-fr">${esc(p.fr)}</div>
+      <div class="big-act"><button class="play" data-act="play" data-key="${key}" aria-label="Réécouter">${icon('i-spk')}</button>
+        <button class="slow" data-act="slow" data-key="${key}">Lent</button></div>
+    </div>`));
+  m.querySelector('.modal-c').classList.add('bigsheet');
+  play(p.de, m.querySelector('.big-act .play'));
+}
+
+/* ══════════════════════════════════════
+   PRONONCIATION À VOIX HAUTE (reconnaissance vocale du téléphone)
+══════════════════════════════════════ */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const speakOn = () => !!SR && S.speak!==false && !((S.speakOff||0) > Date.now());
+const normDe = s => s.toLowerCase().replace(/ß/g,'ss').replace(/[.,!?;:…"«»()]/g,' ').split(/\s+/).filter(Boolean);
+function scoreSpeech(target, heard){ const t=normDe(target), h=new Set(normDe(heard)); return t.length ? t.filter(w=>h.has(w)).length/t.length : 0; }
+let recog=null;
+function listenDe(target, btn, done){
+  if(!SR){ done(null,'unsupported'); return; }
+  try{ recog && recog.abort(); }catch(e){}
+  stopAudio();
+  const r=new SR(); recog=r; r.lang='de-DE'; r.interimResults=false; r.maxAlternatives=5; r.continuous=false;
+  let finished=false; const fin=(a,b)=>{ if(finished) return; finished=true; if(btn) btn.classList.remove('rec'); done(a,b); };
+  if(btn) btn.classList.add('rec');
+  r.onresult=e=>{ let best=-1, txt=''; const alts=e.results[0]; for(let i=0;i<alts.length;i++){ const sc=scoreSpeech(target, alts[i].transcript); if(sc>best){ best=sc; txt=alts[i].transcript; } } fin(Math.max(best,0), txt); };
+  r.onerror=e=>fin(null, e.error);
+  r.onend=()=>fin(null,'no-speech');
+  try{ r.start(); }catch(e){ fin(null,'error'); }
+}
+function speechMsg(score, err){
+  if(score===null){
+    if(err==='not-allowed'||err==='service-not-allowed') return ['ko','Autorise l\'accès au micro pour utiliser cet exercice.'];
+    if(err==='network') return ['ko','La reconnaissance vocale a besoin d\'internet.'];
+    return ['ko','Je n\'ai rien entendu. Touche le micro, puis parle.'];
+  }
+  if(score>=0.8) return ['ok','Parfait, très bien prononcé !'];
+  if(score>=0.5) return ['mid','Presque ! Encore un petit effort.'];
+  return ['ko','Pas tout à fait. Écoute le modèle et réessaie.'];
+}
+function micPhrase(key, btn){
+  const p=byKey(key); if(!p) return;
+  toast('🎤 Parle maintenant…');
+  listenDe(p.de, btn, (sc,err)=>{ const [,msg]=speechMsg(sc,err); toast((sc!==null&&sc>=0.8?'✅ ':sc!==null&&sc>=0.5?'👍 ':'🔁 ')+msg); });
 }
 
 /* ══════════════════════════════════════
@@ -1677,6 +2071,7 @@ function buildExercises(idx){
     if(idx.length>=3) b.push({t:'match', set:shuffle(idx).slice(0,5)});
   } else {
     b = shuffle(idx).map(i=>({t: canBuild(P[i]) && Math.random()<.7 ? 'build' : 'choose', i}));
+    if(speakOn()){ const c=shuffle(idx).find(i=>!P[i].de.includes('…') && tokens(P[i].de).length<=9); if(c!==undefined) b.push({t:'speak', i:c}); }
   }
   return [...a, ...shuffle(b)];
 }
@@ -1733,6 +2128,17 @@ function renderEx(){
       <div class="l-say">${esc(p.fr)}</div>
       <div class="answer-line" id="aline" aria-label="Ta réponse"></div>
       <div class="bank" id="bank">${L.bank.map((w,k)=>`<button class="tile" data-act="tile" data-k="${k}" lang="de">${esc(w)}</button>`).join('')}</div>`;
+  }
+  if(ex.t==='speak'){
+    const p=P[ex.i]; L.answer=ex.i; L.tries=0;
+    inner=`<span class="eyebrow l-kind">Prononciation</span><h2 class="l-q">Répète cette phrase à voix haute</h2>
+      <div class="l-say"><div lang="de" style="font-weight:600">${esc(p.de)}</div>${S.phon&&p.ph?`<div class="pc-ph">${esc(p.ph)}</div>`:''}<div class="h-fr">${esc(p.fr)}</div></div>
+      <div class="l-audio"><button class="mic" data-act="lmic" aria-label="Parler">${icon('i-mic')}</button>
+        <div class="mic-hint" id="micHint">Touche le micro, puis parle.</div>
+        <div style="display:flex;gap:8px;align-items:center"><button class="play sm" data-act="lplay" aria-label="Écouter le modèle">${icon('i-spk')}</button><button class="slow" data-act="lslow">Écouter lentement</button></div></div>
+      <div style="text-align:center"><button class="link" data-act="speakoff">Je ne peux pas parler maintenant</button></div>`;
+    box.innerHTML=tfr(lessonShell(inner, `<div class="l-fb" id="lfb"></div><button class="btn sec" id="lbtn" data-act="skip">Passer</button>`));
+    return;
   }
   if(ex.t==='match'){
     L.matched=0; L.selDe=null; L.selFr=null; L.set=ex.set;
@@ -1878,6 +2284,15 @@ document.addEventListener('click', async e=>{
     case 'pde': matchTap('de', el); break;
     case 'pfr': matchTap('fr', el); break;
     case 'check': if(L && L.state==='ask') check(); break;
+    case 'lmic': if(L && L.state==='ask'){ const hint=$('#micHint'); hint.textContent='Parle maintenant…';
+      listenDe(P[L.answer].de, el, (sc,err)=>{ if(!L || L.state!=='ask') return; const [k,msg]=speechMsg(sc,err); L.tries++;
+        if(sc!==null && sc>=0.6){ L.answered++; L.correct++; feedback(true, P[L.answer]); }
+        else { hint.textContent=tfr(msg); hint.className='mic-hint '+k; if(L.tries>=2){ const b=$('#lbtn'); b.textContent='Continuer'; b.className='btn'; } } }); } break;
+    case 'skip': if(L){ try{ recog&&recog.abort(); }catch(e){} L.done++; L.pos++; renderEx(); } break;
+    case 'speakoff': if(L){ S.speakOff=Date.now()+3600e3; save(); try{ recog&&recog.abort(); }catch(e){}
+      L.q=L.q.filter((x,i)=>i<=L.pos || x.t!=='speak'); L.total=L.q.length; L.done++; L.pos++; toast('Exercices à voix haute en pause pendant une heure'); renderEx(); } break;
+    case 'cp': showBig(d.key); break;
+    case 'pmic': micPhrase(d.key, el); break;
     case 'next': if(L){ stopAudio(); L.pos++; renderEx(); } break;
     case 'endok': closeLesson(); break;
   }
@@ -2052,7 +2467,7 @@ function welcome(){
       <button class="btn block" data-act="notif" data-close>Oui, me le rappeler</button>`), {close:'Non merci'});
   }
 }
-window.addEventListener('load', ()=>setTimeout(welcome, 1500));
+window.addEventListener('load', ()=>{ const t=setInterval(()=>{ if(welcomeReady){ clearInterval(t); setTimeout(welcome, 600); } },200); });
 
 function appSection(){
   const rows=[];
@@ -2074,6 +2489,20 @@ document.addEventListener('click', e=>{
     case 'notif': enableNotif(); break;
   }
 });
+
+/* ══ ANIMATION DE DÉMARRAGE ══
+   Jouée à l'ouverture de l'application (une fois par session), passable d'un toucher. */
+let welcomeReady = !document.getElementById('splash');
+(function(){
+  const sp=document.getElementById('splash'); if(!sp) return;
+  let seen=false; try{ seen=sessionStorage.getItem('bgd_splash'); sessionStorage.setItem('bgd_splash','1'); }catch(e){}
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(seen){ sp.remove(); welcomeReady=true; return; }
+  let done=false;
+  const end=()=>{ if(done) return; done=true; sp.classList.add('out'); setTimeout(()=>sp.classList.add('gone'),650); setTimeout(()=>{ sp.remove(); welcomeReady=true; },1150); };
+  sp.addEventListener('click', end);
+  setTimeout(end, reduce?900:2600);
+})();
 
 /* ══ INIT ══ */
 applySettings();

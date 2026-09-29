@@ -4,11 +4,12 @@ Application web pour **parler allemand à la réception** du camping Beach Garde
 (Les Méditerranées, Marseillan-Plage). Direction artistique blanc et bordeaux aux couleurs de l'établissement. Leçons courtes,
 XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque phrase.
 
-## Les quatre espaces de l'application
+## Les cinq espaces de l'application
 | Espace | À quoi ça sert |
 |---|---|
-| **Apprendre** | Parcours de 13 unités (accueil, politesse, nombres, réservation…). Chaque leçon mélange quatre types d'exercices : compréhension orale, vocabulaire, construction de phrase et association de paires. XP, série, objectif du jour, révision des erreurs. |
-| **Situations** | Sept scénarios de comptoir pas à pas (arrivée avec réservation, client de passage, visiteur, départ, bruit, panne, réservation par téléphone) présentés comme une conversation : ce que tu dis, ce que le client peut répondre, avec l'audio des deux côtés. |
+| **Apprendre** | Parcours de 14 unités (accueil, politesse, comprendre les clients, nombres, réservation…). Chaque leçon mélange cinq types d'exercices : compréhension orale, vocabulaire, construction de phrase, association de paires et prononciation à voix haute (si le téléphone le permet). XP, série, objectif du jour, révision des erreurs. |
+| **Comptoir** | Les phrases du quotidien en un geste : l'app les dit en allemand et les affiche en grand pour que le client puisse les lire. |
+| **Situations** | Onze scénarios de comptoir pas à pas (arrivée avec réservation, client de passage, visiteur, départ, bruit, panne, ménage, animations, spa, restaurant, réservation par téléphone) présentés comme une conversation : ce que tu dis, ce que le client peut répondre, avec l'audio des deux côtés. |
 | **Phrases** | Le guide de conversation complet : thèmes, bases, **mémo règlement** (règlement intérieur, FAQ et CGV de lesmediterranees.com), favoris, recherche (français ou allemand, sans tenir compte des accents) et guide de prononciation. |
 | **Profil** | Prénom, statistiques, objectif quotidien, réglages (affichage de la prononciation, effets sonores), test du son. |
 
@@ -43,6 +44,8 @@ qu'une fois l'app installée sur l'écran d'accueil (iOS 16.4 ou plus récent).
 - `config.js` : réglage des notifications.
 
 ## 🌐 Mise en ligne (GitHub Pages)
+Pour une adresse du type `deutsch.lesmediterranees.com`, la demande à transmettre au service informatique est prête : `docs/demande-nom-de-domaine.md`.
+
 Settings → Pages → *Branch* : **main** → **Save**. Chaque modification fusionnée dans `main`
 est en ligne une à deux minutes plus tard, et les téléphones la récupèrent automatiquement.
 
