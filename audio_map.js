@@ -128,7 +128,7 @@ window.AUDIO = {
     "Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen.":  "audio/a0261.mp3",
     "Für das Mobilheim beträgt die Kaution dreihundert Euro, nur bar oder mit Karte.":  "audio/a0274.mp3",
     "Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro.":  "audio/a0312.mp3",
-    "Brauchen Sie einen Stromadapter?":  "audio/a0276.mp3",
+    "Brauchen Sie einen Adapter für den Strom- oder Wasseranschluss?":  "audio/a0323.mp3",
     "Wo sind die Toiletten?":  "audio/a0277.mp3",
     "Wann öffnet das Schwimmbad?":  "audio/a0278.mp3",
     "Wo können wir Brötchen kaufen?":  "audio/a0279.mp3",
