@@ -480,16 +480,14 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .sp-wave.w2{top:-38px; opacity:.3; animation-duration:6.5s; animation-direction:reverse}
 .sp-wave.w3{top:-18px; animation-duration:4.5s}
 .sp-fill{position:absolute; left:0; right:0; top:70px; bottom:0; background:#fff}
-.sp-credit{position:absolute; left:0; right:0; bottom:calc(22px + env(safe-area-inset-bottom)); text-align:center; z-index:2; font-size:12.5px; color:var(--brand); letter-spacing:.04em; opacity:0; animation:spUp .8s ease 1s forwards}
-.sp-credit b{font-weight:600}
 #splash.out .sp-sea{transform:translateY(-95vh)}
-#splash.out .sp-sun,#splash.out .sp-title,#splash.out .sp-credit{transition:opacity .3s; opacity:0!important; animation:none}
+#splash.out .sp-sun,#splash.out .sp-title{transition:opacity .3s; opacity:0!important; animation:none}
 @keyframes spSun{from{opacity:0; transform:scale(.6) translateY(24px)}to{opacity:1; transform:none}}
 @keyframes spHalo{0%{transform:scale(.85); opacity:.9}100%{transform:scale(1.35); opacity:0}}
 @keyframes spUp{from{opacity:0; transform:translateY(12px)}to{opacity:1; transform:none}}
 @keyframes spRise{to{transform:translateY(0)}}
 @keyframes spSwell{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){ .sp-sun,.sp-title,.sp-credit{opacity:1} .sp-sea{transform:none} }
+@media (prefers-reduced-motion:reduce){ .sp-sun,.sp-title{opacity:1} .sp-sea{transform:none} }
 
 /* Crédit */
 .credit{font-size:12.5px; color:var(--muted); line-height:1.6}
@@ -561,7 +559,6 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
     <svg class="sp-wave w3" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
     <div class="sp-fill"></div>
   </div>
-  <div class="sp-credit">Créée par <b>Omar Aznay Falkoun</b></div>
 </div>
 
 <!-- Icônes (trait fin, couleur héritée) -->
@@ -620,7 +617,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
   <button class="nav-btn" data-nav="situ"><svg class="ic"><use href="#i-chat"/></svg>Situations</button>
   <button class="nav-btn" data-nav="phrases"><svg class="ic"><use href="#i-book"/></svg>Phrases</button>
   <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
-  <div class="side-foot"><b>Camping Beach Garden</b>Les Méditerranées · <span class="nw">Marseillan-Plage</span><div class="credit" style="margin-top:10px">Créée par <b>Omar Aznay Falkoun</b><br>© 2026 · Tous droits réservés</div></div>
+  <div class="side-foot"><b>Camping Beach Garden</b>Les Méditerranées · <span class="nw">Marseillan-Plage</span></div>
 </nav>
 
 <!-- Barre du haut (mobile) -->
@@ -1703,7 +1700,7 @@ function viewProfile(){
     </div>
     <button class="danger" style="margin-top:18px" data-act="reset">Réinitialiser ma progression</button>
     <p class="about">Beach Garden Deutsch · Camping Les Méditerranées, Marseillan-Plage<br>${P.length} phrases et ${FLOWS.length} situations guidées.
-      <span class="credit" style="display:block">Application conçue et créée par <b>Omar Aznay Falkoun</b>.<br>© 2026 Omar Aznay Falkoun · Tous droits réservés.</span></p>
+      <span class="credit" style="display:block">© 2026 Omar Aznay Falkoun</span></p>
   </div>`);
 }
 
@@ -2062,7 +2059,7 @@ function printPoster(){
       <li><span class="po-n">2</span><span>Touche le <b>lien</b> qui apparaît.</span></li>
       <li><span class="po-n">3</span><span>Dans l'application, touche <b>« Installer »</b>.</span></li>
     </ol>
-    <p class="po-url">${esc(APP_URL)}<br>Application créée par Omar Aznay Falkoun · © 2026</p>`);
+    <p class="po-url">${esc(APP_URL)}</p>`);
   setTimeout(()=>window.print(), 150);
 }
 
