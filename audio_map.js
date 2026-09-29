@@ -90,7 +90,7 @@ window.AUDIO = {
     "Sprechen Sie Französisch?":  "audio/a0088.mp3",
     "Sprechen Sie Englisch?":  "audio/a0089.mp3",
     "Einen Moment bitte.":  "audio/a0090.mp3",
-    "Folgen Sie mir, ich zeige es Ihnen.":  "audio/a0091.mp3",
+    "Haben Sie eine Frage?":  "audio/a0309.mp3",
     "Haben Sie noch weitere Fragen?":  "audio/a0092.mp3",
     "Ich wünsche Ihnen einen schönen Urlaub!":  "audio/a0093.mp3",
     "Könnten Sie das bitte wiederholen?":  "audio/a0094.mp3",
