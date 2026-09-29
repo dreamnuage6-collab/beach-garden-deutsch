@@ -1,9 +1,12 @@
 /* Service worker : application installable, hors connexion et mises à jour automatiques.
    - Pages et liste des voix : réseau d'abord (les mises à jour arrivent toutes seules), cache en secours.
-   - Voix, icônes, polices : cache d'abord (rapide et disponible hors connexion). */
-const CACHE = 'bgd-v3';
+   - Voix, icônes, polices : cache d'abord (rapide et disponible hors connexion).
+   Les voix sont téléchargées en arrière-plan, sauf si le téléphone est en mode « économie de données ». */
+const CACHE = 'bgd-v4';
 const SHELL = ['./', './index.html', './audio_map.js', './config.js', './manifest.webmanifest',
-  './vendor/qrcode.js', './brand/logo.png', './brand/emblem-white.png', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
+  './vendor/qrcode.js', './brand/logo.png', './brand/emblem-white.png', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
+  './fonts/inter-latin-400-normal.woff2', './fonts/inter-latin-500-normal.woff2', './fonts/inter-latin-600-normal.woff2',
+  './fonts/inter-latin-700-normal.woff2', './fonts/playfair-display-latin-600-normal.woff2'];
 
 self.window = self;
 try { importScripts('./config.js'); } catch (e) {}
@@ -14,12 +17,14 @@ if (CFG.onesignalAppId) {
 
 self.addEventListener('install', e => {
   self.skipWaiting();
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(precacheAudio).catch(() => {}));
+  // Installation rapide : seulement l'essentiel ; les voix suivent en arrière-plan après l'activation
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).catch(() => {}));
 });
 
 /* Télécharge toutes les voix en arrière-plan pour un usage hors connexion */
 async function precacheAudio() {
   try {
+    if (self.navigator && self.navigator.connection && self.navigator.connection.saveData) return;
     const txt = await (await fetch('./audio_map.js', {cache: 'no-cache'})).text();
     const files = [...new Set([...txt.matchAll(/"(audio\/a\d+\.mp3)"/g)].map(m => './' + m[1]))];
     const c = await caches.open(CACHE);
@@ -54,8 +59,7 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   const same = url.origin === self.location.origin;
-  const fonts = /fonts\.(googleapis|gstatic)\.com$/.test(url.hostname);
-  if (!same && !fonts) return;
+  if (!same) return;
 
   const networkFirst = same && (req.mode === 'navigate' || /\/(index\.html|audio_map\.js|config\.js|manifest\.webmanifest)?$/.test(url.pathname));
   if (networkFirst) {
@@ -68,14 +72,15 @@ self.addEventListener('fetch', e => {
 
   e.respondWith((async () => {
     const c = await caches.open(CACHE);
-    let res = await c.match(same ? new Request(url.origin + url.pathname) : req);
+    const key = new Request(url.origin + url.pathname);
+    let res = await c.match(key);
     if (!res) {
       try {
-        const r = await fetch(same ? url.origin + url.pathname : req);
-        if (r.ok || r.type === 'opaque') { await c.put(same ? new Request(url.origin + url.pathname) : req, r.clone()); }
+        const r = await fetch(key);
+        if (r.ok) await c.put(key, r.clone());
         res = r;
       } catch (err) { return Response.error(); }
     }
-    return same && /\.mp3$/.test(url.pathname) ? rangeResponse(req, res) : res;
+    return /\.mp3$/.test(url.pathname) ? rangeResponse(req, res) : res;
   })());
 });

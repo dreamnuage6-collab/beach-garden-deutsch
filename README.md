@@ -42,6 +42,8 @@ qu'une fois l'app installée sur l'écran d'accueil (iOS 16.4 ou plus récent).
 - `manifest.webmanifest`, `sw.js`, `icons/` : ce qui rend l'app installable et utilisable hors connexion.
 - `brand/logo.png` : logo des Méditerranées · `vendor/qrcode.js` : générateur de QR code (licence MIT).
 - `config.js` : réglage des notifications.
+- `fonts/` : polices intégrées (aucun appel à Google Fonts : plus rapide, hors connexion, conforme RGPD).
+- `docs/` : demande de nom de domaine pour le service informatique.
 
 ## 🌐 Mise en ligne (GitHub Pages)
 Pour une adresse du type `deutsch.lesmediterranees.com`, la demande à transmettre au service informatique est prête : `docs/demande-nom-de-domaine.md`.

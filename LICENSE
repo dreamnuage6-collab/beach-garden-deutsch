@@ -11,4 +11,4 @@ est interdite sans l'autorisation écrite préalable de l'auteur.
 Composants tiers :
 - vendor/qrcode.js : QR Code Generator, © 2009 Kazuhiko Arase, licence MIT.
 - Logo « Les Méditerranées » : propriété de ses titulaires.
-- Polices Inter et Playfair Display : SIL Open Font License.
+- Polices Inter et Playfair Display (dossier fonts/) : SIL Open Font License, voir fonts/OFL-*.txt.
