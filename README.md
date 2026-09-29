@@ -8,8 +8,8 @@ XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque
 | Espace | À quoi ça sert |
 |---|---|
 | **Apprendre** | Parcours de 13 unités (accueil, politesse, nombres, réservation…). Chaque leçon mélange quatre types d'exercices : compréhension orale, vocabulaire, construction de phrase et association de paires. XP, série, objectif du jour, révision des erreurs. |
-| **Situations** | Cinq scénarios de comptoir pas à pas (client de passage, départ, bruit, panne, réservation par téléphone) présentés comme une conversation : ce que tu dis, ce que le client peut répondre, avec l'audio des deux côtés. |
-| **Phrases** | Le guide de conversation complet : thèmes, bases, favoris, recherche (français ou allemand, sans tenir compte des accents) et guide de prononciation. |
+| **Situations** | Sept scénarios de comptoir pas à pas (arrivée avec réservation, client de passage, visiteur, départ, bruit, panne, réservation par téléphone) présentés comme une conversation : ce que tu dis, ce que le client peut répondre, avec l'audio des deux côtés. |
+| **Phrases** | Le guide de conversation complet : thèmes, bases, **mémo règlement** (règlement intérieur, FAQ et CGV de lesmediterranees.com), favoris, recherche (français ou allemand, sans tenir compte des accents) et guide de prononciation. |
 | **Profil** | Prénom, statistiques, objectif quotidien, réglages (affichage de la prononciation, effets sonores), test du son. |
 
 La progression est enregistrée **sur l'appareil** (navigateur), sans compte ni serveur.

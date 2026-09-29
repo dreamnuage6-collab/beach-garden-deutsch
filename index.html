@@ -95,12 +95,20 @@ button{cursor:pointer; background:none; border:0; padding:0}
 /* ═════════ STRUCTURE ═════════ */
 .side,.rail{display:none}
 .topbar{
-  position:sticky; top:0; z-index:40; background:rgba(255,255,255,.92); backdrop-filter:saturate(1.4) blur(12px);
-  border-bottom:1px solid var(--line); padding:10px 16px; padding-top:calc(10px + env(safe-area-inset-top));
+  position:sticky; top:0; z-index:40; background:linear-gradient(120deg,#9A2034,#761525); color:#fff;
+  box-shadow:0 2px 14px rgba(90,15,28,.25); padding:10px 16px; padding-top:calc(10px + env(safe-area-inset-top));
   display:flex; align-items:center; gap:12px;
 }
 .brand{display:flex; align-items:center; gap:11px; min-width:0}
 .brand-mark{width:36px; height:36px; flex:0 0 36px}
+.logo{height:34px; width:auto; max-width:120px; object-fit:contain; filter:brightness(0) invert(1); flex:0 0 auto}
+.topbar .brand-name{color:#fff}
+.topbar .brand-sub{color:rgba(255,255,255,.75)}
+.topbar .brand-txt{padding-left:11px; border-left:1px solid rgba(255,255,255,.3)}
+.topbar .chip{color:#fff}
+.topbar .chip:hover{background:rgba(255,255,255,.12)}
+.emo{font-size:17px; line-height:1}
+.badge-ic .emo{font-size:22px}
 .brand-txt{line-height:1.1; min-width:0}
 .brand-name{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--ink); white-space:nowrap}
 .brand-sub{font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--brand); margin-top:2px}
@@ -131,9 +139,12 @@ main{padding:24px 16px 110px; min-height:100vh; overflow-x:clip}
     display:flex; flex-direction:column; gap:4px; position:fixed; inset:0 auto 0 0; width:var(--side);
     border-right:1px solid var(--line); padding:28px 16px; background:#fff; z-index:30;
   }
-  .side .brand{padding:0 10px 30px}
+  .side .brand{flex-direction:column; align-items:flex-start; gap:12px; padding:20px 18px; margin-bottom:22px; border-radius:16px;
+    background:linear-gradient(140deg,#9A2034 0%,#761525 60%,#5A0F1C 100%); color:#fff; box-shadow:0 8px 24px rgba(90,15,28,.22)}
+  .side .logo{height:46px; max-width:180px}
   .side .brand-mark{width:40px; height:40px; flex-basis:40px}
-  .side .brand-name{font-size:20px}
+  .side .brand-name{font-size:20px; color:#fff}
+  .side .brand-sub{color:rgba(255,255,255,.75)}
   .side .nav-btn{max-width:none; flex:none; flex-direction:row; gap:14px; padding:11px 14px; font-size:15px; font-weight:500; color:var(--ink-2); position:relative}
   .side .nav-btn:hover{background:var(--soft)}
   .side .nav-btn.on{background:var(--brand-50); color:var(--brand); font-weight:600}
@@ -183,7 +194,8 @@ main{padding:24px 16px 110px; min-height:100vh; overflow-x:clip}
 .hero .bar{background:rgba(255,255,255,.2); max-width:260px; margin-bottom:20px; position:relative}
 .hero .bar i{background:#fff}
 .hero .btn{position:relative}
-.quick{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.quick{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+@media (max-width:820px){ .quick{grid-template-columns:1fr 1fr} .quick .qk:last-child{grid-column:1/-1} }
 .qk{
   display:flex; align-items:center; gap:14px; text-align:left; border:1px solid var(--line); border-radius:var(--r);
   background:#fff; padding:16px; transition:border-color .15s, box-shadow .15s;
@@ -312,6 +324,17 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .g-fr{font-size:16px; font-weight:600; color:var(--brand)}
 .g-ex{font-size:13.5px; color:var(--muted)}
 .g-ex i{font-style:normal; color:var(--ink-2); font-weight:600}
+.rules{columns:1; column-gap:12px}
+@media (min-width:760px){ .rules{columns:2} }
+.rule{border:1px solid var(--line); border-radius:var(--r); padding:18px 20px; background:#fff; break-inside:avoid; margin-bottom:12px}
+.rule h3{display:flex; align-items:center; gap:10px; margin:0 0 10px; font-family:var(--serif); font-size:19px; font-weight:600}
+.rule h3 .emo{font-size:22px}
+.rule ul{margin:0; padding:0; list-style:none}
+.rule li{position:relative; padding:7px 0 7px 18px; font-size:14.5px; line-height:1.5; color:var(--ink-2)}
+.rule li + li{border-top:1px solid var(--line)}
+.rule li::before{content:''; position:absolute; left:2px; top:15px; width:6px; height:6px; border-radius:50%; background:var(--brand)}
+.rule li b{color:var(--ink); font-weight:600}
+.src-note{font-size:13px; color:var(--muted); margin-top:16px; line-height:1.55}
 
 /* ═════════ PROFIL ═════════ */
 .prof-head{display:flex; align-items:center; gap:18px; margin-bottom:8px}
@@ -484,7 +507,8 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 <!-- Barre latérale (ordinateur) -->
 <nav class="side" aria-label="Navigation principale">
   <div class="brand">
-    <svg class="brand-mark"><use href="#i-brand"/></svg>
+    <img class="logo" src="https://static.secureholiday.net/static/CMS/photos/000/062/000062239.png?w=600&amp;format=webp" alt="Les Méditerranées" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+    <svg class="brand-mark" hidden><use href="#i-brand"/></svg>
     <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub">Deutsch</div></div>
   </div>
   <button class="nav-btn" data-nav="learn"><svg class="ic"><use href="#i-learn"/></svg>Apprendre</button>
@@ -497,7 +521,8 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 <!-- Barre du haut (mobile) -->
 <header class="topbar">
   <div class="brand">
-    <svg class="brand-mark"><use href="#i-brand"/></svg>
+    <img class="logo" src="https://static.secureholiday.net/static/CMS/photos/000/062/000062239.png?w=600&amp;format=webp" alt="Les Méditerranées" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+    <svg class="brand-mark" hidden><use href="#i-brand"/></svg>
     <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub">Deutsch</div></div>
   </div>
   <div class="chips" data-chips></div>
@@ -659,6 +684,23 @@ const P = [
   {c:5,e:"🧒",fr:"Il y a un mini-club pour les enfants et un club pour les ados.",de:"Es gibt einen Miniclub für Kinder und einen Club für Jugendliche.",ph:"Èss guibt aïnène Mini-kloub fuir Kindèr ount aïnène Kloub fuir Yougènt-licheu."},
   {c:6,e:"🚶",fr:"Tout visiteur doit se présenter à la réception ; une redevance s'applique au-delà de deux heures.",de:"Jeder Besucher muss sich an der Rezeption melden; nach zwei Stunden wird eine Gebühr fällig.",ph:"Yédèr Beu-zoukhèr mouss zich an dèr Rétsèptsion mèldène; nakh tsvaï Chtoundène virt aïneu Guébur fèlich."},
   {c:8,e:"🦪",fr:"On déguste les huîtres de Bouzigues au bord de l'étang de Thau.",de:"In Bouzigues isst man Austern direkt am Thau-See.",ph:"In Bouzig isst man Aoustèrn dirèkt am To-Zé."},
+
+  // ── Règlement intérieur, FAQ et CGV (source : lesmediterranees.com)
+  {c:0,e:"🌃",fr:"Vous pouvez arriver jusqu'à 23 h au plus tard.",de:"Sie können spätestens bis dreiundzwanzig Uhr anreisen.",ph:"Zi keunène chpè-tèstèns biss draï-ount-tsvan-tsig Ouir an-raïzène."},
+  {c:0,e:"🧹",fr:"En location, le départ se fait entre 8 h et 10 h. Après 10 h, une nuit supplémentaire peut être facturée.",de:"In der Mietunterkunft erfolgt die Abreise zwischen acht und zehn Uhr. Nach zehn Uhr kann eine zusätzliche Nacht berechnet werden.",ph:"In dèr Mit-ountèr-kounft èr-folgt di Ap-raïzeu tsvichène akht ount tsèn Ouir. Nakh tsèn Ouir kan aïneu tsou-sèts-licheu Nakht beu-rèchnèt vèrdène."},
+  {c:0,e:"💰",fr:"La caution vous est restituée si le logement est propre et l'inventaire complet.",de:"Sie erhalten die Kaution zurück, wenn die Unterkunft sauber und das Inventar vollständig ist.",ph:"Zi èr-haltène di Kaou-tsion tsou-ruk, vèn di Ountèr-kounft zaoubèr ount dass Invèntar fol-chtèndich ist."},
+  {c:2,e:"🧾",fr:"À plus de 30 jours de l'arrivée, un acompte de 30 % est demandé ; à moins de 30 jours, le séjour est réglé en totalité.",de:"Bei einer Buchung mehr als dreißig Tage vor der Anreise zahlen Sie dreißig Prozent an, bei weniger als dreißig Tagen den gesamten Betrag.",ph:"Baï aïnèr Boukhoung mèr als draïssich Tageu for dèr An-raïzeu tsalène zi draïssich Protsènt an, baï vènigèr als draïssich Taguène dène guézamtène Beu-trak."},
+  {c:2,e:"✍️",fr:"Toute modification doit être demandée par écrit au moins 30 jours avant l'arrivée, selon les disponibilités.",de:"Änderungen müssen mindestens dreißig Tage vor der Anreise schriftlich beantragt werden, je nach Verfügbarkeit.",ph:"Èndèroungène mussène mindèstèns draïssich Tageu for dèr An-raïzeu chrift-lich beu-an-trakt vèrdène, yé nakh Fèr-fug-bar-kaït."},
+  {c:2,e:"🏛️",fr:"La taxe de séjour est fixée par la commune.",de:"Die Kurtaxe wird von der Gemeinde festgelegt.",ph:"Di Kour-takseu virt fon dèr Guémaïndeu fèst-guélègt."},
+  {c:1,e:"🐶",fr:"Un seul chien est accepté, ou deux petits chiens de moins de 10 kg.",de:"Erlaubt ist ein Hund oder zwei kleine Hunde unter zehn Kilo.",ph:"Èr-laoubt ist aïn Hount odèr tsvaï klaïneu Houndeu ountèr tsèn Kilo."},
+  {c:1,e:"💉",fr:"Les chiens doivent être tenus en laisse et vaccinés. Merci de nous présenter le carnet de vaccination.",de:"Hunde müssen an der Leine geführt werden und geimpft sein. Bitte zeigen Sie uns den Impfpass.",ph:"Houndeu mussène an dèr Laïneu guéfurt vèrdène ount gué-impft zaïn. Biteu tsaïguène zi ouns dène Impf-pass."},
+  {c:3,e:"👙",fr:"Pour les femmes, maillot une pièce ou bikini ; pour les hommes, slip de bain.",de:"Für Damen ist ein Badeanzug oder ein Bikini erlaubt, für Herren eine Badehose.",ph:"Fur Damène ist aïn Badeu-an-tsouk odèr aïn Bikini èr-laoubt, fur Hèrène aïneu Badeu-hozeu."},
+  {c:3,e:"🐾",fr:"Les animaux sont interdits dans l'espace piscine.",de:"Tiere sind im Poolbereich verboten.",ph:"Tireu zint im Poul-beu-raïch fèr-botène."},
+  {c:6,e:"🚧",fr:"De 23 h à 7 h, le portail est fermé et la circulation est interdite.",de:"Von dreiundzwanzig bis sieben Uhr ist die Einfahrt geschlossen und das Fahren verboten.",ph:"Fon draï-ount-tsvan-tsig biss zibène Ouir ist di Aïn-fart guéchlossène ount dass Farène fèr-botène."},
+  {c:6,e:"🚙",fr:"Un seul véhicule est autorisé par emplacement ; les autres se garent sur le parking.",de:"Pro Stellplatz ist nur ein Fahrzeug erlaubt; weitere Fahrzeuge parken bitte auf dem Parkplatz.",ph:"Pro Chtel-platss ist nour aïn Far-tsoïg èr-laoubt; vaïtèreu Far-tsoïgeu parkène biteu aouf dème Park-platss."},
+  {c:6,e:"🍖",fr:"Les barbecues à charbon sont strictement interdits.",de:"Holzkohlegrills sind streng verboten.",ph:"Holts-koleu-grilss zint chtrèng fèr-botène."},
+  {c:6,e:"🎟️",fr:"Pour un visiteur, l'accès aux piscines et aux animations coûte 10 € par personne et par jour.",de:"Für Besucher kostet der Zugang zu den Pools und zum Animationsprogramm zehn Euro pro Person und Tag.",ph:"Fur Beu-zoukhèr kostèt dèr Tsougang tsou dène Poulss ount tsoum Animatsions-programm tsèn Oï-ro pro Pèrzone ount Tak."},
+  {c:6,e:"🕚",fr:"Les visiteurs doivent quitter le camping au plus tard à 23 h.",de:"Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen.",ph:"Beu-zoukhèr mussène dène Kamping-platss chpè-tèstèns oum draï-ount-tsvan-tsig Ouir fèr-lassène."},
 
   // ════════ BASES — Nombres (c:10) ════════
   {c:10,e:"🔢",fr:"0 — zéro",de:"null",ph:"noul"},
@@ -964,6 +1006,97 @@ const FLOWS = [
       },
     ]
   },
+  {
+    id:"checkin",
+    em:"🏕️",
+    name:"Arrivée avec réservation",
+    desc:"Un client qui a réservé se présente à l'accueil",
+    intro:"Enregistrer un client déjà réservé : identité, formalités, remise des bracelets et rappel des règles essentielles.",
+    steps:[
+      {
+        title:"1 · Le client se présente",
+        blocks:[
+          {t:"hear", label:"Le client dit", items:[
+            {de:"Guten Tag, wir haben eine Reservierung auf den Namen Müller.", fr:"Bonjour, nous avons une réservation au nom de Müller."},
+            {de:"Wir sind gerade angekommen.", fr:"Nous venons d'arriver."},
+          ]},
+          {t:"say", label:"Tu accueilles", fr:"Bonjour et bienvenue ! À quel nom avez-vous réservé ?", de:"Guten Tag und herzlich willkommen! Auf welchen Namen haben Sie reserviert?", ph:"Gouten-tag ount hèrtslich vil-komène! Aouf vèlchène Namène habène zi rézèr-virt?"},
+          {t:"say", label:"Tu confirmes", fr:"Votre réservation est confirmée.", de:"Ihre Reservierung ist bestätigt.", ph:"Ireu Rézèr-vi-roung ist beu-chtètigt."},
+        ]
+      },
+      {
+        title:"2 · Les formalités",
+        blocks:[
+          {t:"say", label:"Véhicule", fr:"Il me faut votre numéro de plaque d'immatriculation, s'il vous plaît.", de:"Ich brauche bitte Ihr Kennzeichen.", ph:"Ich braoukheu biteu ir Kèn-tsaïchène."},
+          {t:"memo", label:"💡 Règle", html:"<b>Un seul véhicule</b> par emplacement ou location : les autres se garent sur le parking."},
+          {t:"say", label:"Deuxième voiture", fr:"Un seul véhicule est autorisé par emplacement ; les autres se garent sur le parking.", de:"Pro Stellplatz ist nur ein Fahrzeug erlaubt; weitere Fahrzeuge parken bitte auf dem Parkplatz.", ph:"Pro Chtel-platss ist nour aïn Far-tsoïg èr-laoubt; vaïtèreu Far-tsoïgeu parkène biteu aouf dème Park-platss."},
+          {t:"say", label:"Chien", fr:"Avez-vous un chien ? Dans ce cas, j'ai besoin de son carnet de vaccination.", de:"Haben Sie einen Hund dabei? Dann brauche ich bitte den Impfpass.", ph:"Habène zi aïnène Hount dabaï? Dann braoukheu ich biteu dène Impf-pass."},
+          {t:"say", label:"Paiement", fr:"Vous payez par carte ou en espèces ?", de:"Zahlen Sie mit Karte oder bar?", ph:"Tsalène zi mit Karteu odèr bar?"},
+        ]
+      },
+      {
+        title:"3 · Bracelets et plan",
+        blocks:[
+          {t:"say", label:"Bracelets", fr:"Voici vos bracelets. Merci de les porter au poignet, de façon visible, pendant tout le séjour.", de:"Hier sind Ihre Armbänder. Bitte tragen Sie sie während des ganzen Aufenthalts gut sichtbar am Handgelenk.", ph:"Hir zint ireu Arm-bèndèr. Biteu tragène zi zi vèrènt dèss gantsène Aouf-ènt-halts gout zicht-bar am Hant-guélènk."},
+          {t:"say", label:"Plan", fr:"Voici le plan du camping.", de:"Hier ist der Campingplan.", ph:"Hir ist dèr Kamping-plan."},
+          {t:"say", label:"Emplacement", fr:"Votre emplacement est le numéro…", de:"Ihr Stellplatz hat die Nummer…", ph:"Ir Chtel-platss hat di Noumèr…"},
+        ]
+      },
+      {
+        title:"4 · Les règles essentielles",
+        blocks:[
+          {t:"say", label:"Circulation", fr:"De 23 h à 7 h, le portail est fermé et la circulation est interdite.", de:"Von dreiundzwanzig bis sieben Uhr ist die Einfahrt geschlossen und das Fahren verboten.", ph:"Fon draï-ount-tsvan-tsig biss zibène Ouir ist di Aïn-fart guéchlossène ount dass Farène fèr-botène."},
+          {t:"say", label:"Vitesse", fr:"La vitesse est limitée à dix kilomètres par heure.", de:"Die Höchstgeschwindigkeit beträgt zehn Kilometer pro Stunde.", ph:"Di Heukst-guéchvindich-kaït beu-trègt tsèn Kilomètèr pro Chtoundeu."},
+          {t:"say", label:"Piscine", fr:"Le slip de bain est obligatoire ; les shorts de bain sont interdits.", de:"Badehosen sind Pflicht. Badeshorts sind nicht erlaubt.", ph:"Badeu-hozène zint Pflicht. Badeu-chortss zint nicht èr-laoubt."},
+          {t:"say", label:"Barbecue", fr:"Seuls les barbecues électriques sont autorisés.", de:"Nur Elektrogrills sind erlaubt.", ph:"Nour Élèktro-grilss zint èr-laoubt."},
+        ]
+      },
+      {
+        title:"5 · Le départ et bon séjour",
+        blocks:[
+          {t:"say", label:"Départ", fr:"En location, le départ se fait entre 8 h et 10 h. Après 10 h, une nuit supplémentaire peut être facturée.", de:"In der Mietunterkunft erfolgt die Abreise zwischen acht und zehn Uhr. Nach zehn Uhr kann eine zusätzliche Nacht berechnet werden.", ph:"In dèr Mit-ountèr-kounft èr-folgt di Ap-raïzeu tsvichène akht ount tsèn Ouir. Nakh tsèn Ouir kan aïneu tsou-sèts-licheu Nakht beu-rèchnèt vèrdène."},
+          {t:"say", label:"Caution", fr:"La caution vous est restituée si le logement est propre et l'inventaire complet.", de:"Sie erhalten die Kaution zurück, wenn die Unterkunft sauber und das Inventar vollständig ist.", ph:"Zi èr-haltène di Kaou-tsion tsou-ruk, vèn di Ountèr-kounft zaoubèr ount dass Invèntar fol-chtèndich ist."},
+          {t:"say", label:"Pour finir", fr:"Bon séjour parmi nous !", de:"Wir wünschen Ihnen einen schönen Aufenthalt!", ph:"Vir vuunchène irène aïnène cheunène Aouf-ènt-halt!"},
+        ]
+      },
+    ]
+  },
+
+  {
+    id:"visiteur",
+    em:"👋",
+    name:"Un visiteur à l'accueil",
+    desc:"Des amis ou de la famille viennent voir des clients",
+    intro:"Accueillir un visiteur extérieur : le diriger, lui expliquer les conditions d'accès et encaisser si nécessaire.",
+    steps:[
+      {
+        title:"1 · Le visiteur se présente",
+        blocks:[
+          {t:"hear", label:"Le visiteur dit", items:[
+            {de:"Guten Tag, wir möchten Freunde besuchen, die hier Urlaub machen.", fr:"Bonjour, nous voudrions rendre visite à des amis qui sont en vacances ici."},
+            {de:"Dürfen wir auch ins Schwimmbad?", fr:"Pouvons-nous aussi aller à la piscine ?"},
+          ]},
+          {t:"say", label:"Tu demandes", fr:"Avec plaisir ! Comment s'appellent vos amis, et quel est leur numéro d'emplacement ?", de:"Gerne! Wie heißen Ihre Freunde, und welche Stellplatznummer haben sie?", ph:"Guèrneu! Vi haïssène ireu Froïndeu, ount vèlcheu Chtel-platss-noumèr habène zi?"},
+        ]
+      },
+      {
+        title:"2 · Les conditions d'accès",
+        blocks:[
+          {t:"memo", label:"💡 À savoir", html:"Au-delà de <b>2 heures</b> de visite, ou pour accéder aux <b>piscines</b> et aux animations, le visiteur paie à la réception."},
+          {t:"say", label:"La règle", fr:"Tout visiteur doit se présenter à la réception ; une redevance s'applique au-delà de deux heures.", de:"Jeder Besucher muss sich an der Rezeption melden; nach zwei Stunden wird eine Gebühr fällig.", ph:"Yédèr Beu-zoukhèr mouss zich an dèr Rétsèptsion mèldène; nakh tsvaï Chtoundène virt aïneu Guébur fèlich."},
+          {t:"say", label:"Le tarif", fr:"Pour un visiteur, l'accès aux piscines et aux animations coûte 10 € par personne et par jour.", de:"Für Besucher kostet der Zugang zu den Pools und zum Animationsprogramm zehn Euro pro Person und Tag.", ph:"Fur Beu-zoukhèr kostèt dèr Tsougang tsou dène Poulss ount tsoum Animatsions-programm tsèn Oï-ro pro Pèrzone ount Tak."},
+          {t:"say", label:"L'horaire", fr:"Les visiteurs doivent quitter le camping au plus tard à 23 h.", de:"Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen.", ph:"Beu-zoukhèr mussène dène Kamping-platss chpè-tèstèns oum draï-ount-tsvan-tsig Ouir fèr-lassène."},
+        ]
+      },
+      {
+        title:"3 · L'encaissement",
+        blocks:[
+          {t:"say", label:"Paiement", fr:"Vous payez par carte ou en espèces ?", de:"Zahlen Sie mit Karte oder bar?", ph:"Tsalène zi mit Karteu odèr bar?"},
+          {t:"say", label:"Pour finir", fr:"Je vous souhaite une excellente journée !", de:"Ich wünsche Ihnen einen schönen Tag!", ph:"Ich vuncheu irène aïnène cheunène Tak!"},
+        ]
+      },
+    ]
+  },
 ];
 
 /* ══════════════════════════════════════
@@ -985,6 +1118,54 @@ const UNITS = {
   8:"Conseiller des sorties aux alentours",
 };
 const ORDER = [0,9,10,2,1,11,5,3,4,12,6,7,8];
+/* ══════════════════════════════════════
+   MÉMO RÈGLEMENT (règlement intérieur, FAQ et CGV de lesmediterranees.com + consignes de la réception)
+══════════════════════════════════════ */
+const RULES = [
+  ['🕐','Arrivée et départ',[
+    'Véhicule sur le camping dès <b>12 h</b> ; emplacement garanti à <b>14 h</b>, mobil-home à <b>17 h</b>.',
+    'Arrivée possible jusqu\'à <b>23 h</b> au plus tard.',
+    'Départ avant <b>11 h</b> sur les emplacements, entre <b>8 h et 10 h</b> en location. Après 10 h, une nuit supplémentaire peut être facturée.',
+    'La caution est restituée si le logement est <b>propre</b> et l\'<b>inventaire complet</b>.',
+  ]],
+  ['💳','Réservation et paiement',[
+    'Plus de 30 jours avant l\'arrivée : <b>acompte de 30 %</b>. Moins de 30 jours : <b>totalité du séjour</b>.',
+    'Toute modification se demande <b>par écrit</b>, au moins 30 jours avant l\'arrivée, selon les disponibilités.',
+    'La taxe de séjour est fixée par la commune.',
+    'Au comptoir, c\'est toi qui demandes : <b>« Vous payez par carte ou en espèces ? »</b>',
+  ]],
+  ['📶','Wi-Fi',[
+    '<b>Inclus</b> dans tous les mobil-homes, sauf dans la gamme <b>Cosy</b>.',
+    '<b>Payant</b> sur tous les emplacements : standard, grand confort, seconde ligne et première ligne.',
+    '<b>30 minutes offertes</b> au bar toutes les 6 heures.',
+  ]],
+  ['🐶','Animaux',[
+    'Un chien, ou <b>deux petits chiens</b> de moins de 10 kg.',
+    '<b>7 €</b> par jour sur emplacement, <b>9 €</b> par jour en location.',
+    'Chiens tenus <b>en laisse</b> et <b>vaccinés</b> : carnet de vaccination à présenter à l\'arrivée.',
+    'Non acceptés dans les locations de catégories 1 et 2, et <b>interdits dans l\'espace piscine</b>.',
+  ]],
+  ['🏊','Piscines',[
+    '<b>Shorts de bain interdits</b> : maillot une pièce ou bikini pour les femmes, slip de bain pour les hommes.',
+    'Accès réservé aux porteurs du <b>bracelet</b>.',
+  ]],
+  ['🚗','Circulation et sécurité',[
+    'Vitesse limitée à <b>10 km/h</b>.',
+    'Portail fermé et circulation interdite de <b>23 h à 7 h</b>.',
+    '<b>Un seul véhicule</b> par emplacement ; les autres se garent sur le parking.',
+    'Bracelet porté <b>en permanence</b>, bien visible au poignet.',
+    'Barbecues <b>électriques uniquement</b> ; charbon strictement interdit.',
+    'Silence à partir de <b>22 h</b>.',
+  ]],
+  ['👋','Visiteurs',[
+    'Passage obligatoire à la <b>réception</b> ; une redevance s\'applique au-delà de <b>2 heures</b>.',
+    'Accès aux piscines et aux animations : <b>10 € par personne et par jour</b>.',
+    'Départ du camping au plus tard à <b>23 h</b>.',
+  ]],
+];
+const UEM = {0:'🛎️',9:'🤝',10:'🔢',2:'📅',1:'🏠',11:'🗓️',5:'🍽️',3:'🏊',4:'🏖️',12:'🕐',6:'📋',7:'🆘',8:'🗺️'};
+const emo = e => `<span class="emo" aria-hidden="true">${e}</span>`;
+
 const catById = id => CATS.find(c=>c.id===id);
 const isBase = id => { const c=catById(id); return !!(c && c.grp==='base'); };
 const unitPhrases = id => P.map((p,i)=>i).filter(i=>P[i].c===id);
@@ -1151,8 +1332,8 @@ function confetti(){
 
 function chipsHTML(){
   const st=streakNow();
-  return `<button class="chip${st?'':' off'}" data-nav="profile" title="Série de jours">${icon('i-flame')}${st}<span class="sr"> ${st>1?'jours':'jour'} de série</span></button>
-    <button class="chip" data-nav="profile" title="Points d'expérience">${icon('i-bolt')}${S.xp}<span class="sr"> XP</span></button>`;
+  return `<button class="chip${st?'':' off'}" data-nav="profile" title="Série de jours">${emo('🔥')}${st}<span class="sr"> ${st>1?'jours':'jour'} de série</span></button>
+    <button class="chip" data-nav="profile" title="Points d'expérience">${emo('⚡')}${S.xp}<span class="sr"> XP</span></button>`;
 }
 function goalHTML(){
   const g=S.goal, x=dayXp(), p=Math.min(100, Math.round(x/g*100));
@@ -1217,7 +1398,7 @@ function viewLearn(){
         aria-label="${esc(cat.name)}, leçon ${l+1} sur ${L.length}${d?', terminée':''}" title="Leçon ${l+1}">${d?icon('i-check'):l+1}</button>`;
     }).join('');
     return `<section class="unit${isCur?' cur':''}">
-      <div class="unit-top"><span class="badge-ic">${icon('u'+u)}</span>
+      <div class="unit-top"><span class="badge-ic">${emo(UEM[u])}</span>
         <div class="unit-tx"><span class="eyebrow">Unité ${ui+1}${isBase(u)?' · Les bases':''}</span>
           <div class="unit-nm">${esc(cat.name)}</div><div class="unit-ds">${UNITS[u]}</div></div>
         <span class="unit-pc${pr===100?' full':''}">${pr} %</span></div>
@@ -1227,12 +1408,13 @@ function viewLearn(){
     </section>`;
   }).join('');
   return tfr(`<div class="wrap view">
-    <h1 class="h1">${name?`Guten Tag, ${esc(name)}`:'Guten Tag'}</h1>
+    <h1 class="h1">${name?`Guten Tag, ${esc(name)}`:'Guten Tag'} 👋</h1>
     <p class="lead">Ton allemand pour la réception, une leçon après l'autre.</p>
     <div class="hero"><svg class="hero-art" aria-hidden="true"><use href="#i-wave"/></svg>${hero}</div>
     <div class="quick">
-      <button class="qk" data-act="practice"><span class="badge-ic">${icon('i-repeat')}</span><span><b>Entraînement rapide</b><small>Cinq phrases déjà vues, au hasard</small></span></button>
-      <button class="qk" data-act="mistakes" ${nMist?'':'disabled'}><span class="badge-ic">${icon('i-target')}</span><span><b>Mes erreurs</b><small>${nMist?plural(nMist,'phrase')+' à retravailler':'Rien à réviser pour l\'instant'}</small></span></button>
+      <button class="qk" data-act="practice"><span class="badge-ic">${emo('⚡')}</span><span><b>Entraînement rapide</b><small>Cinq phrases déjà vues, au hasard</small></span></button>
+      <button class="qk" data-act="mistakes" ${nMist?'':'disabled'}><span class="badge-ic">${emo('🎯')}</span><span><b>Mes erreurs</b><small>${nMist?plural(nMist,'phrase')+' à retravailler':'Rien à réviser pour l\'instant'}</small></span></button>
+      <button class="qk" data-act="rules"><span class="badge-ic">${emo('📜')}</span><span><b>Mémo règlement</b><small>Horaires, tarifs, CGV et règles du camping</small></span></button>
     </div>
     <div class="sec-t"><h2>Parcours</h2><span>${done} / ${total} leçons</span></div>
     <div class="units">${units}</div>
@@ -1248,7 +1430,7 @@ function viewFlows(){
     <p class="lead">Les échanges types du comptoir, étape par étape : ce que tu dis, sa prononciation et ce que le client peut répondre.</p>
     <div class="flow-list">${FLOWS.map(f=>`
       <button class="flow" data-nav-to="#/situ/${f.id}">
-        <span class="badge-ic">${icon('f-'+f.id)}</span>
+        <span class="badge-ic">${emo(f.em)}</span>
         <span class="flow-tx"><b>${esc(f.name)}</b><small>${esc(f.desc)}</small>
           <span class="flow-meta">${plural(f.steps.length,'étape')}${S.flowsDone[f.id]?` · <span class="done">${icon('i-check')}Parcourue</span>`:''}</span></span>
         ${icon('i-chev','ic chev')}
@@ -1261,23 +1443,23 @@ function viewFlow(id, st){
   const step=f.steps[st], total=f.steps.length;
   const blocks = step.blocks.map((b,bi)=>{
     if(b.t==='say'){
-      return `<div class="blk say"><span class="eyebrow blk-lb">${esc(b.label)}</span>${phraseBody(b,`f${f.id}.${st}.${bi}`)}</div>`;
+      return `<div class="blk say"><span class="eyebrow blk-lb">🗣️ ${esc(b.label)}</span>${phraseBody(b,`f${f.id}.${st}.${bi}`)}</div>`;
     }
     if(b.t==='hear'){
-      return `<div class="blk hear"><span class="eyebrow blk-lb">${esc(b.label)} · à comprendre</span>
+      return `<div class="blk hear"><span class="eyebrow blk-lb">👂 ${esc(b.label)} · à comprendre</span>
         ${b.items.map((it,ii)=>`<div class="h-line">
           <button class="play sm" data-act="play" data-key="h${f.id}.${st}.${bi}.${ii}" aria-label="Écouter">${icon('i-spk')}</button>
           <div><div class="h-de" lang="de">${esc(it.de)}</div><div class="h-fr">${esc(it.fr)}</div></div></div>`).join('')}</div>`;
     }
     if(b.t==='memo'){
       const lb=b.label.replace(/^💡\s*/,'');
-      return `<div class="blk memo">${icon('i-info')}<div><span class="eyebrow blk-lb">${esc(lb)}</span>${b.html}</div></div>`;
+      return `<div class="blk memo">${emo('💡')}<div><span class="eyebrow blk-lb">${esc(lb)}</span>${b.html}</div></div>`;
     }
     return '';
   }).join('');
   return tfr(`<div class="wrap view">
     <div class="subbar"><button class="back" data-nav-to="#/situ" aria-label="Retour aux situations">${icon('i-back')}</button>
-      <div class="subbar-t"><b>${esc(f.name)}</b><small>${esc(f.intro)}</small></div></div>
+      <div class="subbar-t"><b>${f.em} ${esc(f.name)}</b><small>${esc(f.intro)}</small></div></div>
     <div class="steps">${f.steps.map((_,i)=>`<button class="${i<st?'done':i===st?'cur':''}" data-nav-to="#/situ/${f.id}/${i}" aria-label="Étape ${i+1}"></button>`).join('')}</div>
     <span class="eyebrow">Étape ${st+1} sur ${total}</span>
     <h2 class="step-title">${esc(stripNum(step.title))}</h2>
@@ -1294,7 +1476,7 @@ function viewFlow(id, st){
 function phraseBody(p, key, q){
   const hl = s => { s=esc(s); if(!q) return s; const r=new RegExp('('+esc(q).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'); return s.replace(r,'<mark>$1</mark>'); };
   const f=favs.has(key);
-  return `<div class="pc-fr">${hl(p.fr)}</div>
+  return `<div class="pc-fr">${p.e?p.e+' ':''}${hl(p.fr)}</div>
     <div class="pc-de" lang="de">${hl(p.de)}</div>
     ${p.ph?`<div class="pc-ph">${esc(p.ph)}</div>`:''}
     <div class="pc-act">
@@ -1333,12 +1515,16 @@ function viewPhrases(){
     const res=allSearchable().filter(({p})=>norm(p.fr).includes(nq)||norm(p.de).includes(nq)||(p.ph&&norm(p.ph).includes(nq)));
     body = res.length
       ? `<p class="eyebrow" style="margin:0 0 12px">${plural(res.length,'résultat')}</p><div class="plist two">${res.map(r=>phraseCard(r.p,r.key,q,r.src)).join('')}</div>`
-      : `<div class="empty"><span class="badge-ic">${icon('i-search')}</span><b>Aucun résultat</b><p>Essaie un autre mot, en français ou en allemand.</p></div>`;
+      : `<div class="empty"><span class="badge-ic">${emo('🔍')}</span><b>Aucun résultat</b><p>Essaie un autre mot, en français ou en allemand.</p></div>`;
   } else if(phraseSeg==='favs'){
     const items=[...favs].map(k=>({k,p:byKey(k)})).filter(x=>x.p);
     body = items.length
       ? `<div class="plist two">${items.map(x=>phraseCard(x.p,x.k,'')).join('')}</div>`
-      : `<div class="empty"><span class="badge-ic">${icon('i-star')}</span><b>Aucun favori pour l'instant</b><p>Touche l'étoile d'une phrase pour la retrouver ici en un instant.</p></div>`;
+      : `<div class="empty"><span class="badge-ic">${emo('⭐')}</span><b>Aucun favori pour l'instant</b><p>Touche l'étoile d'une phrase pour la retrouver ici en un instant.</p></div>`;
+  } else if(phraseSeg==='rules'){
+    body = `<p class="lead">L'essentiel du règlement intérieur et des conditions de vente, pour répondre aux clients sans hésiter.</p>
+      <div class="rules">${RULES.map(([e,t,items])=>`<section class="rule"><h3>${emo(e)}${t}</h3><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></section>`).join('')}</div>
+      <p class="src-note">Sources : règlement intérieur, FAQ et conditions générales de vente publiés sur lesmediterranees.com, complétés par les consignes de la réception. Les tarifs peuvent évoluer d'une saison à l'autre.</p>`;
   } else if(phraseSeg==='pron'){
     body = `<p class="lead">L'allemand se lit presque comme il s'écrit. Ces quelques règles suffisent pour prononcer la plupart des mots. Les noms propres (Beach Garden, Marseillan…) gardent leur prononciation française.</p>
       <div class="guide"><div class="g-row head"><span class="eyebrow">Allemand</span><span class="eyebrow">Se dit</span><span class="eyebrow">Exemple</span></div>
@@ -1347,12 +1533,12 @@ function viewPhrases(){
     const ids = CATS.filter(c=>phraseSeg==='bases' ? c.grp==='base' : c.grp!=='base').map(c=>c.id);
     body = `<div class="cat-grid">${ids.map(id=>{
       const c=catById(id), n=unitPhrases(id).length, pr=Math.round(unitProgress(id)*100);
-      return `<button class="cat" data-nav-to="#/phrases/cat/${id}"><span class="badge-ic">${icon('u'+id)}</span>
+      return `<button class="cat" data-nav-to="#/phrases/cat/${id}"><span class="badge-ic">${emo(UEM[id])}</span>
         <b>${esc(c.name)}</b><small>${plural(n,'phrase')} · ${pr} % appris</small>
         <span class="bar"><i style="width:${pr}%"></i></span></button>`;
     }).join('')}</div>`;
   }
-  const seg=[['themes','Thèmes'],['bases','Les bases'],['favs','Favoris'+(favs.size?' ('+favs.size+')':'')],['pron','Prononciation']];
+  const seg=[['themes','💬 Thèmes'],['bases','🔢 Les bases'],['rules','📜 Règlement'],['favs','⭐ Favoris'+(favs.size?' ('+favs.size+')':'')],['pron','🗣️ Prononciation']];
   return tfr(`<div class="wrap wide view">
     <h1 class="h1">Guide de conversation</h1>
     <p class="lead">Toutes les phrases utiles à la réception, avec la voix allemande et la prononciation.</p>
@@ -1367,7 +1553,7 @@ function viewCat(id){
   const idx=unitPhrases(id), L=unitLessons(id), first=Math.max(0,L.findIndex((_,l)=>!lessonDone(id,l)));
   return tfr(`<div class="wrap wide view">
     <div class="subbar"><button class="back" data-act="catback" aria-label="Retour">${icon('i-back')}</button>
-      <div class="subbar-t"><b>${esc(c.name)}</b><small>${plural(idx.length,'phrase')} · ${UNITS[id]}</small></div>
+      <div class="subbar-t"><b>${UEM[id]} ${esc(c.name)}</b><small>${plural(idx.length,'phrase')} · ${UNITS[id]}</small></div>
       <button class="btn sm" data-act="start" data-u="${id}" data-l="${first}">S'entraîner</button></div>
     <div class="plist two">${idx.map(i=>phraseCard(P[i],'p'+i,'')).join('')}</div></div>`);
 }
@@ -1389,10 +1575,10 @@ function viewProfile(){
       <input class="name-in" id="name" maxlength="24" placeholder="Facultatif" value="${esc(S.name)}" autocomplete="given-name"></div></div>
     <div class="sec-t"><h2>Statistiques</h2></div>
     <div class="stats">
-      <div class="stat"><span class="badge-ic">${icon('i-flame')}</span><div><b>${st}</b><small>${st>1?'jours de série':'jour de série'}</small></div></div>
-      <div class="stat"><span class="badge-ic">${icon('i-bolt')}</span><div><b>${S.xp}</b><small>XP au total</small></div></div>
-      <div class="stat"><span class="badge-ic">${icon('i-medal')}</span><div><b>${nLessons}<span style="font-size:15px;color:var(--muted)"> / ${totalLessons}</span></b><small>leçons terminées</small></div></div>
-      <div class="stat"><span class="badge-ic">${icon('i-star')}</span><div><b>${favs.size}</b><small>${favs.size>1?'phrases favorites':'phrase favorite'}</small></div></div>
+      <div class="stat"><span class="badge-ic">${emo('🔥')}</span><div><b>${st}</b><small>${st>1?'jours de série':'jour de série'}</small></div></div>
+      <div class="stat"><span class="badge-ic">${emo('⚡')}</span><div><b>${S.xp}</b><small>XP au total</small></div></div>
+      <div class="stat"><span class="badge-ic">${emo('🏅')}</span><div><b>${nLessons}<span style="font-size:15px;color:var(--muted)"> / ${totalLessons}</span></b><small>leçons terminées</small></div></div>
+      <div class="stat"><span class="badge-ic">${emo('⭐')}</span><div><b>${favs.size}</b><small>${favs.size>1?'phrases favorites':'phrase favorite'}</small></div></div>
     </div>
     <div class="sec-t"><h2>Objectif quotidien</h2></div>
     <div class="card" style="margin-bottom:12px">${goalHTML()}</div>
@@ -1574,7 +1760,7 @@ function finishLesson(){
   sfx('win'); confetti();
   $('#lesson').innerHTML=tfr(`<div class="l-body"><div class="l-inner"><div class="l-end">
       <div class="seal">${icon('i-check')}</div>
-      <h2>${perfect?'Sans faute':'Leçon terminée'}</h2>
+      <h2>${perfect?'Sans faute 🏆':'Leçon terminée 🎉'}</h2>
       <p>${goalNow?'Objectif du jour atteint. Bravo !':perfect?'Ausgezeichnet ! Aucune erreur sur toute la leçon.':'Chaque leçon te rapproche d\'un accueil fluide en allemand.'}</p>
       <div class="res">
         <div><b>+${xp}</b><small>XP gagnés</small></div>
@@ -1602,15 +1788,16 @@ document.addEventListener('click', async e=>{
     case 'play': case 'slow': { const p=byKey(d.key); if(p) play(p.de, el, a==='slow'); break; }
     case 'fav': {
       favs.has(d.key) ? favs.delete(d.key) : favs.add(d.key); save();
-      toast(favs.has(d.key)?'Ajoutée aux favoris':'Retirée des favoris');
+      toast(favs.has(d.key)?'⭐ Ajoutée aux favoris':'Retirée des favoris');
       const y=window.scrollY; render(); window.scrollTo(0,y); break;
     }
     case 'start': { const u=+d.u, l=+d.l; startLesson({u, l, idx:unitLessons(u)[l]}); break; }
     case 'continue': { const n=nextLesson(); if(n) startLesson({u:n.u, l:n.l, idx:unitLessons(n.u)[n.l]}); break; }
     case 'practice': startLesson({idx:shuffle(seenPhrases()).slice(0,5)}); break;
     case 'mistakes': { const idx=S.mistakes.filter(k=>k[0]==='p'&&byKey(k)).map(k=>+k.slice(1)).slice(0,6); if(idx.length) startLesson({idx}); break; }
-    case 'flowdone': S.flowsDone[d.id]=1; save(); sfx('win'); toast('Situation terminée. Bravo !'); go('#/situ'); break;
+    case 'flowdone': S.flowsDone[d.id]=1; save(); sfx('win'); toast('Situation terminée. Bravo ! 🎉'); go('#/situ'); break;
     case 'seg': phraseSeg=d.seg; render(); break;
+    case 'rules': phraseSeg='rules'; searchQ=''; go('#/phrases'); break;
     case 'clearq': searchQ=''; render(); $('#q').focus(); break;
     case 'catback': history.length>1 ? history.back() : go('#/phrases'); break;
     case 'goal': S.goal=+d.g; save(); render(); toast('Objectif : '+d.g+' XP par jour'); break;
