@@ -14,17 +14,37 @@ XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque
 
 La progression est enregistrée **sur l'appareil** (navigateur), sans compte ni serveur.
 
+## 📲 Installer l'application sur les téléphones de l'équipe
+Aucune boutique d'applications, aucun compte à créer :
+1. Dans l'app (sur l'ordinateur de la réception) : **Profil → Partager avec un collègue → Imprimer l'affiche**.
+2. Le collègue vise le QR code de l'affiche avec **l'appareil photo** de son téléphone et touche le lien.
+3. L'application s'ouvre et lui montre quoi faire :
+   - **Android** : un bouton **« Installer »**, un seul geste ;
+   - **iPhone** : deux gestes (Partager → « Sur l'écran d'accueil »), avec une flèche qui montre où toucher.
+
+L'icône des Méditerranées apparaît ensuite sur l'écran d'accueil. L'app s'ouvre en plein écran,
+fonctionne **sans internet** (voix comprises) et se **met à jour toute seule** à chaque nouvelle version.
+
+## 🔔 Rappel quotidien (facultatif)
+Les notifications passent par OneSignal (gratuit) :
+1. Crée un compte sur onesignal.com, puis une application **Web** avec l'adresse GitHub Pages de l'app.
+2. Copie l'**App ID** dans `config.js` (`onesignalAppId: '…'`).
+3. Dans OneSignal, programme le message « C'est l'heure de ta leçon du jour ! ».
+
+Tant que l'App ID est vide, les notifications restent désactivées. Sur iPhone, elles ne fonctionnent
+qu'une fois l'app installée sur l'écran d'accueil (iOS 16.4 ou plus récent).
+
 ## 📁 Contenu du dossier
 - `index.html` : l'application (contenu, design et logique).
-- `audio/` : un MP3 par phrase allemande (voix native).
-- `audio_map.js` : relie chaque phrase allemande à son MP3 (généré automatiquement).
+- `audio/` + `audio_map.js` : une voix allemande native (MP3) par phrase.
 - `generate_audio.ps1` : (re)génère les MP3 si tu ajoutes ou modifies des phrases.
+- `manifest.webmanifest`, `sw.js`, `icons/` : ce qui rend l'app installable et utilisable hors connexion.
+- `brand/logo.png` : logo des Méditerranées · `vendor/qrcode.js` : générateur de QR code (licence MIT).
+- `config.js` : réglage des notifications.
 
 ## 🌐 Mise en ligne (GitHub Pages)
-Settings → Pages → *Branch* : **main** → **Save**. Après une ou deux minutes, l'app est en ligne sur
-`https://TON-PSEUDO.github.io/NOM-DU-DEPOT/`.
-
-> 💡 Sur téléphone : « Ajouter à l'écran d'accueil » pour l'utiliser comme une vraie application.
+Settings → Pages → *Branch* : **main** → **Save**. Chaque modification fusionnée dans `main`
+est en ligne une à deux minutes plus tard, et les téléphones la récupèrent automatiquement.
 
 ## ✏️ Modifier ou ajouter des phrases
 1. Dans `index.html`, modifie le tableau `P` (phrases) ou `FLOWS` (situations).

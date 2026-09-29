@@ -9,6 +9,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BG Deutsch">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238E1B2E'/%3E%3Ccircle cx='40' cy='23' r='7' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Cpath d='M12 40c5-4 9-4 14 0s9 4 14 0 9-4 12-1M12 48c5-4 9-4 14 0s9 4 14 0 9-4 12-1' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,6 +106,7 @@ button{cursor:pointer; background:none; border:0; padding:0}
 .brand-mark{width:36px; height:36px; flex:0 0 36px}
 .logo{height:34px; width:auto; max-width:120px; object-fit:contain; filter:brightness(0) invert(1); flex:0 0 auto}
 .topbar .brand-name{color:#fff}
+@media (max-width:420px){ .topbar .logo{height:28px} .topbar .brand-name{font-size:15.5px} .topbar .brand-txt{padding-left:9px} .topbar{gap:8px} .topbar .chip{padding:6px 5px} }
 .topbar .brand-sub{color:rgba(255,255,255,.75)}
 .topbar .brand-txt{padding-left:11px; border-left:1px solid rgba(255,255,255,.3)}
 .topbar .chip{color:#fff}
@@ -451,6 +455,54 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .confetti i{position:absolute; top:-16px; width:7px; height:12px; border-radius:2px; animation:fall linear forwards}
 @keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(var(--r)); opacity:.8}}
 .view{animation:fadein .25s}
+
+/* ═════════ INSTALLATION ET PARTAGE ═════════ */
+.promo{display:flex; align-items:center; gap:14px; flex-wrap:wrap; border:1px solid var(--brand-200); background:var(--brand-50); border-radius:var(--r); padding:14px 16px; margin-bottom:22px}
+.promo-ic{font-size:30px; line-height:1}
+.promo-tx{flex:1; min-width:180px}
+.promo-tx b{display:block; font-size:15.5px; font-weight:600}
+.promo-tx small{display:block; font-size:13.5px; color:var(--ink-2); margin-top:2px; line-height:1.45}
+.promo-act{display:flex; align-items:center; gap:4px; margin-left:auto}
+.promo-x{width:36px; height:36px; border-radius:50%; display:grid; place-items:center; color:var(--muted)}
+.promo-x:hover{background:#fff}
+.sheet{max-width:440px; text-align:left; max-height:calc(100vh - 32px); overflow-y:auto}
+.sheet .sh-ic{font-size:44px; line-height:1; margin-bottom:10px; text-align:center}
+.sheet h3{text-align:center}
+.sheet p{text-align:center; margin:0 0 16px}
+.steps-list{list-style:none; margin:0 0 16px; padding:0; display:grid; gap:10px}
+.steps-list li{display:flex; gap:14px; align-items:center; background:var(--soft); border-radius:12px; padding:14px; font-size:16.5px; line-height:1.45}
+.st-n{flex:0 0 34px; height:34px; border-radius:50%; background:var(--brand); color:#fff; display:grid; place-items:center; font-weight:700; font-size:16px}
+.kbd-ic{display:inline-grid; place-items:center; width:30px; height:30px; border-radius:8px; background:#fff; border:1px solid var(--line-2); color:#0A7AFF; vertical-align:middle; margin:0 2px}
+.kbd-ic .ic{width:18px; height:18px}
+.warn{background:#FFF6E0; border-radius:10px; padding:10px 12px; font-size:14.5px}
+.done-tip{font-size:15px; color:var(--ok)}
+.ios-arrow{position:fixed; left:50%; bottom:calc(8px + env(safe-area-inset-bottom)); transform:translateX(-50%); font-size:40px; animation:nudge 1s ease-in-out infinite; z-index:260}
+@keyframes nudge{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+.qr{display:grid; place-items:center; margin:4px auto 10px; width:240px; max-width:100%}
+.qr svg{width:100%; height:auto; display:block}
+.url{text-align:center; font-size:13px; color:var(--muted); word-break:break-all; margin-bottom:16px}
+.share-btns{display:grid; gap:8px; margin-bottom:8px}
+.share-btns .btn + .btn{margin-top:0}
+.sheet > .btn.sec{margin-top:8px}
+.pill-ok{font-size:13px; font-weight:600; color:var(--ok); background:var(--ok-bg); border-radius:99px; padding:6px 12px}
+#poster{display:none}
+@media print{
+  body > *:not(#poster){display:none!important}
+  #poster{display:block!important; text-align:center; font-family:var(--sans); color:#000; padding:10mm}
+  .po-brand{display:flex; flex-direction:column; align-items:center; gap:6mm; margin-bottom:12mm}
+  .po-logo{width:120mm; height:auto}
+  .po-brand b{text-align:center!important}
+  .po-brand span{text-align:center!important}
+  .po-brand b{display:block; font-family:var(--serif); font-size:26px; text-align:left}
+  .po-brand span{display:block; font-size:14px; color:#555; text-align:left}
+  #poster h1{font-family:var(--serif); font-size:34px; line-height:1.25; margin:0 0 10mm}
+  .po-qr{width:95mm; margin:0 auto 10mm}
+  .po-qr svg{width:100%; height:auto}
+  #poster ol{list-style:none; padding:0; margin:0 auto; max-width:140mm; text-align:left; font-size:20px; line-height:1.5}
+  #poster li{display:flex; align-items:center; gap:14px; margin-bottom:6mm}
+  #poster li .po-n{flex:0 0 40px; height:40px; border-radius:50%; background:#8E1B2E; color:#fff; display:grid; place-items:center; font-weight:700; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .po-url{font-size:12px; color:#555; margin-top:8mm}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important}
   .confetti{display:none}
@@ -507,7 +559,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 <!-- Barre latérale (ordinateur) -->
 <nav class="side" aria-label="Navigation principale">
   <div class="brand">
-    <img class="logo" src="https://static.secureholiday.net/static/CMS/photos/000/062/000062239.png?w=600&amp;format=webp" alt="Les Méditerranées" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+    <img class="logo" src="brand/logo.png" alt="Les Méditerranées" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
     <svg class="brand-mark" hidden><use href="#i-brand"/></svg>
     <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub">Deutsch</div></div>
   </div>
@@ -521,7 +573,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 <!-- Barre du haut (mobile) -->
 <header class="topbar">
   <div class="brand">
-    <img class="logo" src="https://static.secureholiday.net/static/CMS/photos/000/062/000062239.png?w=600&amp;format=webp" alt="Les Méditerranées" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+    <img class="logo" src="brand/logo.png" alt="Les Méditerranées" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
     <svg class="brand-mark" hidden><use href="#i-brand"/></svg>
     <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub">Deutsch</div></div>
   </div>
@@ -546,6 +598,8 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 
 <!-- Voix allemandes pré-enregistrées (généré par generate_audio.ps1) -->
 <script src="audio_map.js" charset="utf-8"></script>
+<script src="config.js"></script>
+<script src="vendor/qrcode.js"></script>
 <script>
 /* ══════════════════════════════════════
    DONNÉES
@@ -1408,6 +1462,7 @@ function viewLearn(){
     </section>`;
   }).join('');
   return tfr(`<div class="wrap view">
+    ${installCard()}
     <h1 class="h1">${name?`Guten Tag, ${esc(name)}`:'Guten Tag'} 👋</h1>
     <p class="lead">Ton allemand pour la réception, une leçon après l'autre.</p>
     <div class="hero"><svg class="hero-art" aria-hidden="true"><use href="#i-wave"/></svg>${hero}</div>
@@ -1583,6 +1638,7 @@ function viewProfile(){
     <div class="sec-t"><h2>Objectif quotidien</h2></div>
     <div class="card" style="margin-bottom:12px">${goalHTML()}</div>
     <div class="goals">${goals.map(([g,l])=>`<button class="goal-opt${S.goal===g?' on':''}" data-act="goal" data-g="${g}"><b>${l}</b><small>${g} XP par jour</small></button>`).join('')}</div>
+    ${appSection()}
     <div class="sec-t"><h2>Réglages</h2></div>
     <div class="card" style="padding:0 20px">
       <div class="setting"><div class="s-tx"><b>Prononciation à la française</b><small>Afficher l'aide sous chaque phrase allemande</small></div>
@@ -1838,6 +1894,186 @@ document.addEventListener('keydown', e=>{
   if(ex && (ex.t==='listen'||ex.t==='choose') && L.state==='ask' && /^[1-4]$/.test(e.key)) selectOpt(+e.key-1);
 });
 function applySettings(){ document.body.classList.toggle('no-ph', !S.phon); }
+
+
+/* ══════════════════════════════════════
+   APPLICATION INSTALLABLE, PARTAGE ET NOTIFICATIONS
+══════════════════════════════════════ */
+const CFG = window.BGD_CONFIG || {};
+const UA = navigator.userAgent;
+const IS_IOS = /iPhone|iPad|iPod/.test(UA) || (/Macintosh/.test(UA) && navigator.maxTouchPoints > 1);
+const IS_ANDROID = /Android/.test(UA);
+const IS_MOBILE = IS_IOS || IS_ANDROID;
+const IN_APP = /FBAN|FBAV|FB_IAB|Instagram|Messenger|Snapchat|LinkedInApp|Line\/|; wv\)/.test(UA);
+const IOS_SAFARI = IS_IOS && !/CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(UA) && !IN_APP;
+const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const APP_URL = location.origin + location.pathname.replace(/index\.html$/,'');
+let installEvt = null;
+
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; if(route().view==='learn'||route().view==='profile') render(); });
+window.addEventListener('appinstalled', () => { installEvt = null; toast('📲 Application installée ! Retrouve-la sur ton écran d\'accueil.'); render(); });
+if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+
+function installHidden(){ try{ return +localStorage.getItem('bgd_install_later') > Date.now(); }catch(e){ return false; } }
+function installCard(){
+  if(isStandalone() || installHidden()) return '';
+  if(!IS_MOBILE && !installEvt){
+    return `<div class="promo"><span class="promo-ic">📱</span><div class="promo-tx"><b>Installe l'app sur les téléphones de l'équipe</b>
+      <small>Tes collègues scannent le QR code avec l'appareil photo : c'est tout.</small></div>
+      <div class="promo-act"><button class="btn sm" data-act="share">Afficher le QR code</button>
+      <button class="promo-x" data-act="later" aria-label="Masquer">${icon('i-x')}</button></div></div>`;
+  }
+  return `<div class="promo"><span class="promo-ic">📲</span><div class="promo-tx"><b>Installe l'application sur ton téléphone</b>
+    <small>Elle s'ouvrira d'un simple geste, comme une vraie application, même sans internet.</small></div>
+    <div class="promo-act"><button class="btn sm" data-act="install">Installer</button>
+    <button class="promo-x" data-act="later" aria-label="Plus tard">${icon('i-x')}</button></div></div>`;
+}
+
+/* Fenêtre d'aide (grande, lisible, une consigne par étape) */
+function sheet(html, opts={}){
+  document.querySelectorAll('.modal').forEach(m=>m.remove());
+  const m=document.createElement('div'); m.className='modal';
+  m.innerHTML=`<div class="modal-c sheet" role="dialog" aria-modal="true">${html}
+    <button class="btn sec block" data-close>${opts.close||'Fermer'}</button></div>${opts.arrow?'<div class="ios-arrow" aria-hidden="true">⬇️</div>':''}`;
+  m.addEventListener('click',e=>{ if(e.target===m || e.target.closest('[data-close]')) m.remove(); });
+  document.body.appendChild(m);
+  return m;
+}
+const SHARE_IC = `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 11v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8"/></svg>`;
+const PLUS_IC = `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M12 8v8M8 12h8"/></svg>`;
+const step = (n, html) => `<li><span class="st-n">${n}</span><span>${html}</span></li>`;
+
+async function doInstall(){
+  if(installEvt){
+    installEvt.prompt();
+    const r = await installEvt.userChoice.catch(()=>null);
+    installEvt = null;
+    if(r && r.outcome==='accepted') toast('📲 Installation en cours…');
+    return;
+  }
+  if(IN_APP){
+    sheet(tfr(`<div class="sh-ic">🌐</div><h3>Ouvre d'abord le lien dans ton navigateur</h3>
+      <p>Tu as ouvert le lien depuis une autre application (Facebook, Messenger…).</p>
+      <ol class="steps-list">${step(1,'Touche les <b>trois points</b> ⋮ ou ··· en haut de l\'écran.')}
+      ${step(2,`Choisis <b>« Ouvrir dans ${IS_IOS?'Safari':'Chrome'} »</b>.`)}${step(3,'Touche ensuite le bouton <b>Installer</b> de l\'application.')}</ol>`));
+    return;
+  }
+  if(IS_IOS){
+    sheet(tfr(`<div class="sh-ic">📲</div><h3>Installer l'application</h3><p>Deux gestes, et c'est fini :</p>
+      ${IOS_SAFARI?'':'<p class="warn">Pour installer l\'application, ouvre ce lien dans <b>Safari</b> (la boussole bleue).</p>'}
+      <ol class="steps-list">
+        ${step(1,`Touche le bouton <b>Partager</b> <span class="kbd-ic">${SHARE_IC}</span> ${IOS_SAFARI?'en bas de l\'écran':'de ton navigateur'}.`)}
+        ${step(2,`Touche <b>« Sur l'écran d'accueil »</b> <span class="kbd-ic">${PLUS_IC}</span>, puis <b>« Ajouter »</b>.`)}
+      </ol><p class="done-tip">✅ L'icône <b>BG Deutsch</b> apparaît sur ton écran d'accueil. C'est terminé !</p>`), {arrow:IOS_SAFARI, close:'J\'ai compris'});
+    return;
+  }
+  if(IS_ANDROID){
+    sheet(tfr(`<div class="sh-ic">📲</div><h3>Installer l'application</h3><p>Deux gestes, et c'est fini :</p>
+      <ol class="steps-list">
+        ${step(1,'Touche les <b>trois points</b> ⋮ en haut à droite.')}
+        ${step(2,'Touche <b>« Installer l\'application »</b> (ou « Ajouter à l\'écran d\'accueil »), puis confirme.')}
+      </ol><p class="done-tip">✅ L'icône <b>BG Deutsch</b> apparaît sur ton écran d'accueil. C'est terminé !</p>`), {close:'J\'ai compris'});
+    return;
+  }
+  sheet(tfr(`<div class="sh-ic">💻</div><h3>Installer sur cet ordinateur</h3>
+    <ol class="steps-list">${step(1,'Dans Chrome ou Edge, clique sur l\'icône <b>Installer</b> à droite de la barre d\'adresse.')}
+    ${step(2,'Confirme avec <b>« Installer »</b>.')}</ol>
+    <p>Pour les téléphones de l'équipe, le plus simple reste le <b>QR code</b>.</p>
+    <button class="btn block" data-act="share">Afficher le QR code</button>`));
+}
+
+function qrSvg(size){
+  if(!window.qrcode) return '';
+  const q=qrcode(0,'M'); q.addData(APP_URL); q.make();
+  const n=q.getModuleCount(), cell=Math.max(2,Math.floor(size/(n+8)));
+  return q.createSvgTag({cellSize:cell, margin:cell*4, scalable:true, alt:'QR code de l\'application'});
+}
+function doShare(){
+  sheet(tfr(`<div class="sh-ic">🤝</div><h3>Partager l'application</h3>
+    <p>Ton collègue vise ce code avec l'<b>appareil photo</b> de son téléphone, puis touche le lien qui apparaît. L'application lui explique la suite.</p>
+    <div class="qr">${qrSvg(260)}</div>
+    <div class="url">${esc(APP_URL)}</div>
+    <div class="share-btns"><button class="btn block" data-act="poster">🖨️ Imprimer l'affiche pour la réception</button></div>`));
+}
+function printPoster(){
+  let p=document.getElementById('poster');
+  if(!p){ p=document.createElement('div'); p.id='poster'; document.body.appendChild(p); }
+  p.innerHTML=tfr(`<div class="po-brand"><img class="po-logo" src="brand/logo.png" alt="Les Méditerranées"><div><b>Beach Garden Deutsch</b><span>Camping Beach Garden · Marseillan-Plage</span></div></div>
+    <h1>L'allemand de la réception,<br>sur ton téléphone 🇩🇪</h1>
+    <div class="po-qr">${qrSvg(420)}</div>
+    <ol>
+      <li><span class="po-n">1</span><span>Ouvre l'<b>appareil photo</b> et vise le code.</span></li>
+      <li><span class="po-n">2</span><span>Touche le <b>lien</b> qui apparaît.</span></li>
+      <li><span class="po-n">3</span><span>Dans l'application, touche <b>« Installer »</b>.</span></li>
+    </ol>
+    <p class="po-url">${esc(APP_URL)}</p>`);
+  setTimeout(()=>window.print(), 150);
+}
+
+/* Notifications (OneSignal) : actives uniquement si un App ID est renseigné dans config.js */
+let osReady=false;
+if(CFG.onesignalAppId){
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  const dir = location.pathname.replace(/[^/]*$/,'');
+  OneSignalDeferred.push(async OneSignal => {
+    try{ await OneSignal.init({appId:CFG.onesignalAppId, serviceWorkerPath:(dir+'sw.js').replace(/^\//,''), serviceWorkerParam:{scope:dir}}); osReady=true; if(route().view==='profile') render(); }catch(e){}
+  });
+  const s=document.createElement('script'); s.src='https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js'; s.defer=true; document.head.appendChild(s);
+}
+const notifOn = () => osReady && window.OneSignal && OneSignal.Notifications && OneSignal.Notifications.permission;
+async function enableNotif(){
+  if(IS_IOS && !isStandalone()){
+    sheet(tfr(`<div class="sh-ic">🔔</div><h3>Une petite étape avant</h3><p>Sur iPhone, les rappels fonctionnent uniquement depuis l'application installée.</p>
+      <button class="btn block" data-act="install">📲 Installer l'application</button>`));
+    return;
+  }
+  if(!osReady){ toast('Les rappels se préparent, réessaie dans un instant.'); return; }
+  try{ await OneSignal.Notifications.requestPermission(); }catch(e){}
+  render();
+  toast(notifOn() ? '🔔 Rappel activé ! À demain pour ta leçon.' : 'Rappel non activé');
+}
+/* Premier lancement : on guide sans rien demander.
+   - Depuis le navigateur d'un téléphone : fenêtre « Installe l'application » avec un gros bouton.
+   - Dans l'application installée : proposition unique d'activer le rappel quotidien. */
+function once(k){ try{ if(localStorage.getItem(k)) return false; localStorage.setItem(k,'1'); }catch(e){} return true; }
+function welcome(){
+  if(document.querySelector('.modal') || !$('#lesson').hidden) return;
+  if(!isStandalone() && IS_MOBILE && once('bgd_welcome')){
+    if(installEvt || !IS_IOS && !IS_ANDROID){
+      sheet(tfr(`<div class="sh-ic">👋</div><h3>Bienvenue !</h3><p>Installe l'application sur ton téléphone : elle s'ouvrira d'un simple geste, comme les autres.</p>
+        <button class="btn block" data-act="install" data-close>📲 Installer l'application</button>`), {close:'Plus tard'});
+    } else doInstall();
+    return;
+  }
+  if(isStandalone() && CFG.onesignalAppId && osReady && !notifOn() && once('bgd_notif_ask')){
+    sheet(tfr(`<div class="sh-ic">🔔</div><h3>Un petit rappel chaque jour ?</h3><p>L'application te préviendra quand c'est l'heure de ta leçon du jour.</p>
+      <button class="btn block" data-act="notif" data-close>Oui, me le rappeler</button>`), {close:'Non merci'});
+  }
+}
+window.addEventListener('load', ()=>setTimeout(welcome, 1500));
+
+function appSection(){
+  const rows=[];
+  if(!isStandalone()) rows.push(`<div class="setting"><div class="s-tx"><b>📲 Installer l'application</b><small>Une icône sur l'écran d'accueil, même sans internet</small></div>
+    <button class="btn sm" data-act="install">Installer</button></div>`);
+  if(CFG.onesignalAppId) rows.push(`<div class="setting"><div class="s-tx"><b>🔔 Rappel de la leçon du jour</b><small>${notifOn()?'Activé : une notification chaque jour':'Une notification pour ne pas oublier ta leçon'}</small></div>
+    ${notifOn()?'<span class="pill-ok">Activé</span>':'<button class="btn sm" data-act="notif">Activer</button>'}</div>`);
+  rows.push(`<div class="setting"><div class="s-tx"><b>🤝 Partager avec un collègue</b><small>Un QR code à scanner, ou une affiche à imprimer</small></div>
+    <button class="btn sec sm" data-act="share">QR code</button></div>`);
+  return `<div class="sec-t"><h2>Application</h2></div><div class="card" style="padding:0 20px">${rows.join('')}</div>`;
+}
+document.addEventListener('click', e=>{
+  const el=e.target.closest('[data-act]'); if(!el) return;
+  switch(el.dataset.act){
+    case 'install': doInstall(); break;
+    case 'later': try{ localStorage.setItem('bgd_install_later', Date.now()+7*864e5); }catch(err){} render(); break;
+    case 'share': doShare(); break;
+    case 'poster': printPoster(); break;
+    case 'notif': enableNotif(); break;
+  }
+});
 
 /* ══ INIT ══ */
 applySettings();
