@@ -82,6 +82,11 @@ foreach ($de in $phrases) {
     $url = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=de&total=$($chunks.Count)&idx=$ci&textlen=$($ch.Length)&q=$q"
     $tmp = Join-Path $audioDir ("_{0}_{1}.part" -f $id, $ci)
     & curl.exe --silent --fail --max-time 25 -A $ua -o $tmp $url
+    if ($LASTEXITCODE -ne 0 -or -not (Test-Path $tmp)) {
+      # Fallback: same Google voice through the googleapis host
+      $url2 = "https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=de&total=$($chunks.Count)&idx=$ci&textlen=$($ch.Length)&q=$q"
+      & curl.exe --silent --fail --max-time 25 -A $ua -o $tmp $url2
+    }
     if ($LASTEXITCODE -ne 0 -or -not (Test-Path $tmp)) { $ok = $false; break }
     $parts.Add($tmp); $ci++
     Start-Sleep -Milliseconds 350

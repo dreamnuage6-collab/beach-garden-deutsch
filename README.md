@@ -1,46 +1,55 @@
-# Beach Garden — Sprechen Deutsch 🎧
+# Beach Garden Deutsch 🎧
 
-Application web pour **parler allemand** à la réception du camping Beach Garden
-(Les Méditerranées, Marseillan-Plage). Oral uniquement : français + prononciation
-« à la française » + **vraie voix allemande pré-enregistrée**.
+Application web pour **parler allemand à la réception** du camping Beach Garden
+(Les Méditerranées, Marseillan-Plage). Direction artistique blanc et bordeaux aux couleurs de l'établissement. Leçons courtes,
+XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque phrase.
+
+## Les quatre espaces de l'application
+| Espace | À quoi ça sert |
+|---|---|
+| **Apprendre** | Parcours de 13 unités (accueil, politesse, nombres, réservation…). Chaque leçon mélange quatre types d'exercices : compréhension orale, vocabulaire, construction de phrase et association de paires. XP, série, objectif du jour, révision des erreurs. |
+| **Situations** | Sept scénarios de comptoir pas à pas (arrivée avec réservation, client de passage, visiteur, départ, bruit, panne, réservation par téléphone) présentés comme une conversation : ce que tu dis, ce que le client peut répondre, avec l'audio des deux côtés. |
+| **Phrases** | Le guide de conversation complet : thèmes, bases, **mémo règlement** (règlement intérieur, FAQ et CGV de lesmediterranees.com), favoris, recherche (français ou allemand, sans tenir compte des accents) et guide de prononciation. |
+| **Profil** | Prénom, statistiques, objectif quotidien, réglages (affichage de la prononciation, effets sonores), test du son. |
+
+La progression est enregistrée **sur l'appareil** (navigateur), sans compte ni serveur.
+
+## 📲 Installer l'application sur les téléphones de l'équipe
+Aucune boutique d'applications, aucun compte à créer :
+1. Dans l'app (sur l'ordinateur de la réception) : **Profil → Partager avec un collègue → Imprimer l'affiche**.
+2. Le collègue vise le QR code de l'affiche avec **l'appareil photo** de son téléphone et touche le lien.
+3. L'application s'ouvre et lui montre quoi faire :
+   - **Android** : un bouton **« Installer »**, un seul geste ;
+   - **iPhone** : deux gestes (Partager → « Sur l'écran d'accueil »), avec une flèche qui montre où toucher.
+
+L'icône des Méditerranées apparaît ensuite sur l'écran d'accueil. L'app s'ouvre en plein écran,
+fonctionne **sans internet** (voix comprises) et se **met à jour toute seule** à chaque nouvelle version.
+
+## 🔔 Rappel quotidien (facultatif)
+Les notifications passent par OneSignal (gratuit) :
+1. Crée un compte sur onesignal.com, puis une application **Web** avec l'adresse GitHub Pages de l'app.
+2. Copie l'**App ID** dans `config.js` (`onesignalAppId: '…'`).
+3. Dans OneSignal, programme le message « C'est l'heure de ta leçon du jour ! ».
+
+Tant que l'App ID est vide, les notifications restent désactivées. Sur iPhone, elles ne fonctionnent
+qu'une fois l'app installée sur l'écran d'accueil (iOS 16.4 ou plus récent).
 
 ## 📁 Contenu du dossier
-- `index.html` — l'application (tout le contenu + la logique).
-- `audio/` — 145 fichiers MP3 (une vraie voix allemande par phrase).
-- `audio_map.js` — relie chaque phrase allemande à son MP3 (généré automatiquement).
-- `generate_audio.ps1` — (re)génère les MP3 si tu ajoutes/modifies des phrases.
+- `index.html` : l'application (contenu, design et logique).
+- `audio/` + `audio_map.js` : une voix allemande native (MP3) par phrase.
+- `generate_audio.ps1` : (re)génère les MP3 si tu ajoutes ou modifies des phrases.
+- `manifest.webmanifest`, `sw.js`, `icons/` : ce qui rend l'app installable et utilisable hors connexion.
+- `brand/logo.png` : logo des Méditerranées · `vendor/qrcode.js` : générateur de QR code (licence MIT).
+- `config.js` : réglage des notifications.
 
-## ▶️ Tester rapidement
-Double-clique sur `index.html` : l'app s'ouvre dans ton navigateur.
-> ⚠️ En local (double-clic), selon le navigateur l'audio MP3 peut ne pas se charger.
-> **L'audio est garanti une fois l'app en ligne** (étapes ci-dessous). Teste donc le son
-> sur le lien GitHub Pages.
+## 🌐 Mise en ligne (GitHub Pages)
+Settings → Pages → *Branch* : **main** → **Save**. Chaque modification fusionnée dans `main`
+est en ligne une à deux minutes plus tard, et les téléphones la récupèrent automatiquement.
 
-## 🌐 Mettre en ligne pour avoir TON lien (GitHub Pages)
-1. Va sur https://github.com → connecte-toi → **New repository**.
-2. Nom : `beach-garden` · coche **Public** · clique **Create repository**.
-3. Clique **uploading an existing file**.
-4. Fais glisser **tout le contenu de ce dossier** : `index.html`, `audio_map.js`,
-   **et le dossier `audio/` entier** (tu peux glisser le dossier directement).
-5. En bas, clique **Commit changes**.
-6. Onglet **Settings** → **Pages** (menu de gauche) → *Branch* : **main** → **Save**.
-7. Patiente 1–2 min : ton app est en ligne sur
-   `https://TON-PSEUDO.github.io/beach-garden/`
-8. Ouvre ce lien sur PC ou téléphone, clique **🔊 Tester l'audio** : tu dois entendre
-   un vrai accent allemand. 🎉
-
-> 💡 Astuce : sur le téléphone, « Ajouter à l'écran d'accueil » pour l'avoir comme une vraie app.
-
-## ✏️ Modifier / ajouter des phrases
-1. Ouvre `index.html`, trouve le tableau `P` (phrases) ou `FLOWS` (parcours).
-2. Ajoute/modifie une entrée en respectant le format (garde bien `de:"..."` = l'allemand).
-3. Régénère les voix : clic droit sur `generate_audio.ps1` → **Exécuter avec PowerShell**
-   (ou dans un terminal : `powershell -ExecutionPolicy Bypass -File generate_audio.ps1`).
-   Le script lit les phrases du HTML, télécharge les MP3 manquants et met à jour `audio_map.js`.
-4. Ré-upload `index.html`, `audio_map.js` et `audio/` sur GitHub.
-
-## 🔊 Comment marche l'audio
-Chaque phrase a son MP3 (voix allemande). L'app lit le fichier → **accent allemand correct
-partout, sans rien installer**, même hors-ligne une fois la page chargée. Si un MP3 venait à
-manquer, l'app se rabat automatiquement sur la synthèse vocale du navigateur.
-Le bouton **🐢 Lent** rejoue la phrase au ralenti pour s'entraîner à répéter.
+## ✏️ Modifier ou ajouter des phrases
+1. Dans `index.html`, modifie le tableau `P` (phrases) ou `FLOWS` (situations).
+   Chaque phrase a trois champs : `fr` (français), `de` (allemand) et `ph` (prononciation).
+2. ⚠️ Le texte `de:"…"` sert de clé au fichier audio : si tu le modifies, relance
+   `generate_audio.ps1` (clic droit → **Exécuter avec PowerShell**) pour régénérer la voix.
+   Sinon, l'app utilise automatiquement la synthèse vocale du navigateur pour cette phrase.
+3. Le français, la prononciation et les libellés peuvent être modifiés librement.
