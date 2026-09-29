@@ -1,7 +1,7 @@
 # Beach Garden Deutsch 🎧
 
 Application web pour **parler allemand à la réception** du camping Beach Garden
-(Les Méditerranées, Marseillan-Plage). Inspirée de Duolingo : leçons courtes,
+(Les Méditerranées, Marseillan-Plage). Direction artistique blanc et bordeaux aux couleurs de l'établissement. Leçons courtes,
 XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque phrase.
 
 ## Les quatre espaces de l'application

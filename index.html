@@ -5,489 +5,429 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Beach Garden Deutsch</title>
 <meta name="description" content="L'allemand de la réception du camping Beach Garden : leçons, situations guidées et guide de conversation avec de vraies voix allemandes.">
-<meta name="theme-color" content="#1CB0F6">
+<meta name="theme-color" content="#8E1B2E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BG Deutsch">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231CB0F6'/%3E%3Cstop offset='1' stop-color='%230E7FB8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ccircle cx='40' cy='24' r='9' fill='%23FFC800'/%3E%3Cpath d='M8 42c6-6 12-6 18 0s12 6 18 0 12-6 14-3v17H8z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238E1B2E'/%3E%3Ccircle cx='40' cy='23' r='7' fill='none' stroke='%23fff' stroke-width='3'/%3E%3Cpath d='M12 40c5-4 9-4 14 0s9 4 14 0 9-4 12-1M12 48c5-4 9-4 14 0s9 4 14 0 9-4 12-1' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#1CB0F6; --blue-d:#1899D6; --blue-l:#DDF4FF;
-  --green:#58CC02; --green-d:#58A700; --green-l:#D7FFB8; --green-t:#58A700;
-  --red:#FF4B4B; --red-d:#EA2B2B; --red-l:#FFDFE0; --red-t:#EA2B2B;
-  --gold:#FFC800; --gold-d:#E5B400; --orange:#FF9600;
-  --ink:#3C3C3C; --ink-2:#4B4B4B; --muted:#777; --faint:#AFAFAF;
-  --line:#E5E5E5; --soft:#F7F7F7; --bg:#FFFFFF;
-  --sea:#0E4A63;
-  --r:16px;
-  --side:248px;
+  --brand:#8E1B2E; --brand-600:#761525; --brand-700:#5A0F1C;
+  --brand-50:#FBF4F5; --brand-100:#F5E4E7; --brand-200:#E9C6CC;
+  --ink:#1D1718; --ink-2:#4A4244; --muted:#857C7F; --faint:#B5ACAF;
+  --line:#EEE9EA; --line-2:#E2DADC; --soft:#FAF8F8; --bg:#FFFFFF;
+  --ok:#1F7A4D; --ok-bg:#EDF7F1; --ok-line:#BCE0CB;
+  --ko:#B42335; --ko-bg:#FCEFF1; --ko-line:#F0C2C9;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --r:16px; --side:256px;
+  --sh:0 1px 2px rgba(29,23,24,.04),0 6px 20px rgba(29,23,24,.05);
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
-  margin:0; font-family:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
-  color:var(--ink); background:var(--bg); font-weight:700;
+  margin:0; font-family:var(--sans); font-size:15px; line-height:1.5; color:var(--ink); background:var(--bg);
   -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
 }
 button,input{font:inherit;color:inherit}
-button{cursor:pointer}
-:focus-visible{outline:3px solid var(--blue); outline-offset:2px; border-radius:12px}
+button{cursor:pointer; background:none; border:0; padding:0}
+:focus-visible{outline:2px solid var(--brand); outline-offset:3px; border-radius:10px}
 [hidden]{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.nw{white-space:nowrap}
+.ic{width:20px; height:20px; flex:0 0 auto; fill:none}
+.serif{font-family:var(--serif)}
+.h1,.stat b,.res b,.hero h2,.l-q{font-variant-numeric:lining-nums; font-feature-settings:"lnum"}
+.eyebrow{font-size:11.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
 
-/* ═════════ BOUTONS 3D ═════════ */
+/* ═════════ BOUTONS ═════════ */
 .btn{
-  --c:var(--blue); --d:var(--blue-d); --t:#fff;
-  display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  border:0; border-radius:var(--r); background:var(--c); color:var(--t);
-  padding:13px 22px; font-size:15px; font-weight:800; letter-spacing:.6px; text-transform:uppercase;
-  box-shadow:0 4px 0 var(--d); transition:filter .15s, transform .08s, box-shadow .08s;
-  position:relative; top:0; white-space:nowrap;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px; white-space:nowrap;
+  border-radius:12px; padding:13px 22px; font-size:15px; font-weight:600; letter-spacing:.01em;
+  background:var(--brand); color:#fff; border:1px solid var(--brand);
+  transition:background .15s, border-color .15s, color .15s, transform .1s, box-shadow .15s;
 }
-.btn:hover{filter:brightness(1.05)}
-.btn:active{transform:translateY(4px); box-shadow:0 0 0 var(--d)}
-.btn.btn:disabled{--c:var(--line); --d:#d0d0d0; --t:var(--faint); cursor:default; filter:none; transform:none; box-shadow:0 4px 0 var(--d)}
-.btn.green{--c:var(--green); --d:var(--green-d)}
-.btn.red{--c:var(--red); --d:var(--red-d)}
-.btn.gold{--c:var(--gold); --d:var(--gold-d); --t:#6B4E00}
-.btn.ghost{--c:#fff; --d:var(--line); --t:var(--blue); border:2px solid var(--line); box-shadow:0 4px 0 var(--line)}
-.btn.ghost:active{box-shadow:0 0 0 var(--line)}
+.btn:hover{background:var(--brand-600); border-color:var(--brand-600)}
+.btn:active{transform:scale(.98)}
+.btn:disabled{background:var(--line); border-color:var(--line); color:var(--faint); cursor:default; transform:none}
+.btn.sec{background:#fff; color:var(--ink); border-color:var(--line-2)}
+.btn.sec:hover{border-color:var(--ink-2)}
+.btn.sec:disabled{background:#fff; color:var(--faint); border-color:var(--line)}
+.btn.light{background:#fff; color:var(--brand); border-color:#fff}
+.btn.light:hover{background:var(--brand-50)}
+.btn.ok{background:var(--ok); border-color:var(--ok)}
+.btn.ko{background:var(--ko); border-color:var(--ko)}
 .btn.block{width:100%}
-.btn.sm{padding:9px 14px; font-size:13px; border-radius:12px}
+.btn.sm{padding:9px 14px; font-size:14px; border-radius:10px}
+.link{color:var(--brand); font-weight:600; font-size:14px; display:inline-flex; align-items:center; gap:4px}
+.link:hover{text-decoration:underline; text-underline-offset:3px}
 
-/* Boutons ronds audio */
-.spk{
-  --c:var(--blue); --d:var(--blue-d);
-  width:48px; height:48px; flex:0 0 48px; border:0; border-radius:14px; background:var(--c); color:#fff;
-  display:grid; place-items:center; box-shadow:0 4px 0 var(--d); transition:transform .08s, box-shadow .08s;
+.play{
+  width:44px; height:44px; flex:0 0 44px; border-radius:50%; background:var(--brand); color:#fff;
+  display:grid; place-items:center; transition:background .15s, transform .1s;
 }
-.spk:active{transform:translateY(4px); box-shadow:0 0 0 var(--d)}
-.spk svg{width:24px; height:24px}
-.spk.slow{--c:#fff; --d:var(--line); color:var(--blue); border:2px solid var(--line); width:40px; height:40px; flex-basis:40px; border-radius:12px; font-size:18px}
-.spk.xl{width:112px; height:112px; flex-basis:112px; border-radius:28px; box-shadow:0 6px 0 var(--d)}
-.spk.xl svg{width:52px; height:52px}
-.spk.xl.slow{width:72px; height:72px; flex-basis:72px; border-radius:22px; font-size:30px}
-.spk.playing{animation:pulse 1s ease-in-out infinite}
-@keyframes pulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.18)}}
-.icon-btn{border:0; background:none; padding:8px; border-radius:12px; color:var(--faint); display:grid; place-items:center}
-.icon-btn:hover{background:var(--soft)}
-.icon-btn svg{width:24px; height:24px}
-.star{font-size:22px; line-height:1; color:#D0D0D0}
-.star.on{color:var(--gold)}
+.play:hover{background:var(--brand-600)}
+.play:active{transform:scale(.94)}
+.play .ic{width:20px; height:20px}
+.play.sm{width:34px; height:34px; flex-basis:34px; background:#fff; color:var(--brand); border:1px solid var(--brand-200)}
+.play.sm:hover{background:var(--brand-50)}
+.play.sm .ic{width:16px; height:16px}
+.play.lg{width:96px; height:96px; flex-basis:96px; box-shadow:0 10px 30px rgba(142,27,46,.25)}
+.play.lg .ic{width:38px; height:38px}
+.play.playing{animation:ring 1.2s ease-out infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(142,27,46,.35)}100%{box-shadow:0 0 0 14px rgba(142,27,46,0)}}
+.slow{
+  height:34px; padding:0 14px; border-radius:99px; border:1px solid var(--line-2); background:#fff;
+  font-size:13px; font-weight:600; color:var(--ink-2); display:inline-flex; align-items:center; gap:6px; transition:border-color .15s, color .15s;
+}
+.slow:hover{border-color:var(--brand-200); color:var(--brand)}
+.slow.playing{border-color:var(--brand); color:var(--brand); background:var(--brand-50)}
+.fav{width:36px; height:36px; border-radius:50%; display:grid; place-items:center; color:var(--faint); transition:color .15s, background .15s}
+.fav:hover{background:var(--soft); color:var(--ink-2)}
+.fav.on{color:var(--brand)}
+.fav.on .ic{fill:currentColor}
+.icon-btn{width:40px; height:40px; border-radius:50%; display:grid; place-items:center; color:var(--muted)}
+.icon-btn:hover{background:var(--soft); color:var(--ink)}
 
 /* ═════════ STRUCTURE ═════════ */
-.side{display:none}
-.rail{display:none}
+.side,.rail{display:none}
 .topbar{
-  position:sticky; top:0; z-index:40; background:rgba(255,255,255,.96); backdrop-filter:blur(8px);
-  border-bottom:2px solid var(--line); padding:10px 16px; padding-top:calc(10px + env(safe-area-inset-top));
+  position:sticky; top:0; z-index:40; background:rgba(255,255,255,.92); backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid var(--line); padding:10px 16px; padding-top:calc(10px + env(safe-area-inset-top));
   display:flex; align-items:center; gap:12px;
 }
-.brand{display:flex; align-items:center; gap:10px; min-width:0}
-.brand-mark{width:38px; height:38px; flex:0 0 38px}
-.brand-txt{line-height:1.05; min-width:0}
-.brand-name{font-weight:900; font-size:18px; color:var(--sea); letter-spacing:-.2px; white-space:nowrap}
-.brand-sub span{color:var(--blue)}
-.nw{white-space:nowrap}
-.brand-sub{font-size:11px; color:var(--faint); font-weight:800; letter-spacing:.4px; text-transform:uppercase; white-space:nowrap}
-.chips{margin-left:auto; display:flex; gap:6px}
-.chip{display:flex; align-items:center; gap:5px; padding:6px 10px; border-radius:12px; font-weight:900; font-size:15px; color:var(--faint); background:none; border:0}
+.brand{display:flex; align-items:center; gap:11px; min-width:0}
+.brand-mark{width:36px; height:36px; flex:0 0 36px}
+.brand-txt{line-height:1.1; min-width:0}
+.brand-name{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--ink); white-space:nowrap}
+.brand-sub{font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--brand); margin-top:2px}
+.chips{margin-left:auto; display:flex; gap:4px}
+.chip{display:flex; align-items:center; gap:5px; padding:6px 9px; border-radius:99px; font-weight:600; font-size:14px; color:var(--ink-2)}
 .chip:hover{background:var(--soft)}
-.chip.fire{color:var(--orange)}
-.chip.xp{color:var(--blue)}
-.chip.fire.off{color:var(--faint); filter:grayscale(1)}
-.chip .ico{font-size:19px}
+.chip .ic{width:18px; height:18px; color:var(--brand)}
+.chip.off .ic{color:var(--faint)}
 
-main{padding:20px 16px 110px; min-height:100vh; overflow-x:clip}
-.wrap{max-width:620px; margin:0 auto}
-.wrap.wide{max-width:900px}
+main{padding:24px 16px 110px; min-height:100vh; overflow-x:clip}
+.wrap{max-width:640px; margin:0 auto}
+.wrap.wide{max-width:920px}
 
 .bnav{
-  position:fixed; left:0; right:0; bottom:0; z-index:40; background:#fff; border-top:2px solid var(--line);
-  display:flex; justify-content:space-around; padding:6px 8px calc(6px + env(safe-area-inset-bottom));
+  position:fixed; left:0; right:0; bottom:0; z-index:40; background:rgba(255,255,255,.96); backdrop-filter:blur(12px);
+  border-top:1px solid var(--line); display:flex; justify-content:space-around; padding:6px 8px calc(6px + env(safe-area-inset-bottom));
 }
 .nav-btn{
-  flex:1; max-width:110px; border:2px solid transparent; background:none; border-radius:14px;
-  display:flex; flex-direction:column; align-items:center; gap:2px; padding:6px 4px;
-  font-size:11px; font-weight:800; letter-spacing:.3px; text-transform:uppercase; color:var(--faint);
+  flex:1; max-width:110px; border-radius:12px; display:flex; flex-direction:column; align-items:center; gap:3px; padding:6px 4px;
+  font-size:11px; font-weight:600; color:var(--muted); transition:color .15s, background .15s;
 }
-.nav-btn svg{width:28px; height:28px}
-.nav-btn.on{color:var(--blue); background:var(--blue-l); border-color:#84D8FF}
+.nav-btn .ic{width:22px; height:22px}
+.nav-btn.on{color:var(--brand)}
 
 @media (min-width:900px){
   .topbar,.bnav{display:none}
   .side{
-    display:flex; flex-direction:column; gap:6px; position:fixed; inset:0 auto 0 0; width:var(--side);
-    border-right:2px solid var(--line); padding:26px 16px; background:#fff; z-index:30;
+    display:flex; flex-direction:column; gap:4px; position:fixed; inset:0 auto 0 0; width:var(--side);
+    border-right:1px solid var(--line); padding:28px 16px; background:#fff; z-index:30;
   }
-  .side .brand{padding:0 10px 22px}
-  .side .brand-mark{width:44px; height:44px; flex-basis:44px}
-  .side .brand-name{font-size:21px}
-  .side .nav-btn{
-    max-width:none; flex:none; flex-direction:row; gap:16px; padding:10px 14px; font-size:15px; letter-spacing:.8px;
-  }
-  .side .nav-btn svg{width:32px; height:32px}
-  .side .nav-btn:hover:not(.on){background:var(--soft)}
-  .side-foot{margin-top:auto; padding:0 12px; font-size:12px; color:var(--faint); font-weight:700; line-height:1.5}
-  main{margin-left:var(--side); padding:32px 32px 60px}
+  .side .brand{padding:0 10px 30px}
+  .side .brand-mark{width:40px; height:40px; flex-basis:40px}
+  .side .brand-name{font-size:20px}
+  .side .nav-btn{max-width:none; flex:none; flex-direction:row; gap:14px; padding:11px 14px; font-size:15px; font-weight:500; color:var(--ink-2); position:relative}
+  .side .nav-btn:hover{background:var(--soft)}
+  .side .nav-btn.on{background:var(--brand-50); color:var(--brand); font-weight:600}
+  .side .nav-btn.on::before{content:''; position:absolute; left:-16px; top:10px; bottom:10px; width:3px; border-radius:0 3px 3px 0; background:var(--brand)}
+  .side-foot{margin-top:auto; padding:16px 12px 0; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); line-height:1.6}
+  .side-foot b{display:block; color:var(--ink-2); font-weight:600}
+  main{margin-left:var(--side); padding:44px 40px 64px}
 }
-@media (min-width:1220px){
-  main{margin-right:380px}
+@media (min-width:1240px){
+  main{margin-right:360px}
   .rail{
-    display:flex; flex-direction:column; gap:18px; position:fixed; top:0; right:0; bottom:0; width:380px;
-    padding:26px 32px 26px 8px; overflow-y:auto;
+    display:flex; flex-direction:column; gap:16px; position:fixed; top:0; right:0; bottom:0; width:360px;
+    padding:36px 32px 32px 0; overflow-y:auto;
   }
-  .rail .chips{margin:0 0 4px; justify-content:space-between}
+  .rail .chips{margin:0 0 4px; justify-content:flex-end}
 }
 
-/* ═════════ CARTES GÉNÉRIQUES ═════════ */
-.card{border:2px solid var(--line); border-radius:var(--r); background:#fff; padding:18px}
-.card h3{margin:0 0 12px; font-size:20px; font-weight:900; color:var(--ink)}
-.h1{font-size:26px; font-weight:900; margin:0 0 6px; color:var(--ink); letter-spacing:-.3px}
-.lead{margin:0 0 20px; color:var(--muted); font-weight:700; font-size:16px; line-height:1.5}
-.eyebrow{font-size:13px; font-weight:900; letter-spacing:1px; text-transform:uppercase; color:var(--faint)}
+/* ═════════ ÉLÉMENTS COMMUNS ═════════ */
+.card{border:1px solid var(--line); border-radius:var(--r); background:#fff; padding:20px}
+.card h3{margin:0 0 14px; font-family:var(--serif); font-size:19px; font-weight:600}
+.h1{font-family:var(--serif); font-size:34px; font-weight:600; line-height:1.15; margin:0 0 8px; letter-spacing:-.01em}
+.lead{margin:0 0 26px; color:var(--muted); font-size:15.5px; line-height:1.55}
+.sec-t{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:36px 0 14px}
+.sec-t h2{font-family:var(--serif); font-size:23px; font-weight:600; margin:0}
+.sec-t span{font-size:13.5px; color:var(--muted)}
+.bar{height:6px; border-radius:99px; background:var(--line); overflow:hidden}
+.bar i{display:block; height:100%; border-radius:99px; background:var(--brand); transition:width .5s ease}
+.badge-ic{width:44px; height:44px; flex:0 0 44px; border-radius:12px; background:var(--brand-50); color:var(--brand); display:grid; place-items:center}
+.badge-ic .ic{width:22px; height:22px}
 
-/* Objectif du jour */
 .goal{display:flex; align-items:center; gap:14px}
-.goal-ring{--p:0; width:64px; height:64px; flex:0 0 64px; border-radius:50%;
-  background:conic-gradient(var(--orange) calc(var(--p)*1%), var(--line) 0); display:grid; place-items:center}
-.goal-ring::before{content:''; grid-area:1/1; width:48px; height:48px; border-radius:50%; background:#fff}
-.goal-ring span{grid-area:1/1; font-size:22px; z-index:1}
-.goal-txt b{display:block; font-size:17px; font-weight:900}
-.goal-txt small{color:var(--muted); font-size:14px; font-weight:700}
-.bar{height:16px; border-radius:99px; background:var(--line); overflow:hidden}
-.bar i{display:block; height:100%; border-radius:99px; background:var(--orange); position:relative; transition:width .5s cubic-bezier(.3,1.4,.6,1)}
-.bar i::after{content:''; position:absolute; left:8px; right:8px; top:4px; height:4px; border-radius:4px; background:rgba(255,255,255,.35)}
+.ring{--p:0; width:56px; height:56px; flex:0 0 56px; border-radius:50%; background:conic-gradient(var(--brand) calc(var(--p)*1%), var(--line) 0); display:grid; place-items:center}
+.ring::before{content:''; grid-area:1/1; width:46px; height:46px; border-radius:50%; background:#fff}
+.ring .ic{grid-area:1/1; z-index:1; color:var(--brand); width:22px; height:22px}
+.goal-txt b{display:block; font-size:15.5px; font-weight:600}
+.goal-txt small{color:var(--muted); font-size:13.5px}
 
 /* ═════════ APPRENDRE ═════════ */
 .hero{
-  position:relative; overflow:hidden; border-radius:22px; padding:22px 20px 20px; color:#fff; margin-bottom:18px;
-  background:linear-gradient(135deg,#1CB0F6 0%,#0E7FB8 100%); box-shadow:0 5px 0 #0B6A9A;
+  position:relative; overflow:hidden; border-radius:20px; padding:26px 24px 24px; color:#fff; margin-bottom:14px;
+  background:linear-gradient(140deg,#9A2034 0%,#7A1627 55%,#5A0F1C 100%);
 }
-.hero::after{
-  content:''; position:absolute; left:0; right:0; bottom:0; height:46px; opacity:.18;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 20c25-14 50-14 75 0s50 14 75 0 37-14 50-7v27H0z' fill='%23fff'/%3E%3C/svg%3E") bottom/100% 100% no-repeat;
-}
-.hero-sun{position:absolute; right:-18px; top:-18px; width:110px; height:110px; border-radius:50%; background:var(--gold); opacity:.95; box-shadow:0 0 0 14px rgba(255,200,0,.25)}
-.hero h2{position:relative; margin:0 0 4px; font-size:26px; font-weight:900; letter-spacing:-.3px; max-width:75%}
-.hero p{position:relative; margin:0 0 16px; font-size:15px; opacity:.92; max-width:80%; line-height:1.45}
-.hero .btn{position:relative; z-index:1}
-.hero .btn.white{--c:#fff; --d:#CDEBFA; --t:#0E7FB8}
-
-.quick{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:30px}
+.hero-art{position:absolute; right:-30px; bottom:-40px; width:260px; height:220px; opacity:.16; pointer-events:none}
+.hero .eyebrow{color:rgba(255,255,255,.72)}
+.hero h2{position:relative; margin:8px 0 4px; font-family:var(--serif); font-size:28px; font-weight:600; line-height:1.2; max-width:80%}
+.hero p{position:relative; margin:0 0 18px; font-size:14.5px; color:rgba(255,255,255,.8)}
+.hero .bar{background:rgba(255,255,255,.2); max-width:260px; margin-bottom:20px; position:relative}
+.hero .bar i{background:#fff}
+.hero .btn{position:relative}
+.quick{display:grid; grid-template-columns:1fr 1fr; gap:12px}
 .qk{
-  display:flex; flex-direction:column; align-items:flex-start; gap:6px; text-align:left;
-  border:2px solid var(--line); border-radius:var(--r); background:#fff; padding:14px; box-shadow:0 4px 0 var(--line);
-  transition:transform .08s, box-shadow .08s;
+  display:flex; align-items:center; gap:14px; text-align:left; border:1px solid var(--line); border-radius:var(--r);
+  background:#fff; padding:16px; transition:border-color .15s, box-shadow .15s;
 }
-.qk:active{transform:translateY(4px); box-shadow:none}
-.qk .ico{font-size:28px}
-.qk b{font-size:16px; font-weight:900}
-.qk small{font-size:13px; color:var(--muted); font-weight:700; line-height:1.35}
-.qk:disabled{opacity:.55; cursor:default}
+.qk:hover:not(:disabled){border-color:var(--brand-200); box-shadow:var(--sh)}
+.qk b{display:block; font-size:15px; font-weight:600}
+.qk small{display:block; font-size:13px; color:var(--muted); line-height:1.4; margin-top:2px}
+.qk:disabled{cursor:default}
+.qk:disabled .badge-ic{background:var(--soft); color:var(--faint)}
+.qk:disabled b{color:var(--muted)}
+@media (max-width:520px){ .quick{grid-template-columns:1fr} }
 
-.unit{margin-bottom:34px}
-.unit-head{
-  --c:var(--blue); --d:var(--blue-d);
-  display:flex; align-items:center; gap:12px; background:var(--c); color:#fff; border-radius:var(--r);
-  padding:16px 16px 16px 20px; box-shadow:0 4px 0 var(--d);
+.units{display:grid; gap:12px}
+.unit{border:1px solid var(--line); border-radius:var(--r); background:#fff; padding:18px 18px 16px; transition:border-color .15s}
+.unit.cur{border-color:var(--brand-200); box-shadow:var(--sh)}
+.unit-top{display:flex; gap:14px; align-items:flex-start}
+.unit-tx{flex:1; min-width:0}
+.unit-tx .eyebrow{font-size:10.5px}
+.unit-nm{font-family:var(--serif); font-size:19px; font-weight:600; line-height:1.25; margin:2px 0}
+.unit-ds{font-size:13.5px; color:var(--muted); line-height:1.4}
+.unit-pc{font-size:13px; font-weight:600; color:var(--muted); white-space:nowrap}
+.unit-pc.full{color:var(--brand)}
+.stepper{display:flex; align-items:center; margin:18px 0 14px; padding-left:58px}
+.stepper .ln{flex:1; height:2px; background:var(--line); min-width:10px; max-width:48px}
+.stepper .ln.done{background:var(--brand)}
+.dot{
+  width:38px; height:38px; flex:0 0 38px; border-radius:50%; border:1.5px solid var(--line-2); background:#fff;
+  display:grid; place-items:center; font-size:14px; font-weight:600; color:var(--muted); transition:all .15s;
 }
-.unit-head .u-txt{flex:1; min-width:0}
-.unit-head .u-eb{font-size:13px; font-weight:900; letter-spacing:1px; text-transform:uppercase; opacity:.85}
-.unit-head .u-nm{font-size:21px; font-weight:900; line-height:1.2; margin:2px 0}
-.unit-head .u-ds{font-size:14px; font-weight:700; opacity:.92; line-height:1.35}
-.unit-guide{
-  border:2px solid rgba(0,0,0,.12); background:rgba(255,255,255,.14); color:#fff; border-radius:14px;
-  padding:10px 12px; display:flex; flex-direction:column; align-items:center; gap:2px; font-size:11px; font-weight:900; letter-spacing:.6px; text-transform:uppercase;
-  box-shadow:0 3px 0 rgba(0,0,0,.12)
-}
-.unit-guide span{font-size:20px}
-.path{display:flex; flex-direction:column; align-items:center; gap:18px; padding:58px 0 6px}
-.node-wrap{position:relative; z-index:1}
-.node-wrap.open{z-index:20}
-.node{
-  --c:var(--blue); --d:var(--blue-d);
-  width:74px; height:66px; border-radius:50%; border:0; background:var(--c); color:#fff;
-  box-shadow:0 8px 0 var(--d); display:grid; place-items:center; font-size:30px; position:relative;
-  transition:transform .08s, box-shadow .08s;
-}
-.node:active{transform:translateY(8px); box-shadow:0 0 0 var(--d)}
-.node.todo{--c:#E5E5E5; --d:#C9C9C9; color:#AFAFAF}
-.node svg{width:34px; height:34px}
-.node-wrap.cur .node{outline:none}
-.node-wrap.cur::before{
-  content:''; position:absolute; inset:-9px -9px -17px; border-radius:50%; border:7px solid var(--line);
-  border-top-color:var(--c,var(--blue)); pointer-events:none;
-}
-.start-tip{
-  position:absolute; bottom:calc(100% + 14px); left:50%; transform:translateX(-50%);
-  background:#fff; border:2px solid var(--line); border-radius:12px; padding:8px 12px; white-space:nowrap;
-  font-size:14px; font-weight:900; letter-spacing:.6px; text-transform:uppercase; color:var(--tc,var(--blue));
-  animation:bob 1.6s ease-in-out infinite; pointer-events:none; z-index:2;
-}
-.start-tip::after{
-  content:''; position:absolute; top:100%; left:50%; width:12px; height:12px; background:#fff;
-  border-right:2px solid var(--line); border-bottom:2px solid var(--line); transform:translate(-50%,-6px) rotate(45deg);
-}
-@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}
-.pop{
-  position:absolute; top:calc(100% + 18px); left:50%; transform:translateX(-50%); z-index:5; width:280px;
-  background:var(--c,var(--blue)); color:#fff; border-radius:var(--r); padding:16px; box-shadow:0 10px 30px rgba(0,0,0,.18);
-  animation:popin .18s ease-out;
-}
-.pop::before{content:''; position:absolute; top:-8px; left:calc(50% + var(--ax,0px)); width:16px; height:16px; background:inherit; transform:translateX(-50%) rotate(45deg); border-radius:3px}
-.pop b{display:block; font-size:18px; font-weight:900; position:relative}
-.pop small{display:block; font-size:15px; opacity:.92; margin:4px 0 14px; position:relative}
-.pop .btn{--c:#fff; --d:rgba(0,0,0,.2); --t:var(--c-text,var(--blue)); position:relative}
-@keyframes popin{from{opacity:0; transform:translate(-50%,-6px) scale(.96)}to{opacity:1; transform:translate(-50%,0) scale(1)}}
-.path-end{margin-top:6px; display:flex; align-items:center; gap:12px; color:var(--faint); font-size:14px; font-weight:800}
-.path-end::before,.path-end::after{content:''; height:2px; width:40px; background:var(--line)}
+.dot:hover{border-color:var(--brand); color:var(--brand)}
+.dot.done{background:var(--brand); border-color:var(--brand); color:#fff}
+.dot.done .ic{width:17px; height:17px}
+.dot.cur{border:2px solid var(--brand); color:var(--brand); box-shadow:0 0 0 5px var(--brand-50)}
+.unit-foot{display:flex; align-items:center; justify-content:space-between; gap:12px; padding-left:58px}
+@media (max-width:520px){ .stepper,.unit-foot{padding-left:0} }
 
 /* ═════════ SITUATIONS ═════════ */
-.flow-list{display:grid; gap:14px}
+.flow-list{display:grid; gap:12px}
 .flow{
   display:flex; align-items:center; gap:16px; text-align:left; width:100%;
-  border:2px solid var(--line); border-radius:var(--r); background:#fff; padding:16px; box-shadow:0 4px 0 var(--line);
-  transition:transform .08s, box-shadow .08s;
+  border:1px solid var(--line); border-radius:var(--r); background:#fff; padding:18px; transition:border-color .15s, box-shadow .15s;
 }
-.flow:hover{background:var(--soft)}
-.flow:active{transform:translateY(4px); box-shadow:none}
-.flow-ic{width:60px; height:60px; flex:0 0 60px; border-radius:16px; display:grid; place-items:center; font-size:32px; background:var(--bgc,var(--blue-l))}
+.flow:hover{border-color:var(--brand-200); box-shadow:var(--sh)}
+.flow .badge-ic{width:52px; height:52px; flex-basis:52px; border-radius:14px}
+.flow .badge-ic .ic{width:24px; height:24px}
 .flow-tx{flex:1; min-width:0}
-.flow-tx b{display:block; font-size:18px; font-weight:900; line-height:1.25}
-.flow-tx small{display:block; font-size:14px; color:var(--muted); font-weight:700; margin-top:3px; line-height:1.4}
-.flow-meta{font-size:12px; font-weight:900; letter-spacing:.6px; text-transform:uppercase; color:var(--blue); margin-top:6px}
-.chev{color:var(--faint); font-size:26px; font-weight:900}
+.flow-tx b{display:block; font-size:16.5px; font-weight:600; line-height:1.3}
+.flow-tx small{display:block; font-size:14px; color:var(--muted); margin-top:3px; line-height:1.45}
+.flow-meta{display:flex; align-items:center; gap:6px; font-size:12.5px; font-weight:600; color:var(--muted); margin-top:8px}
+.flow-meta .done{color:var(--ok); display:inline-flex; align-items:center; gap:4px}
+.flow-meta .ic{width:14px; height:14px}
+.chev{color:var(--faint)}
 
-.subbar{display:flex; align-items:center; gap:10px; margin-bottom:16px}
-.back{
-  width:44px; height:44px; flex:0 0 44px; border-radius:12px; border:2px solid var(--line); background:#fff;
-  display:grid; place-items:center; color:var(--muted); box-shadow:0 3px 0 var(--line)
-}
-.back:active{transform:translateY(3px); box-shadow:none}
-.back svg{width:22px; height:22px}
+.subbar{display:flex; align-items:flex-start; gap:14px; margin-bottom:22px}
+.back{width:40px; height:40px; flex:0 0 40px; border-radius:50%; border:1px solid var(--line-2); display:grid; place-items:center; color:var(--ink-2); background:#fff}
+.back:hover{border-color:var(--ink-2)}
 .subbar-t{flex:1; min-width:0}
-.subbar-t b{display:block; font-size:19px; font-weight:900; line-height:1.2}
-.subbar-t small{font-size:13px; color:var(--muted); font-weight:800}
+.subbar-t b{display:block; font-family:var(--serif); font-size:24px; font-weight:600; line-height:1.2}
+.subbar-t small{display:block; font-size:14px; color:var(--muted); margin-top:4px; line-height:1.45}
+.steps{display:flex; gap:6px; margin:0 0 20px}
+.steps button{flex:1; height:4px; border-radius:99px; background:var(--line); padding:0}
+.steps button.done{background:var(--brand-200)}
+.steps button.cur{background:var(--brand)}
+.step-title{font-family:var(--serif); font-size:26px; font-weight:600; margin:6px 0 20px; line-height:1.2}
 
-.steps{display:flex; gap:6px; margin:0 0 18px}
-.steps button{
-  flex:1; height:12px; border:0; border-radius:99px; background:var(--line); padding:0;
-}
-.steps button.done{background:var(--green)}
-.steps button.cur{background:var(--blue)}
-.step-title{font-size:23px; font-weight:900; margin:0 0 4px; letter-spacing:-.2px}
-.step-num{font-size:13px; font-weight:900; letter-spacing:1px; text-transform:uppercase; color:var(--blue); margin-bottom:14px; display:block}
-
-.bubble-row{display:flex; gap:10px; margin-bottom:14px; align-items:flex-end}
-.bubble-row.me{flex-direction:row-reverse}
-.avatar{width:40px; height:40px; flex:0 0 40px; border-radius:50%; display:grid; place-items:center; font-size:22px; background:#FFF4D6; border:2px solid #FFE08A}
-.me .avatar{background:var(--blue-l); border-color:#84D8FF}
-.bubble{flex:1; min-width:0; border:2px solid var(--line); border-radius:18px; background:#fff; padding:14px 16px}
-.them .bubble{border-bottom-left-radius:6px; background:#FFFBF0; border-color:#F5E3B3}
-.me .bubble{border-bottom-right-radius:6px; border-color:#BEE9FD}
-.b-tag{font-size:12px; font-weight:900; letter-spacing:.8px; text-transform:uppercase; color:var(--blue); margin-bottom:8px; display:block}
-.them .b-tag{color:#C28B00}
-.b-line{display:flex; align-items:center; gap:10px; padding:8px 0}
-.b-line + .b-line{border-top:2px dashed #F1E2BC}
-.b-line .spk{width:38px; height:38px; flex-basis:38px; border-radius:12px; box-shadow:0 3px 0 var(--d)}
-.b-line .spk svg{width:19px; height:19px}
-.them .spk{--c:var(--orange); --d:#D97F00}
-.b-de{font-size:17px; font-weight:800; color:var(--ink); line-height:1.35}
-.b-fr{font-size:14px; color:var(--muted); font-weight:700; margin-top:2px; line-height:1.4}
-.memo{
-  display:flex; gap:12px; align-items:flex-start; border-radius:var(--r); padding:14px 16px; margin:0 0 14px;
-  background:#FFF8DB; border:2px solid #FFE58A; color:#6B5300; font-size:15px; line-height:1.5; font-weight:700
-}
-.memo .m-ic{font-size:22px; line-height:1.2}
-.memo b{color:#4A3A00; font-weight:900}
-.memo .m-lb{display:block; font-size:12px; font-weight:900; letter-spacing:.8px; text-transform:uppercase; color:#B38600; margin-bottom:2px}
-.step-nav{
-  position:sticky; bottom:84px; display:flex; gap:12px; margin-top:22px; padding:12px 0;
-  background:linear-gradient(to top,#fff 70%,rgba(255,255,255,0));
-}
+.blk{border-radius:var(--r); padding:18px; margin-bottom:12px}
+.blk-lb{display:block; margin-bottom:10px}
+.blk.say{border:1px solid var(--line); background:#fff; box-shadow:inset 3px 0 0 var(--brand)}
+.blk.say .blk-lb{color:var(--brand)}
+.blk.hear{background:var(--soft); border:1px solid var(--line)}
+.h-line{display:flex; align-items:flex-start; gap:12px; padding:10px 0}
+.h-line + .h-line{border-top:1px solid var(--line)}
+.h-de{font-size:16px; font-weight:600; line-height:1.4}
+.h-fr{font-size:14px; color:var(--muted); margin-top:2px}
+.blk.memo{background:var(--brand-50); display:flex; gap:12px; font-size:14.5px; line-height:1.55; color:var(--ink-2)}
+.blk.memo > .ic{color:var(--brand); margin-top:2px}
+.blk.memo .blk-lb{color:var(--brand-600); margin-bottom:2px}
+.blk.memo b{color:var(--ink); font-weight:600}
+.step-nav{position:sticky; bottom:74px; display:flex; gap:10px; margin-top:24px; padding:14px 0; background:linear-gradient(to top,#fff 75%,rgba(255,255,255,0))}
 .step-nav .btn{flex:1}
 @media (min-width:900px){ .step-nav{bottom:0} }
 
 /* ═════════ PHRASES ═════════ */
 .search{position:relative; margin-bottom:16px}
 .search input{
-  width:100%; border:2px solid var(--line); background:var(--soft); border-radius:var(--r);
-  padding:14px 44px 14px 48px; font-size:16px; font-weight:700; outline:none; transition:border-color .15s, background .15s;
+  width:100%; border:1px solid var(--line-2); background:#fff; border-radius:12px;
+  padding:13px 44px 13px 44px; font-size:15.5px; outline:none; transition:border-color .15s, box-shadow .15s;
 }
-.search input:focus{border-color:var(--blue); background:#fff}
+.search input:focus{border-color:var(--brand); box-shadow:0 0 0 4px var(--brand-50)}
 .search input::placeholder{color:var(--faint)}
-.search .s-ic{position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--faint); width:22px; height:22px}
-.search .s-x{position:absolute; right:8px; top:50%; transform:translateY(-50%)}
-.seg{display:flex; gap:8px; margin-bottom:18px; overflow-x:auto; scrollbar-width:none; padding-bottom:4px}
+.search .s-ic{position:absolute; left:15px; top:50%; transform:translateY(-50%); color:var(--faint)}
+.search .s-x{position:absolute; right:4px; top:50%; transform:translateY(-50%)}
+.seg{display:flex; gap:6px; margin-bottom:22px; overflow-x:auto; scrollbar-width:none}
 .seg::-webkit-scrollbar{display:none}
-.seg button{
-  flex:0 0 auto; border:2px solid var(--line); background:#fff; border-radius:12px; padding:9px 14px;
-  font-size:14px; font-weight:800; color:var(--muted); box-shadow:0 3px 0 var(--line);
-}
-.seg button.on{background:var(--blue-l); border-color:#84D8FF; color:var(--blue); box-shadow:0 3px 0 #84D8FF}
+.seg button{flex:0 0 auto; border:1px solid var(--line-2); border-radius:99px; padding:8px 15px; font-size:14px; font-weight:500; color:var(--ink-2); background:#fff}
+.seg button:hover{border-color:var(--ink-2)}
+.seg button.on{background:var(--ink); border-color:var(--ink); color:#fff}
 .cat-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-@media (min-width:640px){ .cat-grid{grid-template-columns:repeat(3,1fr)} }
-.cat{
-  --c:var(--blue);
-  border:2px solid var(--line); border-radius:var(--r); background:#fff; padding:16px 14px 14px; text-align:left;
-  display:flex; flex-direction:column; gap:8px; box-shadow:0 4px 0 var(--line); transition:transform .08s, box-shadow .08s;
-}
-.cat:hover{background:var(--soft)}
-.cat:active{transform:translateY(4px); box-shadow:none}
-.cat-ic{width:48px; height:48px; border-radius:14px; display:grid; place-items:center; font-size:26px; background:var(--c)}
-.cat b{font-size:16px; font-weight:900; line-height:1.25}
-.cat small{font-size:13px; color:var(--muted); font-weight:700}
-.cat .bar{height:8px}
-.cat .bar i{background:var(--c)}
-.cat .bar i::after{display:none}
+@media (min-width:680px){ .cat-grid{grid-template-columns:repeat(3,1fr)} }
+.cat{border:1px solid var(--line); border-radius:var(--r); background:#fff; padding:16px; text-align:left; display:flex; flex-direction:column; gap:10px; transition:border-color .15s, box-shadow .15s}
+.cat:hover{border-color:var(--brand-200); box-shadow:var(--sh)}
+.cat b{font-size:15px; font-weight:600; line-height:1.3}
+.cat small{font-size:13px; color:var(--muted); margin-top:-6px}
+.cat .bar{height:4px; margin-top:auto}
 
 .plist{display:grid; gap:12px}
-@media (min-width:1000px){ .plist.two{grid-template-columns:1fr 1fr} }
-.pc{border:2px solid var(--line); border-radius:var(--r); background:#fff; padding:14px 14px 14px 16px; display:flex; gap:14px; align-items:flex-start}
-.pc-main{flex:1; min-width:0}
-.pc-fr{font-size:14px; color:var(--muted); font-weight:700; line-height:1.4; display:flex; gap:6px}
-.pc-de{font-size:18px; font-weight:900; color:var(--ink); line-height:1.35; margin-top:4px}
-.pc-ph{font-size:15px; color:var(--blue); font-weight:800; line-height:1.4; margin-top:4px}
-.pc-ph::before{content:'Prononciation\00a0: '; color:var(--faint); font-weight:700; font-size:12px; letter-spacing:.3px}
-body.no-ph .pc-ph, body.no-ph .ph-hint{display:none}
-.pc-side{display:flex; flex-direction:column; align-items:center; gap:8px}
-.pc-src{font-size:12px; font-weight:800; color:var(--faint); margin-top:8px; text-transform:uppercase; letter-spacing:.5px}
-mark{background:#FFF1A8; color:inherit; border-radius:4px; padding:0 2px}
-.empty{text-align:center; padding:40px 20px; color:var(--muted)}
-.empty .e-ic{font-size:56px; display:block; margin-bottom:10px}
-.empty b{display:block; font-size:19px; color:var(--ink); font-weight:900; margin-bottom:6px}
-.empty p{margin:0 auto; max-width:340px; line-height:1.5; font-weight:700}
-.guide{display:grid; gap:10px}
-.g-row{display:flex; align-items:center; gap:14px; border:2px solid var(--line); border-radius:14px; padding:12px 14px}
-.g-de{min-width:84px; font-size:20px; font-weight:900; color:var(--ink)}
-.g-arrow{color:var(--faint)}
-.g-fr{font-size:20px; font-weight:900; color:var(--blue); min-width:60px}
-.g-ex{margin-left:auto; text-align:right; font-size:13px; color:var(--muted); font-weight:700; line-height:1.35}
-.g-ex i{font-style:normal; color:var(--ink); font-weight:800}
+@media (min-width:1000px){ .plist.two{grid-template-columns:1fr 1fr; align-items:start} }
+.pc{border:1px solid var(--line); border-radius:var(--r); background:#fff; padding:18px}
+.pc-fr{font-size:14px; color:var(--muted); line-height:1.45}
+.pc-de{font-size:18px; font-weight:600; color:var(--ink); line-height:1.4; margin-top:6px}
+.pc-ph{font-size:14.5px; color:var(--brand); font-style:italic; line-height:1.45; margin-top:6px}
+body.no-ph .pc-ph{display:none}
+.pc-act{display:flex; gap:10px; align-items:center; margin-top:14px}
+.pc-act .fav{margin-left:auto}
+.pc-src{font-size:11.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:12px; padding-top:12px; border-top:1px solid var(--line)}
+mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2px}
+.empty{text-align:center; padding:48px 20px; color:var(--muted)}
+.empty .badge-ic{margin:0 auto 14px; width:56px; height:56px; border-radius:50%}
+.empty b{display:block; font-family:var(--serif); font-size:20px; color:var(--ink); font-weight:600; margin-bottom:6px}
+.empty p{margin:0 auto; max-width:340px; line-height:1.55}
+.guide{border:1px solid var(--line); border-radius:var(--r); overflow:hidden}
+.g-row{display:grid; grid-template-columns:minmax(110px,1fr) minmax(70px,.7fr) 1.6fr; gap:12px; align-items:center; padding:13px 18px}
+.g-row + .g-row{border-top:1px solid var(--line)}
+.g-row.head{background:var(--soft)}
+.g-de{font-size:16px; font-weight:600}
+.g-fr{font-size:16px; font-weight:600; color:var(--brand)}
+.g-ex{font-size:13.5px; color:var(--muted)}
+.g-ex i{font-style:normal; color:var(--ink-2); font-weight:600}
 
 /* ═════════ PROFIL ═════════ */
-.prof-head{display:flex; align-items:center; gap:16px; margin-bottom:22px}
-.prof-av{width:84px; height:84px; flex:0 0 84px; border-radius:50%; display:grid; place-items:center; font-size:38px; font-weight:900; color:#fff; background:linear-gradient(135deg,var(--blue),#0E7FB8); box-shadow:0 5px 0 #0B6A9A}
-.name-in{border:2px solid var(--line); border-radius:12px; padding:10px 12px; font-size:18px; font-weight:900; width:100%; max-width:320px; outline:none; background:var(--soft)}
-.name-in:focus{border-color:var(--blue); background:#fff}
-.stats{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:26px}
-.stat{border:2px solid var(--line); border-radius:var(--r); padding:12px 14px; display:flex; gap:10px; align-items:center}
-.stat .ico{font-size:26px}
-.stat b{display:block; font-size:20px; font-weight:900; line-height:1.1}
-.stat small{font-size:13px; color:var(--muted); font-weight:700}
-.sec-t{font-size:22px; font-weight:900; margin:0 0 12px}
-.goals{display:grid; gap:10px; margin-bottom:26px}
-.goal-opt{display:flex; justify-content:space-between; align-items:center; border:2px solid var(--line); border-radius:14px; background:#fff; padding:14px 16px; font-size:16px; font-weight:800; box-shadow:0 3px 0 var(--line); text-align:left}
-.goal-opt small{color:var(--muted); font-weight:700}
-.goal-opt.on{border-color:#84D8FF; background:var(--blue-l); color:var(--blue); box-shadow:0 3px 0 #84D8FF}
-.setting{display:flex; align-items:center; gap:14px; padding:14px 0; border-bottom:2px solid var(--line)}
-.setting:last-child{border-bottom:0}
+.prof-head{display:flex; align-items:center; gap:18px; margin-bottom:8px}
+.mono{width:72px; height:72px; flex:0 0 72px; border-radius:50%; display:grid; place-items:center; background:var(--brand); color:#fff; font-family:var(--serif); font-size:30px; font-weight:600}
+.mono .ic{width:30px; height:30px}
+.name-in{border:1px solid var(--line-2); border-radius:10px; padding:10px 12px; font-size:17px; font-weight:600; width:100%; max-width:320px; outline:none; margin-top:6px}
+.name-in:focus{border-color:var(--brand); box-shadow:0 0 0 4px var(--brand-50)}
+.stats{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.stat{border:1px solid var(--line); border-radius:var(--r); padding:16px; display:flex; gap:12px; align-items:center}
+.stat b{display:block; font-family:var(--serif); font-size:24px; font-weight:600; line-height:1.1}
+.stat small{font-size:13px; color:var(--muted)}
+.goals{display:grid; grid-template-columns:repeat(4,1fr); gap:8px}
+@media (max-width:520px){ .goals{grid-template-columns:1fr 1fr} }
+.goal-opt{border:1px solid var(--line-2); border-radius:12px; background:#fff; padding:12px; text-align:left; transition:all .15s}
+.goal-opt b{display:block; font-size:15px; font-weight:600}
+.goal-opt small{font-size:12.5px; color:var(--muted)}
+.goal-opt:hover{border-color:var(--ink-2)}
+.goal-opt.on{border-color:var(--brand); background:var(--brand-50); box-shadow:inset 0 0 0 1px var(--brand)}
+.goal-opt.on b{color:var(--brand)}
+.setting{display:flex; align-items:center; gap:14px; padding:16px 0}
+.setting + .setting{border-top:1px solid var(--line)}
 .setting .s-tx{flex:1}
-.setting b{display:block; font-size:16px; font-weight:900}
-.setting small{font-size:14px; color:var(--muted); font-weight:700}
-.switch{width:52px; height:32px; flex:0 0 52px; border-radius:99px; border:0; background:var(--line); position:relative; transition:background .2s}
-.switch::after{content:''; position:absolute; top:4px; left:4px; width:24px; height:24px; border-radius:50%; background:#fff; box-shadow:0 2px 0 rgba(0,0,0,.12); transition:transform .2s}
-.switch[aria-checked="true"]{background:var(--green)}
-.switch[aria-checked="true"]::after{transform:translateX(20px)}
-.about{font-size:14px; color:var(--muted); line-height:1.6; font-weight:700; text-align:center; margin-top:26px}
+.setting b{display:block; font-size:15px; font-weight:600}
+.setting small{font-size:13.5px; color:var(--muted)}
+.switch{width:46px; height:28px; flex:0 0 46px; border-radius:99px; background:var(--line-2); position:relative; transition:background .2s}
+.switch::after{content:''; position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.2); transition:transform .2s}
+.switch[aria-checked="true"]{background:var(--brand)}
+.switch[aria-checked="true"]::after{transform:translateX(18px)}
+.danger{color:var(--ko); font-weight:600; font-size:14px; padding:10px 0}
+.danger:hover{text-decoration:underline; text-underline-offset:3px}
+.about{font-size:13px; color:var(--muted); line-height:1.6; margin-top:28px; padding-top:18px; border-top:1px solid var(--line)}
 
 /* ═════════ LEÇON ═════════ */
 .lesson{position:fixed; inset:0; z-index:100; background:#fff; display:flex; flex-direction:column; animation:fadein .2s}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
-.l-top{display:flex; align-items:center; gap:14px; padding:18px 16px 8px; max-width:1000px; width:100%; margin:0 auto; padding-top:calc(18px + env(safe-area-inset-top))}
-.l-top .bar{flex:1}
-.l-top .bar i{background:var(--green)}
-.l-body{flex:1; overflow-y:auto; padding:18px 16px 24px}
+.l-top{display:flex; align-items:center; gap:14px; padding:16px; padding-top:calc(16px + env(safe-area-inset-top)); max-width:760px; width:100%; margin:0 auto}
+.l-top .bar{flex:1; height:8px}
+.l-body{flex:1; overflow-y:auto; padding:20px 16px 28px}
 .l-inner{max-width:600px; margin:0 auto; min-height:100%; display:flex; flex-direction:column}
-.l-q{font-size:24px; font-weight:900; margin:0 0 20px; letter-spacing:-.2px; line-height:1.25}
-.l-badge{display:inline-flex; align-items:center; gap:6px; color:#CE82FF; font-size:13px; font-weight:900; letter-spacing:.8px; text-transform:uppercase; margin-bottom:8px}
-.l-audio{display:flex; justify-content:center; align-items:flex-end; gap:16px; margin:6px 0 28px}
-.l-prompt{display:flex; gap:14px; align-items:center; margin-bottom:22px}
-.l-emoji{width:88px; height:88px; flex:0 0 88px; border-radius:24px; background:var(--soft); border:2px solid var(--line); display:grid; place-items:center; font-size:46px}
-.l-say{position:relative; border:2px solid var(--line); border-radius:18px; padding:14px 16px; font-size:19px; font-weight:800; line-height:1.4}
-.l-say::before{content:''; position:absolute; left:-9px; top:50%; width:14px; height:14px; background:#fff; border-left:2px solid var(--line); border-bottom:2px solid var(--line); transform:translateY(-50%) rotate(45deg)}
-.opts{display:grid; gap:12px}
+.l-kind{color:var(--brand)}
+.l-q{font-family:var(--serif); font-size:27px; font-weight:600; margin:8px 0 26px; line-height:1.2}
+.l-audio{display:flex; flex-direction:column; align-items:center; gap:14px; margin:4px 0 32px}
+.l-say{border:1px solid var(--line); background:var(--soft); border-radius:14px; padding:16px 18px; font-size:18px; font-weight:500; line-height:1.45; margin-bottom:24px}
+.opts{display:grid; gap:10px}
 .opt{
-  display:flex; align-items:center; gap:14px; text-align:left; width:100%;
-  border:2px solid var(--line); border-radius:var(--r); background:#fff; padding:14px 16px; font-size:17px; font-weight:800; line-height:1.35;
-  box-shadow:0 4px 0 var(--line); transition:transform .08s, box-shadow .08s, background .12s;
+  display:flex; align-items:center; gap:14px; text-align:left; width:100%; border:1px solid var(--line-2); border-radius:12px;
+  background:#fff; padding:14px 16px; font-size:16px; font-weight:500; line-height:1.4; transition:border-color .12s, background .12s;
 }
-.opt:hover{background:var(--soft)}
-.opt:active{transform:translateY(2px); box-shadow:0 2px 0 var(--line)}
-.opt kbd{flex:0 0 30px; height:30px; border:2px solid var(--line); border-radius:9px; display:grid; place-items:center; font:900 14px 'Nunito',sans-serif; color:var(--faint)}
-.opt.sel{border-color:#84D8FF; background:var(--blue-l); color:#1899D6; box-shadow:0 4px 0 #84D8FF}
-.opt.sel kbd{border-color:#84D8FF; color:#1899D6}
-.opt.ok{border-color:#A5ED6E; background:var(--green-l); color:var(--green-t); box-shadow:0 4px 0 #A5ED6E}
-.opt.ok kbd{border-color:#A5ED6E; color:var(--green-t)}
-.opt.ko{border-color:#FFB2B2; background:var(--red-l); color:var(--red-t); box-shadow:0 4px 0 #FFB2B2}
-.opt.ko kbd{border-color:#FFB2B2; color:var(--red-t)}
+.opt:hover{border-color:var(--ink-2)}
+.opt kbd{flex:0 0 26px; height:26px; border:1px solid var(--line-2); border-radius:7px; display:grid; place-items:center; font:600 12.5px var(--sans); color:var(--muted)}
+.opt.sel{border-color:var(--brand); background:var(--brand-50); box-shadow:inset 0 0 0 1px var(--brand)}
+.opt.sel kbd{border-color:var(--brand); color:var(--brand)}
+.opt.ok{border-color:var(--ok); background:var(--ok-bg); color:var(--ok); box-shadow:inset 0 0 0 1px var(--ok)}
+.opt.ok kbd{border-color:var(--ok-line); color:var(--ok)}
+.opt.ko{border-color:var(--ko); background:var(--ko-bg); color:var(--ko); box-shadow:inset 0 0 0 1px var(--ko)}
+.opt.ko kbd{border-color:var(--ko-line); color:var(--ko)}
 .opts.locked .opt{pointer-events:none}
-.answer-line{min-height:122px; border-top:2px solid var(--line); border-bottom:2px solid var(--line); padding:12px 0; display:flex; flex-wrap:wrap; align-content:flex-start; gap:8px; margin-bottom:26px;
-  background:repeating-linear-gradient(to bottom,transparent 0 58px,var(--line) 58px 60px)}
+.answer-line{min-height:118px; padding:10px 0; display:flex; flex-wrap:wrap; align-content:flex-start; gap:8px; margin-bottom:28px;
+  background:repeating-linear-gradient(to bottom,transparent 0 57px,var(--line-2) 57px 58px)}
 .bank{display:flex; flex-wrap:wrap; justify-content:center; gap:8px}
-.tile{
-  border:2px solid var(--line); border-radius:14px; background:#fff; padding:10px 14px; font-size:18px; font-weight:800;
-  box-shadow:0 3px 0 var(--line); min-height:48px; transition:transform .08s;
-}
-.tile:active{transform:translateY(2px)}
-.tile.used{color:transparent; background:var(--line); box-shadow:none; pointer-events:none}
-.pairs{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-.pairs .col{display:grid; gap:12px; align-content:start}
-.pair{
-  border:2px solid var(--line); border-radius:var(--r); background:#fff; padding:14px 10px; font-size:17px; font-weight:800; line-height:1.3;
-  box-shadow:0 4px 0 var(--line); min-height:62px; transition:all .12s;
-}
-.pair.sel{border-color:#84D8FF; background:var(--blue-l); color:#1899D6; box-shadow:0 4px 0 #84D8FF}
-.pair.ok{border-color:var(--line); color:#D0D0D0; background:#fff; box-shadow:none; pointer-events:none}
-.pair.ko{border-color:#FFB2B2; background:var(--red-l); color:var(--red-t); animation:shake .3s}
+.tile{border:1px solid var(--line-2); border-radius:10px; background:#fff; padding:9px 14px; font-size:16.5px; font-weight:500; min-height:46px; box-shadow:0 1px 2px rgba(0,0,0,.04); transition:border-color .12s}
+.tile:hover{border-color:var(--ink-2)}
+.tile.used{color:transparent; background:var(--soft); border-color:var(--line); box-shadow:none; pointer-events:none}
+.pairs{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.pairs .col{display:grid; gap:10px; align-content:start}
+.pair{border:1px solid var(--line-2); border-radius:12px; background:#fff; padding:14px 10px; font-size:16px; font-weight:500; min-height:58px; transition:all .12s}
+.pair:hover{border-color:var(--ink-2)}
+.pair.sel{border-color:var(--brand); background:var(--brand-50); color:var(--brand); box-shadow:inset 0 0 0 1px var(--brand)}
+.pair.ok{border-color:var(--line); color:var(--faint); background:var(--soft); pointer-events:none}
+.pair.ko{border-color:var(--ko); background:var(--ko-bg); color:var(--ko); animation:shake .3s}
 @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-.l-foot{border-top:2px solid var(--line); padding:18px 16px calc(18px + env(safe-area-inset-bottom)); background:#fff; transition:background .15s}
-.l-foot-in{max-width:1000px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap}
+.l-foot{border-top:1px solid var(--line); padding:16px; padding-bottom:calc(16px + env(safe-area-inset-bottom)); background:#fff; transition:background .15s}
+.l-foot-in{max-width:760px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap}
 .l-foot .btn{margin-left:auto; min-width:180px}
-.l-fb{display:none; align-items:center; gap:14px; flex:1; min-width:240px}
-.l-fb .fb-ic{width:64px; height:64px; flex:0 0 64px; border-radius:50%; background:#fff; display:grid; place-items:center; font-size:34px}
-.l-fb b{display:block; font-size:22px; font-weight:900}
-.l-fb .fb-sol{font-size:16px; font-weight:800; line-height:1.4; margin-top:2px}
-.l-fb .fb-sub{font-size:14px; font-weight:700; opacity:.85; margin-top:2px}
-.l-foot.good{background:var(--green-l); border-top-color:transparent}
-.l-foot.good .l-fb{display:flex; color:var(--green-t)}
-.l-foot.bad{background:var(--red-l); border-top-color:transparent}
-.l-foot.bad .l-fb{display:flex; color:var(--red-t)}
-@media (max-width:640px){ .l-foot .btn{width:100%; margin-left:0} .l-fb{min-width:0; flex-basis:100%} .l-fb .fb-ic{width:48px; height:48px; flex-basis:48px; font-size:26px} }
-.l-end{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:10px; padding:20px 0}
-.l-end .big{font-size:96px; line-height:1; animation:boing .7s cubic-bezier(.3,1.6,.5,1)}
-@keyframes boing{from{transform:scale(.2) rotate(-20deg)}to{transform:scale(1) rotate(0)}}
-.l-end h2{font-size:32px; font-weight:900; color:var(--gold-d); margin:8px 0 0; letter-spacing:-.4px}
-.l-end p{color:var(--muted); font-size:17px; margin:0 0 16px; font-weight:700}
-.res{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-.res-c{--c:var(--gold); width:132px; border:2px solid var(--c); border-radius:var(--r); background:var(--c); overflow:hidden}
-.res-c small{display:block; color:#fff; font-size:12px; font-weight:900; letter-spacing:.8px; text-transform:uppercase; padding:6px 4px}
-.res-c b{display:flex; align-items:center; justify-content:center; gap:6px; background:#fff; border-radius:12px; padding:14px 6px; font-size:22px; font-weight:900; color:var(--c)}
-.res-c.blue{--c:var(--blue)} .res-c.green{--c:var(--green)} .res-c.orange{--c:var(--orange)}
+.l-fb{display:none; align-items:flex-start; gap:12px; flex:1; min-width:240px}
+.l-fb .fb-ic{width:36px; height:36px; flex:0 0 36px; border-radius:50%; display:grid; place-items:center; color:#fff}
+.l-fb b{display:block; font-size:17px; font-weight:600}
+.l-fb .fb-sol{font-size:15px; font-weight:500; line-height:1.45; margin-top:2px; color:var(--ink)}
+.l-fb .fb-sub{font-size:14px; color:var(--ink-2); margin-top:2px; line-height:1.45}
+.l-foot.good{background:var(--ok-bg); border-top-color:var(--ok-line)}
+.l-foot.good .l-fb{display:flex; color:var(--ok)}
+.l-foot.good .fb-ic{background:var(--ok)}
+.l-foot.bad{background:var(--ko-bg); border-top-color:var(--ko-line)}
+.l-foot.bad .l-fb{display:flex; color:var(--ko)}
+.l-foot.bad .fb-ic{background:var(--ko)}
+@media (max-width:640px){ .l-foot .btn{width:100%; margin-left:0} .l-fb{min-width:0; flex-basis:100%} }
+.l-end{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px 0}
+.l-end .seal{width:96px; height:96px; border-radius:50%; background:var(--brand); color:#fff; display:grid; place-items:center; box-shadow:0 0 0 10px var(--brand-50); animation:pop .6s cubic-bezier(.3,1.5,.5,1)}
+.l-end .seal .ic{width:44px; height:44px; stroke-width:2.4}
+@keyframes pop{from{transform:scale(.3); opacity:0}to{transform:scale(1); opacity:1}}
+.l-end h2{font-family:var(--serif); font-size:32px; font-weight:600; margin:28px 0 6px}
+.l-end p{color:var(--muted); font-size:15.5px; margin:0 0 28px; max-width:360px}
+.res{display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-radius:var(--r); width:100%; max-width:520px}
+.res div{padding:16px 8px}
+.res div + div{border-left:1px solid var(--line)}
+.res b{display:block; font-family:var(--serif); font-size:24px; font-weight:600; color:var(--ink)}
+.res small{font-size:12px; color:var(--muted)}
+@media (max-width:480px){ .res{grid-template-columns:1fr 1fr} .res div:nth-child(3){border-left:0} .res div:nth-child(n+3){border-top:1px solid var(--line)} }
 
 /* ═════════ DIVERS ═════════ */
 .toast{
-  position:fixed; left:50%; bottom:100px; transform:translate(-50%,20px); opacity:0; z-index:300;
-  background:var(--ink); color:#fff; padding:12px 18px; border-radius:14px; font-size:15px; font-weight:800;
-  transition:all .25s; pointer-events:none; max-width:calc(100% - 32px); text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.2)
+  position:fixed; left:50%; bottom:96px; transform:translate(-50%,16px); opacity:0; z-index:300;
+  background:var(--ink); color:#fff; padding:11px 16px; border-radius:12px; font-size:14px; font-weight:500;
+  transition:all .25s; pointer-events:none; max-width:calc(100% - 32px); text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.2)
 }
 .toast.on{opacity:1; transform:translate(-50%,0)}
 @media (min-width:900px){ .toast{bottom:32px; margin-left:calc(var(--side)/2)} }
-.modal{position:fixed; inset:0; z-index:250; background:rgba(0,0,0,.45); display:grid; place-items:center; padding:16px; animation:fadein .15s}
-.modal-c{background:#fff; border-radius:22px; padding:24px; max-width:420px; width:100%; text-align:center; animation:popup .2s cubic-bezier(.3,1.4,.6,1)}
-@keyframes popup{from{transform:scale(.9)}to{transform:scale(1)}}
-.modal-c .m-big{font-size:56px}
-.modal-c h3{font-size:22px; font-weight:900; margin:8px 0 6px}
-.modal-c p{color:var(--muted); margin:0 0 20px; line-height:1.5; font-weight:700}
-.modal-c .btn{margin-top:10px}
+.modal{position:fixed; inset:0; z-index:250; background:rgba(29,23,24,.45); display:grid; place-items:center; padding:16px; animation:fadein .15s}
+.modal-c{background:#fff; border-radius:20px; padding:28px 24px 22px; max-width:400px; width:100%; text-align:center; animation:pop .25s ease-out}
+.modal-c h3{font-family:var(--serif); font-size:22px; font-weight:600; margin:0 0 8px}
+.modal-c p{color:var(--muted); margin:0 0 22px; line-height:1.55}
+.modal-c .btn + .btn{margin-top:8px}
 .confetti{position:fixed; inset:0; pointer-events:none; z-index:400; overflow:hidden}
-.confetti i{position:absolute; top:-20px; width:10px; height:14px; border-radius:3px; animation:fall linear forwards}
-@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(var(--r)); opacity:.9}}
-.view{animation:fadein .2s}
+.confetti i{position:absolute; top:-16px; width:7px; height:12px; border-radius:2px; animation:fall linear forwards}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(var(--r)); opacity:.8}}
+.view{animation:fadein .25s}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important}
   .confetti{display:none}
@@ -496,39 +436,69 @@ mark{background:#FFF1A8; color:inherit; border-radius:4px; padding:0 2px}
 </head>
 <body>
 
-<!-- Symboles SVG réutilisables -->
+<!-- Icônes (trait fin, couleur héritée) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-spk" viewBox="0 0 24 24"><path fill="currentColor" d="M4 9.5h3.6L12.3 5c.6-.5 1.7-.1 1.7.8v12.4c0 .9-1.1 1.3-1.7.8L7.6 14.5H4c-.6 0-1-.4-1-1v-3c0-.6.4-1 1-1z"/><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M17 9c.9.8 1.4 1.9 1.4 3s-.5 2.2-1.4 3M19.6 6.4C21.1 7.9 22 9.9 22 12s-.9 4.1-2.4 5.6"/></symbol>
-  <symbol id="i-home" viewBox="0 0 32 32"><path d="M5 14.5 16 5l11 9.5V27a1 1 0 0 1-1 1h-6.5v-8h-7v8H6a1 1 0 0 1-1-1z" fill="#FFC800"/><path d="M12.5 20h7v8h-7z" fill="#FF9600"/><path d="M3.5 15.5 16 4.8l12.5 10.7" fill="none" stroke="#E5534B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-chat" viewBox="0 0 32 32"><path d="M4 7a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-8l-5 4v-4H7a3 3 0 0 1-3-3z" fill="#1CB0F6"/><path d="M13 17h8a3 3 0 0 0 3-3v-3h1a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-1v4l-5-4h-3a3 3 0 0 1-3-3z" fill="#58CC02"/><circle cx="9.5" cy="11" r="1.6" fill="#fff"/><circle cx="13.5" cy="11" r="1.6" fill="#fff"/><circle cx="17.5" cy="11" r="1.6" fill="#fff"/></symbol>
-  <symbol id="i-book" viewBox="0 0 32 32"><path d="M4 7c4-1.5 8-1.5 12 1v19c-4-2.5-8-2.5-12-1z" fill="#CE82FF"/><path d="M28 7c-4-1.5-8-1.5-12 1v19c4-2.5 8-2.5 12-1z" fill="#A560D8"/><path d="M7 11.5c2-.5 4-.4 6 .5M7 15.5c2-.5 4-.4 6 .5M19 12c2-.9 4-1 6-.5M19 16c2-.9 4-1 6-.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none"/></symbol>
-  <symbol id="i-user" viewBox="0 0 32 32"><circle cx="16" cy="11" r="6" fill="#FF9600"/><path d="M5 27c1-6 5.5-9 11-9s10 3 11 9z" fill="#FFC800"/></symbol>
-  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
-  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-brand" viewBox="0 0 64 64"><defs><linearGradient id="bg-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1CB0F6"/><stop offset="1" stop-color="#0E7FB8"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#bg-g)"/><circle cx="41" cy="23" r="9" fill="#FFC800"/><path d="M6 40c6-6 12-6 18 0s12 6 18 0 12-6 16-2v18a8 8 0 0 1-8 8H14a8 8 0 0 1-8-8z" fill="#fff"/><path d="M6 49c6-5 12-5 18 0s12 5 18 0 12-5 16-1" fill="none" stroke="#BEE9FD" stroke-width="3" stroke-linecap="round"/></symbol>
+  <defs>
+    <symbol id="i-brand" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#8E1B2E"/><circle cx="40" cy="23" r="7" fill="none" stroke="#fff" stroke-width="3"/><path d="M12 40c5-4 9-4 14 0s9 4 14 0 9-4 12-1M12 48c5-4 9-4 14 0s9 4 14 0 9-4 12-1" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="i-learn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9 12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v5c3.3 2.3 7.7 2.3 11 0v-5M21.5 9v5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5a2 2 0 0 1-2 2H8.5L4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/><path d="M8.5 9h7M8.5 12.5h4"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H19v15H7.5A2.5 2.5 0 0 0 5 20.5z"/><path d="M5 20.5A2.5 2.5 0 0 1 7.5 18H19v3H7.5M9 7.5h6"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1-3.8 3.9-5.8 7.5-5.8s6.5 2 7.5 5.8"/></symbol>
+    <symbol id="i-spk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.2l2.7 5.5 6 .9-4.35 4.25 1.03 6-5.38-2.83-5.38 2.83 1.03-6L3.3 9.6l6-.9z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a6 6 0 0 0 6-6c0-4.5-3.5-6.5-4.5-11-2.5 2-3.5 4.5-3.5 7-1-.5-1.8-1.6-2-3C6.8 9.6 6 11.6 6 15a6 6 0 0 0 6 6z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 4.5 13.5H11l-1 8 8.5-11H12z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8" fill="currentColor"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8v.1"/></symbol>
+    <symbol id="i-medal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14.5" r="5.5"/><path d="M8.5 10 6 3h4l2 5 2-5h4l-2.5 7M12 12.3l.8 1.6 1.7.2-1.25 1.2.3 1.7-1.55-.8-1.55.8.3-1.7-1.25-1.2 1.7-.2z"/></symbol>
+    <!-- Unités -->
+    <symbol id="u0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 0 1 16 0M3 17h18M12 6.5V9M10 6.5h4M5 20h14"/></symbol>
+    <symbol id="u1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11 12 4l8.5 7M5.5 9.5V20h13V9.5M10 20v-5h4v5"/></symbol>
+    <symbol id="u2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M9 14.5l2 2 4-4"/></symbol>
+    <symbol id="u3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0M3 12.5c1.5 1.2 3 1.2 4.5 0s3-1.2 4.5 0 3 1.2 4.5 0 3-1.2 4.5 0M8 10V5.5a2 2 0 0 1 4 0M16 10V5.5"/></symbol>
+    <symbol id="u4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3.5"/><path d="M12 3v1.5M12 15.5V17M5 10H3.5M20.5 10H19M7 5l1 1M16 14l1 1M7 15l1-1M16 6l1-1M3 20.5c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0"/></symbol>
+    <symbol id="u5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9h12v4.5A5.5 5.5 0 0 1 11 19h-1a5.5 5.5 0 0 1-5.5-5.5zM16.5 10.5h1.5a2.5 2.5 0 0 1 0 5h-1.5M8.5 3.5v2.5M12.5 3.5v2.5"/></symbol>
+    <symbol id="u6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8 7.5 9.5 4.3-1.5 7.5-5 7.5-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="u7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 4.2 2.8 17.5A2 2 0 0 0 4.5 20.5h15a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4M12 16.8v.1"/></symbol>
+    <symbol id="u8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6.5 9 4l6 2.5L20.5 4v13.5L15 20l-6-2.5-5.5 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></symbol>
+    <symbol id="u9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 14c.9 1.3 2 2 3.5 2s2.6-.7 3.5-2M9 9.5v.5M15 9.5v.5"/></symbol>
+    <symbol id="u10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 9h15M4 15h15M10.5 4 8.5 20M15.5 4l-2 16"/></symbol>
+    <symbol id="u11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></symbol>
+    <symbol id="u12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></symbol>
+    <!-- Situations -->
+    <symbol id="f-passage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 16.5V7.5a2 2 0 0 1 2-2h10l4.5 4.5h.5a2 2 0 0 1 2 2v4.5z"/><path d="M14.5 5.5V10H19M6 10h5"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="f-depart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="13" rx="2"/><path d="M9 7V4.5h6V7M9.5 11v5M14.5 11v5M8 20v1.5M16 20v1.5"/></symbol>
+    <symbol id="f-bruit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></symbol>
+    <symbol id="f-technique" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.7-7.7a4 4 0 0 1-2-2zM14.7 6.3 17 4a4 4 0 0 1 3 3l-2.3 2.3"/></symbol>
+    <symbol id="f-reservation-tel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3.5l2 5-2.5 1.5a11 11 0 0 0 5.5 5.5L15 13.5l5 2V19a1.5 1.5 0 0 1-1.5 1.5A15 15 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4z"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 260 220" fill="none" stroke="#fff" stroke-width="2"><circle cx="170" cy="70" r="36"/><circle cx="170" cy="70" r="52" opacity=".5"/><path d="M0 150c22-18 43-18 65 0s43 18 65 0 43-18 65 0 43 18 65 0M0 178c22-18 43-18 65 0s43 18 65 0 43-18 65 0 43 18 65 0M0 206c22-18 43-18 65 0s43 18 65 0 43-18 65 0 43 18 65 0"/></symbol>
+  </defs>
 </svg>
 
 <!-- Barre latérale (ordinateur) -->
 <nav class="side" aria-label="Navigation principale">
   <div class="brand">
     <svg class="brand-mark"><use href="#i-brand"/></svg>
-    <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub"><span>Deutsch</span> · Réception</div></div>
+    <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub">Deutsch</div></div>
   </div>
-  <button class="nav-btn" data-nav="learn"><svg><use href="#i-home"/></svg>Apprendre</button>
-  <button class="nav-btn" data-nav="situ"><svg><use href="#i-chat"/></svg>Situations</button>
-  <button class="nav-btn" data-nav="phrases"><svg><use href="#i-book"/></svg>Phrases</button>
-  <button class="nav-btn" data-nav="profile"><svg><use href="#i-user"/></svg>Profil</button>
-  <div class="side-foot">Camping Beach Garden<br>Les Méditerranées · Marseillan-Plage</div>
+  <button class="nav-btn" data-nav="learn"><svg class="ic"><use href="#i-learn"/></svg>Apprendre</button>
+  <button class="nav-btn" data-nav="situ"><svg class="ic"><use href="#i-chat"/></svg>Situations</button>
+  <button class="nav-btn" data-nav="phrases"><svg class="ic"><use href="#i-book"/></svg>Phrases</button>
+  <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
+  <div class="side-foot"><b>Camping Beach Garden</b>Les Méditerranées · <span class="nw">Marseillan-Plage</span></div>
 </nav>
 
 <!-- Barre du haut (mobile) -->
 <header class="topbar">
   <div class="brand">
     <svg class="brand-mark"><use href="#i-brand"/></svg>
-    <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub"><span>Deutsch</span> · Réception</div></div>
+    <div class="brand-txt"><div class="brand-name">Beach Garden</div><div class="brand-sub">Deutsch</div></div>
   </div>
   <div class="chips" data-chips></div>
 </header>
@@ -540,10 +510,10 @@ mark{background:#FFF1A8; color:inherit; border-radius:4px; padding:0 2px}
 
 <!-- Navigation du bas (mobile) -->
 <nav class="bnav" aria-label="Navigation principale">
-  <button class="nav-btn" data-nav="learn"><svg><use href="#i-home"/></svg>Apprendre</button>
-  <button class="nav-btn" data-nav="situ"><svg><use href="#i-chat"/></svg>Situations</button>
-  <button class="nav-btn" data-nav="phrases"><svg><use href="#i-book"/></svg>Phrases</button>
-  <button class="nav-btn" data-nav="profile"><svg><use href="#i-user"/></svg>Profil</button>
+  <button class="nav-btn" data-nav="learn"><svg class="ic"><use href="#i-learn"/></svg>Apprendre</button>
+  <button class="nav-btn" data-nav="situ"><svg class="ic"><use href="#i-chat"/></svg>Situations</button>
+  <button class="nav-btn" data-nav="phrases"><svg class="ic"><use href="#i-book"/></svg>Phrases</button>
+  <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
 </nav>
 
 <div class="lesson" id="lesson" hidden></div>
@@ -554,20 +524,20 @@ mark{background:#FFF1A8; color:inherit; border-radius:4px; padding:0 2px}
 <script>
 /* ══════════════════════════════════════
    DONNÉES
-   fr = français · de = allemand (clé du fichier audio, ne pas modifier sans régénérer les voix)
+   fr = français · de = allemand (clé du fichier audio : relancer generate_audio.ps1 après modification)
    ph = prononciation « à la française »
 ══════════════════════════════════════ */
 const P = [
   // ── Accueil & Arrivée
-  {c:0,e:"👋",fr:"Bonjour et bienvenue au camping Beach Garden !",de:"Guten Tag, herzlich willkommen im Camping Beach Garden!",ph:"Gouten-tag, hèrtslich vil-komène im Kamping Beach Garden!"},
+  {c:0,e:"👋",fr:"Bonjour et bienvenue au camping Beach Garden !",de:"Guten Tag und herzlich willkommen auf dem Campingplatz Beach Garden!",ph:"Gouten-tag ount hèrtslich vil-komène aouf dème Kamping-platss Beach Garden!"},
   {c:0,e:"📋",fr:"Votre nom, s'il vous plaît ?",de:"Ihren Namen, bitte?",ph:"Irène Namène, biteu?"},
   {c:0,e:"📅",fr:"Quelle est votre date d'arrivée ?",de:"Was ist Ihr Ankunftsdatum?",ph:"Vass ist ir Ankounfts-datom?"},
   {c:0,e:"🗓️",fr:"Combien de nuits restez-vous ?",de:"Wie viele Nächte bleiben Sie bei uns?",ph:"Vi fileu Nèchteu blaïbène zi baï ounss?"},
   {c:0,e:"🔑",fr:"Voici votre bracelet d'accès.",de:"Hier ist Ihr Zugangsarmband.",ph:"Hir ist ir Tsougangs-arm-bant."},
   {c:0,e:"🗺️",fr:"Voici le plan du camping.",de:"Hier ist der Campingplan.",ph:"Hir ist dèr Kamping-plan."},
   {c:0,e:"📍",fr:"Votre emplacement est le numéro…",de:"Ihr Stellplatz hat die Nummer…",ph:"Ir Chtel-platss hat di Noumèr…"},
-  {c:0,e:"⏰",fr:"Vous pouvez stationner votre véhicule à partir de 12 h. L'emplacement est garanti à partir de 14 h, et le mobil-home à partir de 17 h.",de:"Sie können Ihr Fahrzeug ab zwölf Uhr abstellen. Der Stellplatz ist ab vierzehn Uhr garantiert, und das Mobilheim ab siebzehn Uhr.",ph:"Zi keunène ir Far-tsoïg ap tsvelf Ouir ap-chtèlène. Dèr Chtel-platss ist ap fir-tsèn Ouir garan-tirt, ount dass Mobil-haïm ap zip-tsèn Ouir."},
-  {c:0,e:"🚪",fr:"Le départ se fait avant 11 h pour les emplacements, et avant 10 h pour les mobil-homes.",de:"Die Abreise ist vor elf Uhr auf dem Stellplatz, und vor zehn Uhr im Mobilheim.",ph:"Di Ap-raïzeu ist for èlf Ouir aouf dème Chtel-platss, ount for tsèn Ouir im Mobil-haïm."},
+  {c:0,e:"⏰",fr:"Vous pouvez stationner votre véhicule à partir de 12 h. L'emplacement est garanti à partir de 14 h, et le mobil-home à partir de 17 h.",de:"Sie können Ihr Fahrzeug ab zwölf Uhr abstellen. Der Stellplatz ist ab vierzehn Uhr garantiert und das Mobilheim ab siebzehn Uhr.",ph:"Zi keunène ir Far-tsoïg ap tsvelf Ouir ap-chtèlène. Dèr Chtel-platss ist ap fir-tsèn Ouir garan-tirt ount dass Mobil-haïm ap zip-tsèn Ouir."},
+  {c:0,e:"🚪",fr:"Le départ se fait avant 11 h pour les emplacements, et avant 10 h pour les mobil-homes.",de:"Die Abreise erfolgt vor elf Uhr auf dem Stellplatz und vor zehn Uhr im Mobilheim.",ph:"Di Ap-raïzeu èr-folgt for èlf Ouir aouf dème Chtel-platss ount for tsèn Ouir im Mobil-haïm."},
   {c:0,e:"😊",fr:"Bon séjour parmi nous !",de:"Wir wünschen Ihnen einen schönen Aufenthalt!",ph:"Vir vuunchène irène aïnène cheunène Aouf-ènt-halt!"},
   {c:0,e:"🚗",fr:"Avez-vous une voiture ?",de:"Haben Sie ein Auto dabei?",ph:"Habène zi aïn Aouto dabaï?"},
   {c:0,e:"📧",fr:"Quelle est votre adresse e-mail de confirmation ?",de:"Wie lautet Ihre Bestätigungs-E-Mail-Adresse?",ph:"Vi laoutèt ireu Beu-chtè-tigoungs-I-Mèïl-adrèsseu?"},
@@ -602,7 +572,7 @@ const P = [
   {c:3,e:"🩱",fr:"Le slip de bain est obligatoire ; les shorts de bain sont interdits.",de:"Badehosen sind Pflicht. Badeshorts sind nicht erlaubt.",ph:"Badeu-hozène zint Pflicht. Badeu-chortss zint nicht èr-laoubt."},
   {c:3,e:"🏊‍♂️",fr:"La piscine couverte est chauffée.",de:"Das Hallenbad ist beheizt.",ph:"Dass Halène-bad ist beu-haïtst."},
   {c:3,e:"👶",fr:"La pataugeoire est réservée aux petits.",de:"Das Planschbecken ist für Kleinkinder.",ph:"Dass Planch-bèkène ist fuir Klaïn-kindèr."},
-  {c:3,e:"🛁",fr:"Le spa et le jacuzzi se trouvent à la Bulle des Sables.",de:"Der Spa und der Whirlpool befinden sich im Bulle des Sables.",ph:"Dèr Chpa ount dèr Vouirl-poul beu-findène zich im Bulle des Sables."},
+  {c:3,e:"🛁",fr:"Le spa et le jacuzzi se trouvent à la Bulle des Sables.",de:"Das Spa und der Whirlpool befinden sich im Bulle des Sables.",ph:"Dass Chpa ount dèr Vouirl-poul beu-findène zich im Bulle des Sables."},
   {c:3,e:"🚿",fr:"Les douches sont à côté de la piscine.",de:"Die Duschen befinden sich neben dem Schwimmbad.",ph:"Di Douchène beu-findène zich nèbène dème Chvim-bad."},
 
   // ── Plage & Mer
@@ -610,7 +580,7 @@ const P = [
   {c:4,e:"👮",fr:"La plage est surveillée de dix heures à dix-huit heures.",de:"Der Strand wird von zehn bis achtzehn Uhr bewacht.",ph:"Dèr Chtrant virt fon tsèn biss akht-tsèn Ouir beu-vakht."},
   {c:4,e:"🪑",fr:"Les transats sont disponibles en location.",de:"Liegestühle können gegen eine Gebühr gemietet werden.",ph:"Ligeu-chtuïleu keunène guéguène aïneu Guébur guémitèt vèrdène."},
   {c:4,e:"⚠️",fr:"Attention, il y a des méduses aujourd'hui.",de:"Vorsicht, heute gibt es Quallen im Meer.",ph:"For-zicht, hoïteu guibt èss Kval-ène im Mèr."},
-  {c:4,e:"🚩",fr:"Drapeau rouge : baignade interdite.",de:"Rote Fahne bedeutet, Schwimmen ist verboten.",ph:"Roteu Faneu beu-doïtèt, Chvimène ist fèr-botène."},
+  {c:4,e:"🚩",fr:"Drapeau rouge : baignade interdite.",de:"Rote Flagge bedeutet: Baden verboten.",ph:"Roteu Flagueu beu-doïtèt: Badène fèr-botène."},
   {c:4,e:"🌊",fr:"La mer Méditerranée est magnifique !",de:"Das Mittelmeer ist wunderschön!",ph:"Dass Mitèl-mèr ist voundèr-cheun!"},
   {c:4,e:"🚲",fr:"Une piste cyclable longe le bord de mer.",de:"Ein Radweg verläuft entlang der Küste.",ph:"Aïn Rad-vèk fèr-leuft ènt-lang dèr Kuusteu."},
   {c:4,e:"⛅",fr:"Le sable est fin et chaud.",de:"Der Sand ist fein und warm.",ph:"Dèr Zant ist faïn ount varm."},
@@ -624,28 +594,28 @@ const P = [
   {c:5,e:"🚿",fr:"Les sanitaires sont sur votre droite.",de:"Die Sanitäranlagen befinden sich auf Ihrer rechten Seite.",ph:"Di Zanitèr-anlagène beu-findène zich aouf irèr rèkhtène Zaïteu."},
   {c:5,e:"🧺",fr:"La laverie est dans le bloc central.",de:"Die Waschküche befindet sich im Zentralgebäude.",ph:"Di Vach-kuicheu beu-findèt zich im Tsèntral-guéboïdeu."},
   {c:5,e:"🚴",fr:"Vous pouvez louer des vélos ici.",de:"Sie können hier Fahrräder ausleihen.",ph:"Zi keunène hir Far-rèdèr aous-laïuène."},
-  {c:5,e:"🎭",fr:"Il y a des animations tous les soirs en saison.",de:"In der Saison gibt es jeden Abend Unterhaltungsprogramm.",ph:"In dèr Zaïzon guibt èss yèdène Abènt Ountèr-haltoungss-programm."},
+  {c:5,e:"🎭",fr:"Il y a des animations tous les soirs en saison.",de:"In der Saison gibt es jeden Abend ein Unterhaltungsprogramm.",ph:"In dèr Zaïzon guibt èss yèdène Abènt aïn Ountèr-haltoungss-programm."},
   {c:5,e:"👦",fr:"Le club enfants accueille les enfants de cinq à douze ans.",de:"Der Kinderclub nimmt Kinder von fünf bis zwölf Jahren auf.",ph:"Dèr Kindèr-kloub nimt Kindèr fon fuunf biss tsvelf Yarène aouf."},
-  {c:5,e:"🧖",fr:"Le spa propose des massages et un hammam.",de:"Der Spa bietet Massagen und ein Hammam an.",ph:"Dèr Chpa bitèt Massagène ount aïn Hamam an."},
-  {c:5,e:"🎾",fr:"Vous avez accès aux trois campings.",de:"Sie haben Zugang zu allen drei Campings.",ph:"Zi habène Tsougang tsou alène draï Kampingss."},
-  {c:5,e:"🅿️",fr:"Le parking se trouve à l'entrée.",de:"Der Parkplatz befindet sich am Eingang des Campings.",ph:"Dèr Park-platss beu-findèt zich am Aïn-gang dèss Kampingss."},
+  {c:5,e:"🧖",fr:"Le spa propose des massages et un hammam.",de:"Das Spa bietet Massagen und ein Hammam an.",ph:"Dass Chpa bitèt Massagène ount aïn Hamam an."},
+  {c:5,e:"🎾",fr:"Vous avez accès aux trois campings.",de:"Sie haben Zugang zu allen drei Campingplätzen.",ph:"Zi habène Tsougang tsou alène draï Kamping-plètsène."},
+  {c:5,e:"🅿️",fr:"Le parking se trouve à l'entrée.",de:"Der Parkplatz befindet sich am Eingang des Campingplatzes.",ph:"Dèr Park-platss beu-findèt zich am Aïn-gang dèss Kamping-platsèss."},
 
   // ── Règles & Sécurité
-  {c:6,e:"🌙",fr:"Le silence est obligatoire après vingt-deux heures.",de:"Ab zweiundzwanzig Uhr gilt Nachtruhe auf dem Camping.",ph:"Ap tsvaï-ount-tsvan-tsig Ouir guilt Nakht-rou aouf dème Kamping."},
+  {c:6,e:"🌙",fr:"Le silence est obligatoire après vingt-deux heures.",de:"Ab zweiundzwanzig Uhr gilt Nachtruhe auf dem Campingplatz.",ph:"Ap tsvaï-ount-tsvan-tsig Ouir guilt Nakht-roueu aouf dème Kamping-platss."},
   {c:6,e:"🚗",fr:"La vitesse est limitée à dix kilomètres par heure.",de:"Die Höchstgeschwindigkeit beträgt zehn Kilometer pro Stunde.",ph:"Di Heukst-guéchvindich-kaït beu-trègt tsèn Kilomètèr pro Chtoundeu."},
   {c:6,e:"🚫",fr:"Le bracelet doit être porté en permanence.",de:"Das Armband muss jederzeit getragen werden.",ph:"Dass Arm-band mouss yèdèr-tsaït guétragène vèrdène."},
-  {c:6,e:"🗑️",fr:"Les poubelles se trouvent à l'entrée.",de:"Die Mülleimer befinden sich am Eingang des Campings.",ph:"Di Muul-aïmèr beu-findène zich am Aïn-gang dèss Kampingss."},
+  {c:6,e:"🗑️",fr:"Les poubelles se trouvent à l'entrée.",de:"Die Mülleimer befinden sich am Eingang des Campingplatzes.",ph:"Di Mul-aïmèr beu-findène zich am Aïn-gang dèss Kamping-platsèss."},
   {c:6,e:"♻️",fr:"Merci de trier vos déchets.",de:"Bitte trennen Sie Ihren Abfall.",ph:"Biteu trènène zi irène Apfal."},
   {c:6,e:"🔥",fr:"Seuls les barbecues électriques sont autorisés.",de:"Nur Elektrogrills sind erlaubt.",ph:"Nour Élèktro-grilss zint èr-laoubt."},
   {c:6,e:"🏃",fr:"Les enfants doivent être accompagnés la nuit.",de:"Kinder müssen nachts von Erwachsenen begleitet werden.",ph:"Kindèr muissène nakhts fon Èr-vakhzènène beu-glaïtèt vèrdène."},
 
   // ── Urgences & Problèmes
-  {c:7,e:"🆘",fr:"En cas d'urgence, appelez le quinze ou le dix-huit.",de:"Im Notfall rufen Sie bitte fünfzehn oder achtzehn an.",ph:"Im Not-fal roufène zi biteu fuunftsèn odèr akht-tsèn an."},
+  {c:7,e:"🆘",fr:"En cas d'urgence, appelez le quinze ou le dix-huit.",de:"Im Notfall rufen Sie bitte die Fünfzehn oder die Achtzehn an.",ph:"Im Not-fal roufène zi biteu di Funf-tsèn odèr di Akht-tsèn an."},
   {c:7,e:"🏥",fr:"Je vais appeler les secours immédiatement.",de:"Ich rufe sofort den Notdienst an.",ph:"Ich roufeu zofort dène Not-dinst an."},
   {c:7,e:"💊",fr:"La pharmacie la plus proche est à cinq cents mètres.",de:"Die nächste Apotheke ist fünfhundert Meter entfernt.",ph:"Di nèchsteu Apoté-keu ist fuunfhoundèrt Mètèr ènt-fèrnt."},
   {c:7,e:"🔧",fr:"Je vais envoyer quelqu'un pour réparer.",de:"Ich schicke jemanden vorbei, um das zu reparieren.",ph:"Ich chikeu yèmandène forbaï, oom dass tsou rèparirène."},
   {c:7,e:"🔇",fr:"Veuillez baisser le volume, s'il vous plaît.",de:"Bitte drehen Sie die Musik leiser.",ph:"Biteu drèuène zi di Mouzik laïzèr."},
-  {c:7,e:"🚔",fr:"En cas de vol, appelez le dix-sept.",de:"Bei einem Diebstahl rufen Sie bitte die siebzehn an.",ph:"Baï aïnème Dip-chtal roufène zi biteu di zip-tsèn an."},
+  {c:7,e:"🚔",fr:"En cas de vol, appelez le dix-sept.",de:"Bei einem Diebstahl rufen Sie bitte die Siebzehn an.",ph:"Baï aïnème Dip-chtal roufène zi biteu di zip-tsèn an."},
   {c:7,e:"🔐",fr:"J'ai perdu mon bracelet.",de:"Ich habe mein Armband verloren.",ph:"Ich habeu maïn Arm-band fèr-lorène."},
   {c:7,e:"🚿",fr:"Il n'y a pas d'eau chaude dans le mobil-home.",de:"Im Mobilheim gibt es kein warmes Wasser.",ph:"Im Mobil-haïm guibt èss kaïn varmèss Vassèr."},
 
@@ -677,7 +647,7 @@ const P = [
   {c:0,e:"📆",fr:"Le camping est ouvert d'avril à octobre.",de:"Der Campingplatz ist von April bis Oktober geöffnet.",ph:"Dèr Kamping-platss ist fon April biss Oktobèr guéeufnèt."},
   {c:1,e:"🛖",fr:"La Cabane Réserve accueille de quatre à six personnes.",de:"Die Cabane Réserve bietet Platz für vier bis sechs Personen.",ph:"Di Kabane Rézèrve bitèt Platss fuir fir biss zèkss Pèrzonène."},
   {c:1,e:"🏡",fr:"Le Garden Family est prévu pour six à huit personnes.",de:"Das Garden Family ist für sechs bis acht Personen.",ph:"Dass Gardène Fémili ist fuir zèkss biss akht Pèrzonène."},
-  {c:1,e:"🏊",fr:"La Villa La Coquille dispose de sa propre piscine privée.",de:"Die Villa La Coquille hat ihren eigenen privaten Pool.",ph:"Di Villa La Kokiyeu hat irène aïguènène privatène Poul."},
+  {c:1,e:"🏊",fr:"La Villa La Coquille dispose de sa propre piscine privée.",de:"Die Villa La Coquille hat einen eigenen privaten Pool.",ph:"Di Villa La Coquille hat aïnène aïguènène privatène Poul."},
   {c:1,e:"🛏️",fr:"Les draps et les serviettes sont inclus, sauf dans la gamme Cosy.",de:"Bettwäsche und Handtücher sind inklusive, außer in der Cosy-Kategorie.",ph:"Bèt-vècheu ount Hant-tuichèr zint inklouziveu, aoussèr in dèr Kozi-katégori."},
   {c:2,e:"🏷️",fr:"En réservant tôt, vous bénéficiez de 10 % de réduction.",de:"Bei früher Buchung erhalten Sie zehn Prozent Rabatt.",ph:"Baï fruïèr Boukhoung èr-haltène zi tsèn Protsènt Rabat."},
   {c:3,e:"📏",fr:"La grande piscine du Beach Garden fait trente-trois mètres de long.",de:"Der große Pool im Beach Garden ist dreiunddreißig Meter lang.",ph:"Dèr greusseu Poul im Beach Garden ist draï-ount-draïssig Mètèr lang."},
@@ -810,7 +780,7 @@ const FLOWS = [
         title:"2 · Remise du plan",
         blocks:[
           {t:"memo", label:"💡 Action", html:"Tu <b>imprimes un plan</b> des disponibilités et tu le donnes au client."},
-          {t:"say", label:"Tu expliques le plan", fr:"Voici le plan des disponibilités. Quand un numéro apparaît, l'emplacement est libre. Sans numéro, il est occupé.", de:"Hier ist der Plan mit den freien Plätzen. Wenn eine Nummer steht, ist der Platz frei. Ohne Nummer ist er belegt.", ph:"Hir ist dèr Plan mit dène fraïène Plètsène. Vèn aïneu Noumèr chtèt, ist dèr Platss fraï. Oneu Noumèr ist èr beu-lègt."},
+          {t:"say", label:"Tu expliques le plan", fr:"Voici le plan des disponibilités. Quand un numéro apparaît, l'emplacement est libre. Sans numéro, il est occupé.", de:"Hier ist der Plan mit den freien Plätzen. Wenn eine Nummer eingetragen ist, ist der Platz frei. Ohne Nummer ist er belegt.", ph:"Hir ist dèr Plan mit dène fraïène Plètsène. Vèn aïneu Noumèr aïn-guétragène ist, ist dèr Platss fraï. Oneu Noumèr ist èr beu-lègt."},
           {t:"say", label:"Tu donnes la consigne", fr:"Prenez le plan, allez voir les emplacements à pied, puis revenez me voir quand vous en aurez choisi deux.", de:"Nehmen Sie den Plan, gehen Sie zu Fuß hin, und kommen Sie zurück, wenn Sie zwei ausgewählt haben.", ph:"Nèmène zi dène Plan, guéène zi tsou Fouss hin, ount komène zi tsou-ruk, vèn zi tsvaï aous-guévèlt habène."},
         ]
       },
@@ -836,7 +806,7 @@ const FLOWS = [
       {
         title:"5 · Présentation du camping",
         blocks:[
-          {t:"say", label:"Les 3 campings", fr:"Nous sommes ici à la réception du Beach Garden. Juste à côté se trouve le Nouvelle Floride et, en face, le Charlemagne. Avec vos bracelets, vous avez accès aux trois campings !", de:"Wir sind hier an der Rezeption vom Beach Garden. Daneben ist der Nouvelle Floride, und gegenüber der Charlemagne. Mit Ihren Armbändern haben Sie vollen Zugang zu allen drei Campings!", ph:"Vir zint hir an dèr Rétsèptsion fom Beach Garden. Da-nèbène ist dèr Nouvèl-Floride, ount guéguèn-ubèr dèr Charleumagne. Mit irène Arm-bèndèrn habène zi folène Tsougang tsou alène draï Kampingss!"},
+          {t:"say", label:"Les 3 campings", fr:"Nous sommes ici à la réception du Beach Garden. Juste à côté se trouve le Nouvelle Floride et, en face, le Charlemagne. Avec vos bracelets, vous avez accès aux trois campings !", de:"Wir sind hier an der Rezeption des Beach Garden. Direkt daneben liegt der Nouvelle Floride und gegenüber der Charlemagne. Mit Ihren Armbändern haben Sie Zugang zu allen drei Campingplätzen!", ph:"Vir zint hir an dèr Rétsèptsion dèss Beach Garden. Dirèkt da-nèbène likt dèr Nouvelle Floride ount guéguèn-ubèr dèr Charlemagne. Mit irène Arm-bèndèrn habène zi Tsougang tsou alène draï Kamping-plètsène!"},
           {t:"say", label:"Code de la plage", fr:"Ici, une porte ferme l'accès à la plage. Tapez ce code pour l'ouvrir. Elle fonctionne de 7 h à 22 h.", de:"Hier sperrt eine Tür den Zugang zum Strand. Sie geben diesen Code ein, um sie zu öffnen. Sie funktioniert von sieben bis zweiundzwanzig Uhr.", ph:"Hir chpèrt aïneu Tuir dène Tsougang tsoum Chtrant. Zi guébène dizène Kode aïn, oum zi tsou eufnène. Zi founk-tsionirt fon zibène biss tsvaï-ount-tsvan-tsig Ouir."},
           {t:"say", label:"Application Tipiz", fr:"Je vous conseille de télécharger l'application Tipiz et d'y saisir ce mot de passe. Vous y trouverez le programme des animations, les horaires d'ouverture, les menus, la météo, etc.", de:"Ich empfehle Ihnen, die App Tipiz herunterzuladen. Sie geben dieses Passwort ein. Darin finden Sie das Animationsprogramm, die Öffnungszeiten, die Menüs, das Wetter und mehr.", ph:"Ich èmp-fèleu irène, di App Tipiz hèr-ountèr-tsou-ladène. Zi guébène dizèss Pass-vort aïn. Da-rin findène zi dass Animatsions-programm, di Eufnoungs-tsaïtène, di Ménuus, dass Vètèr ount mèr."},
           {t:"say", label:"Bracelets", fr:"Voici vos bracelets : ceux-ci pour les adultes, et ceux-là pour les mineurs.", de:"Hier sind Ihre Armbänder: diese für die Erwachsenen, und diese für die Minderjährigen.", ph:"Hir zint ireu Arm-bèndèr: dizeu fuir di Èr-vakhzènène, ount dizeu fuir di Mindèr-yèrigène."},
@@ -906,7 +876,7 @@ const FLOWS = [
             {de:"Die Nachbarn sind viel zu laut, wir können nicht schlafen.", fr:"Les voisins font beaucoup trop de bruit, on ne peut pas dormir."},
             {de:"Können Sie bitte etwas unternehmen?", fr:"Pouvez-vous faire quelque chose, s'il vous plaît ?"},
           ]},
-          {t:"say", label:"Tu t'excuses", fr:"Je suis vraiment désolé pour ce désagrément. Je m'en occupe tout de suite.", de:"Es tut mir wirklich leid für die Störung. Ich kümmere mich sofort darum.", ph:"Èss tout mir virk-lich laït fuir di Chteu-roung. Ich kuumèreu mich zofort da-roum."},
+          {t:"say", label:"Tu t'excuses", fr:"Je suis vraiment désolé pour ce désagrément. Je m'en occupe tout de suite.", de:"Es tut mir wirklich leid wegen der Störung. Ich kümmere mich sofort darum.", ph:"Èss tout mir virk-lich laït vègène dèr Chteu-roung. Ich kuumèreu mich zofort da-roum."},
         ]
       },
       {
@@ -1000,22 +970,21 @@ const FLOWS = [
    UNITÉS D'APPRENTISSAGE (ordre du parcours)
 ══════════════════════════════════════ */
 const UNITS = {
-  0:{ic:"🛎️", c:"#1CB0F6", d:"#1899D6", ds:"Accueillir, enregistrer et orienter les clients"},
-  9:{ic:"🤝", c:"#FF7EB6", d:"#D9609A", ds:"Les formules de politesse indispensables"},
-  10:{ic:"🔢", c:"#2B70C9", d:"#1F5AA8", ds:"Compter de 0 à 1 000"},
-  2:{ic:"📅", c:"#FF9600", d:"#D97F00", ds:"Dates, tarifs, acompte et annulation"},
-  1:{ic:"🏠", c:"#58CC02", d:"#58A700", ds:"Présenter les mobil-homes et les emplacements"},
-  11:{ic:"🗓️", c:"#00B8A9", d:"#009488", ds:"Les jours de la semaine et les mois"},
-  5:{ic:"🍽️", c:"#CE82FF", d:"#A560D8", ds:"Restaurant, épicerie, Wi-Fi et animations"},
-  3:{ic:"🏊", c:"#00C2D1", d:"#00A0AD", ds:"Horaires, règles et équipements aquatiques"},
-  4:{ic:"🏖️", c:"#FFB020", d:"#D98F00", ds:"Accès, surveillance et sécurité à la plage"},
-  12:{ic:"🕐", c:"#7C6CF0", d:"#5E4FD0", ds:"Donner l'heure et situer un moment"},
-  6:{ic:"📋", c:"#4B7BEC", d:"#3563CC", ds:"Faire respecter le règlement du camping"},
-  7:{ic:"🆘", c:"#FF4B4B", d:"#D93636", ds:"Réagir vite en cas de problème"},
-  8:{ic:"🗺️", c:"#2BB673", d:"#1E9559", ds:"Conseiller des sorties aux alentours"},
+  0:"Accueillir, enregistrer et orienter les clients",
+  9:"Les formules de politesse indispensables",
+  10:"Compter de 0 à 1 000",
+  2:"Dates, tarifs, acompte et annulation",
+  1:"Présenter les mobil-homes et les emplacements",
+  11:"Les jours de la semaine et les mois",
+  5:"Restaurant, épicerie, Wi-Fi et animations",
+  3:"Horaires, règles et équipements aquatiques",
+  4:"Accès, surveillance et sécurité à la plage",
+  12:"Donner l'heure et situer un moment",
+  6:"Faire respecter le règlement du camping",
+  7:"Réagir vite en cas de problème",
+  8:"Conseiller des sorties aux alentours",
 };
 const ORDER = [0,9,10,2,1,11,5,3,4,12,6,7,8];
-const FLOW_BG = {passage:"#DDF4FF", depart:"#FFF1D6", bruit:"#EEE8FF", technique:"#FFE4E4", "reservation-tel":"#DDFBEA"};
 const catById = id => CATS.find(c=>c.id===id);
 const isBase = id => { const c=catById(id); return !!(c && c.grp==='base'); };
 const unitPhrases = id => P.map((p,i)=>i).filter(i=>P[i].c===id);
@@ -1030,17 +999,18 @@ function unitLessons(id){
 ══════════════════════════════════════ */
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-/* Typographie française : espaces insécables avant ! ? : ; » et après «, entre un nombre et son unité */
+/* Typographie française : espaces insécables avant ! ? : ; » et après «, entre un nombre et son unité ; mots composés insécables */
 const tfr = s => String(s)
-  .replace(/ ([!?;])/g, '\u202F$1').replace(/ ([:»])/g, '\u00A0$1').replace(/« /g, '«\u00A0')
-  .replace(/(\d) (h|€|%|km)(?![a-zà-ü])/g, '$1\u00A0$2')
-  .replace(/(^|[\s>(])(e-mail|mobil-homes?|Wi-Fi|camping-car|check-out)(?=[\s<.,!?;:)\u00A0\u202F]|$)/g, '$1<span class="nw">$2</span>');
+  .replace(/ ([!?;])/g, ' $1').replace(/ ([:»])/g, ' $1').replace(/« /g, '« ')
+  .replace(/(\d) (h|€|%|km)(?![a-zà-ü])/g, '$1 $2')
+  .replace(/(^|[\s>(])(e-mail|mobil-homes?|Wi-Fi|camping-car|check-out)(?=[\s<.,!?;:)  ]|$)/g, '$1<span class="nw">$2</span>');
 const shuffle = a => { a=[...a]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 const pick = a => a[Math.floor(Math.random()*a.length)];
 const plural = (n, one, many) => n+' '+(n>1 ? (many||one+'s') : one);
-const icon = (id, cls='') => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
-const today = () => { const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
-const yesterday = () => { const d=new Date(); d.setDate(d.getDate()-1); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+const icon = (id, cls='ic') => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
+const ymd = d => d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const today = () => ymd(new Date());
+const yesterday = () => { const d=new Date(); d.setDate(d.getDate()-1); return ymd(d); };
 
 /* ══════════════════════════════════════
    ÉTAT (sauvegardé sur l'appareil)
@@ -1117,20 +1087,20 @@ function tts(de, done, slow){
   speechSynthesis.cancel(); speechSynthesis.speak(u);
 }
 
-/* Effets sonores (générés, aucun fichier) */
+/* Effets sonores discrets (générés, aucun fichier) */
 let actx=null;
 function sfx(kind){
   if(!S.sfx) return;
   try{
     actx = actx || new (window.AudioContext||window.webkitAudioContext)();
-    const seq = {ok:[[880,0],[1318.5,.09]], ko:[[220,0],[196,.12]], win:[[523.3,0],[659.3,.1],[784,.2],[1046.5,.3]]}[kind];
+    const seq = {ok:[[659.3,0],[987.8,.08]], ko:[[311.1,0],[277.2,.1]], win:[[523.3,0],[659.3,.09],[784,.18],[1046.5,.27]]}[kind];
     const t0=actx.currentTime+.01;
     seq.forEach(([f,t])=>{
       const o=actx.createOscillator(), g=actx.createGain();
-      o.type = kind==='ko' ? 'sawtooth' : 'sine'; o.frequency.value=f;
-      g.gain.setValueAtTime(0.0001,t0+t); g.gain.exponentialRampToValueAtTime(kind==='ko'?.08:.22,t0+t+.015);
-      g.gain.exponentialRampToValueAtTime(0.0001,t0+t+(kind==='win'?.35:.2));
-      o.connect(g).connect(actx.destination); o.start(t0+t); o.stop(t0+t+.4);
+      o.type='sine'; o.frequency.value=f;
+      g.gain.setValueAtTime(0.0001,t0+t); g.gain.exponentialRampToValueAtTime(kind==='ko'?.1:.16,t0+t+.012);
+      g.gain.exponentialRampToValueAtTime(0.0001,t0+t+(kind==='win'?.45:.22));
+      o.connect(g).connect(actx.destination); o.start(t0+t); o.stop(t0+t+.5);
     });
   }catch(e){}
 }
@@ -1155,54 +1125,52 @@ function byKey(key){
 ══════════════════════════════════════ */
 let toastT;
 function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('on'),2600); }
-function modal({ic, title, text, ok, okCls='', cancel}){
+function modal({title, text, ok, okCls='', cancel}){
   return new Promise(res=>{
     const m=document.createElement('div'); m.className='modal';
     m.innerHTML=`<div class="modal-c" role="dialog" aria-modal="true" aria-label="${esc(title)}">
-      <div class="m-big">${ic}</div><h3>${tfr(title)}</h3><p>${tfr(text)}</p>
+      <h3>${tfr(title)}</h3><p>${tfr(text)}</p>
       <button class="btn block ${okCls}" data-r="1">${ok}</button>
-      ${cancel?`<button class="btn ghost block" data-r="0">${cancel}</button>`:''}</div>`;
+      ${cancel?`<button class="btn sec block" data-r="0">${cancel}</button>`:''}</div>`;
     m.addEventListener('click',e=>{ const b=e.target.closest('[data-r]'); if(b||e.target===m){ m.remove(); res(b?b.dataset.r==='1':false); } });
     document.body.appendChild(m); m.querySelector('[data-r]').focus();
   });
 }
 function confetti(){
   const box=document.createElement('div'); box.className='confetti';
-  const cols=['#1CB0F6','#58CC02','#FFC800','#FF4B4B','#CE82FF','#FF9600'];
-  for(let i=0;i<90;i++){
+  const cols=['#8E1B2E','#B8283F','#E9C6CC','#C9A45C','#5A0F1C'];
+  for(let i=0;i<60;i++){
     const c=document.createElement('i');
     c.style.left=Math.random()*100+'vw'; c.style.background=pick(cols);
-    c.style.setProperty('--x',(Math.random()*200-100)+'px'); c.style.setProperty('--r',(Math.random()*900-450)+'deg');
-    c.style.animationDuration=(1.8+Math.random()*1.6)+'s'; c.style.animationDelay=(Math.random()*.4)+'s';
+    c.style.setProperty('--x',(Math.random()*160-80)+'px'); c.style.setProperty('--r',(Math.random()*720-360)+'deg');
+    c.style.animationDuration=(2+Math.random()*1.6)+'s'; c.style.animationDelay=(Math.random()*.4)+'s';
     box.appendChild(c);
   }
-  document.body.appendChild(box); setTimeout(()=>box.remove(),4200);
+  document.body.appendChild(box); setTimeout(()=>box.remove(),4400);
 }
 
 function chipsHTML(){
   const st=streakNow();
-  return `<button class="chip fire${st?'':' off'}" data-nav="profile" title="Série de jours">
-      <span class="ico">🔥</span>${st}<span class="sr"> ${st>1?'jours':'jour'} de série</span></button>
-    <button class="chip xp" data-nav="profile" title="Points d'expérience"><span class="ico">⚡</span>${S.xp}<span class="sr"> XP</span></button>`;
+  return `<button class="chip${st?'':' off'}" data-nav="profile" title="Série de jours">${icon('i-flame')}${st}<span class="sr"> ${st>1?'jours':'jour'} de série</span></button>
+    <button class="chip" data-nav="profile" title="Points d'expérience">${icon('i-bolt')}${S.xp}<span class="sr"> XP</span></button>`;
 }
 function goalHTML(){
   const g=S.goal, x=dayXp(), p=Math.min(100, Math.round(x/g*100));
-  return `<div class="goal"><div class="goal-ring" style="--p:${p}"><span>${p>=100?'🏆':'🎯'}</span></div>
-    <div class="goal-txt"><b>${p>=100?'Objectif atteint !':'Encore '+(g-x)+' XP'}</b><small>${Math.min(x,g)} / ${g} XP aujourd'hui</small></div></div>
-    <div class="bar" style="margin-top:14px"><i style="width:${p}%"></i></div>`;
+  return `<div class="goal"><div class="ring" style="--p:${p}">${icon(p>=100?'i-check':'i-target')}</div>
+    <div class="goal-txt"><b>${p>=100?'Objectif atteint !':'Encore '+(g-x)+' XP'}</b><small>${Math.min(x,g)} / ${g} XP aujourd'hui</small></div></div>`;
 }
 function renderChrome(){
-  document.querySelectorAll('[data-chips]').forEach(e=>e.innerHTML=tfr(chipsHTML()));
-  const nClips = window.AUDIO ? Object.keys(window.AUDIO).length : 0;
+  document.querySelectorAll('.topbar [data-chips]').forEach(e=>e.innerHTML=tfr(chipsHTML()));
+  const nClips = window.AUDIO ? Object.keys(window.AUDIO).length : 0, st=streakNow();
   $('#rail').innerHTML = tfr(`
-    <div class="chips" data-chips>${chipsHTML()}</div>
+    <div class="chips">${chipsHTML()}</div>
     <div class="card"><h3>Objectif du jour</h3>${goalHTML()}</div>
     <div class="card"><h3>Ma série</h3>
-      <div class="goal"><div class="goal-ring" style="--p:${streakNow()?100:0}"><span>🔥</span></div>
-      <div class="goal-txt"><b>${streakNow()?plural(streakNow(),'jour')+' d\'affilée':'Pas encore de série'}</b><small>${S.last===today()?'Leçon du jour validée, bravo !':'Fais une leçon aujourd\'hui pour garder ta série.'}</small></div></div></div>
-    <div class="card"><h3>Le son</h3>
-      <p class="lead" style="margin-bottom:14px;font-size:15px">${nClips} phrases enregistrées par une voix allemande native.</p>
-      <button class="btn ghost block" data-act="test">🔊 Tester le son</button></div>`);
+      <div class="goal"><div class="ring" style="--p:${st?100:0}">${icon('i-flame')}</div>
+      <div class="goal-txt"><b>${st?plural(st,'jour')+' d\'affilée':'Pas encore de série'}</b><small>${S.last===today()?'Leçon du jour validée.':'Une leçon aujourd\'hui entretient ta série.'}</small></div></div></div>
+    <div class="card"><h3>Voix allemandes</h3>
+      <p style="margin:0 0 14px;color:var(--muted);font-size:14px">${nClips} phrases enregistrées par une voix native.</p>
+      <button class="btn sec block" data-act="test">${icon('i-spk')}Tester le son</button></div>`);
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on', b.dataset.nav===route().view));
 }
 
@@ -1228,71 +1196,62 @@ function render(){
 }
 
 /* ══════════════════════════════════════
-   VUE « APPRENDRE » — parcours façon Duolingo
+   VUE « APPRENDRE »
 ══════════════════════════════════════ */
-const OFFS=[0,52,78,52,0,-52,-78,-52];
 function viewLearn(){
   const nx=nextLesson(), name=S.name.trim();
-  const nxU = nx && catById(nx.u);
   const nMist=S.mistakes.filter(k=>byKey(k)).length;
-  let k=0;
+  const done=Object.values(S.lessons).filter(v=>v>0).length, total=ORDER.reduce((a,u)=>a+unitLessons(u).length,0);
+  const hero = nx ? (()=>{ const c=catById(nx.u), L=unitLessons(nx.u);
+      return `<span class="eyebrow">${done?'Prochaine leçon':'Première leçon'}</span>
+      <h2>${esc(c.name)}</h2><p>Leçon ${nx.l+1} sur ${L.length} · ${plural(L[nx.l].length,'phrase')}</p>
+      <div class="bar"><i style="width:${Math.round(unitProgress(nx.u)*100)}%"></i></div>
+      <button class="btn light" data-act="continue">${done?'Reprendre':'Commencer'}${icon('i-chev')}</button>`; })()
+    : `<span class="eyebrow">Parcours terminé</span><h2>Ausgezeichnet !</h2><p>Toutes les leçons sont validées. Entretiens tes acquis avec l'entraînement rapide.</p>
+       <button class="btn light" data-act="practice">S'entraîner${icon('i-chev')}</button>`;
   const units = ORDER.map((u,ui)=>{
-    const U=UNITS[u], L=unitLessons(u), cat=catById(u);
-    const nodes = L.map((_,l)=>{
-      const done=lessonDone(u,l), cur=nx && nx.u===u && nx.l===l, off=OFFS[(k++)%OFFS.length];
-      const sym = done ? icon('i-check') : icon('i-star');
-      return `<div class="node-wrap${cur?' cur':''}" data-off="${off}" style="transform:translateX(${off}px);--c:${U.c};--tc:${U.c}">
-        ${cur?'<div class="start-tip">Commencer</div>':''}
-        <button class="node${done||cur?'':' todo'}"${done||cur?` style="--c:${U.c};--d:${U.d}"`:''} data-act="node" data-u="${u}" data-l="${l}"
-          aria-label="${esc(cat.name)}, leçon ${l+1} sur ${L.length}${done?', terminée':''}">${sym}</button>
-      </div>`;
+    const L=unitLessons(u), cat=catById(u), pr=Math.round(unitProgress(u)*100), isCur = nx && nx.u===u;
+    const steps = L.map((_,l)=>{
+      const d=lessonDone(u,l), cur=isCur && nx.l===l;
+      return `${l?`<span class="ln${d?' done':''}"></span>`:''}<button class="dot${d?' done':''}${cur?' cur':''}" data-act="start" data-u="${u}" data-l="${l}"
+        aria-label="${esc(cat.name)}, leçon ${l+1} sur ${L.length}${d?', terminée':''}" title="Leçon ${l+1}">${d?icon('i-check'):l+1}</button>`;
     }).join('');
-    return `<section class="unit" id="unit-${u}">
-      <div class="unit-head" style="--c:${U.c};--d:${U.d}">
-        <div class="u-txt"><div class="u-eb">Unité ${ui+1}${isBase(u)?' · Les bases':''}</div><div class="u-nm">${esc(cat.name)}</div><div class="u-ds">${U.ds}</div></div>
-        <button class="unit-guide" data-nav-to="#/phrases/cat/${u}" aria-label="Voir les phrases de l'unité"><span>📖</span>Guide</button>
-      </div>
-      <div class="path">${nodes}</div>
+    return `<section class="unit${isCur?' cur':''}">
+      <div class="unit-top"><span class="badge-ic">${icon('u'+u)}</span>
+        <div class="unit-tx"><span class="eyebrow">Unité ${ui+1}${isBase(u)?' · Les bases':''}</span>
+          <div class="unit-nm">${esc(cat.name)}</div><div class="unit-ds">${UNITS[u]}</div></div>
+        <span class="unit-pc${pr===100?' full':''}">${pr} %</span></div>
+      <div class="stepper">${steps}</div>
+      <div class="unit-foot"><button class="link" data-nav-to="#/phrases/cat/${u}">Voir les ${plural(unitPhrases(u).length,'phrase')}${icon('i-chev','ic')}</button>
+        ${isCur?`<button class="btn sm" data-act="continue">Leçon ${nx.l+1}</button>`:''}</div>
     </section>`;
   }).join('');
   return tfr(`<div class="wrap view">
-    <div class="hero"><div class="hero-sun"></div>
-      <h2>${name?`Guten Tag, ${esc(name)} !`:'Guten Tag !'}</h2>
-      <p>${nx ? `Prochaine leçon : <b>${esc(nxU.name)}</b>, leçon ${nx.l+1} sur ${unitLessons(nx.u).length}.` : 'Tu as terminé tout le parcours. Ausgezeichnet ! Continue à t\'entraîner pour garder tes acquis.'}</p>
-      <button class="btn white" data-act="${nx?'continue':'practice'}">${nx ? (Object.keys(S.lessons).length?'Continuer':'Commencer') : 'S\'entraîner'}</button>
-    </div>
+    <h1 class="h1">${name?`Guten Tag, ${esc(name)}`:'Guten Tag'}</h1>
+    <p class="lead">Ton allemand pour la réception, une leçon après l'autre.</p>
+    <div class="hero"><svg class="hero-art" aria-hidden="true"><use href="#i-wave"/></svg>${hero}</div>
     <div class="quick">
-      <button class="qk" data-act="practice"><span class="ico">⚡</span><b>Entraînement rapide</b><small>Cinq phrases au hasard parmi celles déjà vues</small></button>
-      <button class="qk" data-act="mistakes" ${nMist?'':'disabled'}><span class="ico">🎯</span><b>Mes erreurs</b><small>${nMist?plural(nMist,'phrase')+' à retravailler':'Aucune erreur à réviser pour le moment'}</small></button>
+      <button class="qk" data-act="practice"><span class="badge-ic">${icon('i-repeat')}</span><span><b>Entraînement rapide</b><small>Cinq phrases déjà vues, au hasard</small></span></button>
+      <button class="qk" data-act="mistakes" ${nMist?'':'disabled'}><span class="badge-ic">${icon('i-target')}</span><span><b>Mes erreurs</b><small>${nMist?plural(nMist,'phrase')+' à retravailler':'Rien à réviser pour l\'instant'}</small></span></button>
     </div>
-    ${units}
-    <div class="path-end">Fin du parcours 🏁</div>
+    <div class="sec-t"><h2>Parcours</h2><span>${done} / ${total} leçons</span></div>
+    <div class="units">${units}</div>
   </div>`);
-}
-function nodePopover(btn){
-  document.querySelectorAll('.pop').forEach(p=>{ p.parentElement.classList.remove('open'); p.remove(); });
-  const u=+btn.dataset.u, l=+btn.dataset.l, U=UNITS[u], L=unitLessons(u), done=lessonDone(u,l);
-  const pop=document.createElement('div'); pop.className='pop';
-  const off=+btn.parentElement.dataset.off||0;
-  pop.style.setProperty('--c',U.c); pop.style.setProperty('--c-text',U.d); pop.style.marginLeft=(-off)+'px'; pop.style.setProperty('--ax',off+'px');
-  pop.innerHTML=tfr(`<b>${esc(catById(u).name)}</b><small>Leçon ${l+1} sur ${L.length}${done?' · terminée ✓':''}</small>
-    <button class="btn block" data-act="start" data-u="${u}" data-l="${l}">${done?'Refaire +10 XP':'Commencer +10 XP'}</button>`);
-  btn.parentElement.appendChild(pop); btn.parentElement.classList.add('open');
 }
 
 /* ══════════════════════════════════════
-   VUE « SITUATIONS » — parcours de dialogue
+   VUE « SITUATIONS »
 ══════════════════════════════════════ */
 function viewFlows(){
   return tfr(`<div class="wrap view">
-    <h1 class="h1">Situations au comptoir</h1>
-    <p class="lead">Chaque situation te guide étape par étape : ce que tu dis, sa prononciation, et ce que le client peut te répondre.</p>
+    <h1 class="h1">Situations</h1>
+    <p class="lead">Les échanges types du comptoir, étape par étape : ce que tu dis, sa prononciation et ce que le client peut répondre.</p>
     <div class="flow-list">${FLOWS.map(f=>`
       <button class="flow" data-nav-to="#/situ/${f.id}">
-        <span class="flow-ic" style="--bgc:${FLOW_BG[f.id]||'#DDF4FF'}">${f.em}</span>
+        <span class="badge-ic">${icon('f-'+f.id)}</span>
         <span class="flow-tx"><b>${esc(f.name)}</b><small>${esc(f.desc)}</small>
-          <span class="flow-meta">${plural(f.steps.length,'étape')}${S.flowsDone[f.id]?' · déjà parcourue ✓':''}</span></span>
-        <span class="chev" aria-hidden="true">›</span>
+          <span class="flow-meta">${plural(f.steps.length,'étape')}${S.flowsDone[f.id]?` · <span class="done">${icon('i-check')}Parcourue</span>`:''}</span></span>
+        ${icon('i-chev','ic chev')}
       </button>`).join('')}</div></div>`);
 }
 const stripNum = t => t.replace(/^\d+\s*·\s*/,'');
@@ -1302,68 +1261,62 @@ function viewFlow(id, st){
   const step=f.steps[st], total=f.steps.length;
   const blocks = step.blocks.map((b,bi)=>{
     if(b.t==='say'){
-      const key=`f${f.id}.${st}.${bi}`;
-      return `<div class="bubble-row me"><div class="avatar" aria-hidden="true">🙋</div><div class="bubble">
-        <span class="b-tag">${esc(b.label)}</span>${phraseBody(b,key)}</div></div>`;
+      return `<div class="blk say"><span class="eyebrow blk-lb">${esc(b.label)}</span>${phraseBody(b,`f${f.id}.${st}.${bi}`)}</div>`;
     }
     if(b.t==='hear'){
-      return `<div class="bubble-row them"><div class="avatar" aria-hidden="true">🧳</div><div class="bubble">
-        <span class="b-tag">${esc(b.label)} · à comprendre</span>
-        ${b.items.map((it,ii)=>`<div class="b-line">
-          <button class="spk" data-act="play" data-key="h${f.id}.${st}.${bi}.${ii}" aria-label="Écouter">${icon('i-spk')}</button>
-          <div><div class="b-de" lang="de">${esc(it.de)}</div><div class="b-fr">${esc(it.fr)}</div></div></div>`).join('')}
-      </div></div>`;
+      return `<div class="blk hear"><span class="eyebrow blk-lb">${esc(b.label)} · à comprendre</span>
+        ${b.items.map((it,ii)=>`<div class="h-line">
+          <button class="play sm" data-act="play" data-key="h${f.id}.${st}.${bi}.${ii}" aria-label="Écouter">${icon('i-spk')}</button>
+          <div><div class="h-de" lang="de">${esc(it.de)}</div><div class="h-fr">${esc(it.fr)}</div></div></div>`).join('')}</div>`;
     }
     if(b.t==='memo'){
       const lb=b.label.replace(/^💡\s*/,'');
-      return `<div class="memo"><span class="m-ic" aria-hidden="true">💡</span><div><span class="m-lb">${esc(lb)}</span>${b.html}</div></div>`;
+      return `<div class="blk memo">${icon('i-info')}<div><span class="eyebrow blk-lb">${esc(lb)}</span>${b.html}</div></div>`;
     }
     return '';
   }).join('');
   return tfr(`<div class="wrap view">
     <div class="subbar"><button class="back" data-nav-to="#/situ" aria-label="Retour aux situations">${icon('i-back')}</button>
-      <div class="subbar-t"><b>${f.em} ${esc(f.name)}</b><small>${esc(f.intro)}</small></div></div>
-    <div class="steps" role="tablist">${f.steps.map((_,i)=>`<button class="${i<st?'done':i===st?'cur':''}" data-nav-to="#/situ/${f.id}/${i}" aria-label="Étape ${i+1}"></button>`).join('')}</div>
-    <span class="step-num">Étape ${st+1} sur ${total}</span>
+      <div class="subbar-t"><b>${esc(f.name)}</b><small>${esc(f.intro)}</small></div></div>
+    <div class="steps">${f.steps.map((_,i)=>`<button class="${i<st?'done':i===st?'cur':''}" data-nav-to="#/situ/${f.id}/${i}" aria-label="Étape ${i+1}"></button>`).join('')}</div>
+    <span class="eyebrow">Étape ${st+1} sur ${total}</span>
     <h2 class="step-title">${esc(stripNum(step.title))}</h2>
-    <div style="height:14px"></div>
     ${blocks}
     <div class="step-nav">
-      <button class="btn ghost" data-nav-to="#/situ/${f.id}/${st-1}" ${st===0?'disabled':''}>Précédent</button>
+      <button class="btn sec" data-nav-to="#/situ/${f.id}/${st-1}" ${st===0?'disabled':''}>Précédent</button>
       ${st<total-1
         ? `<button class="btn" data-nav-to="#/situ/${f.id}/${st+1}">Suivant</button>`
-        : `<button class="btn green" data-act="flowdone" data-id="${f.id}">Terminer</button>`}
+        : `<button class="btn" data-act="flowdone" data-id="${f.id}">Terminer</button>`}
     </div></div>`);
 }
 
-/* Corps commun d'une phrase : français, allemand, prononciation, boutons */
+/* Corps commun d'une phrase : français, allemand, prononciation, actions */
 function phraseBody(p, key, q){
   const hl = s => { s=esc(s); if(!q) return s; const r=new RegExp('('+esc(q).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'); return s.replace(r,'<mark>$1</mark>'); };
   const f=favs.has(key);
-  return `<div class="pc-fr">${p.e?`<span aria-hidden="true">${p.e}</span>`:''}<span>${hl(p.fr)}</span></div>
+  return `<div class="pc-fr">${hl(p.fr)}</div>
     <div class="pc-de" lang="de">${hl(p.de)}</div>
     ${p.ph?`<div class="pc-ph">${esc(p.ph)}</div>`:''}
-    <div style="display:flex;gap:8px;align-items:center;margin-top:12px">
-      <button class="spk" data-act="play" data-key="${key}" aria-label="Écouter">${icon('i-spk')}</button>
-      <button class="spk slow" data-act="slow" data-key="${key}" aria-label="Écouter lentement" title="Écouter lentement">🐢</button>
-      <button class="icon-btn" style="margin-left:auto" data-act="fav" data-key="${key}" aria-pressed="${f}" aria-label="${f?'Retirer des favoris':'Ajouter aux favoris'}" title="${f?'Retirer des favoris':'Ajouter aux favoris'}">
-        <svg class="star${f?' on':''}" style="width:28px;height:28px"><use href="#i-star"/></svg></button>
+    <div class="pc-act">
+      <button class="play" data-act="play" data-key="${key}" aria-label="Écouter">${icon('i-spk')}</button>
+      <button class="slow" data-act="slow" data-key="${key}" aria-label="Écouter lentement">Lent</button>
+      <button class="fav${f?' on':''}" data-act="fav" data-key="${key}" aria-pressed="${f}" aria-label="${f?'Retirer des favoris':'Ajouter aux favoris'}" title="${f?'Retirer des favoris':'Ajouter aux favoris'}">${icon('i-star')}</button>
     </div>`;
 }
 function phraseCard(p, key, q, src){
-  return `<div class="pc"><div class="pc-main">${phraseBody(p,key,q)}${src?`<div class="pc-src">${esc(src)}</div>`:''}</div></div>`;
+  return `<div class="pc">${phraseBody(p,key,q)}${src?`<div class="pc-src">${esc(src)}</div>`:''}</div>`;
 }
 
 /* ══════════════════════════════════════
-   VUE « PHRASES » — guide de conversation
+   VUE « PHRASES »
 ══════════════════════════════════════ */
 const PRON = [
   ['ei','aï','<i>drei</i> → draï'], ['eu · äu','oï','<i>heute</i> → hoïteu'], ['ie','i','<i>vier</i> → fir'],
   ['u','ou','<i>gut</i> → gout'], ['ü','u','<i>fünf</i> → funf'], ['ö','eu','<i>schön</i> → cheun'],
   ['ä','è','<i>März</i> → mèrts'], ['w','v','<i>Wasser</i> → vassèr'], ['v','f','<i>vier</i> → fir'],
-  ['z','ts','<i>zehn</i> → tsèn'], ['s + voyelle','z','<i>sieben</i> → zibène'], ['sch','ch','<i>schön</i> → cheun'],
-  ['st · sp (début)','cht · chp','<i>Strand</i> → chtrant'], ['ch (après a, o, u)','kh','<i>Nacht</i> → nakht (raclé)'],
-  ['ch (ailleurs)','ch','<i>ich</i> → ich (chuinté, doux)'], ['j','y','<i>Juli</i> → youli'], ['h (début)','h','<i>Hund</i> → hount (soufflé)'],
+  ['z','ts','<i>zehn</i> → tsèn'], ['s + voyelle','z','<i>sieben</i> → zibène'], ['sch','ch','<i>Schwimmbad</i> → chvimbad'],
+  ['st · sp (début)','cht · chp','<i>Strand</i> → chtrant'], ['ch (après a, o, u)','kh','<i>Nacht</i> → nakht, son raclé'],
+  ['ch (ailleurs)','ch','<i>ich</i> → ich, son doux'], ['j','y','<i>Juli</i> → youli'], ['h (début)','h','<i>Hund</i> → hount, soufflé'],
   ['-e final','eu','<i>bitte</i> → biteu'],
 ];
 function allSearchable(){
@@ -1380,29 +1333,30 @@ function viewPhrases(){
     const res=allSearchable().filter(({p})=>norm(p.fr).includes(nq)||norm(p.de).includes(nq)||(p.ph&&norm(p.ph).includes(nq)));
     body = res.length
       ? `<p class="eyebrow" style="margin:0 0 12px">${plural(res.length,'résultat')}</p><div class="plist two">${res.map(r=>phraseCard(r.p,r.key,q,r.src)).join('')}</div>`
-      : `<div class="empty"><span class="e-ic">🔍</span><b>Aucun résultat</b><p>Essaie un autre mot, en français ou en allemand.</p></div>`;
+      : `<div class="empty"><span class="badge-ic">${icon('i-search')}</span><b>Aucun résultat</b><p>Essaie un autre mot, en français ou en allemand.</p></div>`;
   } else if(phraseSeg==='favs'){
     const items=[...favs].map(k=>({k,p:byKey(k)})).filter(x=>x.p);
     body = items.length
       ? `<div class="plist two">${items.map(x=>phraseCard(x.p,x.k,'')).join('')}</div>`
-      : `<div class="empty"><span class="e-ic">⭐</span><b>Aucun favori pour l'instant</b><p>Touche l'étoile d'une phrase pour la retrouver ici en un instant.</p></div>`;
+      : `<div class="empty"><span class="badge-ic">${icon('i-star')}</span><b>Aucun favori pour l'instant</b><p>Touche l'étoile d'une phrase pour la retrouver ici en un instant.</p></div>`;
   } else if(phraseSeg==='pron'){
-    body = `<p class="lead">L'allemand se lit presque comme il s'écrit. Retiens ces quelques règles et tu sauras prononcer n'importe quel mot. Les noms propres (Beach Garden, Marseillan…) restent en français.</p>
-      <div class="guide">${PRON.map(([d,f,ex])=>`<div class="g-row"><span class="g-de" lang="de">${d}</span><span class="g-arrow">→</span><span class="g-fr">${f}</span><span class="g-ex">${ex}</span></div>`).join('')}</div>`;
+    body = `<p class="lead">L'allemand se lit presque comme il s'écrit. Ces quelques règles suffisent pour prononcer la plupart des mots. Les noms propres (Beach Garden, Marseillan…) gardent leur prononciation française.</p>
+      <div class="guide"><div class="g-row head"><span class="eyebrow">Allemand</span><span class="eyebrow">Se dit</span><span class="eyebrow">Exemple</span></div>
+      ${PRON.map(([d,f,ex])=>`<div class="g-row"><span class="g-de" lang="de">${d}</span><span class="g-fr">${f}</span><span class="g-ex">${ex}</span></div>`).join('')}</div>`;
   } else {
     const ids = CATS.filter(c=>phraseSeg==='bases' ? c.grp==='base' : c.grp!=='base').map(c=>c.id);
     body = `<div class="cat-grid">${ids.map(id=>{
-      const c=catById(id), U=UNITS[id], n=unitPhrases(id).length, pr=Math.round(unitProgress(id)*100);
-      return `<button class="cat" style="--c:${U.c}" data-nav-to="#/phrases/cat/${id}">
-        <span class="cat-ic" aria-hidden="true">${U.ic}</span><b>${esc(c.name)}</b><small>${plural(n,'phrase')} · ${pr} % appris</small>
+      const c=catById(id), n=unitPhrases(id).length, pr=Math.round(unitProgress(id)*100);
+      return `<button class="cat" data-nav-to="#/phrases/cat/${id}"><span class="badge-ic">${icon('u'+id)}</span>
+        <b>${esc(c.name)}</b><small>${plural(n,'phrase')} · ${pr} % appris</small>
         <span class="bar"><i style="width:${pr}%"></i></span></button>`;
     }).join('')}</div>`;
   }
-  const seg=[['themes','Thèmes'],['bases','Les bases'],['favs','⭐ Favoris ('+favs.size+')'],['pron','🗣️ Prononciation']];
+  const seg=[['themes','Thèmes'],['bases','Les bases'],['favs','Favoris'+(favs.size?' ('+favs.size+')':'')],['pron','Prononciation']];
   return tfr(`<div class="wrap wide view">
     <h1 class="h1">Guide de conversation</h1>
     <p class="lead">Toutes les phrases utiles à la réception, avec la voix allemande et la prononciation.</p>
-    <div class="search">${icon('i-search','s-ic')}
+    <div class="search">${icon('i-search','ic s-ic')}
       <input id="q" type="text" enterkeyhint="search" placeholder="Rechercher en français ou en allemand…" autocomplete="off" aria-label="Rechercher une phrase">
       ${q?`<button class="icon-btn s-x" data-act="clearq" aria-label="Effacer la recherche">${icon('i-x')}</button>`:''}</div>
     ${q?'':`<div class="seg" role="tablist">${seg.map(([k,l])=>`<button role="tab" aria-selected="${phraseSeg===k}" class="${phraseSeg===k?'on':''}" data-act="seg" data-seg="${k}">${l}</button>`).join('')}</div>`}
@@ -1410,12 +1364,11 @@ function viewPhrases(){
 }
 function viewCat(id){
   const c=catById(id); if(!c) return viewPhrases();
-  const U=UNITS[id], idx=unitPhrases(id);
+  const idx=unitPhrases(id), L=unitLessons(id), first=Math.max(0,L.findIndex((_,l)=>!lessonDone(id,l)));
   return tfr(`<div class="wrap wide view">
     <div class="subbar"><button class="back" data-act="catback" aria-label="Retour">${icon('i-back')}</button>
-      <span class="cat-ic" style="background:${U.c};width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:26px" aria-hidden="true">${U.ic}</span>
-      <div class="subbar-t"><b>${esc(c.name)}</b><small>${plural(idx.length,'phrase')} · ${U.ds}</small></div>
-      <button class="btn sm" style="--c:${U.c};--d:${U.d}" data-act="start" data-u="${id}" data-l="${Math.max(0,unitLessons(id).findIndex((_,l)=>!lessonDone(id,l)))}">S'entraîner</button></div>
+      <div class="subbar-t"><b>${esc(c.name)}</b><small>${plural(idx.length,'phrase')} · ${UNITS[id]}</small></div>
+      <button class="btn sm" data-act="start" data-u="${id}" data-l="${first}">S'entraîner</button></div>
     <div class="plist two">${idx.map(i=>phraseCard(P[i],'p'+i,'')).join('')}</div></div>`);
 }
 
@@ -1425,41 +1378,43 @@ function viewCat(id){
 function viewProfile(){
   const nLessons=Object.values(S.lessons).filter(v=>v>0).length;
   const totalLessons=ORDER.reduce((a,u)=>a+unitLessons(u).length,0);
-  const name=S.name.trim();
-  const goals=[[10,'Détente'],[20,'Normal'],[30,'Sérieux'],[50,'Intense']];
+  const name=S.name.trim(), st=streakNow();
+  const goals=[[10,'Détente'],[20,'Régulier'],[30,'Soutenu'],[50,'Intensif']];
   const nClips = window.AUDIO ? Object.keys(window.AUDIO).length : 0;
   return tfr(`<div class="wrap view">
-    <div class="prof-head"><div class="prof-av" aria-hidden="true">${name?esc(name[0].toUpperCase()):'🙂'}</div>
+    <h1 class="h1">Profil</h1>
+    <p class="lead">Ta progression est enregistrée sur cet appareil.</p>
+    <div class="prof-head"><div class="mono" aria-hidden="true">${name?esc(name[0].toUpperCase()):icon('i-user')}</div>
       <div style="flex:1;min-width:0"><label class="eyebrow" for="name">Ton prénom</label>
       <input class="name-in" id="name" maxlength="24" placeholder="Facultatif" value="${esc(S.name)}" autocomplete="given-name"></div></div>
-    <h2 class="sec-t">Statistiques</h2>
+    <div class="sec-t"><h2>Statistiques</h2></div>
     <div class="stats">
-      <div class="stat"><span class="ico">🔥</span><div><b>${streakNow()}</b><small>${streakNow()>1?'jours de série':'jour de série'}</small></div></div>
-      <div class="stat"><span class="ico">⚡</span><div><b>${S.xp}</b><small>XP au total</small></div></div>
-      <div class="stat"><span class="ico">🏅</span><div><b>${nLessons} / ${totalLessons}</b><small>leçons terminées</small></div></div>
-      <div class="stat"><span class="ico">⭐</span><div><b>${favs.size}</b><small>${favs.size>1?'phrases favorites':'phrase favorite'}</small></div></div>
+      <div class="stat"><span class="badge-ic">${icon('i-flame')}</span><div><b>${st}</b><small>${st>1?'jours de série':'jour de série'}</small></div></div>
+      <div class="stat"><span class="badge-ic">${icon('i-bolt')}</span><div><b>${S.xp}</b><small>XP au total</small></div></div>
+      <div class="stat"><span class="badge-ic">${icon('i-medal')}</span><div><b>${nLessons}<span style="font-size:15px;color:var(--muted)"> / ${totalLessons}</span></b><small>leçons terminées</small></div></div>
+      <div class="stat"><span class="badge-ic">${icon('i-star')}</span><div><b>${favs.size}</b><small>${favs.size>1?'phrases favorites':'phrase favorite'}</small></div></div>
     </div>
-    <div class="card" style="margin-bottom:26px">${goalHTML()}</div>
-    <h2 class="sec-t">Objectif quotidien</h2>
-    <div class="goals">${goals.map(([g,l])=>`<button class="goal-opt${S.goal===g?' on':''}" data-act="goal" data-g="${g}"><span>${l}</span><small>${g} XP par jour</small></button>`).join('')}</div>
-    <h2 class="sec-t">Réglages</h2>
-    <div class="card" style="padding:4px 18px">
+    <div class="sec-t"><h2>Objectif quotidien</h2></div>
+    <div class="card" style="margin-bottom:12px">${goalHTML()}</div>
+    <div class="goals">${goals.map(([g,l])=>`<button class="goal-opt${S.goal===g?' on':''}" data-act="goal" data-g="${g}"><b>${l}</b><small>${g} XP par jour</small></button>`).join('')}</div>
+    <div class="sec-t"><h2>Réglages</h2></div>
+    <div class="card" style="padding:0 20px">
       <div class="setting"><div class="s-tx"><b>Prononciation à la française</b><small>Afficher l'aide sous chaque phrase allemande</small></div>
         <button class="switch" role="switch" aria-checked="${S.phon}" data-act="toggle" data-k="phon" aria-label="Prononciation à la française"></button></div>
-      <div class="setting"><div class="s-tx"><b>Effets sonores</b><small>Sons de bonne et de mauvaise réponse</small></div>
+      <div class="setting"><div class="s-tx"><b>Effets sonores</b><small>Sons discrets pendant les leçons</small></div>
         <button class="switch" role="switch" aria-checked="${S.sfx}" data-act="toggle" data-k="sfx" aria-label="Effets sonores"></button></div>
-      <div class="setting"><div class="s-tx"><b>Tester le son</b><small>${nClips} phrases enregistrées par une voix native</small></div>
-        <button class="btn ghost sm" data-act="test">🔊 Écouter</button></div>
+      <div class="setting"><div class="s-tx"><b>Voix allemandes</b><small>${nClips} phrases enregistrées par une voix native</small></div>
+        <button class="btn sec sm" data-act="test">${icon('i-spk')}Tester</button></div>
     </div>
-    <div style="margin-top:26px"><button class="btn ghost block" style="--t:var(--red)" data-act="reset">Réinitialiser ma progression</button></div>
-    <p class="about">Beach Garden Deutsch · Camping Les Méditerranées, Marseillan-Plage<br>${P.length} phrases, ${FLOWS.length} situations guidées. Ta progression est enregistrée sur cet appareil.</p>
+    <button class="danger" style="margin-top:18px" data-act="reset">Réinitialiser ma progression</button>
+    <p class="about">Beach Garden Deutsch · Camping Les Méditerranées, Marseillan-Plage<br>${P.length} phrases et ${FLOWS.length} situations guidées.</p>
   </div>`);
 }
 
 /* ══════════════════════════════════════
    MOTEUR DE LEÇON
 ══════════════════════════════════════ */
-const PRAISE=['Excellent !','Parfait !','Bravo !','Très bien !','Génial !','Sehr gut !','Wunderbar !'];
+const PRAISE=['Excellent !','Parfait !','Bravo !','Très bien !','Sehr gut !','Wunderbar !'];
 let L=null;
 const tokens = s => s.replace(/[.,!?;:…]/g,'').split(/\s+/).filter(Boolean);
 const canBuild = p => !p.de.includes('…') && tokens(p.de).length>=3 && tokens(p.de).length<=10;
@@ -1494,7 +1449,7 @@ function closeLesson(){
   stopAudio(); L=null; $('#lesson').hidden=true; document.body.style.overflow=''; render();
 }
 async function askQuit(){
-  const stay = await modal({ic:'😢', title:'Attends, ne pars pas !', text:'Si tu quittes maintenant, tu perdras ta progression dans cette leçon.', ok:'Continuer la leçon', cancel:'Quitter'});
+  const stay = await modal({title:'Quitter la leçon ?', text:'Ta progression dans cette leçon ne sera pas enregistrée.', ok:'Continuer la leçon', cancel:'Quitter'});
   if(!stay) closeLesson();
 }
 function lessonShell(inner, foot){
@@ -1505,7 +1460,7 @@ function lessonShell(inner, foot){
     <div class="l-foot" id="lfoot"><div class="l-foot-in">${foot}</div></div>`;
 }
 function footHTML(){
-  return `<div class="l-fb" id="lfb"></div><button class="btn green" id="lbtn" data-act="check" disabled>Vérifier</button>`;
+  return `<div class="l-fb" id="lfb"></div><button class="btn" id="lbtn" data-act="check" disabled>Vérifier</button>`;
 }
 function renderEx(){
   const ex=L.q[L.pos], box=$('#lesson');
@@ -1515,33 +1470,33 @@ function renderEx(){
   if(ex.t==='listen'){
     const p=P[ex.i], opts=shuffle([ex.i, ...distractors(ex.i,'fr',3)]);
     L.opts=opts; L.answer=ex.i;
-    inner=`<div class="l-badge">🎧 Compréhension orale</div><h2 class="l-q">Écoute et choisis la bonne traduction</h2>
-      <div class="l-audio"><button class="spk xl" data-act="lplay" aria-label="Écouter la phrase">${icon('i-spk')}</button>
-        <button class="spk xl slow" data-act="lslow" aria-label="Écouter lentement">🐢</button></div>
+    inner=`<span class="eyebrow l-kind">Compréhension orale</span><h2 class="l-q">Écoute et choisis la bonne traduction</h2>
+      <div class="l-audio"><button class="play lg" data-act="lplay" aria-label="Écouter la phrase">${icon('i-spk')}</button>
+        <button class="slow" data-act="lslow" aria-label="Écouter lentement">Écouter lentement</button></div>
       <div class="opts" id="opts">${opts.map((j,k)=>`<button class="opt" data-act="opt" data-k="${k}"><kbd>${k+1}</kbd><span>${esc(P[j].fr)}</span></button>`).join('')}</div>`;
-    setTimeout(()=>{ if(L && L.q[L.pos]===ex) play(p.de, $('.spk.xl')); }, 350);
+    setTimeout(()=>{ if(L && L.q[L.pos]===ex) play(p.de, $('.play.lg')); }, 350);
   }
   if(ex.t==='choose'){
     const p=P[ex.i], opts=shuffle([ex.i, ...distractors(ex.i,'de',3)]);
     L.opts=opts; L.answer=ex.i;
-    inner=`<div class="l-badge">✍️ Vocabulaire</div><h2 class="l-q">Comment dit-on en allemand ?</h2>
-      <div class="l-prompt"><div class="l-emoji" aria-hidden="true">${p.e||'💬'}</div><div class="l-say">${esc(p.fr)}</div></div>
+    inner=`<span class="eyebrow l-kind">Vocabulaire</span><h2 class="l-q">Comment dit-on en allemand ?</h2>
+      <div class="l-say">${esc(p.fr)}</div>
       <div class="opts" id="opts">${opts.map((j,k)=>`<button class="opt" data-act="opt" data-k="${k}" lang="de"><kbd>${k+1}</kbd><span>${esc(P[j].de)}</span></button>`).join('')}</div>`;
   }
   if(ex.t==='build'){
     const p=P[ex.i], tk=tokens(p.de);
     const extra=[]; for(const j of distractors(ex.i,'de',6)){ for(const w of tokens(P[j].de)) if(!tk.includes(w) && !extra.includes(w)){ extra.push(w); break; } if(extra.length>=3) break; }
     L.bank=shuffle([...tk, ...extra]); L.answer=ex.i;
-    inner=`<div class="l-badge">🧩 Construction</div><h2 class="l-q">Traduis cette phrase</h2>
-      <div class="l-prompt"><div class="l-emoji" aria-hidden="true">${p.e||'💬'}</div><div class="l-say">${esc(p.fr)}</div></div>
+    inner=`<span class="eyebrow l-kind">Construction</span><h2 class="l-q">Traduis cette phrase</h2>
+      <div class="l-say">${esc(p.fr)}</div>
       <div class="answer-line" id="aline" aria-label="Ta réponse"></div>
       <div class="bank" id="bank">${L.bank.map((w,k)=>`<button class="tile" data-act="tile" data-k="${k}" lang="de">${esc(w)}</button>`).join('')}</div>`;
   }
   if(ex.t==='match'){
     L.matched=0; L.selDe=null; L.selFr=null; L.set=ex.set;
-    inner=`<div class="l-badge">🔗 Association</div><h2 class="l-q">Associe les paires</h2>
+    inner=`<span class="eyebrow l-kind">Association</span><h2 class="l-q">Associe les paires</h2>
       <div class="pairs"><div class="col">${shuffle(ex.set).map(i=>`<button class="pair" data-act="pde" data-i="${i}" lang="de">${esc(P[i].de)}</button>`).join('')}</div>
-      <div class="col">${shuffle(ex.set).map(i=>`<button class="pair" data-act="pfr" data-i="${i}">${esc(P[i].fr.replace(/^[\d\u00A0]+\s—\s/,''))}</button>`).join('')}</div></div>`;
+      <div class="col">${shuffle(ex.set).map(i=>`<button class="pair" data-act="pfr" data-i="${i}">${esc(P[i].fr.replace(/^[\d ]+\s—\s/,''))}</button>`).join('')}</div></div>`;
   }
   box.innerHTML=tfr(lessonShell(inner, footHTML()));
 }
@@ -1549,8 +1504,7 @@ function selectOpt(k){
   if(L.state!=='ask') return;
   L.sel=k;
   document.querySelectorAll('#opts .opt').forEach((b,j)=>b.classList.toggle('sel', j===k));
-  const ex=L.q[L.pos];
-  if(ex.t==='choose') play(P[L.opts[k]].de, null);
+  if(L.q[L.pos].t==='choose') play(P[L.opts[k]].de, null);
   $('#lbtn').disabled=false;
 }
 function renderBuilt(){
@@ -1572,7 +1526,7 @@ function check(){
   }
   save();
   if(ex.t==='listen'||ex.t==='choose'){
-    document.getElementById('opts').classList.add('locked');
+    $('#opts').classList.add('locked');
     document.querySelectorAll('#opts .opt').forEach((b,j)=>{ if(L.opts[j]===L.answer) b.classList.add('ok'); else if(j===L.sel) b.classList.add('ko'); b.classList.remove('sel'); });
   }
   if(ex.t==='build'){ document.querySelectorAll('#aline .tile, #bank .tile').forEach(b=>b.disabled=true); }
@@ -1585,11 +1539,11 @@ function feedback(ok, p){
   const ex=L.q[L.pos];
   const sol = p ? (ex.t==='listen' ? p.fr : p.de) : '';
   $('#lfb').innerHTML = tfr(ok
-    ? `<div class="fb-ic">✅</div><div><b>${pick(PRAISE)}</b>${ex.t!=='match'&&p?`<div class="fb-sub"><span lang="de">${esc(p.de)}</span>${S.phon&&p.ph?' · '+esc(p.ph):''}</div>`:''}</div>`
-    : `<div class="fb-ic">❌</div><div><b>Réponse correcte :</b><div class="fb-sol">${esc(sol)}</div>${ex.t==='listen'?`<div class="fb-sub" lang="de">${esc(p.de)}</div>`:`<div class="fb-sub">${esc(p.fr)}</div>`}</div>`);
+    ? `<span class="fb-ic">${icon('i-check')}</span><div><b>${pick(PRAISE)}</b>${p?`<div class="fb-sub"><span lang="de">${esc(p.de)}</span>${S.phon&&p.ph?' · <i>'+esc(p.ph)+'</i>':''}</div>`:''}</div>`
+    : `<span class="fb-ic">${icon('i-x')}</span><div><b>Réponse correcte :</b><div class="fb-sol">${esc(sol)}</div>${ex.t==='listen'?`<div class="fb-sub" lang="de">${esc(p.de)}</div>`:`<div class="fb-sub">${esc(p.fr)}</div>`}</div>`);
   $('#lfoot').classList.add(ok?'good':'bad');
   const b=$('#lbtn'); b.disabled=false; b.dataset.act='next'; b.textContent='Continuer';
-  b.className='btn '+(ok?'green':'red'); b.focus();
+  b.className='btn '+(ok?'ok':'ko'); b.focus();
   const bar=$('.l-top .bar i'); if(bar) bar.style.width=Math.round(L.done/L.total*100)+'%';
 }
 function matchTap(kind, btn){
@@ -1619,21 +1573,21 @@ function finishLesson(){
   const secs=Math.round((Date.now()-L.t0)/1000), time=Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0');
   sfx('win'); confetti();
   $('#lesson').innerHTML=tfr(`<div class="l-body"><div class="l-inner"><div class="l-end">
-      <div class="big">${perfect?'🏆':'🎉'}</div>
-      <h2>${perfect?'Sans faute !':'Leçon terminée !'}</h2>
-      <p>${goalNow?'Objectif du jour atteint, bravo ! 🎯':perfect?'Ausgezeichnet ! Aucune erreur.':'Chaque leçon te rapproche du comptoir en allemand.'}</p>
+      <div class="seal">${icon('i-check')}</div>
+      <h2>${perfect?'Sans faute':'Leçon terminée'}</h2>
+      <p>${goalNow?'Objectif du jour atteint. Bravo !':perfect?'Ausgezeichnet ! Aucune erreur sur toute la leçon.':'Chaque leçon te rapproche d\'un accueil fluide en allemand.'}</p>
       <div class="res">
-        <div class="res-c"><small>XP gagnés</small><b>⚡ ${xp}</b></div>
-        <div class="res-c green"><small>Précision</small><b>🎯 ${acc} %</b></div>
-        <div class="res-c blue"><small>Durée</small><b>⏱️ ${time}</b></div>
-        <div class="res-c orange"><small>Série</small><b>🔥 ${streakNow()}</b></div>
+        <div><b>+${xp}</b><small>XP gagnés</small></div>
+        <div><b>${acc} %</b><small>Précision</small></div>
+        <div><b>${time}</b><small>Durée</small></div>
+        <div><b>${streakNow()}</b><small>${streakNow()>1?'Jours de série':'Jour de série'}</small></div>
       </div></div></div></div>
     <div class="l-foot"><div class="l-foot-in"><button class="btn block" style="margin:0" data-act="endok">Continuer</button></div></div>`);
   $('[data-act="endok"]').focus();
 }
 function seenPhrases(){
   const seen=[]; ORDER.forEach(u=>unitLessons(u).forEach((idx,l)=>{ if(lessonDone(u,l)) seen.push(...idx); }));
-  return seen.length>=5 ? seen : P.map((_,i)=>i).filter(i=>!isBase(P[i].c) && P[i].c===0).concat(seen);
+  return seen.length>=5 ? seen : unitPhrases(0).concat(seen);
 }
 
 /* ══════════════════════════════════════
@@ -1642,22 +1596,20 @@ function seenPhrases(){
 document.addEventListener('click', async e=>{
   const nav=e.target.closest('[data-nav]'); if(nav){ go('#/'+nav.dataset.nav); return; }
   const to=e.target.closest('[data-nav-to]'); if(to && !to.disabled){ go(to.dataset.navTo); return; }
-  const el=e.target.closest('[data-act]');
-  if(!el){ if(!e.target.closest('.pop')) document.querySelectorAll('.pop').forEach(p=>p.remove()); return; }
+  const el=e.target.closest('[data-act]'); if(!el) return;
   const a=el.dataset.act, d=el.dataset;
   switch(a){
     case 'play': case 'slow': { const p=byKey(d.key); if(p) play(p.de, el, a==='slow'); break; }
     case 'fav': {
       favs.has(d.key) ? favs.delete(d.key) : favs.add(d.key); save();
-      toast(favs.has(d.key)?'Ajoutée aux favoris ⭐':'Retirée des favoris');
+      toast(favs.has(d.key)?'Ajoutée aux favoris':'Retirée des favoris');
       const y=window.scrollY; render(); window.scrollTo(0,y); break;
     }
-    case 'node': nodePopover(el); break;
     case 'start': { const u=+d.u, l=+d.l; startLesson({u, l, idx:unitLessons(u)[l]}); break; }
     case 'continue': { const n=nextLesson(); if(n) startLesson({u:n.u, l:n.l, idx:unitLessons(n.u)[n.l]}); break; }
     case 'practice': startLesson({idx:shuffle(seenPhrases()).slice(0,5)}); break;
     case 'mistakes': { const idx=S.mistakes.filter(k=>k[0]==='p'&&byKey(k)).map(k=>+k.slice(1)).slice(0,6); if(idx.length) startLesson({idx}); break; }
-    case 'flowdone': S.flowsDone[d.id]=1; save(); sfx('win'); toast('Situation terminée, bravo ! 🎉'); go('#/situ'); break;
+    case 'flowdone': S.flowsDone[d.id]=1; save(); sfx('win'); toast('Situation terminée. Bravo !'); go('#/situ'); break;
     case 'seg': phraseSeg=d.seg; render(); break;
     case 'clearq': searchQ=''; render(); $('#q').focus(); break;
     case 'catback': history.length>1 ? history.back() : go('#/phrases'); break;
@@ -1666,11 +1618,11 @@ document.addEventListener('click', async e=>{
     case 'test': {
       const n=window.AUDIO?Object.keys(window.AUDIO).length:0;
       play(P[0].de, null);
-      toast(n ? '🔊 Voix allemande native : '+n+' phrases disponibles' : '🔊 Voix du navigateur (fichiers audio non chargés)');
+      toast(n ? 'Voix allemande native : '+n+' phrases disponibles' : 'Voix du navigateur (fichiers audio non chargés)');
       break;
     }
     case 'reset': {
-      const ok=await modal({ic:'⚠️', title:'Réinitialiser ta progression ?', text:'Tes XP, ta série et tes leçons terminées seront effacés. Tes favoris sont conservés.', ok:'Tout réinitialiser', okCls:'red', cancel:'Annuler'});
+      const ok=await modal({title:'Réinitialiser ta progression ?', text:'Tes XP, ta série et tes leçons terminées seront effacés. Tes favoris sont conservés.', ok:'Tout réinitialiser', okCls:'ko', cancel:'Annuler'});
       if(ok){ S={...DEF, name:S.name, goal:S.goal, phon:S.phon, sfx:S.sfx}; save(); render(); toast('Progression réinitialisée'); }
       break;
     }
@@ -1689,7 +1641,7 @@ document.addEventListener('click', async e=>{
 });
 document.addEventListener('input', e=>{
   if(e.target.id==='q'){ searchQ=e.target.value; const pos=e.target.selectionStart; render(); const i=$('#q'); i.focus(); i.setSelectionRange(pos,pos); }
-  if(e.target.id==='name'){ S.name=e.target.value; save(); const av=$('.prof-av'); if(av) av.textContent=S.name.trim()?S.name.trim()[0].toUpperCase():'🙂'; }
+  if(e.target.id==='name'){ S.name=e.target.value; save(); const m=$('.mono'); if(m) m.innerHTML=S.name.trim()?esc(S.name.trim()[0].toUpperCase()):icon('i-user'); }
 });
 document.addEventListener('keydown', e=>{
   if(!L || $('#lesson').hidden || document.querySelector('.modal')) return;
