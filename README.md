@@ -1,5 +1,7 @@
 # Beach Garden Deutsch 🎧
 
+> Application conçue et créée par **Omar Aznay Falkoun** · © 2026 · Tous droits réservés (voir `LICENSE`).
+
 Application web pour **parler allemand à la réception** du camping Beach Garden
 (Les Méditerranées, Marseillan-Plage). Direction artistique blanc et bordeaux aux couleurs de l'établissement. Leçons courtes,
 XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque phrase.

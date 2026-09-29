@@ -1,9 +1,9 @@
 /* Service worker : application installable, hors connexion et mises à jour automatiques.
    - Pages et liste des voix : réseau d'abord (les mises à jour arrivent toutes seules), cache en secours.
    - Voix, icônes, polices : cache d'abord (rapide et disponible hors connexion). */
-const CACHE = 'bgd-v1';
+const CACHE = 'bgd-v2';
 const SHELL = ['./', './index.html', './audio_map.js', './config.js', './manifest.webmanifest',
-  './vendor/qrcode.js', './brand/logo.png', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
+  './vendor/qrcode.js', './brand/logo.png', './brand/emblem-white.png', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.window = self;
 try { importScripts('./config.js'); } catch (e) {}

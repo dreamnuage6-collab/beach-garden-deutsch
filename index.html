@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!--
+  Beach Garden Deutsch
+  © 2026 Omar Aznay Falkoun. Tous droits réservés.
+  Application conçue et créée par Omar Aznay Falkoun. Toute reproduction ou réutilisation,
+  totale ou partielle, sans son autorisation écrite est interdite.
+-->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +12,8 @@
 <title>Beach Garden Deutsch</title>
 <meta name="description" content="L'allemand de la réception du camping Beach Garden : leçons, situations guidées et guide de conversation avec de vraies voix allemandes.">
 <meta name="theme-color" content="#8E1B2E">
+<meta name="author" content="Omar Aznay Falkoun">
+<meta name="copyright" content="© 2026 Omar Aznay Falkoun">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="BG Deutsch">
@@ -456,6 +464,38 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 @keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(var(--r)); opacity:.8}}
 .view{animation:fadein .25s}
 
+/* ═════════ ANIMATION DE DÉMARRAGE ═════════ */
+#splash{position:fixed; inset:0; z-index:1000; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:radial-gradient(120% 80% at 50% 20%,#A3243A 0%,#7A1627 55%,#4E0C18 100%); color:#fff; transition:opacity .45s ease; cursor:pointer}
+#splash.gone{opacity:0; pointer-events:none}
+.sp-sun{position:relative; width:112px; height:112px; margin-top:-14vh; opacity:0; animation:spSun 1s cubic-bezier(.2,.8,.2,1) .15s forwards}
+.sp-sun img{width:100%; height:100%; display:block}
+.sp-sun::after{content:''; position:absolute; inset:-22px; border-radius:50%; border:1.5px solid rgba(255,255,255,.25); animation:spHalo 2.4s ease-out .6s infinite}
+.sp-title{margin-top:26px; text-align:center; font-family:var(--serif); font-size:34px; font-weight:600; letter-spacing:.01em; opacity:0; animation:spUp .8s ease .5s forwards}
+.sp-title span{display:block; margin-top:6px; font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.32em; text-transform:uppercase; color:rgba(255,255,255,.75)}
+.sp-sea{position:absolute; left:0; right:0; top:74vh; height:130vh; transform:translateY(30vh); animation:spRise 1.1s cubic-bezier(.2,.8,.2,1) forwards; transition:transform .85s cubic-bezier(.6,0,.3,1)}
+.sp-wave{position:absolute; left:0; width:200%; height:90px; animation:spSwell linear infinite}
+.sp-wave path{fill:#fff}
+.sp-wave.w1{top:-58px; opacity:.16; animation-duration:9s}
+.sp-wave.w2{top:-38px; opacity:.3; animation-duration:6.5s; animation-direction:reverse}
+.sp-wave.w3{top:-18px; animation-duration:4.5s}
+.sp-fill{position:absolute; left:0; right:0; top:70px; bottom:0; background:#fff}
+.sp-credit{position:absolute; left:0; right:0; bottom:calc(22px + env(safe-area-inset-bottom)); text-align:center; z-index:2; font-size:12.5px; color:var(--brand); letter-spacing:.04em; opacity:0; animation:spUp .8s ease 1s forwards}
+.sp-credit b{font-weight:600}
+#splash.out .sp-sea{transform:translateY(-95vh)}
+#splash.out .sp-sun,#splash.out .sp-title,#splash.out .sp-credit{transition:opacity .3s; opacity:0!important; animation:none}
+@keyframes spSun{from{opacity:0; transform:scale(.6) translateY(24px)}to{opacity:1; transform:none}}
+@keyframes spHalo{0%{transform:scale(.85); opacity:.9}100%{transform:scale(1.35); opacity:0}}
+@keyframes spUp{from{opacity:0; transform:translateY(12px)}to{opacity:1; transform:none}}
+@keyframes spRise{to{transform:translateY(0)}}
+@keyframes spSwell{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){ .sp-sun,.sp-title,.sp-credit{opacity:1} .sp-sea{transform:none} }
+
+/* Crédit */
+.credit{font-size:12.5px; color:var(--muted); line-height:1.6}
+.credit b{color:var(--ink-2); font-weight:600}
+.about .credit{margin-top:10px}
+
 /* ═════════ INSTALLATION ET PARTAGE ═════════ */
 .promo{display:flex; align-items:center; gap:14px; flex-wrap:wrap; border:1px solid var(--brand-200); background:var(--brand-50); border-radius:var(--r); padding:14px 16px; margin-bottom:22px}
 .promo-ic{font-size:30px; line-height:1}
@@ -510,6 +550,19 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 </style>
 </head>
 <body>
+
+<!-- Animation de démarrage -->
+<div id="splash" aria-hidden="true">
+  <div class="sp-sun"><img src="brand/emblem-white.png" alt=""></div>
+  <div class="sp-title">Beach Garden<span>Deutsch</span></div>
+  <div class="sp-sea">
+    <svg class="sp-wave w1" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
+    <svg class="sp-wave w2" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
+    <svg class="sp-wave w3" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
+    <div class="sp-fill"></div>
+  </div>
+  <div class="sp-credit">Créée par <b>Omar Aznay Falkoun</b></div>
+</div>
 
 <!-- Icônes (trait fin, couleur héritée) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -567,7 +620,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
   <button class="nav-btn" data-nav="situ"><svg class="ic"><use href="#i-chat"/></svg>Situations</button>
   <button class="nav-btn" data-nav="phrases"><svg class="ic"><use href="#i-book"/></svg>Phrases</button>
   <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
-  <div class="side-foot"><b>Camping Beach Garden</b>Les Méditerranées · <span class="nw">Marseillan-Plage</span></div>
+  <div class="side-foot"><b>Camping Beach Garden</b>Les Méditerranées · <span class="nw">Marseillan-Plage</span><div class="credit" style="margin-top:10px">Créée par <b>Omar Aznay Falkoun</b><br>© 2026 · Tous droits réservés</div></div>
 </nav>
 
 <!-- Barre du haut (mobile) -->
@@ -1649,7 +1702,8 @@ function viewProfile(){
         <button class="btn sec sm" data-act="test">${icon('i-spk')}Tester</button></div>
     </div>
     <button class="danger" style="margin-top:18px" data-act="reset">Réinitialiser ma progression</button>
-    <p class="about">Beach Garden Deutsch · Camping Les Méditerranées, Marseillan-Plage<br>${P.length} phrases et ${FLOWS.length} situations guidées.</p>
+    <p class="about">Beach Garden Deutsch · Camping Les Méditerranées, Marseillan-Plage<br>${P.length} phrases et ${FLOWS.length} situations guidées.
+      <span class="credit" style="display:block">Application conçue et créée par <b>Omar Aznay Falkoun</b>.<br>© 2026 Omar Aznay Falkoun · Tous droits réservés.</span></p>
   </div>`);
 }
 
@@ -2008,7 +2062,7 @@ function printPoster(){
       <li><span class="po-n">2</span><span>Touche le <b>lien</b> qui apparaît.</span></li>
       <li><span class="po-n">3</span><span>Dans l'application, touche <b>« Installer »</b>.</span></li>
     </ol>
-    <p class="po-url">${esc(APP_URL)}</p>`);
+    <p class="po-url">${esc(APP_URL)}<br>Application créée par Omar Aznay Falkoun · © 2026</p>`);
   setTimeout(()=>window.print(), 150);
 }
 
@@ -2052,7 +2106,7 @@ function welcome(){
       <button class="btn block" data-act="notif" data-close>Oui, me le rappeler</button>`), {close:'Non merci'});
   }
 }
-window.addEventListener('load', ()=>setTimeout(welcome, 1500));
+window.addEventListener('load', ()=>{ const t=setInterval(()=>{ if(welcomeReady){ clearInterval(t); setTimeout(welcome, 600); } },200); });
 
 function appSection(){
   const rows=[];
@@ -2074,6 +2128,20 @@ document.addEventListener('click', e=>{
     case 'notif': enableNotif(); break;
   }
 });
+
+/* ══ ANIMATION DE DÉMARRAGE ══
+   Jouée à l'ouverture de l'application (une fois par session), passable d'un toucher. */
+let welcomeReady = !document.getElementById('splash');
+(function(){
+  const sp=document.getElementById('splash'); if(!sp) return;
+  let seen=false; try{ seen=sessionStorage.getItem('bgd_splash'); sessionStorage.setItem('bgd_splash','1'); }catch(e){}
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(seen){ sp.remove(); welcomeReady=true; return; }
+  let done=false;
+  const end=()=>{ if(done) return; done=true; sp.classList.add('out'); setTimeout(()=>sp.classList.add('gone'),650); setTimeout(()=>{ sp.remove(); welcomeReady=true; },1150); };
+  sp.addEventListener('click', end);
+  setTimeout(end, reduce?900:2600);
+})();
 
 /* ══ INIT ══ */
 applySettings();
