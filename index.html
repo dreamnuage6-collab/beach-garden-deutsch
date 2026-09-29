@@ -774,6 +774,7 @@ const P = [
   {c:7,e:"🔧",fr:"Je vais envoyer quelqu'un pour réparer.",de:"Ich schicke jemanden vorbei, um das zu reparieren.",ph:"Ich chikeu yèmandène forbaï, oom dass tsou rèparirène."},
   {c:7,e:"🔇",fr:"Veuillez baisser le volume, s'il vous plaît.",de:"Bitte drehen Sie die Musik leiser.",ph:"Biteu drèuène zi di Mouzik laïzèr."},
   {c:7,e:"🚔",fr:"En cas de vol, appelez le dix-sept.",de:"Bei einem Diebstahl rufen Sie bitte die Siebzehn an.",ph:"Baï aïnème Dip-chtal roufène zi biteu di zip-tsèn an."},
+  {c:7,e:"🚪",fr:"Autorisez-vous notre technicien à entrer dans le mobil-home, même en votre absence ?",de:"Erlauben Sie unserem Techniker, das Mobilheim zu betreten, auch wenn Sie nicht da sind?",ph:"Èr-laoubène zi ounzèrème Tèchnikèr, dass Mobil-haïm tsou beu-trètène, aoukh vèn zi nicht da zint?"},
   {c:7,e:"🔐",fr:"J'ai perdu mon bracelet.",de:"Ich habe mein Armband verloren.",ph:"Ich habeu maïn Arm-band fèr-lorène."},
   {c:7,e:"🚿",fr:"Il n'y a pas d'eau chaude dans le mobil-home.",de:"Im Mobilheim gibt es kein warmes Wasser.",ph:"Im Mobil-haïm guibt èss kaïn varmèss Vassèr."},
 
@@ -1070,7 +1071,7 @@ const FLOWS = [
     em:"🌙",
     name:"Réclamation : bruit nocturne",
     desc:"Un client se plaint du bruit de ses voisins après 22 h",
-    intro:"Gérer une plainte pour tapage : rassurer le client, rappeler la règle aux voisins, faire le suivi.",
+    intro:"Gérer une plainte pour tapage : rassurer le client, faire intervenir la sécurité, appeler les voisins pour leur rappeler la règle, puis faire le suivi.",
     steps:[
       {
         title:"1 · Le client se plaint",
@@ -1083,14 +1084,27 @@ const FLOWS = [
         ]
       },
       {
-        title:"2 · Tu interviens auprès des voisins",
+        title:"2 · Tu fais intervenir la sécurité",
         blocks:[
-          {t:"memo", label:"💡 Rappel", html:"Le <b>calme est obligatoire après 22 h</b> (<i>Nachtruhe</i>)."},
-          {t:"say", label:"Tu rappelles la règle", fr:"Chez nous, le calme est de rigueur à partir de 22 h. Puis-je vous demander de faire moins de bruit ?", de:"Ab zweiundzwanzig Uhr gilt bei uns Nachtruhe. Darf ich Sie bitten, leiser zu sein?", ph:"Ap tsvaï-ount-tsvan-tsich Our guilt baï ounss Nakht-rou. Darf ich zi bitène, laïzèr tsou zaïn?"},
+          {t:"memo", label:"💡 Action", html:"Préviens la <b>sécurité</b> en donnant le <b>numéro d'emplacement</b> concerné. Rappel : le <b>calme est obligatoire après 22 h</b> (<i>Nachtruhe</i>)."},
+          {t:"say", label:"Tu rassures le client", fr:"J'envoie la sécurité tout de suite.", de:"Ich schicke sofort den Sicherheitsdienst vorbei.", ph:"Ich chikeu zofort dène Zichèr-haïts-dinst forbaï."},
         ]
       },
       {
-        title:"3 · Tu rassures le client",
+        title:"3 · Tu appelles les voisins",
+        blocks:[
+          {t:"memo", label:"💡 Action", html:"En parallèle, <b>appelle les voisins</b> depuis la réception pour leur rappeler la règle."},
+          {t:"say", label:"Au téléphone", fr:"Bonsoir, ici la réception du Beach Garden.", de:"Guten Abend, hier spricht die Rezeption des Beach Garden.", ph:"Gouten Abènt, hir chpricht di Rétsèptsion dèss Beach Garden."},
+          {t:"say", label:"Tu rappelles la règle", fr:"Chez nous, le calme est de rigueur à partir de 22 h. Puis-je vous demander de faire moins de bruit ?", de:"Ab zweiundzwanzig Uhr gilt bei uns Nachtruhe. Darf ich Sie bitten, leiser zu sein?", ph:"Ap tsvaï-ount-tsvan-tsich Our guilt baï ounss Nakht-rou. Darf ich zi bitène, laïzèr tsou zaïn?"},
+          {t:"hear", label:"Les voisins peuvent dire", items:[
+            {de:"Entschuldigung, wir sind sofort leiser.", fr:"Pardon, nous faisons moins de bruit tout de suite."},
+            {de:"Wir wussten das nicht, es tut uns leid.", fr:"Nous ne le savions pas, nous sommes désolés."},
+          ]},
+          {t:"say", label:"Pour finir", fr:"Merci beaucoup, bonne soirée !", de:"Vielen Dank, einen schönen Abend noch!", ph:"Filène-Dank, aïnène cheunène Abènt nokh!"},
+        ]
+      },
+      {
+        title:"4 · Tu rassures le client",
         blocks:[
           {t:"say", label:"C'est réglé", fr:"C'est réglé, ils vont faire attention. N'hésitez pas à revenir me voir si cela recommence.", de:"Es ist erledigt, sie werden Rücksicht nehmen. Kommen Sie gerne wieder zu mir, falls es noch einmal passiert.", ph:"Èss ist èr-lèdikt, zi vèrdène Ruk-zicht nèmène. Komène zi gèrneu vidèr tsou mir, falss èss nokh aïn-mal pas-sirt."},
         ]
@@ -1103,7 +1117,7 @@ const FLOWS = [
     em:"🔧",
     name:"Problème technique dans le mobil-home",
     desc:"Pas d'eau chaude, clim en panne, électricité…",
-    intro:"Prendre en charge une panne dans l'hébergement : identifier, envoyer un technicien, faire le suivi.",
+    intro:"Prendre en charge une panne dans l'hébergement : identifier le problème, demander l'autorisation d'entrer au client, envoyer un technicien, faire le suivi.",
     steps:[
       {
         title:"1 · Le client signale une panne",
@@ -1120,6 +1134,13 @@ const FLOWS = [
         blocks:[
           {t:"say", label:"Tu envoies un technicien", fr:"J'envoie un technicien dès que possible.", de:"Ich schicke Ihnen so schnell wie möglich einen Techniker vorbei.", ph:"Ich chikeu irène zo chnèl vi meuglich aïnène Tèchnikèr forbaï."},
           {t:"say", label:"Le délai", fr:"Il passera dans l'heure.", de:"Er kommt innerhalb einer Stunde vorbei.", ph:"Èr komt inèr-halp aïnèr Chtoundeu forbaï."},
+          {t:"memo", label:"💡 Obligatoire", html:"Demande <b>toujours</b> au client l'<b>autorisation</b> de laisser le technicien entrer, <b>même s'il n'est pas là</b>."},
+          {t:"say", label:"L'autorisation", fr:"Autorisez-vous notre technicien à entrer dans le mobil-home, même en votre absence ?", de:"Erlauben Sie unserem Techniker, das Mobilheim zu betreten, auch wenn Sie nicht da sind?", ph:"Èr-laoubène zi ounzèrème Tèchnikèr, dass Mobil-haïm tsou beu-trètène, aoukh vèn zi nicht da zint?"},
+          {t:"hear", label:"Le client peut dire", items:[
+            {de:"Ja, natürlich.", fr:"Oui, bien sûr."},
+            {de:"Nur, wenn wir da sind, bitte.", fr:"Seulement quand nous sommes là, s'il vous plaît."},
+          ]},
+          {t:"say", label:"S'il veut être présent", fr:"Très bien. À quelle heure serez-vous là ?", de:"Sehr gut. Um wie viel Uhr sind Sie da?", ph:"Zèr gout. Oum vi fil Our zint zi da?"},
         ]
       },
       {
@@ -1283,6 +1304,7 @@ const FLOWS = [
         title:"2 · Tu organises le nettoyage",
         blocks:[
           {t:"memo", label:"💡 Action", html:"Préviens le <b>service ménage</b> en donnant le <b>numéro du mobil-home</b>."},
+          {t:"say", label:"L'autorisation", fr:"Autorisez-vous notre équipe à entrer dans le mobil-home, même en votre absence ?", de:"Erlauben Sie unserem Team, das Mobilheim zu betreten, auch wenn Sie nicht da sind?", ph:"Èr-laoubène zi ounzèrème Tim, dass Mobil-haïm tsou beu-trètène, aoukh vèn zi nicht da zint?"},
           {t:"say", label:"Tu rassures", fr:"J'envoie quelqu'un tout de suite pour faire le ménage.", de:"Ich schicke sofort jemanden zum Putzen vorbei.", ph:"Ich chikeu zofort yèmandène tsoum Poutsène forbaï."},
         ]
       },
@@ -1952,6 +1974,8 @@ const COMPTOIR = [
     ['J\'appelle les secours','Ich rufe sofort den Notdienst an.'],
     ['Numéros d\'urgence : 15 ou 18','Im Notfall rufen Sie bitte die Fünfzehn oder die Achtzehn an.'],
     ['J\'envoie un technicien','Ich schicke Ihnen so schnell wie möglich einen Techniker vorbei.'],
+    ['Autorisation d\'entrer (technicien)','Erlauben Sie unserem Techniker, das Mobilheim zu betreten, auch wenn Sie nicht da sind?'],
+    ['J\'envoie la sécurité','Ich schicke sofort den Sicherheitsdienst vorbei.'],
   ]],
   ['🌞','Au revoir',[
     ['Bon séjour','Wir wünschen Ihnen einen schönen Aufenthalt!'],
