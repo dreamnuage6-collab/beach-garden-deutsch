@@ -150,6 +150,9 @@ main{padding:24px 16px 110px; min-height:100vh; overflow-x:clip}
 }
 .nav-btn .ic{width:22px; height:22px}
 .nav-btn.on{color:var(--brand)}
+.bnav .nav-btn{font-size:12px; gap:4px; padding:4px 4px 6px}
+.bnav .nav-btn .ic{width:56px; height:30px; padding:4px 17px; border-radius:99px; transition:background .2s}
+.bnav .nav-btn.on .ic{background:var(--brand-100)}
 
 @media (min-width:900px){
   .topbar,.bnav{display:none}
@@ -212,8 +215,7 @@ main{padding:24px 16px 110px; min-height:100vh; overflow-x:clip}
 .hero .bar{background:rgba(255,255,255,.2); max-width:260px; margin-bottom:20px; position:relative}
 .hero .bar i{background:#fff}
 .hero .btn{position:relative}
-.quick{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
-@media (max-width:820px){ .quick{grid-template-columns:1fr 1fr} .quick .qk:last-child{grid-column:1/-1} }
+.quick{display:grid; grid-template-columns:1fr 1fr; gap:12px}
 .qk{
   display:flex; align-items:center; gap:14px; text-align:left; border:1px solid var(--line); border-radius:var(--r);
   background:#fff; padding:16px; transition:border-color .15s, box-shadow .15s;
@@ -271,6 +273,10 @@ main{padding:24px 16px 110px; min-height:100vh; overflow-x:clip}
 .back{width:40px; height:40px; flex:0 0 40px; border-radius:50%; border:1px solid var(--line-2); display:grid; place-items:center; color:var(--ink-2); background:#fff}
 .back:hover{border-color:var(--ink-2)}
 .subbar-t{flex:1; min-width:0}
+.crumb{display:block; font-size:11.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--brand); margin:1px 0 3px}
+.crumb:empty{display:none}
+.hub{display:grid; gap:12px}
+@media (min-width:760px){ .hub{grid-template-columns:1fr 1fr} }
 .subbar-t b{display:block; font-family:var(--serif); font-size:24px; font-weight:600; line-height:1.2}
 .subbar-t small{display:block; font-size:14px; color:var(--muted); margin-top:4px; line-height:1.45}
 .steps{display:flex; gap:6px; margin:0 0 20px}
@@ -487,6 +493,12 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .big-act{display:flex; gap:10px; justify-content:center; align-items:center}
 
 /* ═════════ TRADUCTEUR VOCAL ═════════ */
+.tools{display:grid; gap:12px; margin:0 0 8px}
+@media (min-width:760px){ .tools{grid-template-columns:1fr 1fr} }
+.tools .tr-card{margin:0; height:100%}
+.tr-card.alt{background:#fff; color:var(--ink); border:1px solid var(--brand-200); box-shadow:var(--sh)}
+.tr-card.alt small{color:var(--muted); opacity:1}
+.tr-card.alt .ic{color:var(--brand)}
 .tr-card{display:flex; align-items:center; gap:14px; width:100%; text-align:left; margin:0 0 26px; padding:18px; border-radius:var(--r); color:#fff;
   background:linear-gradient(135deg,#9A4A6A,#522236); box-shadow:0 8px 24px rgba(82,34,54,.2)}
 .tr-card-ic{font-size:30px}
@@ -516,6 +528,39 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .tr-btn.me{background:var(--brand)}
 .tr-btn.them{background:#2B2B2B}
 .tr-btn.rec{animation:ring 1s ease-out infinite; background:var(--ko)}
+/* Prix, heures et dates */
+.nb-body{gap:16px}
+.nb-body > *{flex-shrink:0}
+.nb-ctx{flex-wrap:wrap; overflow:visible}
+.nb-tabs{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:5px}
+.nb-tabs button{display:flex; flex-direction:column; align-items:center; gap:2px; padding:9px 4px; border-radius:12px; font-size:13.5px; font-weight:600; color:var(--ink-2)}
+.nb-tabs button span{font-size:20px; line-height:1}
+.nb-tabs button.on{background:var(--brand); color:#fff}
+.nb-ctx{margin:0}
+.nb-ctx button.on{background:var(--brand); border-color:var(--brand)}
+.nb-in{position:relative}
+.nb-in input{width:100%; font:inherit; font-size:30px; font-weight:600; text-align:center; padding:16px 48px; border:1.5px solid var(--line-2); border-radius:16px; background:#fff; color:var(--ink); font-variant-numeric:tabular-nums; min-height:72px}
+.nb-in input:focus{outline:none; border-color:var(--brand); box-shadow:0 0 0 4px var(--brand-50)}
+.nb-suf{position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:26px; font-weight:600; color:var(--muted)}
+.nb-res{background:#fff; border:1px solid var(--line); border-radius:20px; padding:22px 18px; text-align:center; box-shadow:var(--sh)}
+.nb-res.empty{color:var(--muted); box-shadow:none; background:transparent; border-style:dashed}
+.nb-res.empty p{margin:6px 0 0}
+.nb-show{display:inline-block; font-size:14px; font-weight:700; letter-spacing:.04em; color:var(--brand); background:var(--brand-50); border-radius:99px; padding:5px 12px; font-variant-numeric:tabular-nums}
+.nb-res .big-de{margin-top:12px}
+/* Traducteur : mode face au client (téléphone posé à plat entre les deux personnes) */
+.tr-top-r{display:flex; align-items:center; gap:10px}
+.tr-face-btn{border:1px solid var(--brand-200); color:var(--brand); background:var(--brand-50); border-radius:99px; padding:7px 12px; font-size:13.5px; font-weight:600}
+.tr-face-btn.on{background:var(--brand); color:#fff; border-color:var(--brand)}
+.tr-day{align-self:center; font-size:12.5px; color:var(--faint); margin:0}
+.tr-tip{font-size:14px; background:var(--brand-50); border-radius:12px; padding:10px 12px; color:var(--ink-2)}
+.tf{flex:1; display:grid; grid-template-rows:1fr 1fr; min-height:0}
+.tf-half{display:flex; flex-direction:column; justify-content:space-between; gap:14px; padding:18px 18px calc(16px + env(safe-area-inset-bottom)); min-height:0}
+.tf-half.them{transform:rotate(180deg); background:#FFFBF0; border-top:1px dashed var(--line-2)}
+.tf-half.me{background:#fff; border-top:2px solid var(--line)}
+.tf-txt{flex:1; overflow-y:auto; display:flex; align-items:center; justify-content:center; text-align:center; font-size:clamp(22px,5.4vw,34px); font-weight:600; line-height:1.3; color:var(--ink)}
+.tf-half .tr-btn{justify-content:center; padding:16px}
+.tf-half.them .tr-btn{padding-bottom:16px}
+@media (min-width:900px){ .tf{max-width:760px; width:100%; margin:0 auto} }
 .tr-na{grid-column:1/-1; text-align:center; color:var(--muted); margin:0}
 @media (max-width:380px){ .tr-btn small{display:none} }
 
@@ -528,30 +573,58 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .mic-hint.ok{color:var(--ok)} .mic-hint.mid{color:#B7791F} .mic-hint.ko{color:var(--ko)}
 .slow.rec{border-color:var(--ko); color:var(--ko)}
 
-/* ═════════ ANIMATION DE DÉMARRAGE ═════════ */
-#splash{position:fixed; inset:0; z-index:1000; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  background:radial-gradient(120% 80% at 50% 20%,#9A4A6A 0%,#682C45 55%,#3E1929 100%); color:#fff; transition:opacity .45s ease; cursor:pointer}
+/* ═════════ ANIMATION DE DÉMARRAGE (≈ 4 s, passable d'un toucher) ═════════ */
+#splash{position:fixed; inset:0; z-index:1000; overflow:hidden; color:#fff; cursor:pointer; transition:opacity .5s ease;
+  background:linear-gradient(180deg,#3E1929 0%,#682C45 38%,#9A4A6A 62%,#C9848F 72%)}
 #splash.gone{opacity:0; pointer-events:none}
-.sp-sun{position:relative; width:112px; height:112px; margin-top:-14vh; opacity:0; animation:spSun 1s cubic-bezier(.2,.8,.2,1) .15s forwards}
-.sp-sun img{width:100%; height:100%; display:block}
-.sp-sun::after{content:''; position:absolute; inset:-22px; border-radius:50%; border:1.5px solid rgba(255,255,255,.25); animation:spHalo 2.4s ease-out .6s infinite}
-.sp-title{margin-top:26px; text-align:center; font-family:var(--serif); font-size:34px; font-weight:600; letter-spacing:.01em; opacity:0; animation:spUp .8s ease .5s forwards}
-.sp-title span{display:block; margin-top:6px; font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.32em; text-transform:uppercase; color:rgba(255,255,255,.75)}
-.sp-sea{position:absolute; left:0; right:0; top:74vh; height:130vh; transform:translateY(30vh); animation:spRise 1.1s cubic-bezier(.2,.8,.2,1) forwards; transition:transform .85s cubic-bezier(.6,0,.3,1)}
-.sp-wave{position:absolute; left:0; width:200%; height:90px; animation:spSwell linear infinite}
-.sp-wave path{fill:#fff}
-.sp-wave.w1{top:-58px; opacity:.16; animation-duration:9s}
-.sp-wave.w2{top:-38px; opacity:.3; animation-duration:6.5s; animation-direction:reverse}
-.sp-wave.w3{top:-18px; animation-duration:4.5s}
-.sp-fill{position:absolute; left:0; right:0; top:70px; bottom:0; background:#fff}
-#splash.out .sp-sea{transform:translateY(-95vh)}
-#splash.out .sp-sun,#splash.out .sp-title{transition:opacity .3s; opacity:0!important; animation:none}
-@keyframes spSun{from{opacity:0; transform:scale(.6) translateY(24px)}to{opacity:1; transform:none}}
-@keyframes spHalo{0%{transform:scale(.85); opacity:.9}100%{transform:scale(1.35); opacity:0}}
-@keyframes spUp{from{opacity:0; transform:translateY(12px)}to{opacity:1; transform:none}}
+.sp-sky{position:absolute; inset:0; background:radial-gradient(60% 40% at 50% 64%,rgba(255,214,190,.55),rgba(255,214,190,0) 70%); opacity:0; animation:spFade 1.6s ease .1s forwards}
+.sp-rays{position:absolute; left:50%; top:39%; width:170vmax; height:170vmax; margin:-85vmax 0 0 -85vmax; opacity:0;
+  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.07) 0deg 4deg,rgba(255,255,255,0) 4deg 14deg);
+  -webkit-mask:radial-gradient(circle,#000 0%,rgba(0,0,0,.6) 18%,transparent 48%); mask:radial-gradient(circle,#000 0%,rgba(0,0,0,.6) 18%,transparent 48%);
+  animation:spFade 1.4s ease .7s forwards, spSpin 40s linear infinite}
+.sp-bokeh{position:absolute; inset:0; pointer-events:none}
+.sp-bokeh i{position:absolute; bottom:34%; width:var(--s); height:var(--s); border-radius:50%; background:rgba(255,240,230,.75); filter:blur(1px); opacity:0;
+  animation:spFloat var(--d) ease-in var(--w) infinite}
+.sp-center{position:absolute; left:0; right:0; top:39%; transform:translateY(-50%); display:flex; flex-direction:column; align-items:center; transition:transform .9s cubic-bezier(.6,0,.3,1), opacity .5s}
+.sp-sun{position:relative; width:128px; height:128px; opacity:0; animation:spSun 1.5s cubic-bezier(.16,1,.3,1) .25s forwards}
+.sp-sun::before{content:''; position:absolute; inset:-60px; border-radius:50%; background:radial-gradient(circle,rgba(255,236,214,.6),rgba(255,236,214,0) 65%); animation:spGlow 3.2s ease-in-out .9s infinite}
+.sp-sun img{position:relative; width:100%; height:100%; display:block; filter:drop-shadow(0 4px 18px rgba(62,25,41,.35)); clip-path:circle(0% at 50% 50%); animation:spReveal 1.3s cubic-bezier(.65,0,.35,1) .45s forwards}
+.sp-ring{position:absolute; inset:-16px; border-radius:50%; border:1px solid rgba(255,255,255,.45); opacity:0; animation:spRing 2.2s cubic-bezier(.2,.8,.2,1) 1.1s forwards}
+.sp-title{margin-top:30px; font-family:var(--serif); font-size:clamp(34px,9vw,46px); font-weight:600; letter-spacing:.01em; line-height:1; white-space:nowrap; text-shadow:0 6px 30px rgba(62,25,41,.35)}
+.sp-title .l{display:inline-block; opacity:0; transform:translateY(18px); filter:blur(8px); animation:spLetter .9s cubic-bezier(.16,1,.3,1) calc(1.05s + var(--i)*45ms) forwards}
+.sp-line{width:120px; height:1px; margin:18px 0 14px; background:linear-gradient(90deg,transparent,rgba(255,236,214,.95),transparent); transform:scaleX(0); animation:spLine 1s cubic-bezier(.65,0,.35,1) 1.75s forwards}
+.sp-sub{font-size:12.5px; font-weight:600; text-transform:uppercase; letter-spacing:.9em; margin-right:-.9em; color:rgba(255,255,255,.85); opacity:0; animation:spTrack 1.3s cubic-bezier(.16,1,.3,1) 1.9s forwards}
+.sp-cap{margin-top:14px; font-size:12px; letter-spacing:.08em; color:rgba(255,255,255,.62); opacity:0; animation:spFade 1s ease 2.5s forwards}
+.sp-sea{position:absolute; left:0; right:0; top:66%; height:140vh; transition:transform 1s cubic-bezier(.7,0,.25,1)}
+.sp-sea-in{position:absolute; inset:0; transform:translateY(34vh); animation:spRise 1.6s cubic-bezier(.16,1,.3,1) .05s forwards}
+.sp-glint{position:absolute; left:50%; top:-10px; width:150px; margin-left:-75px; height:70px; display:flex; flex-direction:column; align-items:center; gap:7px; z-index:3; opacity:0; animation:spFade 1.2s ease 1.2s forwards}
+.sp-glint i{display:block; height:2px; border-radius:2px; background:rgba(255,244,232,.85); animation:spShimmer 1.8s ease-in-out infinite}
+.sp-glint i:nth-child(1){width:70%; animation-delay:0s} .sp-glint i:nth-child(2){width:48%; animation-delay:.3s}
+.sp-glint i:nth-child(3){width:62%; animation-delay:.6s} .sp-glint i:nth-child(4){width:30%; animation-delay:.9s} .sp-glint i:nth-child(5){width:40%; animation-delay:1.2s}
+.sp-wave{position:absolute; left:0; width:200%; height:110px; animation:spSwell linear infinite}
+.sp-wave.w1{top:-78px; animation-duration:14s; opacity:.35}
+.sp-wave.w2{top:-58px; animation-duration:10s; animation-direction:reverse; opacity:.5}
+.sp-wave.w3{top:-38px; animation-duration:7.5s; opacity:.75}
+.sp-wave.w4{top:-18px; animation-duration:5.5s; animation-direction:reverse}
+.sp-fill{position:absolute; left:0; right:0; top:90px; bottom:0; background:#fff}
+#splash.out .sp-sea{transform:translateY(-100vh)}
+#splash.out .sp-center{transform:translateY(calc(-50% - 16vh)); opacity:0}
+#splash.out .sp-rays,#splash.out .sp-sky,#splash.out .sp-bokeh{transition:opacity .5s; opacity:0!important; animation:none}
+@media (min-width:900px){ .sp-sea{top:72%} }
+@keyframes spFade{to{opacity:1}}
+@keyframes spSpin{to{transform:rotate(360deg)}}
+@keyframes spFloat{0%{opacity:0; transform:translateY(0) scale(.6)}20%{opacity:.9}100%{opacity:0; transform:translateY(-38vh) scale(1)}}
+@keyframes spSun{from{opacity:0; transform:translateY(70px) scale(.7)}to{opacity:1; transform:none}}
+@keyframes spReveal{to{clip-path:circle(75% at 50% 50%)}}
+@keyframes spGlow{0%,100%{transform:scale(.92); opacity:.8}50%{transform:scale(1.08); opacity:1}}
+@keyframes spRing{0%{opacity:0; transform:scale(.7)}40%{opacity:1}100%{opacity:.35; transform:scale(1)}}
+@keyframes spLetter{to{opacity:1; transform:none; filter:blur(0)}}
+@keyframes spLine{to{transform:scaleX(1)}}
+@keyframes spTrack{to{opacity:1; letter-spacing:.34em; margin-right:-.34em}}
 @keyframes spRise{to{transform:translateY(0)}}
 @keyframes spSwell{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){ .sp-sun,.sp-title{opacity:1} .sp-sea{transform:none} }
+@keyframes spShimmer{0%,100%{opacity:.25; transform:scaleX(.7)}50%{opacity:1; transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){ .sp-sun,.sp-title .l,.sp-sub,.sp-cap,.sp-sky{opacity:1; transform:none; filter:none} .sp-sun img{clip-path:none} .sp-line{transform:none} .sp-sea{transform:none} .sp-rays,.sp-bokeh{display:none} .sp-sea-in{transform:none} }
 
 /* Crédit */
 .credit{font-size:12.5px; color:var(--muted); line-height:1.6}
@@ -615,14 +688,24 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 
 <!-- Animation de démarrage -->
 <div id="splash" aria-hidden="true">
-  <div class="sp-sun"><img src="brand/emblem-white.png" alt=""></div>
-  <div class="sp-title">Beach Garden<span>Deutsch</span></div>
-  <div class="sp-sea">
-    <svg class="sp-wave w1" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
-    <svg class="sp-wave w2" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
-    <svg class="sp-wave w3" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 45 Q180 5 360 45 T720 45 T1080 45 T1440 45 V90 H0Z"/></svg>
-    <div class="sp-fill"></div>
+  <div class="sp-sky"></div>
+  <div class="sp-rays"></div>
+  <div class="sp-bokeh"><i style="left:49%;--s:4px;--d:4.1s;--w:0.7s"></i><i style="left:76%;--s:3px;--d:4.0s;--w:0.7s"></i><i style="left:72%;--s:4px;--d:3.3s;--w:1.5s"></i><i style="left:16%;--s:4px;--d:3.4s;--w:1.4s"></i><i style="left:80%;--s:3px;--d:5.4s;--w:1.9s"></i><i style="left:82%;--s:3px;--d:4.5s;--w:1.4s"></i><i style="left:36%;--s:3px;--d:4.5s;--w:0.9s"></i><i style="left:61%;--s:4px;--d:4.4s;--w:1.7s"></i><i style="left:79%;--s:4px;--d:3.4s;--w:1.7s"></i><i style="left:32%;--s:5px;--d:3.4s;--w:2.0s"></i><i style="left:80%;--s:3px;--d:4.6s;--w:1.6s"></i><i style="left:76%;--s:6px;--d:5.0s;--w:1.5s"></i><i style="left:66%;--s:5px;--d:3.9s;--w:2.2s"></i><i style="left:39%;--s:3px;--d:4.5s;--w:1.7s"></i></div>
+  <div class="sp-center">
+    <div class="sp-sun"><span class="sp-ring"></span><img src="brand/emblem-white.png" alt=""></div>
+    <div class="sp-title"><span class="l" style="--i:0">B</span><span class="l" style="--i:1">e</span><span class="l" style="--i:2">a</span><span class="l" style="--i:3">c</span><span class="l" style="--i:4">h</span><span class="l" style="--i:5">&nbsp;</span><span class="l" style="--i:6">G</span><span class="l" style="--i:7">a</span><span class="l" style="--i:8">r</span><span class="l" style="--i:9">d</span><span class="l" style="--i:10">e</span><span class="l" style="--i:11">n</span></div>
+    <div class="sp-line"></div>
+    <div class="sp-sub">Deutsch</div>
+    <div class="sp-cap">Les Méditerranées · Marseillan-Plage</div>
   </div>
+  <div class="sp-sea"><div class="sp-sea-in">
+    <div class="sp-glint"><i></i><i></i><i></i><i></i><i></i></div>
+    <svg class="sp-wave w1" viewBox="0 0 1440 110" preserveAspectRatio="none" fill="#F3D9DF"><path d="M0 55 C120 25 240 25 360 55 S600 85 720 55 960 25 1080 55 1320 85 1440 55 V110 H0Z"/></svg>
+    <svg class="sp-wave w2" viewBox="0 0 1440 110" preserveAspectRatio="none" fill="#F8E6EA"><path d="M0 55 C120 25 240 25 360 55 S600 85 720 55 960 25 1080 55 1320 85 1440 55 V110 H0Z"/></svg>
+    <svg class="sp-wave w3" viewBox="0 0 1440 110" preserveAspectRatio="none" fill="#FCF1F3"><path d="M0 55 C120 25 240 25 360 55 S600 85 720 55 960 25 1080 55 1320 85 1440 55 V110 H0Z"/></svg>
+    <svg class="sp-wave w4" viewBox="0 0 1440 110" preserveAspectRatio="none" fill="#FFFFFF"><path d="M0 55 C120 25 240 25 360 55 S600 85 720 55 960 25 1080 55 1320 85 1440 55 V110 H0Z"/></svg>
+    <div class="sp-fill"></div>
+  </div></div>
 </div>
 
 <!-- Icônes (trait fin, couleur héritée) -->
@@ -657,8 +740,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
   </div>
   <button class="nav-btn" data-nav="learn"><svg class="ic"><use href="#i-learn"/></svg>Apprendre</button>
   <button class="nav-btn" data-nav="comptoir"><svg class="ic"><use href="#u0"/></svg>Comptoir</button>
-  <button class="nav-btn" data-nav="situ"><svg class="ic"><use href="#i-chat"/></svg>Situations</button>
-  <button class="nav-btn" data-nav="phrases"><svg class="ic"><use href="#i-book"/></svg>Phrases</button>
+  <button class="nav-btn" data-nav="guide"><svg class="ic"><use href="#i-book"/></svg>Guide</button>
   <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
   <div class="side-foot"><b>Camping Beach Garden</b>Les Méditerranées · <span class="nw">Marseillan-Plage</span></div>
 </nav>
@@ -682,8 +764,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 <nav class="bnav" aria-label="Navigation principale">
   <button class="nav-btn" data-nav="learn"><svg class="ic"><use href="#i-learn"/></svg>Apprendre</button>
   <button class="nav-btn" data-nav="comptoir"><svg class="ic"><use href="#u0"/></svg>Comptoir</button>
-  <button class="nav-btn" data-nav="situ"><svg class="ic"><use href="#i-chat"/></svg>Situations</button>
-  <button class="nav-btn" data-nav="phrases"><svg class="ic"><use href="#i-book"/></svg>Phrases</button>
+  <button class="nav-btn" data-nav="guide"><svg class="ic"><use href="#i-book"/></svg>Guide</button>
   <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
 </nav>
 
@@ -1708,18 +1789,20 @@ function renderChrome(){
    NAVIGATION (hash : #/vue/paramètres)
 ══════════════════════════════════════ */
 function route(){
-  const [view='learn', a='', b=''] = location.hash.replace(/^#\/?/,'').split('/').map(decodeURIComponent);
-  return {view:['learn','comptoir','situ','phrases','profile'].includes(view)?view:'learn', a, b};
+  let [view='learn', a='', b='', c=''] = location.hash.replace(/^#\/?/,'').split('/').map(decodeURIComponent);
+  // Anciennes adresses (favoris, liens partagés) : Situations et Phrases sont désormais dans le Guide.
+  if(view==='situ'){ c=b; b=a; a='situ'; view='guide'; }
+  if(view==='phrases'){ view='guide'; if(a!=='cat'){ a=''; b=''; } }
+  return {view:['learn','comptoir','guide','profile'].includes(view)?view:'learn', a, b, c};
 }
 function go(h){ if(location.hash!==h) location.hash=h; else render(); }
 window.addEventListener('hashchange', ()=>{ stopAudio(); render(); window.scrollTo(0,0); });
 
-let phraseSeg='themes', searchQ='';
+let searchQ='';
 function render(){
   const r=route(), m=$('#main');
   if(r.view==='learn') m.innerHTML=viewLearn();
-  if(r.view==='situ') m.innerHTML = r.a ? viewFlow(r.a, +r.b||0) : viewFlows();
-  if(r.view==='phrases') m.innerHTML = r.a==='cat' ? viewCat(+r.b) : viewPhrases();
+  if(r.view==='guide') m.innerHTML=viewGuide(r);
   if(r.view==='profile') m.innerHTML=viewProfile();
   if(r.view==='comptoir') m.innerHTML=viewComptoir();
   const qi=$('#q'); if(qi) qi.value=searchQ;
@@ -1753,7 +1836,7 @@ function viewLearn(){
           <div class="unit-nm">${esc(cat.name)}</div><div class="unit-ds">${UNITS[u]}</div></div>
         <span class="unit-pc${pr===100?' full':''}">${pr} %</span></div>
       <div class="stepper">${steps}</div>
-      <div class="unit-foot"><button class="link" data-nav-to="#/phrases/cat/${u}">Voir les ${plural(unitPhrases(u).length,'phrase')}${icon('i-chev','ic')}</button>
+      <div class="unit-foot"><button class="link" data-nav-to="#/guide/cat/${u}">Voir les ${plural(unitPhrases(u).length,'phrase')}${icon('i-chev','ic')}</button>
         ${isCur?`<button class="btn sm" data-act="continue">Leçon ${nx.l+1}</button>`:''}</div>
     </section>`;
   }).join('');
@@ -1765,7 +1848,6 @@ function viewLearn(){
     <div class="quick">
       <button class="qk" data-act="practice"><span class="badge-ic">${emo('⚡')}</span><span><b>Entraînement rapide</b><small>Cinq phrases déjà vues, au hasard</small></span></button>
       <button class="qk" data-act="mistakes" ${nMist?'':'disabled'}><span class="badge-ic">${emo('🎯')}</span><span><b>Mes erreurs</b><small>${nMist?plural(nMist,'phrase')+' à retravailler':'Rien à réviser pour l\'instant'}</small></span></button>
-      <button class="qk" data-act="rules"><span class="badge-ic">${emo('📜')}</span><span><b>Mémo règlement</b><small>Horaires, tarifs, CGV et règles du camping</small></span></button>
     </div>
     <div class="sec-t"><h2>Parcours</h2><span>${done} / ${total} leçons</span></div>
     <div class="units">${units}</div>
@@ -1773,14 +1855,54 @@ function viewLearn(){
 }
 
 /* ══════════════════════════════════════
-   VUE « SITUATIONS »
+   VUE « GUIDE » : tout ce qu'on consulte (situations, phrases, règlement, favoris, prononciation)
+   #/guide · #/guide/situ[/id/étape] · #/guide/cat/id · #/guide/themes|bases|rules|favs|pron
 ══════════════════════════════════════ */
+function subbar(title, sub, back, extra=''){
+  return `<div class="subbar"><button class="back" data-nav-to="${back}" aria-label="Retour">${icon('i-back')}</button>
+    <div class="subbar-t"><span class="crumb">${back==='#/guide'?'Guide':''}</span><b>${title}</b>${sub?`<small>${sub}</small>`:''}</div>${extra}</div>`;
+}
+function guideSections(){
+  const nThemes=CATS.filter(c=>c.grp!=='base').reduce((n,c)=>n+unitPhrases(c.id).length,0);
+  return [
+    ['situ','🗣️','Situations pas à pas', plural(FLOWS.length,'échange')+' types du comptoir, étape par étape'],
+    ['themes','💬','Phrases par thème', plural(nThemes,'phrase')+' : accueil, hébergements, piscines, urgences…'],
+    ['bases','🔢','Les bases','Nombres, jours et mois, heures'],
+    ['rules','📜','Mémo règlement','Horaires, cautions, Wi-Fi, animaux, annulation…'],
+    ['favs','⭐','Mes favoris', favs.size?plural(favs.size,'phrase')+' gardée'+(favs.size>1?'s':''):'Les phrases que tu marques d\'une étoile'],
+    ['pron','🔤','Prononciation','Lire l\'allemand sans se tromper'],
+  ];
+}
+function viewGuide(r){
+  if(r.a==='situ') return r.b ? viewFlow(r.b, +r.c||0) : viewFlows();
+  if(r.a==='cat') return viewCat(+r.b);
+  if(['themes','bases','rules','favs','pron'].includes(r.a)) return viewGuideSec(r.a);
+  const q=searchQ.trim();
+  let body;
+  if(q){
+    const nq=norm(q);
+    const res=allSearchable().filter(({p})=>norm(p.fr).includes(nq)||norm(p.de).includes(nq)||(p.ph&&norm(p.ph).includes(nq)));
+    body = res.length
+      ? `<p class="eyebrow" style="margin:0 0 12px">${plural(res.length,'résultat')}</p><div class="plist two">${res.map(x=>phraseCard(x.p,x.key,q,x.src)).join('')}</div>`
+      : `<div class="empty"><span class="badge-ic">${emo('🔍')}</span><b>Aucun résultat</b><p>Essaie un autre mot, en français ou en allemand.</p></div>`;
+  } else {
+    body = `<div class="hub">${guideSections().map(([k,e,t,d])=>`
+      <button class="flow hub-i" data-nav-to="#/guide/${k}"><span class="badge-ic">${emo(e)}</span>
+        <span class="flow-tx"><b>${t}</b><small>${d}</small></span>${icon('i-chev','ic chev')}</button>`).join('')}</div>`;
+  }
+  return tfr(`<div class="wrap wide view">
+    <h1 class="h1">Guide</h1>
+    <p class="lead">Tout ce qu'il faut consulter au comptoir, au même endroit.</p>
+    <div class="search">${icon('i-search','ic s-ic')}
+      <input id="q" type="text" enterkeyhint="search" placeholder="Rechercher une phrase…" autocomplete="off" aria-label="Rechercher une phrase">
+      ${q?`<button class="icon-btn s-x" data-act="clearq" aria-label="Effacer la recherche">${icon('i-x')}</button>`:''}</div>
+    <div id="pbody">${body}</div></div>`);
+}
 function viewFlows(){
   return tfr(`<div class="wrap view">
-    <h1 class="h1">Situations</h1>
-    <p class="lead">Les échanges types du comptoir, étape par étape : ce que tu dis, sa prononciation et ce que le client peut répondre.</p>
+    ${subbar('Situations pas à pas','Ce que tu dis, sa prononciation et ce que le client peut répondre.','#/guide')}
     <div class="flow-list">${FLOWS.map(f=>`
-      <button class="flow" data-nav-to="#/situ/${f.id}">
+      <button class="flow" data-nav-to="#/guide/situ/${f.id}">
         <span class="badge-ic">${emo(f.em)}</span>
         <span class="flow-tx"><b>${esc(f.name)}</b><small>${esc(f.desc)}</small>
           <span class="flow-meta">${plural(f.steps.length,'étape')}${S.flowsDone[f.id]?` · <span class="done">${icon('i-check')}Parcourue</span>`:''}</span></span>
@@ -1809,16 +1931,16 @@ function viewFlow(id, st){
     return '';
   }).join('');
   return tfr(`<div class="wrap view">
-    <div class="subbar"><button class="back" data-nav-to="#/situ" aria-label="Retour aux situations">${icon('i-back')}</button>
-      <div class="subbar-t"><b>${f.em} ${esc(f.name)}</b><small>${esc(f.intro)}</small></div></div>
-    <div class="steps">${f.steps.map((_,i)=>`<button class="${i<st?'done':i===st?'cur':''}" data-nav-to="#/situ/${f.id}/${i}" aria-label="Étape ${i+1}"></button>`).join('')}</div>
+    <div class="subbar"><button class="back" data-nav-to="#/guide/situ" aria-label="Retour aux situations">${icon('i-back')}</button>
+      <div class="subbar-t"><span class="crumb">Situations</span><b>${f.em} ${esc(f.name)}</b><small>${esc(f.intro)}</small></div></div>
+    <div class="steps">${f.steps.map((_,i)=>`<button class="${i<st?'done':i===st?'cur':''}" data-nav-to="#/guide/situ/${f.id}/${i}" aria-label="Étape ${i+1}"></button>`).join('')}</div>
     <span class="eyebrow">Étape ${st+1} sur ${total}</span>
     <h2 class="step-title">${esc(stripNum(step.title))}</h2>
     ${blocks}
     <div class="step-nav">
-      <button class="btn sec" data-nav-to="#/situ/${f.id}/${st-1}" ${st===0?'disabled':''}>Précédent</button>
+      <button class="btn sec" data-nav-to="#/guide/situ/${f.id}/${st-1}" ${st===0?'disabled':''}>Précédent</button>
       ${st<total-1
-        ? `<button class="btn" data-nav-to="#/situ/${f.id}/${st+1}">Suivant</button>`
+        ? `<button class="btn" data-nav-to="#/guide/situ/${f.id}/${st+1}">Suivant</button>`
         : `<button class="btn" data-act="flowdone" data-id="${f.id}">Terminer</button>`}
     </div></div>`);
 }
@@ -1861,53 +1983,43 @@ function allSearchable(){
   return SEARCHABLE=out;
 }
 const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-function viewPhrases(){
-  const q=searchQ.trim();
-  let body='';
-  if(q){
-    const nq=norm(q);
-    const res=allSearchable().filter(({p})=>norm(p.fr).includes(nq)||norm(p.de).includes(nq)||(p.ph&&norm(p.ph).includes(nq)));
-    body = res.length
-      ? `<p class="eyebrow" style="margin:0 0 12px">${plural(res.length,'résultat')}</p><div class="plist two">${res.map(r=>phraseCard(r.p,r.key,q,r.src)).join('')}</div>`
-      : `<div class="empty"><span class="badge-ic">${emo('🔍')}</span><b>Aucun résultat</b><p>Essaie un autre mot, en français ou en allemand.</p></div>`;
-  } else if(phraseSeg==='favs'){
+function viewGuideSec(k){
+  let body='', title='', sub='';
+  if(k==='favs'){
+    title='⭐ Mes favoris'; sub='Touche l\'étoile d\'une phrase pour la retrouver ici.';
     const items=[...favs].map(k=>({k,p:byKey(k)})).filter(x=>x.p);
     body = items.length
       ? `<div class="plist two">${items.map(x=>phraseCard(x.p,x.k,'')).join('')}</div>`
       : `<div class="empty"><span class="badge-ic">${emo('⭐')}</span><b>Aucun favori pour l'instant</b><p>Touche l'étoile d'une phrase pour la retrouver ici en un instant.</p></div>`;
-  } else if(phraseSeg==='rules'){
-    body = `<p class="lead">L'essentiel du règlement intérieur et des conditions de vente, pour répondre aux clients sans hésiter.</p>
-      <div class="rules">${RULES.map(([e,t,items])=>`<section class="rule"><h3>${emo(e)}${t}</h3><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></section>`).join('')}</div>
+  } else if(k==='rules'){
+    title='📜 Mémo règlement'; sub='L\'essentiel du règlement intérieur et des conditions de vente, pour répondre sans hésiter.';
+    body = `<div class="rules">${RULES.map(([e,t,items])=>`<section class="rule"><h3>${emo(e)}${t}</h3><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></section>`).join('')}</div>
       <p class="src-note">Sources : règlement intérieur, FAQ et conditions générales de vente publiés sur lesmediterranees.com, complétés par les consignes de la réception. Les tarifs peuvent évoluer d'une saison à l'autre.</p>`;
-  } else if(phraseSeg==='pron'){
-    body = `<p class="lead">L'allemand se lit presque comme il s'écrit. Ces quelques règles suffisent pour prononcer la plupart des mots. Les noms propres (Beach Garden, Marseillan…) gardent leur prononciation française.</p>
+  } else if(k==='pron'){
+    title='🔤 Prononciation'; sub='L\'allemand se lit presque comme il s\'écrit : ces règles suffisent pour la plupart des mots.';
+    body = `<p class="lead">Les noms propres (Beach Garden, Marseillan…) gardent leur prononciation française.</p>
       <div class="guide"><div class="g-row head"><span class="eyebrow">Allemand</span><span class="eyebrow">Se dit</span><span class="eyebrow">Exemple</span></div>
       ${PRON.map(([d,f,ex])=>`<div class="g-row"><span class="g-de" lang="de">${d}</span><span class="g-fr">${f}</span><span class="g-ex">${ex}</span></div>`).join('')}</div>`;
   } else {
-    const ids = CATS.filter(c=>phraseSeg==='bases' ? c.grp==='base' : c.grp!=='base').map(c=>c.id);
+    const base=k==='bases';
+    title = base?'🔢 Les bases':'💬 Phrases par thème';
+    sub = base?'Nombres, jours et mois, heures : indispensables pour les dates et les prix.':'Toutes les phrases utiles à la réception, avec la voix allemande.';
+    const ids = CATS.filter(c=>base ? c.grp==='base' : c.grp!=='base').map(c=>c.id);
     body = `<div class="cat-grid">${ids.map(id=>{
       const c=catById(id), n=unitPhrases(id).length, pr=Math.round(unitProgress(id)*100);
-      return `<button class="cat" data-nav-to="#/phrases/cat/${id}"><span class="badge-ic">${emo(UEM[id])}</span>
+      return `<button class="cat" data-nav-to="#/guide/cat/${id}"><span class="badge-ic">${emo(UEM[id])}</span>
         <b>${esc(c.name)}</b><small>${plural(n,'phrase')} · ${pr} % appris</small>
         <span class="bar"><i style="width:${pr}%"></i></span></button>`;
     }).join('')}</div>`;
   }
-  const seg=[['themes','💬 Thèmes'],['bases','🔢 Les bases'],['rules','📜 Règlement'],['favs','⭐ Favoris'+(favs.size?' ('+favs.size+')':'')],['pron','🗣️ Prononciation']];
-  return tfr(`<div class="wrap wide view">
-    <h1 class="h1">Guide de conversation</h1>
-    <p class="lead">Toutes les phrases utiles à la réception, avec la voix allemande et la prononciation.</p>
-    <div class="search">${icon('i-search','ic s-ic')}
-      <input id="q" type="text" enterkeyhint="search" placeholder="Rechercher en français ou en allemand…" autocomplete="off" aria-label="Rechercher une phrase">
-      ${q?`<button class="icon-btn s-x" data-act="clearq" aria-label="Effacer la recherche">${icon('i-x')}</button>`:''}</div>
-    ${q?'':`<div class="seg" role="tablist">${seg.map(([k,l])=>`<button role="tab" aria-selected="${phraseSeg===k}" class="${phraseSeg===k?'on':''}" data-act="seg" data-seg="${k}">${l}</button>`).join('')}</div>`}
-    <div id="pbody">${body}</div></div>`);
+  return tfr(`<div class="wrap wide view">${subbar(title, sub, '#/guide')}<div id="pbody">${body}</div></div>`);
 }
 function viewCat(id){
   const c=catById(id); if(!c) return viewPhrases();
   const idx=unitPhrases(id), L=unitLessons(id), first=Math.max(0,L.findIndex((_,l)=>!lessonDone(id,l)));
   return tfr(`<div class="wrap wide view">
-    <div class="subbar"><button class="back" data-act="catback" aria-label="Retour">${icon('i-back')}</button>
-      <div class="subbar-t"><b>${UEM[id]} ${esc(c.name)}</b><small>${plural(idx.length,'phrase')} · ${UNITS[id]}</small></div>
+    <div class="subbar"><button class="back" data-nav-to="#/guide/${isBase(id)?'bases':'themes'}" aria-label="Retour">${icon('i-back')}</button>
+      <div class="subbar-t"><span class="crumb">${isBase(id)?'Les bases':'Phrases par thème'}</span><b>${UEM[id]} ${esc(c.name)}</b><small>${plural(idx.length,'phrase')} · ${UNITS[id]}</small></div>
       <button class="btn sm" data-act="start" data-u="${id}" data-l="${first}">S'entraîner</button></div>
     <div class="plist two">${idx.map(i=>phraseCard(P[i],'p'+i,'')).join('')}</div></div>`);
 }
@@ -2010,8 +2122,12 @@ function findByDe(de){
 function viewComptoir(){
   return tfr(`<div class="wrap wide view">
     <h1 class="h1">Comptoir 🛎️</h1>
-    <p class="lead">Un client devant toi ? Touche une phrase : l'application la dit en allemand et l'affiche en grand pour qu'il puisse la lire.</p>
-    <button class="tr-card" data-act="tropen"><span class="tr-card-ic">🎙️</span><span><b>Traducteur vocal</b><small>Toi et le client parlez à voix haute : l'app traduit en direct, en français et en allemand.</small></span>${icon('i-chev')}</button>
+    <p class="lead">Un client devant toi ? Parle avec le traducteur, ou touche une phrase : l'app la dit en allemand et l'affiche en grand.</p>
+    <div class="tools">
+      <button class="tr-card" data-act="tropen"><span class="tr-card-ic">🎙️</span><span><b>Traducteur vocal</b><small>Toi et le client parlez à voix haute : l'app traduit en direct.</small></span>${icon('i-chev')}</button>
+      <button class="tr-card alt" data-act="nbopen"><span class="tr-card-ic">💶</span><span><b>Prix, heures et dates</b><small>Tape un montant, une heure ou une date : l'app le dit en allemand.</small></span>${icon('i-chev')}</button>
+    </div>
+    <div class="sec-t"><h2>Phrases express</h2></div>
     ${COMPTOIR.map(([e,t,items])=>`<section class="cp-g"><h2 class="cp-h">${emo(e)}${t}</h2><div class="cp-grid">
       ${items.map(([l,de])=>{ const x=findByDe(de); return x?`<button class="cp-tile" data-act="cp" data-key="${x.key}"><span>${esc(l)}</span>${icon('i-spk')}</button>`:''; }).join('')}
     </div></section>`).join('')}
@@ -2073,7 +2189,11 @@ function micPhrase(key, btn){
    Reconnaissance vocale du téléphone → traduction en ligne → texte dans les deux langues
    + lecture à voix haute de la traduction pour le client.
 ══════════════════════════════════════ */
-let TR = {log:[], busy:false, rec:null};
+let TR = {log:[], busy:false, rec:null, face:false};
+/* Conversations du jour : gardées sur l'appareil jusqu'au lendemain, effaçables à tout moment. */
+function trLoad(){ try{ const j=JSON.parse(localStorage.getItem('bgd_trad')||'null'); TR.log = j && j.day===today() ? j.log : []; }catch(e){ TR.log=[]; } }
+function trSave(){ try{ localStorage.setItem('bgd_trad', JSON.stringify({day:today(), log:TR.log.filter(m=>m.dst).slice(-120)})); }catch(e){} }
+const hhmm = t => { const d=new Date(t||Date.now()); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); };
 async function translateText(text, from, to){
   const q=encodeURIComponent(text);
   /* DeepL en priorité si le relais est configuré dans config.js (voir docs/deepl.md). */
@@ -2122,6 +2242,7 @@ function speakOnline(text, lang){
 function openTrad(){
   loadVoices(); if(window.speechSynthesis) speechSynthesis.getVoices();
   document.body.style.overflow='hidden';
+  trLoad();
   let el=document.getElementById('trad');
   if(!el){ el=document.createElement('div'); el.id='trad'; el.className='trad'; document.body.appendChild(el); }
   el.hidden=false; renderTrad();
@@ -2129,22 +2250,37 @@ function openTrad(){
 function closeTrad(){ try{ TR.rec && TR.rec.abort(); }catch(e){} TR.rec=null; stopAudio(); const el=document.getElementById('trad'); if(el) el.hidden=true; document.body.style.overflow=''; }
 function renderTrad(status){
   const el=document.getElementById('trad'); if(!el) return;
+  el.classList.toggle('face', TR.face);
+  const top = `<div class="tr-top"><button class="icon-btn" data-act="trclose" aria-label="Fermer le traducteur">${icon('i-x')}</button>
+      <b>Traducteur vocal</b>
+      <span class="tr-top-r">${TR.log.length&&!TR.face?`<button class="link" data-act="trclear">Effacer</button>`:''}
+      <button class="tr-face-btn${TR.face?' on':''}" data-act="trface" aria-pressed="${TR.face}">${TR.face?'Mode liste':'Face au client'}</button></span></div>`;
+  const btnMe = `<button class="tr-btn me${TR.busy==='me'?' rec':''}" data-act="trtalk" data-who="me">${icon('i-mic')}<span><b>🇫🇷 Je parle</b><small>français → allemand</small></span></button>`;
+  const btnThem = `<button class="tr-btn them${TR.busy==='them'?' rec':''}" data-act="trtalk" data-who="them">${icon('i-mic')}<span><b>🇩🇪 Sprechen Sie</b><small>Deutsch → Französisch</small></span></button>`;
+  if(TR.face){
+    // Téléphone posé à plat sur le comptoir : la moitié du haut est à l'endroit pour le client, en face.
+    const last=TR.log[TR.log.length-1];
+    const de = last ? (last.who==='me' ? (last.dst||'…') : last.src) : 'Guten Tag! Tippen Sie auf die Taste und sprechen Sie Deutsch.';
+    const fr = last ? (last.who==='me' ? last.src : (last.dst||'…')) : 'Touche ton bouton et parle en français.';
+    el.innerHTML = tfr(`${top}<div class="tf">
+      <div class="tf-half them"><div class="tf-txt" lang="de">${esc(status&&TR.busy==='them'?status:de)}</div>${SR?btnThem:''}</div>
+      <div class="tf-half me"><div class="tf-txt" lang="fr">${esc(status&&TR.busy==='me'?status:fr)}</div>${SR?btnMe:`<p class="tr-na">La reconnaissance vocale n'est pas disponible dans ce navigateur.</p>`}</div>
+    </div>`);
+    return;
+  }
   const msgs = TR.log.length ? TR.log.map((m,i)=>`<div class="tr-msg ${m.who}">
-      <span class="eyebrow">${m.who==='me'?'🇫🇷 Toi':'🇩🇪 Client · Gast'}</span>
+      <span class="eyebrow">${m.who==='me'?'🇫🇷 Toi':'🇩🇪 Client · Gast'}${m.t?` · ${hhmm(m.t)}`:''}</span>
       <div class="tr-src" lang="${m.who==='me'?'fr':'de'}">${esc(m.src)}</div>
       <div class="tr-dst" lang="${m.who==='me'?'de':'fr'}">${m.dst?esc(m.dst):'<span class="tr-wait">Traduction…</span>'}</div>
       ${m.dst?`<button class="slow" data-act="trplay" data-i="${i}">🔊 ${m.who==='me'?'Écouter en allemand':'Écouter en français'}</button>`:''}
     </div>`).join('')
     : `<div class="tr-empty"><div class="tr-empty-ic">🎙️</div><b>Traducteur vocal</b>
-        <p>Touche le bouton de la personne qui parle, puis parlez normalement. La phrase s'affiche dans les deux langues et la traduction est lue à voix haute.</p></div>`;
-  el.innerHTML = tfr(`<div class="tr-top"><button class="icon-btn" data-act="trclose" aria-label="Fermer le traducteur">${icon('i-x')}</button>
-      <b>Traducteur vocal</b>
-      ${TR.log.length?`<button class="link" data-act="trclear">Effacer</button>`:'<span></span>'}</div>
-    <div class="tr-body" id="trBody">${msgs}${status?`<div class="tr-live">${status}</div>`:''}</div>
+        <p>Touche le bouton de la personne qui parle, puis parlez normalement. La phrase s'affiche dans les deux langues et la traduction est lue à voix haute.</p>
+        <p class="tr-tip">💡 Téléphone posé sur le comptoir ? Touche <b>Face au client</b> : le client lit sa moitié d'écran à l'endroit.</p></div>`;
+  el.innerHTML = tfr(`${top}
+    <div class="tr-body" id="trBody">${TR.log.length?`<p class="tr-day">Conversations d'aujourd'hui · effacées automatiquement demain</p>`:''}${msgs}${status?`<div class="tr-live">${status}</div>`:''}</div>
     <div class="tr-foot">
-      ${SR?`<button class="tr-btn me${TR.busy==='me'?' rec':''}" data-act="trtalk" data-who="me">${icon('i-mic')}<span><b>🇫🇷 Je parle</b><small>français → allemand</small></span></button>
-      <button class="tr-btn them${TR.busy==='them'?' rec':''}" data-act="trtalk" data-who="them">${icon('i-mic')}<span><b>🇩🇪 Der Gast spricht</b><small>allemand → français</small></span></button>`
-      :`<p class="tr-na">La reconnaissance vocale n'est pas disponible dans ce navigateur. Utilise Chrome sur Android, ou Safari sur iPhone.</p>`}
+      ${SR?btnMe+btnThem:`<p class="tr-na">La reconnaissance vocale n'est pas disponible dans ce navigateur. Utilise Chrome sur Android, ou Safari sur iPhone.</p>`}
     </div>`);
   const b=document.getElementById('trBody'); if(b) b.scrollTop=b.scrollHeight;
 }
@@ -2158,20 +2294,20 @@ function trTalk(who){
   let finalTxt='', preT=null, pre=null;
   const from = who==='me'?'fr':'de', to = who==='me'?'de':'fr';
   const prefetch = t => { t=t.trim(); if(t.length<4 || (pre && pre.text===t)) return; pre={text:t, p:translateText(t, from, to).then(d=>{ preloadOnline(d,to); return d; })}; pre.p.catch(()=>{}); };
-  renderTrad(who==='me'?'Parle maintenant…':'Bitte sprechen Sie jetzt… (Parlez maintenant)');
+  renderTrad(who==='me'?'Parle maintenant…':TR.face?'Bitte sprechen Sie jetzt…':'Bitte sprechen Sie jetzt… (Parlez maintenant)');
   r.onresult=e=>{ let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const t=e.results[i][0].transcript; if(e.results[i].isFinal) finalTxt+=t; else interim+=t; }
-    const live=document.querySelector('.tr-live'); if(live) live.textContent=(finalTxt+interim)||'…';
+    const live=document.querySelector(TR.face?'.tf-half.'+who+' .tf-txt':'.tr-live'); if(live) live.textContent=(finalTxt+interim)||'…';
     clearTimeout(preT); const cur=finalTxt+interim; preT=setTimeout(()=>prefetch(cur), 350); };
   r.onerror=e=>{ if(e.error==='not-allowed'||e.error==='service-not-allowed') toast('Autorise l\'accès au micro pour utiliser le traducteur'); };
   r.onend=async()=>{
     TR.busy=false; TR.rec=null; clearTimeout(preT);
     const src=finalTxt.trim();
     if(!src){ renderTrad(); return; }
-    const m={who, src, dst:''}; TR.log.push(m); renderTrad();
+    const m={who, src, dst:'', t:Date.now()}; TR.log.push(m); renderTrad();
     try{
       m.dst = (pre && pre.text===src) ? await pre.p.catch(()=>translateText(src, from, to)) : await translateText(src, from, to);
       if(who==='me') speakOnline(m.dst,'de'); else preloadOnline(m.dst,'fr');
-      renderTrad();
+      trSave(); renderTrad();
     }catch(err){ m.dst='⚠️ Traduction impossible pour le moment (vérifie la connexion internet).'; renderTrad(); }
   };
   try{ r.start(); }catch(e){ TR.busy=false; renderTrad(); }
@@ -2181,10 +2317,200 @@ document.addEventListener('click', e=>{
   switch(el.dataset.act){
     case 'tropen': openTrad(); break;
     case 'trclose': closeTrad(); break;
-    case 'trclear': TR.log=[]; renderTrad(); break;
+    case 'trclear': TR.log=[]; trSave(); renderTrad(); break;
+    case 'trface': TR.face=!TR.face; renderTrad(); break;
     case 'trtalk': trTalk(el.dataset.who); break;
     case 'trplay': { const m=TR.log[+el.dataset.i]; if(m&&m.dst) speakOnline(m.dst, m.who==='me'?'de':'fr'); break; }
   }
+});
+
+/* ══════════════════════════════════════
+   PRIX, HEURES, DATES ET NOMBRES EN ALLEMAND (Comptoir)
+   Conversion en toutes lettres, avec la prononciation « à la française ». Fonctionne hors connexion.
+══════════════════════════════════════ */
+const NW = {
+  1:['eins','aïnss'],2:['zwei','tsvaï'],3:['drei','draï'],4:['vier','fir'],5:['fünf','funf'],6:['sechs','zèkss'],
+  7:['sieben','zibène'],8:['acht','akht'],9:['neun','noïn'],10:['zehn','tsèn'],11:['elf','èlf'],12:['zwölf','tsvelf'],
+  13:['dreizehn','draï-tsèn'],14:['vierzehn','fir-tsèn'],15:['fünfzehn','funf-tsèn'],16:['sechzehn','zèch-tsèn'],
+  17:['siebzehn','zib-tsèn'],18:['achtzehn','akht-tsèn'],19:['neunzehn','noïn-tsèn'],
+  20:['zwanzig','tsvan-tsich'],30:['dreißig','draï-ssich'],40:['vierzig','fir-tsich'],50:['fünfzig','funf-tsich'],
+  60:['sechzig','zèch-tsich'],70:['siebzig','zib-tsich'],80:['achtzig','akht-tsich'],90:['neunzig','noïn-tsich'],
+};
+const ONE = {count:['eins','aïnss'], ein:['ein','aïn'], eine:['eine','aïneu']};
+function nParts(n, one='count'){
+  if(n===0) return [['null','noul']];
+  const out=[];
+  const b100=(r,o)=>{ if(r===1) return [ONE[o]]; if(NW[r]) return [NW[r]]; const u=r%10; return [u===1?ONE.ein:NW[u], ['und','ount'], NW[r-u]]; };
+  const b1000=(r,o)=>{ const h=Math.floor(r/100), t=r%100, p=[]; if(h){ if(h>1) p.push(NW[h]); p.push(['hundert','houn-dèrt']); } if(t) p.push(...b100(t,o)); return p; };
+  const th=Math.floor(n/1000), rest=n%1000;
+  if(th){ if(th>1) out.push(...b1000(th,'ein')); out.push(['tausend','taou-zènt']); }
+  if(rest) out.push(...b1000(rest, one));
+  return out;
+}
+const nDe = (n,one) => nParts(n,one).map(x=>x[0]).join('');
+const nPh = (n,one) => nParts(n,one).map(x=>x[1]).join('-');
+/* Ordinal au datif ou à l'accusatif (« am vierzehnten », « bis zum … den vierzehnten ») */
+function ordDat(d){
+  const irr={1:['ersten','èrss-tène'],3:['dritten','dri-tène'],7:['siebten','zip-tène'],8:['achten','akh-tène']};
+  if(irr[d]) return irr[d];
+  if(d<20) return [nDe(d)+'ten', nPh(d)+'-tène'];
+  return [nDe(d,'ein')+'sten', nPh(d,'ein')+'-stène'];
+}
+const DAYS_DE=[['Sonntag','Zon-tak'],['Montag','Mon-tak'],['Dienstag','Dinss-tak'],['Mittwoch','Mit-vokh'],['Donnerstag','Donèrs-tak'],['Freitag','Fraï-tak'],['Samstag','Zamss-tak']];
+const MONTHS_DE=[['Januar','Yanou-ar'],['Februar','Fébrou-ar'],['März','Mèrts'],['April','April'],['Mai','Maï'],['Juni','Youni'],['Juli','Youli'],['August','Aou-goust'],['September','Zèp-tèmbèr'],['Oktober','Ok-tobèr'],['November','No-vèmbèr'],['Dezember','Dé-tsèmbèr']];
+const DAYS_FR=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+const MONTHS_FR=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+const cap = s => s ? s[0].toUpperCase()+s.slice(1) : s;
+const eur = (e,c) => e.toLocaleString('fr-FR')+(c?','+String(c).padStart(2,'0'):'')+' €';
+/* Chaque mode : contextes [libellé, début allemand, début prononciation, début français] */
+const NB_MODES = {
+  price:{ic:'💶', name:'Prix', ctx:[
+    ['Ça fait','Das macht','Dass makht','Ça fait'],
+    ['Par nuit','Das kostet {x} pro Nacht','Dass kostèt {x} pro Nakht','Cela coûte {x} par nuit'],
+    ['Caution','Die Kaution beträgt','Di Kaou-tsion beu-trègt','La caution est de'],
+    ['Prix seul','','',''],
+  ]},
+  time:{ic:'🕐', name:'Heure', ctx:[
+    ['À','Um','Oum','À'],
+    ['À partir de','Ab','Ap','À partir de'],
+    ['Jusqu\'à','Bis','Biss','Jusqu\'à'],
+    ['Au plus tard à','Spätestens um','Chpè-tèstèns oum','Au plus tard à'],
+  ]},
+  date:{ic:'📅', name:'Date', ctx:[
+    ['Le','Am','Am','Le'],
+    ['Arrivée le','Ihre Anreise ist am','Ireu An-raïzeu ist am','Votre arrivée est le'],
+    ['Départ le','Ihre Abreise ist am','Ireu Ap-raïzeu ist am','Votre départ est le'],
+    ['Jusqu\'au','Bis','Biss','Jusqu\'au'],
+  ]},
+  num:{ic:'🔢', name:'Nombre', ctx:[
+    ['Nombre seul','','',''],
+    ['Emplacement n°','Stellplatz Nummer','Chtel-platss Noumèr','Emplacement numéro'],
+    ['Mobil-home n°','Mobilheim Nummer','Mobil-haïm Noumèr','Mobil-home numéro'],
+    ['Nuits','{n} Nächte','{n} Nèchteu','{n} nuits'],
+    ['Personnes','{n} Personen','{n} Pèrzonène','{n} personnes'],
+  ]},
+};
+/* Renvoie {de, ph, fr, show} ou null si la saisie est incomplète */
+function nbCompute(mode, ctxI, raw){
+  const [,cde,cph,cfr] = NB_MODES[mode].ctx[ctxI] || NB_MODES[mode].ctx[0];
+  const wrap = (de,ph,fr) => {
+    const sub=(t,x)=>t.includes('{x}')?t.replace('{x}',x):(t?t+' '+x:x);
+    return {de:cap(sub(cde,de))+(cde?'.':''), ph:cap(sub(cph,ph))+(cph?'.':''), fr:cap(sub(cfr,fr))+(cfr?'.':'')};
+  };
+  if(mode==='price'){
+    const m=String(raw).trim().replace(/\s|€/g,'').replace('.',',').match(/^(\d{1,6})(?:,(\d{0,2}))?$/); if(!m) return null;
+    const e=+m[1], c=m[2]?+(m[2].padEnd(2,'0')):0; if(!e && !c) return null;
+    let de, ph;
+    // « Das macht einen Euro » : accusatif après « macht », « kostet », « beträgt ».
+    const E = e===1&&cde ? ['einen','aïnène'] : [nDe(e,'ein'), nPh(e,'ein')];
+    if(!e){ de=(c===1&&cde?'einen':nDe(c,'ein'))+' Cent'; ph=(c===1&&cde?'aïnène':nPh(c,'ein'))+' Ssènt'; }
+    else if(!c){ de=E[0]+' Euro'; ph=E[1]+' Oï-ro'; }
+    else if(c<10){ de=E[0]+' Euro und '+(c===1&&cde?'einen':nDe(c,'ein'))+' Cent'; ph=E[1]+' Oï-ro ount '+(c===1&&cde?'aïnène':nPh(c,'ein'))+' Ssènt'; }
+    else { de=E[0]+' Euro '+nDe(c); ph=E[1]+' Oï-ro '+nPh(c); }
+    return {...wrap(de,ph,eur(e,c)), show:eur(e,c).replace(/ | /g,' ')};
+  }
+  if(mode==='time'){
+    const m=String(raw).match(/^(\d{1,2})[:h ]?(\d{2})?$/i); if(!m) return null;
+    const h=+m[1], mi=m[2]?+m[2]:0; if(h>23||mi>59) return null;
+    const de=nDe(h,'ein')+' Uhr'+(mi?' '+nDe(mi):''), ph=nPh(h,'ein')+' Our'+(mi?' '+nPh(mi):'');
+    const fr=h+' h'+(mi?' '+String(mi).padStart(2,'0'):'');
+    return {...wrap(de,ph,fr), show:String(h).padStart(2,'0')+':'+String(mi).padStart(2,'0')+' Uhr'};
+  }
+  if(mode==='date'){
+    const m=String(raw).match(/^(\d{4})-(\d{2})-(\d{2})$/); if(!m) return null;
+    const dt=new Date(+m[1], +m[2]-1, +m[3]); if(isNaN(dt)) return null;
+    const wd=dt.getDay(), d=dt.getDate(), mo=dt.getMonth(), art = cde==='Bis' ? 'den' : 'dem', o=ordDat(d);
+    const de=`${DAYS_DE[wd][0]}, ${art} ${o[0]} ${MONTHS_DE[mo][0]}`, ph=`${DAYS_DE[wd][1]}, ${art==='den'?'dène':'dème'} ${o[1]} ${MONTHS_DE[mo][1]}`;
+    const fr=`${DAYS_FR[wd]} ${d===1?'1er':d} ${MONTHS_FR[mo]}`;
+    return {...wrap(de,ph,cfr?fr:cap(fr)), show:`${DAYS_DE[wd][0]}, ${d}. ${MONTHS_DE[mo][0]}`};
+  }
+  if(mode==='num'){
+    const s=String(raw).replace(/\s/g,''); if(!/^\d{1,6}$/.test(s)) return null;
+    const n=+s;
+    if(cde.includes('{n}')){
+      if(!n) return null;
+      if(n===1){ const one = cde.startsWith('{n} N') ? ['Eine Nacht.','Aïneu Nakht.','Une nuit.'] : ['Eine Person.','Aïneu Pèrzone.','Une personne.'];
+        return {de:one[0], ph:one[1], fr:one[2], show:'1'}; }
+      return {de:cap(cde.replace('{n}',nDe(n)))+'.', ph:cap(cph.replace('{n}',nPh(n)))+'.', fr:cap(cfr.replace('{n}',n.toLocaleString('fr-FR')))+'.', show:String(n)};
+    }
+    return {...wrap(nDe(n),nPh(n),n.toLocaleString('fr-FR')), show:String(n)};
+  }
+  return null;
+}
+const pad2 = n => String(n).padStart(2,'0');
+const isoDay = d => d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());
+let NB = {mode:'price', ctx:{price:0,time:0,date:0,num:0}, val:{price:'', time:'14:00', date:'', num:''}};
+function openNb(){
+  loadVoices();
+  if(!NB.val.date) NB.val.date=isoDay(new Date());
+  document.body.style.overflow='hidden';
+  let el=document.getElementById('nbx');
+  if(!el){ el=document.createElement('div'); el.id='nbx'; el.className='trad nbx'; el.setAttribute('role','dialog'); el.setAttribute('aria-label','Prix, heures et dates'); document.body.appendChild(el); }
+  el.hidden=false; renderNb(true);
+}
+function closeNb(){ stopAudio(); const el=document.getElementById('nbx'); if(el) el.hidden=true; document.body.style.overflow=''; }
+function nbInput(){
+  const v=esc(NB.val[NB.mode]);
+  if(NB.mode==='price') return `<div class="nb-in"><input id="nbv" type="text" inputmode="decimal" autocomplete="off" placeholder="43,50" value="${v}" aria-label="Montant en euros"><span class="nb-suf">€</span></div>`;
+  if(NB.mode==='time') return `<div class="nb-in"><input id="nbv" type="time" value="${v}" aria-label="Heure"></div>`;
+  if(NB.mode==='date') return `<div class="nb-in"><input id="nbv" type="date" value="${v}" aria-label="Date"></div>`;
+  return `<div class="nb-in"><input id="nbv" type="text" inputmode="numeric" autocomplete="off" placeholder="128" value="${v}" aria-label="Nombre"></div>`;
+}
+function nbOut(){
+  const r=nbCompute(NB.mode, NB.ctx[NB.mode], NB.val[NB.mode]);
+  if(!r) return `<div class="nb-res empty"><span class="tr-empty-ic">${NB_MODES[NB.mode].ic}</span><p>${NB.mode==='price'?'Tape un montant, par exemple 43,50.':NB.mode==='num'?'Tape un nombre, par exemple un numéro d\'emplacement.':'Choisis une valeur.'}</p></div>`;
+  return `<div class="nb-res">
+    <div class="nb-show">${esc(r.show)}</div>
+    <div class="big-de" lang="de">${esc(r.de)}</div>
+    ${S.phon?`<div class="big-ph">${esc(r.ph)}</div>`:''}
+    <div class="big-fr">${esc(r.fr)}</div>
+    <div class="big-act"><button class="play" data-act="nbplay" aria-label="Écouter en allemand">${icon('i-spk')}</button>
+      <button class="slow" data-act="nbslow">Lent</button></div></div>`;
+}
+function renderNb(focus){
+  const el=document.getElementById('nbx'); if(!el) return;
+  const md=NB_MODES[NB.mode];
+  el.innerHTML = tfr(`<div class="tr-top"><button class="icon-btn" data-act="nbclose" aria-label="Fermer">${icon('i-x')}</button>
+      <b>Prix, heures et dates</b><span style="width:40px"></span></div>
+    <div class="tr-body nb-body">
+      <div class="nb-tabs" role="tablist">${Object.entries(NB_MODES).map(([k,m])=>`<button role="tab" aria-selected="${NB.mode===k}" class="${NB.mode===k?'on':''}" data-act="nbmode" data-m="${k}"><span>${emo(m.ic)}</span>${m.name}</button>`).join('')}</div>
+      <div class="seg nb-ctx">${md.ctx.map((c,i)=>`<button class="${NB.ctx[NB.mode]===i?'on':''}" data-act="nbctx" data-i="${i}">${esc(c[0])}</button>`).join('')}</div>
+      ${nbInput()}
+      <div id="nbOut">${nbOut()}</div>
+    </div>`);
+  const i=document.getElementById('nbv');
+  if(focus && i && (NB.mode==='price'||NB.mode==='num') && !IS_MOBILE) i.focus();
+}
+function nbSpeak(slow){
+  const r=nbCompute(NB.mode, NB.ctx[NB.mode], NB.val[NB.mode]); if(!r) return;
+  stopAudio();
+  const v=deviceVoice('de');
+  if(v && window.speechSynthesis){ const u=new SpeechSynthesisUtterance(r.de); u.voice=v; u.lang=v.lang; u.rate=slow?0.6:0.95; speechSynthesis.cancel(); speechSynthesis.speak(u); return; }
+  if(!navigator.onLine){ toast('Pas de voix allemande sur ce téléphone hors connexion : lis la phrase affichée'); return; }
+  const a=preloadOnline(r.de,'de'); curAudio=a; a.playbackRate=slow?0.7:1;
+  try{ a.currentTime=0; }catch(e){}
+  a.play().catch(()=>{});
+}
+document.addEventListener('click', e=>{
+  const el=e.target.closest('[data-act]'); if(!el) return;
+  switch(el.dataset.act){
+    case 'nbopen': openNb(); break;
+    case 'nbclose': closeNb(); break;
+    case 'nbmode': NB.mode=el.dataset.m; stopAudio(); renderNb(true); break;
+    case 'nbctx': NB.ctx[NB.mode]=+el.dataset.i; renderNb(); break;
+    case 'nbplay': nbSpeak(false); break;
+    case 'nbslow': nbSpeak(true); break;
+  }
+});
+document.addEventListener('input', e=>{
+  if(e.target.id!=='nbv') return;
+  NB.val[NB.mode]=e.target.value;
+  const o=document.getElementById('nbOut'); if(o) o.innerHTML=tfr(nbOut());
+});
+document.addEventListener('keydown', e=>{
+  const el=document.getElementById('nbx');
+  if(e.key==='Escape' && el && !el.hidden) closeNb();
+  if(e.key==='Enter' && e.target.id==='nbv'){ e.preventDefault(); e.target.blur(); nbSpeak(false); }
 });
 
 /* ══════════════════════════════════════
@@ -2397,11 +2723,8 @@ document.addEventListener('click', async e=>{
     case 'continue': { const n=nextLesson(); if(n) startLesson({u:n.u, l:n.l, idx:unitLessons(n.u)[n.l]}); break; }
     case 'practice': startLesson({idx:shuffle(seenPhrases()).slice(0,5)}); break;
     case 'mistakes': { const idx=S.mistakes.filter(k=>k[0]==='p'&&byKey(k)).map(k=>+k.slice(1)).slice(0,6); if(idx.length) startLesson({idx}); break; }
-    case 'flowdone': S.flowsDone[d.id]=1; save(); sfx('win'); toast('Situation terminée. Bravo ! 🎉'); go('#/situ'); break;
-    case 'seg': phraseSeg=d.seg; render(); break;
-    case 'rules': phraseSeg='rules'; searchQ=''; go('#/phrases'); break;
+    case 'flowdone': S.flowsDone[d.id]=1; save(); sfx('win'); toast('Situation terminée. Bravo ! 🎉'); go('#/guide/situ'); break;
     case 'clearq': searchQ=''; render(); $('#q').focus(); break;
-    case 'catback': history.length>1 ? history.back() : go('#/phrases'); break;
     case 'goal': S.goal=+d.g; save(); render(); toast('Objectif : '+d.g+' XP par jour'); break;
     case 'toggle': S[d.k]=!S[d.k]; save(); applySettings(); render(); break;
     case 'test': {
@@ -2639,9 +2962,9 @@ let welcomeReady = !document.getElementById('splash');
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(seen){ sp.remove(); welcomeReady=true; return; }
   let done=false;
-  const end=()=>{ if(done) return; done=true; sp.classList.add('out'); setTimeout(()=>sp.classList.add('gone'),650); setTimeout(()=>{ sp.remove(); welcomeReady=true; },1150); };
+  const end=()=>{ if(done) return; done=true; sp.classList.add('out'); setTimeout(()=>sp.classList.add('gone'),800); setTimeout(()=>{ sp.remove(); welcomeReady=true; },1300); };
   sp.addEventListener('click', end);
-  setTimeout(end, reduce?900:2600);
+  setTimeout(end, reduce?1000:4200);
 })();
 
 /* ══ INIT ══ */
