@@ -2,7 +2,7 @@
    - Pages et liste des voix : réseau d'abord (les mises à jour arrivent toutes seules), cache en secours.
    - Voix, icônes, polices : cache d'abord (rapide et disponible hors connexion).
    Les voix sont téléchargées en arrière-plan, sauf si le téléphone est en mode « économie de données ». */
-const CACHE = 'bgd-v5';
+const CACHE = 'bgd-v6';
 const SHELL = ['./', './index.html', './audio_map.js', './config.js', './manifest.webmanifest',
   './vendor/qrcode.js', './brand/logo.png', './brand/emblem-white.png', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
   './fonts/inter-latin-400-normal.woff2', './fonts/inter-latin-500-normal.woff2', './fonts/inter-latin-600-normal.woff2',
