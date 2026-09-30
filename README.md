@@ -4,14 +4,13 @@ Application web pour **parler allemand à la réception** du camping Beach Garde
 (Les Méditerranées, Marseillan-Plage). Direction artistique blanc et prune aux couleurs de l'établissement. Leçons courtes,
 XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque phrase.
 
-## Les cinq espaces de l'application
+## Les quatre espaces de l'application
 | Espace | À quoi ça sert |
 |---|---|
 | **Apprendre** | Parcours de 14 unités (accueil, politesse, comprendre les clients, nombres, réservation…). Chaque leçon mélange cinq types d'exercices : compréhension orale, vocabulaire, construction de phrase, association de paires et prononciation à voix haute (si le téléphone le permet). XP, série, objectif du jour, révision des erreurs. |
-| **Comptoir** | **Traducteur vocal en direct** (toi et le client parlez, l'app affiche et lit la traduction français ↔ allemand ; internet requis ; Google Traduction par défaut, **DeepL** en option : voir `docs/deepl.md`) et phrases du quotidien en un geste, affichées en grand pour le client. |
-| **Situations** | Onze scénarios de comptoir pas à pas (arrivée avec réservation, client de passage, visiteur, départ, bruit, panne, ménage, animations, spa, restaurant, réservation par téléphone) présentés comme une conversation : ce que tu dis, ce que le client peut répondre, avec l'audio des deux côtés. |
-| **Phrases** | Le guide de conversation complet : thèmes, bases, **mémo règlement** (règlement intérieur, FAQ et CGV de lesmediterranees.com), favoris, recherche (français ou allemand, sans tenir compte des accents) et guide de prononciation. |
-| **Profil** | Prénom, statistiques, objectif quotidien, réglages (affichage de la prononciation, effets sonores), test du son. |
+| **Comptoir** | Pour un client devant soi. **Traducteur vocal en direct** (français ↔ allemand, internet requis ; Google Traduction par défaut, **DeepL** en option : voir `docs/deepl.md`), avec un mode **« Face au client »** (téléphone posé sur le comptoir, écran partagé en deux) et les conversations du jour gardées jusqu'au lendemain. **Prix, heures et dates** : on tape un montant, une heure, une date ou un numéro, l'app le dit en allemand avec la prononciation (hors connexion). **Phrases express** en un geste, affichées en grand. |
+| **Guide** | Tout ce qu'on consulte, au même endroit, avec une recherche (français ou allemand, sans tenir compte des accents) : onze **situations pas à pas**, les **phrases par thème**, **les bases** (nombres, jours, heures), le **mémo règlement** (règlement intérieur, FAQ et CGV de lesmediterranees.com), les **favoris** et le guide de **prononciation**. |
+| **Profil** | Prénom, statistiques, objectif quotidien, réglages (affichage de la prononciation, effets sonores), test du son, partage avec un collègue. |
 
 La progression est enregistrée **sur l'appareil** (navigateur), sans compte ni serveur.
 
