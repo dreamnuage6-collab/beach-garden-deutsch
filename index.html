@@ -486,6 +486,39 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .big-fr{font-size:16px; color:var(--muted); margin-bottom:18px}
 .big-act{display:flex; gap:10px; justify-content:center; align-items:center}
 
+/* ═════════ TRADUCTEUR VOCAL ═════════ */
+.tr-card{display:flex; align-items:center; gap:14px; width:100%; text-align:left; margin:0 0 26px; padding:18px; border-radius:var(--r); color:#fff;
+  background:linear-gradient(135deg,#9A2034,#6E1424); box-shadow:0 8px 24px rgba(90,15,28,.2)}
+.tr-card-ic{font-size:30px}
+.tr-card b{display:block; font-family:var(--serif); font-size:20px; font-weight:600}
+.tr-card small{display:block; font-size:14px; opacity:.85; margin-top:2px; line-height:1.4}
+.tr-card span:nth-child(2){flex:1}
+.trad{position:fixed; inset:0; z-index:150; background:var(--soft); display:flex; flex-direction:column; animation:fadein .2s}
+.tr-top{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 16px; padding-top:calc(12px + env(safe-area-inset-top)); background:#fff; border-bottom:1px solid var(--line)}
+.tr-top b{font-family:var(--serif); font-size:19px; font-weight:600}
+.tr-body{flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px; max-width:760px; width:100%; margin:0 auto}
+.tr-msg{background:#fff; border:1px solid var(--line); border-radius:18px; padding:14px 16px; max-width:88%}
+.tr-msg.me{align-self:flex-end; border-bottom-right-radius:6px}
+.tr-msg.them{align-self:flex-start; border-bottom-left-radius:6px; background:#FFFBF0; border-color:#F2E4BF}
+.tr-src{font-size:15px; color:var(--muted); margin:6px 0 4px; line-height:1.45}
+.tr-dst{font-size:22px; font-weight:600; line-height:1.35; color:var(--ink); margin-bottom:10px}
+.tr-wait{color:var(--faint); font-weight:500}
+.tr-live{align-self:center; text-align:center; font-size:20px; color:var(--brand); font-weight:600; padding:12px; max-width:90%}
+.tr-empty{margin:auto; text-align:center; color:var(--muted); max-width:380px}
+.tr-empty-ic{font-size:52px}
+.tr-empty b{display:block; font-family:var(--serif); font-size:22px; color:var(--ink); margin:6px 0}
+.tr-foot{display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:14px 16px; padding-bottom:calc(14px + env(safe-area-inset-bottom)); background:#fff; border-top:1px solid var(--line); max-width:760px; width:100%; margin:0 auto}
+.tr-btn{display:flex; align-items:center; gap:10px; padding:16px 14px; border-radius:16px; color:#fff; text-align:left; transition:transform .1s}
+.tr-btn:active{transform:scale(.97)}
+.tr-btn .ic{width:28px; height:28px; flex:0 0 28px}
+.tr-btn b{display:block; font-size:15.5px; font-weight:600}
+.tr-btn small{display:block; font-size:12px; opacity:.85}
+.tr-btn.me{background:var(--brand)}
+.tr-btn.them{background:#2B2B2B}
+.tr-btn.rec{animation:ring 1s ease-out infinite; background:var(--ko)}
+.tr-na{grid-column:1/-1; text-align:center; color:var(--muted); margin:0}
+@media (max-width:380px){ .tr-btn small{display:none} }
+
 /* ═════════ PRONONCIATION À VOIX HAUTE ═════════ */
 .mic{width:96px; height:96px; border-radius:50%; background:var(--brand); color:#fff; display:grid; place-items:center; box-shadow:0 10px 30px rgba(142,27,46,.25); transition:transform .1s}
 .mic .ic{width:40px; height:40px}
@@ -1978,6 +2011,7 @@ function viewComptoir(){
   return tfr(`<div class="wrap wide view">
     <h1 class="h1">Comptoir 🛎️</h1>
     <p class="lead">Un client devant toi ? Touche une phrase : l'application la dit en allemand et l'affiche en grand pour qu'il puisse la lire.</p>
+    <button class="tr-card" data-act="tropen"><span class="tr-card-ic">🎙️</span><span><b>Traducteur vocal</b><small>Toi et le client parlez à voix haute : l'app traduit en direct, en français et en allemand.</small></span>${icon('i-chev')}</button>
     ${COMPTOIR.map(([e,t,items])=>`<section class="cp-g"><h2 class="cp-h">${emo(e)}${t}</h2><div class="cp-grid">
       ${items.map(([l,de])=>{ const x=findByDe(de); return x?`<button class="cp-tile" data-act="cp" data-key="${x.key}"><span>${esc(l)}</span>${icon('i-spk')}</button>`:''; }).join('')}
     </div></section>`).join('')}
@@ -2032,6 +2066,94 @@ function micPhrase(key, btn){
   toast('🎤 Parle maintenant…');
   listenDe(p.de, btn, (sc,err)=>{ const [,msg]=speechMsg(sc,err); toast((sc!==null&&sc>=0.8?'✅ ':sc!==null&&sc>=0.5?'👍 ':'🔁 ')+msg); });
 }
+
+
+/* ══════════════════════════════════════
+   TRADUCTEUR VOCAL EN TEMPS RÉEL (Comptoir)
+   Reconnaissance vocale du téléphone → traduction en ligne → texte dans les deux langues
+   + lecture à voix haute de la traduction pour le client.
+══════════════════════════════════════ */
+let TR = {log:[], busy:false, rec:null};
+async function translateText(text, from, to){
+  const q=encodeURIComponent(text);
+  try{
+    const r=await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${from}&tl=${to}&dt=t&q=${q}`);
+    if(r.ok){ const j=await r.json(); const t=(j[0]||[]).map(x=>x[0]).join(''); if(t) return t; }
+  }catch(e){}
+  const r2=await fetch(`https://api.mymemory.translated.net/get?q=${q}&langpair=${from}|${to}`);
+  const j2=await r2.json(); const t2=j2 && j2.responseData && j2.responseData.translatedText;
+  if(!t2) throw new Error('translate');
+  return t2;
+}
+function speakOnline(text, lang){
+  stopAudio();
+  const a=new Audio(`https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=${lang}&q=${encodeURIComponent(text.slice(0,200))}`);
+  curAudio=a;
+  a.play().catch(()=>{ if(!window.speechSynthesis) return; const u=new SpeechSynthesisUtterance(text); u.lang=lang==='de'?'de-DE':'fr-FR'; speechSynthesis.cancel(); speechSynthesis.speak(u); });
+}
+function openTrad(){
+  document.body.style.overflow='hidden';
+  let el=document.getElementById('trad');
+  if(!el){ el=document.createElement('div'); el.id='trad'; el.className='trad'; document.body.appendChild(el); }
+  el.hidden=false; renderTrad();
+}
+function closeTrad(){ try{ TR.rec && TR.rec.abort(); }catch(e){} TR.rec=null; stopAudio(); const el=document.getElementById('trad'); if(el) el.hidden=true; document.body.style.overflow=''; }
+function renderTrad(status){
+  const el=document.getElementById('trad'); if(!el) return;
+  const msgs = TR.log.length ? TR.log.map((m,i)=>`<div class="tr-msg ${m.who}">
+      <span class="eyebrow">${m.who==='me'?'🇫🇷 Toi':'🇩🇪 Client · Gast'}</span>
+      <div class="tr-src" lang="${m.who==='me'?'fr':'de'}">${esc(m.src)}</div>
+      <div class="tr-dst" lang="${m.who==='me'?'de':'fr'}">${m.dst?esc(m.dst):'<span class="tr-wait">Traduction…</span>'}</div>
+      ${m.dst?`<button class="slow" data-act="trplay" data-i="${i}">🔊 ${m.who==='me'?'Écouter en allemand':'Écouter en français'}</button>`:''}
+    </div>`).join('')
+    : `<div class="tr-empty"><div class="tr-empty-ic">🎙️</div><b>Traducteur vocal</b>
+        <p>Touche le bouton de la personne qui parle, puis parlez normalement. La phrase s'affiche dans les deux langues et la traduction est lue à voix haute.</p></div>`;
+  el.innerHTML = tfr(`<div class="tr-top"><button class="icon-btn" data-act="trclose" aria-label="Fermer le traducteur">${icon('i-x')}</button>
+      <b>Traducteur vocal</b>
+      ${TR.log.length?`<button class="link" data-act="trclear">Effacer</button>`:'<span></span>'}</div>
+    <div class="tr-body" id="trBody">${msgs}${status?`<div class="tr-live">${status}</div>`:''}</div>
+    <div class="tr-foot">
+      ${SR?`<button class="tr-btn me${TR.busy==='me'?' rec':''}" data-act="trtalk" data-who="me">${icon('i-mic')}<span><b>🇫🇷 Je parle</b><small>français → allemand</small></span></button>
+      <button class="tr-btn them${TR.busy==='them'?' rec':''}" data-act="trtalk" data-who="them">${icon('i-mic')}<span><b>🇩🇪 Der Gast spricht</b><small>allemand → français</small></span></button>`
+      :`<p class="tr-na">La reconnaissance vocale n'est pas disponible dans ce navigateur. Utilise Chrome sur Android, ou Safari sur iPhone.</p>`}
+    </div>`);
+  const b=document.getElementById('trBody'); if(b) b.scrollTop=b.scrollHeight;
+}
+function trTalk(who){
+  if(!SR) return;
+  if(TR.busy){ try{ TR.rec && TR.rec.stop(); }catch(e){} return; }
+  if(!navigator.onLine){ toast('Le traducteur a besoin d\'une connexion internet'); return; }
+  stopAudio();
+  const r=new SR(); TR.rec=r; TR.busy=who;
+  r.lang = who==='me' ? 'fr-FR' : 'de-DE'; r.interimResults=true; r.continuous=false; r.maxAlternatives=1;
+  let finalTxt='';
+  renderTrad(who==='me'?'Parle maintenant…':'Bitte sprechen Sie jetzt… (Parlez maintenant)');
+  r.onresult=e=>{ let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const t=e.results[i][0].transcript; if(e.results[i].isFinal) finalTxt+=t; else interim+=t; }
+    const live=document.querySelector('.tr-live'); if(live) live.textContent=(finalTxt+interim)||'…'; };
+  r.onerror=e=>{ if(e.error==='not-allowed'||e.error==='service-not-allowed') toast('Autorise l\'accès au micro pour utiliser le traducteur'); };
+  r.onend=async()=>{
+    TR.busy=false; TR.rec=null;
+    const src=finalTxt.trim();
+    if(!src){ renderTrad(); return; }
+    const m={who, src, dst:''}; TR.log.push(m); renderTrad();
+    try{
+      m.dst = await translateText(src, who==='me'?'fr':'de', who==='me'?'de':'fr');
+      renderTrad();
+      if(who==='me') speakOnline(m.dst,'de');
+    }catch(err){ m.dst='⚠️ Traduction impossible pour le moment (vérifie la connexion internet).'; renderTrad(); }
+  };
+  try{ r.start(); }catch(e){ TR.busy=false; renderTrad(); }
+}
+document.addEventListener('click', e=>{
+  const el=e.target.closest('[data-act]'); if(!el) return;
+  switch(el.dataset.act){
+    case 'tropen': openTrad(); break;
+    case 'trclose': closeTrad(); break;
+    case 'trclear': TR.log=[]; renderTrad(); break;
+    case 'trtalk': trTalk(el.dataset.who); break;
+    case 'trplay': { const m=TR.log[+el.dataset.i]; if(m&&m.dst) speakOnline(m.dst, m.who==='me'?'de':'fr'); break; }
+  }
+});
 
 /* ══════════════════════════════════════
    MOTEUR DE LEÇON
