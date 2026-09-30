@@ -1,14 +1,14 @@
 # Beach Garden Deutsch 🎧
 
 Application web pour **parler allemand à la réception** du camping Beach Garden
-(Les Méditerranées, Marseillan-Plage). Direction artistique blanc et bordeaux aux couleurs de l'établissement. Leçons courtes,
+(Les Méditerranées, Marseillan-Plage). Direction artistique blanc et prune aux couleurs de l'établissement. Leçons courtes,
 XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque phrase.
 
 ## Les cinq espaces de l'application
 | Espace | À quoi ça sert |
 |---|---|
 | **Apprendre** | Parcours de 14 unités (accueil, politesse, comprendre les clients, nombres, réservation…). Chaque leçon mélange cinq types d'exercices : compréhension orale, vocabulaire, construction de phrase, association de paires et prononciation à voix haute (si le téléphone le permet). XP, série, objectif du jour, révision des erreurs. |
-| **Comptoir** | **Traducteur vocal en direct** (toi et le client parlez, l'app affiche et lit la traduction français ↔ allemand ; internet requis) et phrases du quotidien en un geste, affichées en grand pour le client. |
+| **Comptoir** | **Traducteur vocal en direct** (toi et le client parlez, l'app affiche et lit la traduction français ↔ allemand ; internet requis ; Google Traduction par défaut, **DeepL** en option : voir `docs/deepl.md`) et phrases du quotidien en un geste, affichées en grand pour le client. |
 | **Situations** | Onze scénarios de comptoir pas à pas (arrivée avec réservation, client de passage, visiteur, départ, bruit, panne, ménage, animations, spa, restaurant, réservation par téléphone) présentés comme une conversation : ce que tu dis, ce que le client peut répondre, avec l'audio des deux côtés. |
 | **Phrases** | Le guide de conversation complet : thèmes, bases, **mémo règlement** (règlement intérieur, FAQ et CGV de lesmediterranees.com), favoris, recherche (français ou allemand, sans tenir compte des accents) et guide de prononciation. |
 | **Profil** | Prénom, statistiques, objectif quotidien, réglages (affichage de la prononciation, effets sonores), test du son. |
@@ -41,9 +41,9 @@ qu'une fois l'app installée sur l'écran d'accueil (iOS 16.4 ou plus récent).
 - `generate_audio.ps1` : (re)génère les MP3 si tu ajoutes ou modifies des phrases.
 - `manifest.webmanifest`, `sw.js`, `icons/` : ce qui rend l'app installable et utilisable hors connexion.
 - `brand/logo.png` : logo des Méditerranées · `vendor/qrcode.js` : générateur de QR code (licence MIT).
-- `config.js` : réglage des notifications.
+- `config.js` : réglage des notifications et du traducteur DeepL.
 - `fonts/` : polices intégrées (aucun appel à Google Fonts : plus rapide, hors connexion, conforme RGPD).
-- `docs/` : demande de nom de domaine pour le service informatique.
+- `docs/` : demande de nom de domaine pour le service informatique, activation de DeepL (`deepl.md` + `deepl-worker.js`).
 
 ## 🌐 Mise en ligne (GitHub Pages)
 Pour une adresse du type `deutsch.lesmediterranees.com`, la demande à transmettre au service informatique est prête : `docs/demande-nom-de-domaine.md`.
