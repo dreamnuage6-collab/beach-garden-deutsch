@@ -2085,13 +2085,34 @@ async function translateText(text, from, to){
   if(!t2) throw new Error('translate');
   return t2;
 }
+/* Lecture instantanée : voix intégrée au téléphone en priorité (aucun téléchargement),
+   sinon voix en ligne préchargée dès que la traduction est connue. */
+const TTS_CACHE=new Map();
+function deviceVoice(lang){
+  if(!window.speechSynthesis) return null;
+  const vs=speechSynthesis.getVoices().filter(v=>v.lang && v.lang.toLowerCase().replace('_','-').startsWith(lang));
+  return vs.find(v=>/premium|enhanced|natural|neural|siri/i.test(v.name)) || vs.find(v=>v.localService) || vs[0] || null;
+}
+function preloadOnline(text, lang){
+  const k=lang+'|'+text; if(TTS_CACHE.has(k)) return TTS_CACHE.get(k);
+  const a=new Audio(); a.preload='auto';
+  a.src=`https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=${lang}&q=${encodeURIComponent(text.slice(0,200))}`;
+  try{ a.load(); }catch(e){}
+  TTS_CACHE.set(k,a); return a;
+}
 function speakOnline(text, lang){
   stopAudio();
-  const a=new Audio(`https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=${lang}&q=${encodeURIComponent(text.slice(0,200))}`);
-  curAudio=a;
-  a.play().catch(()=>{ if(!window.speechSynthesis) return; const u=new SpeechSynthesisUtterance(text); u.lang=lang==='de'?'de-DE':'fr-FR'; speechSynthesis.cancel(); speechSynthesis.speak(u); });
+  const v=deviceVoice(lang);
+  if(v){
+    const u=new SpeechSynthesisUtterance(text); u.voice=v; u.lang=v.lang; u.rate=0.95;
+    speechSynthesis.cancel(); speechSynthesis.speak(u); return;
+  }
+  const a=preloadOnline(text, lang); curAudio=a;
+  try{ a.currentTime=0; }catch(e){}
+  a.play().catch(()=>{});
 }
 function openTrad(){
+  loadVoices(); if(window.speechSynthesis) speechSynthesis.getVoices();
   document.body.style.overflow='hidden';
   let el=document.getElementById('trad');
   if(!el){ el=document.createElement('div'); el.id='trad'; el.className='trad'; document.body.appendChild(el); }
@@ -2126,20 +2147,23 @@ function trTalk(who){
   stopAudio();
   const r=new SR(); TR.rec=r; TR.busy=who;
   r.lang = who==='me' ? 'fr-FR' : 'de-DE'; r.interimResults=true; r.continuous=false; r.maxAlternatives=1;
-  let finalTxt='';
+  let finalTxt='', preT=null, pre=null;
+  const from = who==='me'?'fr':'de', to = who==='me'?'de':'fr';
+  const prefetch = t => { t=t.trim(); if(t.length<4 || (pre && pre.text===t)) return; pre={text:t, p:translateText(t, from, to).then(d=>{ preloadOnline(d,to); return d; })}; pre.p.catch(()=>{}); };
   renderTrad(who==='me'?'Parle maintenant…':'Bitte sprechen Sie jetzt… (Parlez maintenant)');
   r.onresult=e=>{ let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const t=e.results[i][0].transcript; if(e.results[i].isFinal) finalTxt+=t; else interim+=t; }
-    const live=document.querySelector('.tr-live'); if(live) live.textContent=(finalTxt+interim)||'…'; };
+    const live=document.querySelector('.tr-live'); if(live) live.textContent=(finalTxt+interim)||'…';
+    clearTimeout(preT); const cur=finalTxt+interim; preT=setTimeout(()=>prefetch(cur), 350); };
   r.onerror=e=>{ if(e.error==='not-allowed'||e.error==='service-not-allowed') toast('Autorise l\'accès au micro pour utiliser le traducteur'); };
   r.onend=async()=>{
-    TR.busy=false; TR.rec=null;
+    TR.busy=false; TR.rec=null; clearTimeout(preT);
     const src=finalTxt.trim();
     if(!src){ renderTrad(); return; }
     const m={who, src, dst:''}; TR.log.push(m); renderTrad();
     try{
-      m.dst = await translateText(src, who==='me'?'fr':'de', who==='me'?'de':'fr');
+      m.dst = (pre && pre.text===src) ? await pre.p.catch(()=>translateText(src, from, to)) : await translateText(src, from, to);
+      if(who==='me') speakOnline(m.dst,'de'); else preloadOnline(m.dst,'fr');
       renderTrad();
-      if(who==='me') speakOnline(m.dst,'de');
     }catch(err){ m.dst='⚠️ Traduction impossible pour le moment (vérifie la connexion internet).'; renderTrad(); }
   };
   try{ r.start(); }catch(e){ TR.busy=false; renderTrad(); }
