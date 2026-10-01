@@ -3,9 +3,12 @@
 # (German text -> MP3 file). Phrases are read from index.html (de:"..."), so no
 # double data-entry. No install required (uses Google Translate TTS endpoint).
 #
-# INCREMENTAL: re-uses clips that already exist, only downloads new/changed
-# phrases, and prunes orphan MP3s no longer used. So re-running after a small
-# content edit is fast.
+# INCREMENTAL: re-uses clips that already exist and only downloads new/changed
+# phrases, so re-running after a small content edit is fast.
+# SAFE: old MP3s are KEPT (a page still open on a phone may need them).
+#   Run with -Nettoyer to delete MP3s no longer used (do it one version later).
+#   If a download fails, audio_map.js is NOT rewritten: run the script again.
+param([switch]$Nettoyer)
 $ErrorActionPreference = 'Stop'
 $root     = $PSScriptRoot
 $htmlPath = Join-Path $root 'index.html'
@@ -16,10 +19,11 @@ New-Item -ItemType Directory -Force -Path $audioDir | Out-Null
 $html = Get-Content -Path $htmlPath -Raw -Encoding UTF8
 
 # 1) Extract all unique German phrases (key de:"...", not the tail of another word)
-$rx = [regex]'(?<![A-Za-z])de:"([^"]*)"'
+# Tolerates spaces around the colon and escaped quotes inside the text.
+$rx = [regex]'(?<![A-Za-z])de\s*:\s*"((?:[^"\\]|\\.)*)"'
 $seen = [ordered]@{}
 foreach ($m in $rx.Matches($html)) {
-  $de = $m.Groups[1].Value
+  $de = $m.Groups[1].Value -replace '\\"', '"'
   if ($de.Trim().Length -gt 0 -and -not $seen.Contains($de)) { $seen[$de] = $true }
 }
 $phrases = @($seen.Keys)
@@ -109,14 +113,22 @@ foreach ($de in $phrases) {
   }
 }
 
-# 3) Prune orphan MP3s (no longer referenced by any phrase)
-$pruned = 0
-Get-ChildItem $audioDir -Filter *.mp3 | ForEach-Object {
-  $rel = "audio/" + $_.Name
-  if (-not $used.ContainsKey($rel)) { Remove-Item $_.FullName -Force; $pruned++ }
+# 3) Never publish a partial table: stop here if something failed
+if ($fail.Count -gt 0) {
+  Write-Host ("Failures: {0}. audio_map.js was NOT changed. Run the script again." -f $fail.Count) -ForegroundColor Yellow
+  exit 1
 }
 
-# 4) Write audio_map.js (UTF-8, no BOM)
+# 4) Optional: delete MP3s no longer referenced (only with -Nettoyer)
+$pruned = 0
+if ($Nettoyer) {
+  Get-ChildItem $audioDir -Filter *.mp3 | ForEach-Object {
+    $rel = "audio/" + $_.Name
+    if (-not $used.ContainsKey($rel)) { Remove-Item $_.FullName -Force; $pruned++ }
+  }
+}
+
+# 5) Write audio_map.js (UTF-8, no BOM)
 $jsonOut = ($map | ConvertTo-Json -Depth 3)
 if ([string]::IsNullOrWhiteSpace($jsonOut)) { $jsonOut = '{}' }
 $out = "window.AUDIO = $jsonOut;`n"
@@ -124,4 +136,4 @@ $out = "window.AUDIO = $jsonOut;`n"
 
 Write-Host ""
 Write-Host ("Done. clips total: {0}  (new: {1}, reused: {2}, pruned: {3})" -f $map.Count, $dl, $reuse, $pruned) -ForegroundColor Green
-if ($fail.Count -gt 0) { Write-Host ("Failures: {0} (re-run to retry)." -f $fail.Count) -ForegroundColor Yellow }
+if (-not $Nettoyer) { Write-Host "Old MP3s kept. Use -Nettoyer later to remove unused ones." -ForegroundColor DarkGray }
