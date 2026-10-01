@@ -34,7 +34,7 @@
 :root{
   --brand:#7E3654; --brand-600:#682C45; --brand-700:#522236;
   --brand-50:#F9F2F5; --brand-100:#F2E4EB; --brand-200:#E4CAD6;
-  --ink:#1D1718; --ink-2:#4A4244; --muted:#857C7F; --faint:#B5ACAF;
+  --ink:#1D1718; --ink-2:#4A4244; --muted:#736A6D; --faint:#B5ACAF;
   --line:#EEE9EA; --line-2:#E2DADC; --soft:#FAF8F8; --bg:#FFFFFF;
   --ok:#1F7A4D; --ok-bg:#EDF7F1; --ok-line:#BCE0CB;
   --ko:#B42335; --ko-bg:#FCEFF1; --ko-line:#F0C2C9;
@@ -174,13 +174,65 @@ main{padding:24px 16px 110px; min-height:100vh; overflow-x:clip}
   .side-foot b{display:block; color:var(--ink-2); font-weight:600}
   main{margin-left:var(--side); padding:44px 40px 64px}
 }
-@media (min-width:1240px){
-  main{margin-right:360px}
-  .rail{
-    display:flex; flex-direction:column; gap:16px; position:fixed; top:0; right:0; bottom:0; width:360px;
-    padding:36px 32px 32px 0; overflow-y:auto;
-  }
-  .rail .chips{margin:0 0 4px; justify-content:flex-end}
+/* ═════════ ORDINATEUR (≥ 1200 px) : toute la largeur, espaces de travail ═════════ */
+.side-chips{display:none}
+.kbd-hint{display:none}
+.dash-xp{margin-top:14px; padding-top:12px; border-top:1px solid var(--line); font-size:14px; color:var(--muted)}
+.dash-xp b{color:var(--ink)}
+@media (min-width:900px){
+  .side-chips{display:flex; gap:4px; padding:0 6px 12px}
+  .side-chips .chip{color:var(--ink-2)}
+  .kbd-hint{display:block; margin-top:10px; font-size:11.5px; color:var(--muted); line-height:1.7}
+  .kbd-hint kbd{font:inherit; font-size:11px; font-weight:600; color:var(--ink-2); border:1px solid var(--line-2); border-bottom-width:2px; border-radius:5px; padding:0 5px; background:#fff}
+}
+@media (min-width:1200px){
+  :root{--side:224px}
+  main{padding:36px 40px 56px}
+  .wrap,.wrap.wide{max-width:1480px}
+  .lead{max-width:72ch}
+  /* Apprendre : tableau de bord */
+  .dash{display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr); gap:16px; align-items:stretch; margin-bottom:16px}
+  .dash .hero{margin:0}
+  .dash .card{display:flex; flex-direction:column; justify-content:center; margin:0}
+  .dash .card h3{margin:0 0 14px}
+  .units{display:grid; grid-template-columns:repeat(auto-fill,minmax(400px,1fr)); gap:16px; align-items:start}
+  .units .unit{margin:0}
+  /* Comptoir : poste de travail */
+  .ws{display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr); gap:18px; height:clamp(520px, calc(100vh - 210px), 760px); margin-bottom:8px}
+  .trad.docked{position:relative; inset:auto; z-index:auto; animation:none; border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:var(--sh); min-height:0}
+  .trad.docked .tr-top{padding-top:12px}
+  .trad.docked [data-act="trclose"],.trad.docked [data-act="nbclose"]{visibility:hidden}
+  .trad.docked .tr-foot{max-width:none}
+  .trad.docked .nb-body{overflow-y:auto}
+  .trad.docked .big-de{font-size:clamp(24px,2.1vw,32px)}
+  .trad.docked .nb-res{padding:18px 16px}
+  .side .brand{overflow:hidden}
+  .side .logo{max-width:100%; height:auto}
+  .cp-cols{columns:3 320px; column-gap:18px}
+  .cp-cols .cp-g{break-inside:avoid; margin-bottom:22px}
+  .cp-cols .cp-grid{grid-template-columns:1fr 1fr}
+  /* Sur un écran d'ordinateur, le mode face au client n'est pas retourné */
+  .tf-half.them{transform:none}
+  /* Guide : deux panneaux */
+  .g2{display:grid; grid-template-columns:300px minmax(0,1fr); gap:32px; align-items:start}
+  .g-nav{position:sticky; top:24px}
+  .g-nav .h1{margin-bottom:16px}
+  .g-list{display:grid; gap:4px; margin-top:6px}
+  .g-item{display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:10px 12px; border-radius:12px; color:var(--ink-2); font-size:15px; font-weight:500}
+  .g-item:hover{background:var(--soft)}
+  .g-item.on{background:var(--brand-50); color:var(--brand); font-weight:600}
+  .g-item .emo{font-size:19px}
+  .g-item small{display:block; font-size:12.5px; font-weight:400; color:var(--muted); margin-top:1px}
+  .g-main{min-width:0}
+  .g-main .wrap{max-width:none; margin:0}
+  .g-main .subbar > .back[data-nav-to="#/guide"]{display:none}
+  .g-main .cat-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .g-main .flow-list{grid-template-columns:repeat(auto-fill,minmax(380px,1fr))}
+  .g-main .plist.two{grid-template-columns:1fr 1fr}
+  .g-main .step-nav{position:static}
+  /* Profil : deux colonnes */
+  .prof-cols{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px; align-items:start}
+  .prof-cols > div > .sec-t:first-child{margin-top:0}
 }
 
 /* ═════════ ÉLÉMENTS COMMUNS ═════════ */
@@ -552,6 +604,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .tr-face-btn{border:1px solid var(--brand-200); color:var(--brand); background:var(--brand-50); border-radius:99px; padding:7px 12px; font-size:13.5px; font-weight:600}
 .tr-face-btn.on{background:var(--brand); color:#fff; border-color:var(--brand)}
 .tr-day{align-self:center; font-size:12.5px; color:var(--faint); margin:0}
+.tr-tip b{display:inline!important; font:inherit!important; font-weight:600!important; color:inherit!important; margin:0!important}
 .tr-tip{font-size:14px; background:var(--brand-50); border-radius:12px; padding:10px 12px; color:var(--ink-2)}
 .tf{flex:1; display:grid; grid-template-rows:1fr 1fr; min-height:0}
 .tf-half{display:flex; flex-direction:column; justify-content:space-between; gap:14px; padding:18px 18px calc(16px + env(safe-area-inset-bottom)); min-height:0}
@@ -561,6 +614,15 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .tf-half .tr-btn{justify-content:center; padding:16px}
 .tf-half.them .tr-btn{padding-bottom:16px}
 @media (min-width:900px){ .tf{max-width:760px; width:100%; margin:0 auto} }
+.tr-type{grid-column:1/-1; display:flex; gap:8px; flex-wrap:wrap}
+.tr-type input{flex:1 1 200px; min-width:0; font:inherit; font-size:16px; padding:11px 14px; border:1px solid var(--line-2); border-radius:12px; background:#fff}
+.tr-type input:focus{outline:none; border-color:var(--brand); box-shadow:0 0 0 3px var(--brand-50)}
+.tr-err{color:var(--ko); font-size:16px; font-weight:500}
+.vox-bar{display:block; height:5px; border-radius:99px; background:var(--line); margin-top:8px; overflow:hidden}
+.vox-bar i{display:block; height:100%; background:var(--brand); transition:width .3s}
+.ok-t{color:var(--ok)!important}
+.rule-hit{margin-bottom:16px; break-inside:avoid}
+.rh-t{font-weight:600}
 .tr-na{grid-column:1/-1; text-align:center; color:var(--muted); margin:0}
 @media (max-width:380px){ .tr-btn small{display:none} }
 
@@ -577,6 +639,9 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 #splash{position:fixed; inset:0; z-index:1000; overflow:hidden; color:#fff; cursor:pointer; transition:opacity .5s ease;
   background:linear-gradient(180deg,#3E1929 0%,#682C45 38%,#9A4A6A 62%,#C9848F 72%)}
 #splash.gone{opacity:0; pointer-events:none}
+.sp-skip{position:absolute; right:16px; bottom:calc(18px + env(safe-area-inset-bottom)); z-index:5; color:var(--ink-2); font-size:14px; font-weight:600; padding:10px 14px; border-radius:99px; background:rgba(255,255,255,.7); opacity:0; animation:spFade .6s ease 1s forwards}
+.sp-skip:focus-visible{outline:2px solid #fff; outline-offset:2px}
+#splash.out .sp-skip{display:none}
 .sp-sky{position:absolute; inset:0; background:radial-gradient(60% 40% at 50% 64%,rgba(255,214,190,.55),rgba(255,214,190,0) 70%); opacity:0; animation:spFade 1.6s ease .1s forwards}
 .sp-rays{position:absolute; left:50%; top:39%; width:170vmax; height:170vmax; margin:-85vmax 0 0 -85vmax; opacity:0;
   background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.07) 0deg 4deg,rgba(255,255,255,0) 4deg 14deg);
@@ -687,7 +752,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 <body>
 
 <!-- Animation de démarrage -->
-<div id="splash" aria-hidden="true">
+<div id="splash" role="presentation">
   <div class="sp-sky"></div>
   <div class="sp-rays"></div>
   <div class="sp-bokeh"><i style="left:49%;--s:4px;--d:4.1s;--w:0.7s"></i><i style="left:76%;--s:3px;--d:4.0s;--w:0.7s"></i><i style="left:72%;--s:4px;--d:3.3s;--w:1.5s"></i><i style="left:16%;--s:4px;--d:3.4s;--w:1.4s"></i><i style="left:80%;--s:3px;--d:5.4s;--w:1.9s"></i><i style="left:82%;--s:3px;--d:4.5s;--w:1.4s"></i><i style="left:36%;--s:3px;--d:4.5s;--w:0.9s"></i><i style="left:61%;--s:4px;--d:4.4s;--w:1.7s"></i><i style="left:79%;--s:4px;--d:3.4s;--w:1.7s"></i><i style="left:32%;--s:5px;--d:3.4s;--w:2.0s"></i><i style="left:80%;--s:3px;--d:4.6s;--w:1.6s"></i><i style="left:76%;--s:6px;--d:5.0s;--w:1.5s"></i><i style="left:66%;--s:5px;--d:3.9s;--w:2.2s"></i><i style="left:39%;--s:3px;--d:4.5s;--w:1.7s"></i></div>
@@ -698,6 +763,7 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
     <div class="sp-sub">Deutsch</div>
     <div class="sp-cap">Les Méditerranées · Marseillan-Plage</div>
   </div>
+  <button class="sp-skip" type="button">Passer ›</button>
   <div class="sp-sea"><div class="sp-sea-in">
     <div class="sp-glint"><i></i><i></i><i></i><i></i><i></i></div>
     <svg class="sp-wave w1" viewBox="0 0 1440 110" preserveAspectRatio="none" fill="#F3D9DF"><path d="M0 55 C120 25 240 25 360 55 S600 85 720 55 960 25 1080 55 1320 85 1440 55 V110 H0Z"/></svg>
@@ -742,7 +808,8 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
   <button class="nav-btn" data-nav="comptoir"><svg class="ic"><use href="#u0"/></svg>Comptoir</button>
   <button class="nav-btn" data-nav="guide"><svg class="ic"><use href="#i-book"/></svg>Guide</button>
   <button class="nav-btn" data-nav="profile"><svg class="ic"><use href="#i-user"/></svg>Profil</button>
-  <div class="side-foot"><b>Camping Beach Garden</b>Les Méditerranées · <span class="nw">Marseillan-Plage</span></div>
+  <div class="side-foot"><div class="side-chips" data-chips></div><b>Camping Beach Garden</b>Les Méditerranées · <span class="nw">Marseillan-Plage</span>
+    <div class="kbd-hint" aria-label="Raccourcis clavier"><kbd>/</kbd> rechercher · <kbd>Alt</kbd>+<kbd>T</kbd> traducteur<br><kbd>Alt</kbd>+<kbd>P</kbd> prix, heures, dates · <kbd>Échap</kbd> fermer</div></div>
 </nav>
 
 <!-- Barre du haut (mobile) -->
@@ -757,8 +824,6 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 
 <main id="main"></main>
 
-<!-- Colonne de droite (grand écran) -->
-<aside class="rail" id="rail" aria-label="Ma progression"></aside>
 
 <!-- Navigation du bas (mobile) -->
 <nav class="bnav" aria-label="Navigation principale">
@@ -791,10 +856,10 @@ const P = [
   {c:0,e:"🗺️",fr:"Voici le plan du camping.",de:"Hier ist der Campingplan.",ph:"Hir ist dèr Kamping-plan."},
   {c:0,e:"📍",fr:"Votre emplacement est le numéro…",de:"Ihr Stellplatz hat die Nummer…",ph:"Ir Chtel-platss hat di Noumèr…"},
   {c:0,e:"⏰",fr:"Vous pouvez stationner votre véhicule à partir de 12 h. L'emplacement est garanti au plus tard à 14 h, et le mobil-home au plus tard à 17 h.",de:"Sie können Ihr Fahrzeug ab zwölf Uhr abstellen. Der Stellplatz ist spätestens um vierzehn Uhr fertig, das Mobilheim spätestens um siebzehn Uhr.",ph:"Zi keunène ir Far-tsoïg ap tsvelf Our ap-chtèlène. Dèr Chtel-platss ist chpè-tèstèns oum fir-tsèn Our fèrtich, dass Mobil-haïm chpè-tèstèns oum zip-tsèn Our."},
-  {c:0,e:"🚪",fr:"Le départ se fait entre 7 h et 11 h pour les emplacements, et entre 7 h et 10 h pour les mobil-homes.",de:"Die Abreise erfolgt zwischen sieben und elf Uhr auf dem Stellplatz und zwischen sieben und zehn Uhr im Mobilheim.",ph:"Di Ap-raïzeu èr-folgt tsvichène zibène ount èlf Our aouf dème Chtel-platss ount tsvichène zibène ount tsèn Our im Mobil-haïm."},
-  {c:0,e:"😊",fr:"Nous vous souhaitons un bon séjour !",de:"Wir wünschen Ihnen einen schönen Aufenthalt!",ph:"Vir vunchène irène aïnène cheunène Aouf-ènt-halt!"},
+  {c:0,e:"🚪",fr:"Le départ se fait entre 7 h et 11 h pour les emplacements, et entre 7 h et 10 h pour les mobil-homes.",de:"Für Stellplätze ist die Abreise zwischen sieben und elf Uhr möglich, für Mobilheime zwischen sieben und zehn Uhr.",ph:"Fur Chtel-plètseu ist di Ap-raïzeu tsvichène zibène ount èlf Our meuk-lich, fur Mobil-haïmeu tsvichène zibène ount tsèn Our."},
+  {c:0,e:"😊",fr:"Nous vous souhaitons un bon séjour !",de:"Wir wünschen Ihnen einen schönen Aufenthalt!",ph:"Vir vunchène inène aïnène cheunène Aouf-ènt-halt!"},
   {c:0,e:"🚗",fr:"Avez-vous une voiture ?",de:"Haben Sie ein Auto dabei?",ph:"Habène zi aïn Aouto dabaï?"},
-  {c:0,e:"📧",fr:"Quelle est votre adresse e-mail de confirmation ?",de:"Wie lautet Ihre Bestätigungs-E-Mail-Adresse?",ph:"Vi laoutèt ireu Beu-chtè-tigoungs-I-Mèïl-adrèsseu?"},
+  {c:0,e:"📧",fr:"À quelle adresse e-mail devons-nous envoyer la confirmation ?",de:"An welche E-Mail-Adresse sollen wir die Bestätigung senden?",ph:"An vèlcheu I-Mèïl-adrèsseu zolène vir di Beu-chtè-tigoung zèndène?"},
 
   // ── Hébergements
   {c:1,e:"🏠",fr:"Votre mobil-home a une terrasse.",de:"Ihr Mobilheim hat eine Terrasse.",ph:"Ir Mobil-haïm hat aïneu Tèrasse."},
@@ -804,7 +869,7 @@ const P = [
   {c:1,e:"🔌",fr:"La borne électrique est incluse.",de:"Der Stromanschluss ist inklusive.",ph:"Dèr Chtrom-an-chlouss ist inklouziveu."},
   {c:1,e:"👨‍👩‍👧",fr:"Ce mobil-home est pour quatre personnes.",de:"Dieses Mobilheim ist für vier Personen.",ph:"Dizèss Mobil-haïm ist fur fir Pèrzonène."},
   {c:1,e:"🏖️",fr:"La Maison des Sables est face à la mer.",de:"Das Maison des Sables liegt direkt am Meer.",ph:"Dass Maison des Sables likt dirèkt am Mèr."},
-  {c:1,e:"🛏️",fr:"Les draps et les serviettes sont inclus.",de:"Bettwäsche und Handtücher sind inklusive.",ph:"Bèt-vècheu ount Hant-tuchèr zint inklouziveu."},
+  {c:1,e:"👥",fr:"Sur un emplacement, six personnes maximum sont autorisées, visiteurs compris.",de:"Auf einem Stellplatz sind höchstens sechs Personen erlaubt, Besucher inbegriffen.",ph:"Aouf aïnème Chtel-platss zint heukh-stèns zèkss Pèrzonène èr-laoubt, Beu-zoukhèr in-beu-grifène."},
   {c:1,e:"🐕",fr:"Les chiens sont acceptés : 7 € par jour sur les emplacements, 9 € dans les locations.",de:"Hunde sind erlaubt: sieben Euro pro Tag auf dem Stellplatz, neun Euro in der Mietunterkunft.",ph:"Houndeu zint èr-laoubt: zibène Oï-ro pro Tak aouf dème Chtel-platss, noïn Oï-ro in dèr Mit-ountèr-kounft."},
   {c:1,e:"🏕️",fr:"Nous proposons des emplacements standard, grand confort, en seconde ligne et en première ligne.",de:"Wir haben Standard-Stellplätze, Komfort-Stellplätze sowie Stellplätze in zweiter und in erster Reihe.",ph:"Vir habène Chtandart-Chtel-plètseu, Komfort-Chtel-plètseu zo-vi Chtel-plètseu in tsvaïtèr ount in èrstèr Raïeu."},
   {c:1,e:"📺",fr:"Le mobil-home a une télévision.",de:"Das Mobilheim hat einen Fernseher.",ph:"Dass Mobil-haïm hat aïnène Fèrn-zé-èr."},
@@ -826,11 +891,11 @@ const P = [
   {c:3,e:"🩱",fr:"Le slip de bain est obligatoire ; les shorts de bain sont interdits.",de:"Badehosen sind Pflicht. Badeshorts sind nicht erlaubt.",ph:"Badeu-hozène zint Pflicht. Badeu-chortss zint nicht èr-laoubt."},
   {c:3,e:"🏊‍♂️",fr:"La piscine couverte est chauffée.",de:"Das Hallenbad ist beheizt.",ph:"Dass Halène-bad ist beu-haïtst."},
   {c:3,e:"👶",fr:"La pataugeoire est réservée aux petits.",de:"Das Planschbecken ist für Kleinkinder.",ph:"Dass Planch-bèkène ist fur Klaïn-kindèr."},
-  {c:3,e:"🛁",fr:"Le spa et le jacuzzi se trouvent à la Bulle des Sables.",de:"Das Spa und der Whirlpool befinden sich im Bulle des Sables.",ph:"Dass Chpa ount dèr Vouirl-poul beu-findène zich im Bulle des Sables."},
+  {c:3,e:"🛁",fr:"Le spa et le jacuzzi se trouvent à la Bulle des Sables.",de:"Das Spa und der Whirlpool befinden sich im Wellnessbereich Bulle des Sables.",ph:"Dass Chpa ount dèr Vouirl-poul beu-findène zich im Vèl-nèss-beu-raïch Bulle des Sables."},
   {c:3,e:"🚿",fr:"Les douches sont à côté de la piscine.",de:"Die Duschen befinden sich neben dem Schwimmbad.",ph:"Di Douchène beu-findène zich nèbène dème Chvim-bad."},
 
   // ── Plage & Mer
-  {c:4,e:"🏖️",fr:"L'accès à la plage est direct depuis le camping.",de:"Der Strandzugang ist direkt vom Campinggelände aus.",ph:"Dèr Chtrant-tsougang ist dirèkt fom Kamping-guélèndeu aous."},
+  {c:4,e:"🏖️",fr:"L'accès à la plage est direct depuis le camping.",de:"Vom Campingplatz aus haben Sie direkten Zugang zum Strand.",ph:"Fom Kamping-platss aouss habène zi dirèktène Tsougang tsoum Chtrant."},
   {c:4,e:"👮",fr:"La plage est surveillée de dix heures à dix-huit heures.",de:"Der Strand wird von zehn bis achtzehn Uhr bewacht.",ph:"Dèr Chtrant virt fon tsèn biss akht-tsèn Our beu-vakht."},
   {c:4,e:"🪑",fr:"Les transats sont disponibles en location.",de:"Liegestühle können gegen eine Gebühr gemietet werden.",ph:"Ligeu-chtuleu keunène guéguène aïneu Guébur guémitèt vèrdène."},
   {c:4,e:"⚠️",fr:"Attention, il y a des méduses aujourd'hui.",de:"Vorsicht, heute gibt es Quallen im Meer.",ph:"For-zicht, hoïteu guibt èss Kval-ène im Mèr."},
@@ -895,7 +960,7 @@ const P = [
   {c:9,e:"✋",fr:"Un moment, s'il vous plaît.",de:"Einen Moment bitte.",ph:"Aïnène Momènt biteu."},
   {c:9,e:"🙋",fr:"Avez-vous une question ?",de:"Haben Sie eine Frage?",ph:"Habène zi aïneu Frageu?"},
   {c:9,e:"😊",fr:"Avez-vous d'autres questions ?",de:"Haben Sie noch weitere Fragen?",ph:"Habène zi nokh vaïtèrreu Fragène?"},
-  {c:9,e:"🎉",fr:"Passez d'excellentes vacances !",de:"Ich wünsche Ihnen einen schönen Urlaub!",ph:"Ich vuncheu irène aïnène cheunène Ourlaoup!"},
+  {c:9,e:"🎉",fr:"Passez d'excellentes vacances !",de:"Ich wünsche Ihnen einen schönen Urlaub!",ph:"Ich vuncheu inène aïnène cheunène Ourlaoup!"},
   {c:9,e:"🔁",fr:"Pouvez-vous répéter, s'il vous plaît ?",de:"Könnten Sie das bitte wiederholen?",ph:"Keuntène zi dass biteu vidèr-holène?"},
 
   // ── Ajouts basés sur le site officiel lesmediterranees.com
@@ -905,7 +970,7 @@ const P = [
   {c:1,e:"🏊",fr:"La Villa La Coquille dispose de sa propre piscine.",de:"Die Villa La Coquille hat einen eigenen privaten Pool.",ph:"Di Villa La Coquille hat aïnène aïguènène privatène Poul."},
   {c:1,e:"🛏️",fr:"Les draps et les serviettes sont inclus, sauf dans la gamme Cosy.",de:"Bettwäsche und Handtücher sind inklusive, außer in der Cosy-Kategorie.",ph:"Bèt-vècheu ount Hant-tuchèr zint inklouziveu, aoussèr in dèr Kozi-katégori."},
   {c:2,e:"🏷️",fr:"En réservant tôt, vous bénéficiez de 10 % de réduction.",de:"Bei früher Buchung erhalten Sie zehn Prozent Rabatt.",ph:"Baï fruèr Boukhoung èr-haltène zi tsèn Protsènt Rabat."},
-  {c:3,e:"📏",fr:"La grande piscine du Beach Garden fait trente-trois mètres de long.",de:"Der große Pool im Beach Garden ist dreiunddreißig Meter lang.",ph:"Dèr greusseu Poul im Beach Garden ist draï-ount-draïssich Mètèr lang."},
+  {c:3,e:"📏",fr:"La grande piscine du Beach Garden fait trente-trois mètres de long.",de:"Der große Pool im Beach Garden ist dreiunddreißig Meter lang.",ph:"Dèr grosseu Poul im Beach Garden ist draï-ount-draïssich Mètèr lang."},
   {c:3,e:"🛁",fr:"L'espace balnéo couvert propose une eau calme ou pétillante.",de:"Der überdachte Wellnessbereich bietet ruhiges oder sprudelndes Wasser.",ph:"Dèr ubèr-dakhteu Vèlnèss-béraïch bitèt rouiguèss odèr chproudèlndèss Vassèr."},
   {c:5,e:"🍽️",fr:"Le restaurant Le Bistro a une vue panoramique sur la mer.",de:"Das Restaurant Le Bistro hat einen Panoramablick auf das Meer.",ph:"Dass Rèstoran Le Bistro hat aïnène Panorama-blik aouf dass Mèr."},
   {c:5,e:"🍹",fr:"Au bar, trente minutes de Wi-Fi sont offertes toutes les six heures.",de:"An der Bar sind alle sechs Stunden dreißig Minuten WLAN gratis.",ph:"An dèr Bar zint aleu zèkss Chtoundène draïssich Minoutène Vé-lane gratiss."},
@@ -923,7 +988,7 @@ const P = [
   {c:2,e:"✍️",fr:"Toute modification doit être demandée par écrit au moins 30 jours avant l'arrivée, selon les disponibilités.",de:"Änderungen müssen mindestens dreißig Tage vor der Anreise schriftlich beantragt werden, je nach Verfügbarkeit.",ph:"Èndèroungène mussène mindèstèns draïssich Tageu for dèr An-raïzeu chrift-lich beu-an-trakt vèrdène, yé nakh Fèr-fug-bar-kaït."},
   {c:2,e:"🏛️",fr:"La taxe de séjour est fixée par la commune.",de:"Die Kurtaxe wird von der Gemeinde festgelegt.",ph:"Di Kour-takseu virt fon dèr Guémaïndeu fèst-guélègt."},
   {c:1,e:"🐶",fr:"Un seul chien est accepté, ou deux petits chiens de moins de 10 kg.",de:"Erlaubt ist ein Hund oder zwei kleine Hunde unter zehn Kilo.",ph:"Èr-laoubt ist aïn Hount odèr tsvaï klaïneu Houndeu ountèr tsèn Kilo."},
-  {c:1,e:"⛔",fr:"Les chiens de catégorie 1 et 2 sont interdits dans le camping.",de:"Hunde der Kategorien eins und zwei, sogenannte Listenhunde, sind auf dem Campingplatz verboten.",ph:"Houndeu dèr Katégori-ène aïnss ount tsvaï, zo-guénantène Listène-houndeu, zint aouf dème Kamping-platss fèr-botène."},
+  {c:1,e:"⛔",fr:"Les chiens de catégorie 1 et 2 sont interdits dans le camping.",de:"Hunde der französischen Kategorien eins und zwei sind auf dem Campingplatz verboten.",ph:"Houndeu dèr frann-tseu-zichène Katégori-ène aïnss ount tsvaï zint aouf dème Kamping-platss fèr-botène."},
   {c:1,e:"💉",fr:"Les chiens doivent être tenus en laisse et vaccinés. Merci de nous présenter le carnet de vaccination.",de:"Hunde müssen an der Leine geführt werden und geimpft sein. Bitte zeigen Sie uns den Impfpass.",ph:"Houndeu mussène an dèr Laïneu guéfurt vèrdène ount gué-impft zaïn. Biteu tsaïguène zi ouns dène Impf-pass."},
   {c:3,e:"👙",fr:"Pour les femmes, maillot une pièce ou bikini ; pour les hommes, slip de bain.",de:"Für Damen ist ein Badeanzug oder ein Bikini erlaubt, für Herren eine Badehose.",ph:"Fur Damène ist aïn Badeu-an-tsouk odèr aïn Bikini èr-laoubt, fur Hèrène aïneu Badeu-hozeu."},
   {c:3,e:"🐾",fr:"Les animaux sont interdits dans l'espace piscine.",de:"Tiere sind im Poolbereich verboten.",ph:"Tireu zint im Poul-beu-raïch fèr-botène."},
@@ -935,13 +1000,13 @@ const P = [
 
   // ── Cautions (consignes de la réception)
   {c:1,e:"🔐",fr:"Pour le mobil-home, la caution est de 300 €, en espèces ou par carte uniquement.",de:"Für das Mobilheim beträgt die Kaution dreihundert Euro, nur bar oder mit Karte.",ph:"Fur dass Mobil-haïm beu-trègt di Kaou-tsion draï-houndèrt Oï-ro, nour bar odèr mit Karteu."},
-  {c:1,e:"🔌",fr:"Sur les emplacements, nous prêtons des adaptateurs électriques et des raccordements d'eau contre une caution de 20 €.",de:"Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro.",ph:"Fur di Chtel-plètseu fèr-laïène vir Adaptèr fur dène Chtrom- ount Vassèr-an-chlouss guéguène aïneu Kaou-tsion fon tsvan-tsich Oï-ro."},
+  {c:1,e:"🔌",fr:"Sur les emplacements, nous prêtons des adaptateurs électriques et des raccordements d'eau contre une caution de 20 €, en espèces ou par carte.",de:"Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro, bar oder mit Karte.",ph:"Fur di Chtel-plètseu fèr-laïène vir Adaptèr fur dène Chtrom- ount Vassèr-an-chlouss guéguène aïneu Kaou-tsion fon tsvan-tsich Oï-ro, bar odèr mit Karteu."},
   {c:1,e:"🔌",fr:"Avez-vous besoin d'un adaptateur électrique ou d'un raccordement d'eau ?",de:"Brauchen Sie einen Adapter für den Strom- oder Wasseranschluss?",ph:"Braoukhène zi aïnène Adaptèr fur dène Chtrom- odèr Vassèr-an-chlouss?"},
 
   // ════════ COMPRENDRE LES CLIENTS (c:13) — questions fréquentes ════════
   {c:13,e:"🚻",fr:"Où sont les toilettes ?",de:"Wo sind die Toiletten?",ph:"Vo zint di Toalètène?"},
   {c:13,e:"🏊",fr:"À quelle heure ouvre la piscine ?",de:"Wann öffnet das Schwimmbad?",ph:"Vann eufnèt dass Chvim-bad?"},
-  {c:13,e:"🥖",fr:"Où pouvons-nous acheter du pain ?",de:"Wo können wir Brötchen kaufen?",ph:"Vo keunène vir Breut-chène kaoufène?"},
+  {c:13,e:"🥖",fr:"Où pouvons-nous acheter des petits pains ?",de:"Wo können wir Brötchen kaufen?",ph:"Vo keunène vir Breut-chène kaoufène?"},
   {c:13,e:"📶",fr:"Y a-t-il du Wi-Fi ici ?",de:"Gibt es hier WLAN?",ph:"Guibt èss hir Vé-lane?"},
   {c:13,e:"🔑",fr:"Quel est le mot de passe du Wi-Fi ?",de:"Wie lautet das WLAN-Passwort?",ph:"Vi laoutèt dass Vé-lane-Pass-vort?"},
   {c:13,e:"🏖️",fr:"Où est la plage ?",de:"Wo ist der Strand?",ph:"Vo ist dèr Chtrant?"},
@@ -1023,6 +1088,7 @@ const P = [
   {c:12,e:"➡️",fr:"Demain",de:"morgen",ph:"morgène"},
   {c:12,e:"⬅️",fr:"Hier",de:"gestern",ph:"guèstèrn"},
   {c:12,e:"⏱️",fr:"Maintenant",de:"jetzt",ph:"yètst"},
+  {c:6,e:"🏠",fr:"Dans un mobil-home, le nombre de personnes, visiteurs compris, ne peut pas dépasser sa capacité.",de:"Im Mobilheim dürfen sich, Besucher inbegriffen, nicht mehr Personen aufhalten, als die Unterkunft Plätze hat.",ph:"Im Mobil-haïm durfène zich, Beu-zoukhèr in-beu-grifène, nicht mèr Pèrzonène aouf-haltène, alss di Ountèr-kounft Plètseu hat."},
 ];
 
 /* Catégories — index numérique, pas de string avec & */
@@ -1058,7 +1124,7 @@ const FLOWS = [
     em:"🚐",
     name:"Client de passage (sans réservation)",
     desc:"Camping-car ou caravane arrivant sans réservation",
-    intro:"Déroulé complet de l'accueil d'un client en passage, de son arrivée jusqu'à la remise des bracelets.",
+    intro:"Déroulé complet de l'accueil d'un client de passage, de son arrivée jusqu'à la remise des bracelets.",
     steps:[
       {
         title:"1 · Le client arrive",
@@ -1106,10 +1172,10 @@ const FLOWS = [
         blocks:[
           {t:"say", label:"Les 3 campings", fr:"Nous sommes ici à la réception du Beach Garden. Juste à côté se trouve le Nouvelle Floride et, en face, le Charlemagne. Avec vos bracelets, vous avez accès aux trois campings !", de:"Wir sind hier an der Rezeption des Beach Garden. Direkt daneben liegt der Nouvelle Floride und gegenüber der Charlemagne. Mit Ihren Armbändern haben Sie Zugang zu allen drei Campingplätzen!", ph:"Vir zint hir an dèr Rétsèptsion dèss Beach Garden. Dirèkt da-nèbène likt dèr Nouvelle Floride ount guéguèn-ubèr dèr Charlemagne. Mit irène Arm-bèndèrn habène zi Tsougang tsou alène draï Kamping-plètsène!"},
           {t:"say", label:"Code de la plage", fr:"Ici, une porte ferme l'accès à la plage. Tapez ce code pour l'ouvrir. Elle fonctionne de 7 h à 22 h.", de:"Hier sperrt eine Tür den Zugang zum Strand. Sie geben diesen Code ein, um sie zu öffnen. Sie funktioniert von sieben bis zweiundzwanzig Uhr.", ph:"Hir chpèrt aïneu Tur dène Tsougang tsoum Chtrant. Zi guébène dizène Kode aïn, oum zi tsou eufnène. Zi founk-tsionirt fon zibène biss tsvaï-ount-tsvan-tsich Our."},
-          {t:"say", label:"Application Tipiz", fr:"Je vous conseille de télécharger l'application Tipiz et d'y saisir ce mot de passe. Vous y trouverez le programme des animations, les horaires d'ouverture, les menus, la météo, etc.", de:"Ich empfehle Ihnen, die App Tipiz herunterzuladen. Sie geben dieses Passwort ein. Darin finden Sie das Animationsprogramm, die Öffnungszeiten, die Menüs, das Wetter und mehr.", ph:"Ich èmp-fèleu irène, di App Tipiz hèr-ountèr-tsou-ladène. Zi guébène dizèss Pass-vort aïn. Da-rin findène zi dass Animatsions-programm, di Eufnoungs-tsaïtène, di Ménus, dass Vètèr ount mèr."},
+          {t:"say", label:"Application Tipiz", fr:"Je vous conseille de télécharger l'application Tipiz et d'y saisir ce mot de passe. Vous y trouverez le programme des animations, les horaires d'ouverture, les menus, la météo, etc.", de:"Ich empfehle Ihnen, die App Tipiz herunterzuladen. Sie geben dieses Passwort ein. Darin finden Sie das Animationsprogramm, die Öffnungszeiten, die Menüs, das Wetter und mehr.", ph:"Ich èmp-fèleu inène, di App Tipiz hèr-ountèr-tsou-ladène. Zi guébène dizèss Pass-vort aïn. Da-rin findène zi dass Animatsions-programm, di Eufnoungs-tsaïtène, di Ménus, dass Vètèr ount mèr."},
           {t:"say", label:"Bracelets", fr:"Voici vos bracelets : ceux-ci pour les adultes, et ceux-là pour les mineurs.", de:"Hier sind Ihre Armbänder: diese für die Erwachsenen, und diese für die Minderjährigen.", ph:"Hir zint ireu Arm-bèndèr: dizeu fur di Èr-vakhzènène, ount dizeu fur di Mindèr-yèrigène."},
-          {t:"say", label:"Adaptateurs et raccordement d'eau", fr:"Sur les emplacements, nous prêtons des adaptateurs électriques et des raccordements d'eau contre une caution de 20 €.", de:"Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro.", ph:"Fur di Chtel-plètseu fèr-laïène vir Adaptèr fur dène Chtrom- ount Vassèr-an-chlouss guéguène aïneu Kaou-tsion fon tsvan-tsich Oï-ro."},
-          {t:"say", label:"Horaire de départ", fr:"Le départ se fait entre 7 h et 11 h pour les emplacements, et entre 7 h et 10 h pour les mobil-homes.", de:"Die Abreise erfolgt zwischen sieben und elf Uhr auf dem Stellplatz und zwischen sieben und zehn Uhr im Mobilheim.", ph:"Di Ap-raïzeu èr-folgt tsvichène zibène ount èlf Our aouf dème Chtel-platss ount tsvichène zibène ount tsèn Our im Mobil-haïm."},
+          {t:"say", label:"Adaptateurs et raccordement d'eau", fr:"Sur les emplacements, nous prêtons des adaptateurs électriques et des raccordements d'eau contre une caution de 20 €, en espèces ou par carte.", de:"Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro, bar oder mit Karte.", ph:"Fur di Chtel-plètseu fèr-laïène vir Adaptèr fur dène Chtrom- ount Vassèr-an-chlouss guéguène aïneu Kaou-tsion fon tsvan-tsich Oï-ro, bar odèr mit Karteu."},
+          {t:"say", label:"Horaire de départ", fr:"Le départ se fait entre 7 h et 11 h pour les emplacements, et entre 7 h et 10 h pour les mobil-homes.", de:"Für Stellplätze ist die Abreise zwischen sieben und elf Uhr möglich, für Mobilheime zwischen sieben und zehn Uhr.", ph:"Fur Chtel-plètseu ist di Ap-raïzeu tsvichène zibène ount èlf Our meuk-lich, fur Mobil-haïmeu tsvichène zibène ount tsèn Our."},
           {t:"say", label:"Vignette", fr:"Et cette vignette est à placer sur le tableau de bord de votre véhicule.", de:"Und diese Vignette legen Sie bitte auf das Armaturenbrett Ihres Fahrzeugs.", ph:"Ount dizeu Vinyèteu lègène zi biteu aouf dass Armaturène-brèt irèss Far-tsoïgss."},
         ]
       },
@@ -1117,7 +1183,7 @@ const FLOWS = [
         title:"6 · Questions",
         blocks:[
           {t:"say", label:"Tu conclus", fr:"Avez-vous des questions ?", de:"Haben Sie noch Fragen?", ph:"Habène zi nokh Fragène?"},
-          {t:"say", label:"Pour finir", fr:"Parfait ! Je vous souhaite un excellent séjour parmi nous.", de:"Perfekt! Ich wünsche Ihnen einen schönen Aufenthalt bei uns.", ph:"Pèr-fèkt! Ich vuncheu irène aïnène cheunène Aouf-ènt-halt baï ounss."},
+          {t:"say", label:"Pour finir", fr:"Parfait ! Je vous souhaite un excellent séjour parmi nous.", de:"Perfekt! Ich wünsche Ihnen einen schönen Aufenthalt bei uns.", ph:"Pèr-fèkt! Ich vuncheu inène aïnène cheunène Aouf-ènt-halt baï ounss."},
         ]
       },
     ]
@@ -1144,7 +1210,7 @@ const FLOWS = [
         title:"2 · État des lieux et restitution",
         blocks:[
           {t:"say", label:"Le ménage", fr:"Avez-vous fait le ménage de fin de séjour, ou souhaitez-vous que nous nous en occupions ?", de:"Haben Sie die Endreinigung gemacht, oder sollen wir das übernehmen?", ph:"Habène zi di Ènt-raïnigoung guémakht, odèr zolène vir dass ubèr-nèmène?"},
-          {t:"memo", label:"💡 Action", html:"Vérifie l'<b>état du mobil-home</b> (propreté, casse) avant de rendre la caution."},
+          {t:"memo", label:"💡 Action", html:"Vérifie le <b>compte rendu de l'état des lieux</b> (propreté, casse) avant de rendre la caution."},
           {t:"say", label:"Bracelets et clé", fr:"Pouvez-vous me rendre les bracelets et la clé, s'il vous plaît ?", de:"Können Sie mir bitte die Armbänder und den Schlüssel zurückgeben?", ph:"Keunène zi mir biteu di Arm-bèndèr ount dène Chlussèl tsou-ruk-guébène?"},
         ]
       },
@@ -1228,8 +1294,8 @@ const FLOWS = [
       {
         title:"2 · Tu organises la réparation",
         blocks:[
-          {t:"say", label:"Tu envoies un technicien", fr:"J'envoie un technicien dès que possible.", de:"Ich schicke Ihnen so schnell wie möglich einen Techniker vorbei.", ph:"Ich chikeu irène zo chnèl vi meuglich aïnène Tèchnikèr forbaï."},
-          {t:"say", label:"Le délai", fr:"Il passera dans l'heure.", de:"Er kommt innerhalb einer Stunde vorbei.", ph:"Èr komt inèr-halp aïnèr Chtoundeu forbaï."},
+          {t:"say", label:"Tu envoies un technicien", fr:"J'envoie un technicien dès que possible.", de:"Ich schicke Ihnen so schnell wie möglich einen Techniker vorbei.", ph:"Ich chikeu inène zo chnèl vi meuglich aïnène Tèchnikèr forbaï."},
+          {t:"say", label:"Le délai", fr:"Il passera dès que possible.", de:"Er kommt so schnell wie möglich vorbei.", ph:"Èr komt zo chnèl vi meuk-lich forbaï."},
           {t:"memo", label:"💡 Obligatoire", html:"Demande <b>toujours</b> au client l'<b>autorisation</b> de laisser le technicien entrer, <b>même s'il n'est pas là</b>."},
           {t:"say", label:"L'autorisation", fr:"Autorisez-vous notre technicien à entrer dans le mobil-home, même en votre absence ?", de:"Erlauben Sie unserem Techniker, das Mobilheim zu betreten, auch wenn Sie nicht da sind?", ph:"Èr-laoubène zi ounzèrème Tèchnikèr, dass Mobil-haïm tsou beu-trètène, aoukh vèn zi nicht da zint?"},
           {t:"hear", label:"Le client peut dire", items:[
@@ -1269,7 +1335,7 @@ const FLOWS = [
       {
         title:"2 · Tu demandes les détails",
         blocks:[
-          {t:"say", label:"Les dates", fr:"Pour quelles dates souhaitez-vous réserver ?", de:"Für welche Daten möchten Sie reservieren?", ph:"Fuir vèlcheu Datène meuchtène zi rézèrvirène?"},
+          {t:"say", label:"Les dates", fr:"Pour quelles dates souhaitez-vous réserver ?", de:"Für welchen Zeitraum möchten Sie reservieren?", ph:"Fur vèlchène Tsaït-raoum meuchtène zi rézèrvirène?"},
           {t:"say", label:"Les personnes", fr:"Combien de personnes êtes-vous ?", de:"Wie viele Personen sind Sie?", ph:"Vi fileu Pèrzonène zint zi?"},
           {t:"say", label:"Type d'hébergement", fr:"Préférez-vous un emplacement ou un mobil-home ?", de:"Möchten Sie lieber einen Stellplatz oder ein Mobilheim?", ph:"Meuchtène zi libèr aïnène Chtel-platss odèr aïn Mobil-haïm?"},
         ]
@@ -1278,7 +1344,7 @@ const FLOWS = [
         title:"3 · Tu confirmes",
         blocks:[
           {t:"say", label:"Tarif et acompte", fr:"Le tarif est de … euros par nuit. Nous demandons un acompte de 30 %.", de:"Der Preis beträgt … Euro pro Nacht. Wir benötigen eine Anzahlung von dreißig Prozent.", ph:"Dèr Praïss beu-trègt … Oï-ro pro Nakht. Vir beu-neutigène aïneu An-tsa-loung fon draïssich Protsènt."},
-          {t:"say", label:"Confirmation par e-mail", fr:"Je vous envoie la confirmation par e-mail. Quelle est votre adresse e-mail ?", de:"Ich sende Ihnen die Bestätigung per E-Mail. Wie lautet Ihre E-Mail-Adresse?", ph:"Ich zèndeu irène di Beu-chtètigoung pèr I-Mèïl. Vi laoutèt ireu I-Mèïl-adrèsseu?"},
+          {t:"say", label:"Confirmation par e-mail", fr:"Je vous envoie la confirmation par e-mail. Quelle est votre adresse e-mail ?", de:"Ich sende Ihnen die Bestätigung per E-Mail. Wie lautet Ihre E-Mail-Adresse?", ph:"Ich zèndeu inène di Beu-chtètigoung pèr I-Mèïl. Vi laoutèt ireu I-Mèïl-adrèsseu?"},
           {t:"say", label:"Pour finir", fr:"Merci de votre appel et à bientôt au Beach Garden !", de:"Vielen Dank für Ihren Anruf und bis bald im Beach Garden!", ph:"Filène-Dank fur irène An-rouf ount biss balt im Beach Garden!"},
         ]
       },
@@ -1289,7 +1355,7 @@ const FLOWS = [
     em:"🏕️",
     name:"Arrivée avec réservation",
     desc:"Un client qui a réservé se présente à l'accueil",
-    intro:"Enregistrer un client déjà réservé : identité, formalités, remise des bracelets et rappel des règles essentielles.",
+    intro:"Enregistrer un client ayant déjà réservé : identité, formalités, remise des bracelets et rappel des règles essentielles.",
     steps:[
       {
         title:"1 · Le client se présente",
@@ -1314,7 +1380,7 @@ const FLOWS = [
           {t:"memo", label:"💡 Cautions", html:"<b>Mobil-home</b> : caution de <b>300 €</b>, en espèces ou par carte uniquement. <b>Emplacement</b> : adaptateur électrique ou raccordement d'eau contre <b>20 €</b> de caution."},
           {t:"say", label:"Caution mobil-home", fr:"Pour le mobil-home, la caution est de 300 €, en espèces ou par carte uniquement.", de:"Für das Mobilheim beträgt die Kaution dreihundert Euro, nur bar oder mit Karte.", ph:"Fur dass Mobil-haïm beu-trègt di Kaou-tsion draï-houndèrt Oï-ro, nour bar odèr mit Karteu."},
           {t:"say", label:"Adaptateurs (emplacement)", fr:"Avez-vous besoin d'un adaptateur électrique ou d'un raccordement d'eau ?", de:"Brauchen Sie einen Adapter für den Strom- oder Wasseranschluss?", ph:"Braoukhène zi aïnène Adaptèr fur dène Chtrom- odèr Vassèr-an-chlouss?"},
-          {t:"say", label:"Caution adaptateurs", fr:"Sur les emplacements, nous prêtons des adaptateurs électriques et des raccordements d'eau contre une caution de 20 €.", de:"Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro.", ph:"Fur di Chtel-plètseu fèr-laïène vir Adaptèr fur dène Chtrom- ount Vassèr-an-chlouss guéguène aïneu Kaou-tsion fon tsvan-tsich Oï-ro."},
+          {t:"say", label:"Caution adaptateurs", fr:"Sur les emplacements, nous prêtons des adaptateurs électriques et des raccordements d'eau contre une caution de 20 €, en espèces ou par carte.", de:"Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro, bar oder mit Karte.", ph:"Fur di Chtel-plètseu fèr-laïène vir Adaptèr fur dène Chtrom- ount Vassèr-an-chlouss guéguène aïneu Kaou-tsion fon tsvan-tsich Oï-ro, bar odèr mit Karteu."},
         ]
       },
       {
@@ -1337,10 +1403,10 @@ const FLOWS = [
       {
         title:"5 · Le départ et bon séjour",
         blocks:[
-          {t:"say", label:"Départ", fr:"Le départ se fait entre 7 h et 11 h pour les emplacements, et entre 7 h et 10 h pour les mobil-homes.", de:"Die Abreise erfolgt zwischen sieben und elf Uhr auf dem Stellplatz und zwischen sieben und zehn Uhr im Mobilheim.", ph:"Di Ap-raïzeu èr-folgt tsvichène zibène ount èlf Our aouf dème Chtel-platss ount tsvichène zibène ount tsèn Our im Mobil-haïm."},
+          {t:"say", label:"Départ", fr:"Le départ se fait entre 7 h et 11 h pour les emplacements, et entre 7 h et 10 h pour les mobil-homes.", de:"Für Stellplätze ist die Abreise zwischen sieben und elf Uhr möglich, für Mobilheime zwischen sieben und zehn Uhr.", ph:"Fur Chtel-plètseu ist di Ap-raïzeu tsvichène zibène ount èlf Our meuk-lich, fur Mobil-haïmeu tsvichène zibène ount tsèn Our."},
           {t:"say", label:"Retard en mobil-home", fr:"En location, le départ se fait entre 7 h et 10 h. Après 10 h, une nuit supplémentaire peut être facturée.", de:"In der Mietunterkunft erfolgt die Abreise zwischen sieben und zehn Uhr. Nach zehn Uhr kann eine zusätzliche Nacht berechnet werden.", ph:"In dèr Mit-ountèr-kounft èr-folgt di Ap-raïzeu tsvichène zibène ount tsèn Our. Nakh tsèn Our kan aïneu tsou-sèts-licheu Nakht beu-rèchnèt vèrdène."},
           {t:"say", label:"Caution", fr:"La caution vous est restituée si le logement est propre et l'inventaire complet.", de:"Sie erhalten die Kaution zurück, wenn die Unterkunft sauber und das Inventar vollständig ist.", ph:"Zi èr-haltène di Kaou-tsion tsou-ruk, vèn di Ountèr-kounft zaoubèr ount dass Invèntar fol-chtèndich ist."},
-          {t:"say", label:"Pour finir", fr:"Nous vous souhaitons un bon séjour !", de:"Wir wünschen Ihnen einen schönen Aufenthalt!", ph:"Vir vunchène irène aïnène cheunène Aouf-ènt-halt!"},
+          {t:"say", label:"Pour finir", fr:"Nous vous souhaitons un bon séjour !", de:"Wir wünschen Ihnen einen schönen Aufenthalt!", ph:"Vir vunchène inène aïnène cheunène Aouf-ènt-halt!"},
         ]
       },
     ]
@@ -1370,13 +1436,14 @@ const FLOWS = [
           {t:"say", label:"La règle", fr:"Tout visiteur doit se présenter à la réception ; une redevance s'applique au-delà de deux heures.", de:"Jeder Besucher muss sich an der Rezeption melden; nach zwei Stunden wird eine Gebühr fällig.", ph:"Yédèr Beu-zoukhèr mouss zich an dèr Rétsèptsion mèldène; nakh tsvaï Chtoundène virt aïneu Guébur fèlich."},
           {t:"say", label:"Le tarif", fr:"Pour un visiteur, l'accès aux piscines et aux animations coûte 10 € par personne et par jour.", de:"Für Besucher kostet der Zugang zu den Pools und zum Animationsprogramm zehn Euro pro Person und Tag.", ph:"Fur Beu-zoukhèr kostèt dèr Tsougang tsou dène Poulss ount tsoum Animatsions-programm tsèn Oï-ro pro Pèrzone ount Tak."},
           {t:"say", label:"L'horaire", fr:"Les visiteurs doivent quitter le camping au plus tard à 23 h.", de:"Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen.", ph:"Beu-zoukhèr mussène dène Kamping-platss chpè-tèstèns oum draï-ount-tsvan-tsich Our fèr-lassène."},
+          {t:"say", label:"La capacité", fr:"Sur un emplacement, six personnes maximum sont autorisées, visiteurs compris.", de:"Auf einem Stellplatz sind höchstens sechs Personen erlaubt, Besucher inbegriffen.", ph:"Aouf aïnème Chtel-platss zint heukh-stèns zèkss Pèrzonène èr-laoubt, Beu-zoukhèr in-beu-grifène."},
         ]
       },
       {
         title:"3 · L'encaissement",
         blocks:[
           {t:"say", label:"Paiement", fr:"Vous payez par carte ou en espèces ?", de:"Zahlen Sie mit Karte oder bar?", ph:"Tsalène zi mit Karteu odèr bar?"},
-          {t:"say", label:"Pour finir", fr:"Je vous souhaite une excellente journée !", de:"Ich wünsche Ihnen einen schönen Tag!", ph:"Ich vuncheu irène aïnène cheunène Tak!"},
+          {t:"say", label:"Pour finir", fr:"Je vous souhaite une excellente journée !", de:"Ich wünsche Ihnen einen schönen Tag!", ph:"Ich vuncheu inène aïnène cheunène Tak!"},
         ]
       },
     ]
@@ -1409,7 +1476,7 @@ const FLOWS = [
       {
         title:"3 · Le suivi",
         blocks:[
-          {t:"say", label:"Le délai", fr:"Ce sera fait dans l'heure. Revenez me voir si quelque chose ne va pas.", de:"Das wird innerhalb einer Stunde erledigt. Kommen Sie gerne wieder, wenn etwas nicht in Ordnung ist.", ph:"Dass virt inèr-halp aïnèr Chtoundeu èr-lèdikt. Komène zi gèrneu vidèr, vèn ètvass nicht in Ordnoung ist."},
+          {t:"say", label:"Le délai", fr:"Ce sera fait dès que possible. Revenez me voir si quelque chose ne va pas.", de:"Das wird so schnell wie möglich erledigt. Kommen Sie gerne wieder, wenn etwas nicht in Ordnung ist.", ph:"Dass virt zo chnèl vi meuk-lich èr-lèdikt. Komène zi gèrneu vidèr, vèn ètvass nicht in Ordnoung ist."},
           {t:"say", label:"Tu t'excuses", fr:"Veuillez nous excuser pour la gêne occasionnée.", de:"Entschuldigen Sie bitte die Unannehmlichkeiten.", ph:"Ènt-chouldigène zi biteu di Oun-an-nèm-lich-kaïtène."},
         ]
       },
@@ -1472,13 +1539,13 @@ const FLOWS = [
         blocks:[
           {t:"memo", label:"💡 Action", html:"Vérifie les <b>disponibilités du spa</b> avant de confirmer le créneau."},
           {t:"say", label:"Tu demandes", fr:"Pour quel jour et à quelle heure ?", de:"Für welchen Tag und um wie viel Uhr?", ph:"Fur vèlchène Tak ount oum vi fil Our?"},
-          {t:"say", label:"Tu confirmes", fr:"Je vous réserve un créneau à … heures.", de:"Ich reserviere Ihnen einen Termin um … Uhr.", ph:"Ich rézèr-vireu irène aïnène Tèrmine oum … Our."},
+          {t:"say", label:"Tu confirmes", fr:"Je vous réserve un créneau à … heures.", de:"Ich reserviere Ihnen einen Termin um … Uhr.", ph:"Ich rézèr-vireu inène aïnène Tèrmine oum … Our."},
         ]
       },
       {
         title:"3 · Les infos pratiques",
         blocks:[
-          {t:"say", label:"Le lieu", fr:"Le spa et le jacuzzi se trouvent à la Bulle des Sables.", de:"Das Spa und der Whirlpool befinden sich im Bulle des Sables.", ph:"Dass Chpa ount dèr Vouirl-poul beu-findène zich im Bulle des Sables."},
+          {t:"say", label:"Le lieu", fr:"Le spa et le jacuzzi se trouvent à la Bulle des Sables.", de:"Das Spa und der Whirlpool befinden sich im Wellnessbereich Bulle des Sables.", ph:"Dass Chpa ount dèr Vouirl-poul beu-findène zich im Vèl-nèss-beu-raïch Bulle des Sables."},
           {t:"say", label:"Paiement", fr:"Vous payez par carte ou en espèces ?", de:"Zahlen Sie mit Karte oder bar?", ph:"Tsalène zi mit Karteu odèr bar?"},
         ]
       },
@@ -1513,7 +1580,7 @@ const FLOWS = [
         title:"3 · Pour finir",
         blocks:[
           {t:"say", label:"La vue", fr:"Le restaurant Le Bistro a une vue panoramique sur la mer.", de:"Das Restaurant Le Bistro hat einen Panoramablick auf das Meer.", ph:"Dass Rèstoran Le Bistro hat aïnène Panorama-blik aouf dass Mèr."},
-          {t:"say", label:"Pour finir", fr:"Je vous souhaite une excellente soirée !", de:"Ich wünsche Ihnen einen schönen Abend!", ph:"Ich vuncheu irène aïnène cheunène Abènt!"},
+          {t:"say", label:"Pour finir", fr:"Je vous souhaite une excellente soirée !", de:"Ich wünsche Ihnen einen schönen Abend!", ph:"Ich vuncheu inène aïnène cheunène Abènt!"},
         ]
       },
     ]
@@ -1548,8 +1615,8 @@ const RULES = [
     'Véhicule sur le camping dès <b>12 h</b>.',
     'Emplacement garanti <b>au plus tard à 14 h</b> ; mobil-home garanti <b>au plus tard à 17 h</b>.',
     'Arrivée possible jusqu\'à <b>23 h</b> au plus tard.',
-    'Départ des emplacements : <b>entre 7 h et 11 h</b> grand maximum.',
-    'Départ des mobil-homes : <b>entre 7 h et 10 h</b> grand maximum. Au-delà, une nuit supplémentaire peut être facturée.',
+    'Départ des emplacements : <b>entre 7 h et 11 h</b>.',
+    'Départ des mobil-homes : <b>entre 7 h et 10 h</b>. Au-delà, une nuit supplémentaire peut être facturée.',
   ]],
   ['🔐','Cautions',[
     'Mobil-home : caution de <b>300 €</b>, en espèces ou par carte <b>uniquement</b>.',
@@ -1567,6 +1634,9 @@ const RULES = [
     '<b>Inclus</b> dans tous les mobil-homes, sauf dans la gamme <b>Cosy</b>.',
     '<b>Payant</b> sur tous les emplacements : standard, grand confort, seconde ligne et première ligne.',
     '<b>30 minutes offertes</b> au bar toutes les 6 heures.',
+  ]],
+  ['🛏️','Linge de maison',[
+    'Draps et serviettes <b>inclus</b> dans tous les mobil-homes, sauf dans la gamme <b>Cosy</b>.',
   ]],
   ['🐶','Animaux',[
     'Un chien, ou <b>deux petits chiens</b> de moins de 10 kg.',
@@ -1591,6 +1661,8 @@ const RULES = [
     'Passage obligatoire à la <b>réception</b> ; une redevance s\'applique au-delà de <b>2 heures</b>.',
     'Accès aux piscines et aux animations : <b>10 € par personne et par jour</b>.',
     'Départ du camping au plus tard à <b>23 h</b>.',
+    'Emplacement : <b>6 personnes maximum</b>, visiteurs compris.',
+    'Mobil-home : nombre de personnes, visiteurs compris, limité à la <b>capacité du logement</b>.',
   ]],
 ];
 const UEM = {13:'👂',0:'🛎️',9:'🤝',10:'🔢',2:'📅',1:'🏠',11:'🗓️',5:'🍽️',3:'🏊',4:'🏖️',12:'🕐',6:'📋',7:'🆘',8:'🗺️'};
@@ -1736,6 +1808,21 @@ function byKey(key){
 ══════════════════════════════════════ */
 let toastT;
 function toast(msg){ const t=$('#toast'); t.textContent=msg.replace(/ ([!?;])/g,'\u202F$1').replace(/ :/g,'\u00A0:'); t.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('on'),2600); }
+/* Fenêtres : focus gardé à l'intérieur, Échap pour fermer, retour au bouton d'origine */
+function dialogA11y(box, close){
+  const prev=document.activeElement;
+  const items=()=>[...box.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')].filter(x=>!x.disabled && x.offsetParent!==null);
+  box._close=close;
+  if(!box._a11y) box._a11y=1, box.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){ e.preventDefault(); e.stopPropagation(); box._close(); return; }
+    if(e.key!=='Tab') return; const l=items(); if(!l.length) return;
+    const a=l[0], z=l[l.length-1];
+    if(e.shiftKey && document.activeElement===a){ e.preventDefault(); z.focus(); }
+    else if(!e.shiftKey && document.activeElement===z){ e.preventDefault(); a.focus(); }
+  });
+  return ()=>{ try{ if(prev && document.contains(prev)) prev.focus({preventScroll:true}); }catch(e){} };
+}
+const setInert = on => ['main','.bnav','.side','.topbar'].forEach(q=>{ const e=document.querySelector(q); if(e) e.inert=on; });
 function modal({title, text, ok, okCls='', cancel}){
   return new Promise(res=>{
     const m=document.createElement('div'); m.className='modal';
@@ -1743,8 +1830,10 @@ function modal({title, text, ok, okCls='', cancel}){
       <h3>${tfr(title)}</h3><p>${tfr(text)}</p>
       <button class="btn block ${okCls}" data-r="1">${ok}</button>
       ${cancel?`<button class="btn sec block" data-r="0">${cancel}</button>`:''}</div>`;
-    m.addEventListener('click',e=>{ const b=e.target.closest('[data-r]'); if(b||e.target===m){ m.remove(); res(b?b.dataset.r==='1':false); } });
-    document.body.appendChild(m); m.querySelector('[data-r]').focus();
+    let restore=()=>{};
+    const done=v=>{ m.remove(); restore(); res(v); };
+    m.addEventListener('click',e=>{ const b=e.target.closest('[data-r]'); if(b||e.target===m) done(b?b.dataset.r==='1':false); });
+    document.body.appendChild(m); restore=dialogA11y(m, ()=>done(false)); m.querySelector('[data-r]').focus();
   });
 }
 function confetti(){
@@ -1771,25 +1860,15 @@ function goalHTML(){
     <div class="goal-txt"><b>${p>=100?'Objectif atteint !':'Encore '+(g-x)+' XP'}</b><small>${Math.min(x,g)} / ${g} XP aujourd'hui</small></div></div>`;
 }
 function renderChrome(){
-  document.querySelectorAll('.topbar [data-chips]').forEach(e=>e.innerHTML=tfr(chipsHTML()));
-  const nClips = window.AUDIO ? Object.keys(window.AUDIO).length : 0, st=streakNow();
-  $('#rail').innerHTML = tfr(`
-    <div class="chips">${chipsHTML()}</div>
-    <div class="card"><h3>Objectif du jour</h3>${goalHTML()}</div>
-    <div class="card"><h3>Ma série</h3>
-      <div class="goal"><div class="ring" style="--p:${st?100:0}">${icon('i-flame')}</div>
-      <div class="goal-txt"><b>${st?plural(st,'jour')+' d\'affilée':'Pas encore de série'}</b><small>${S.last===today()?'Leçon du jour validée.':'Une leçon aujourd\'hui entretient ta série.'}</small></div></div></div>
-    <div class="card"><h3>Voix allemandes</h3>
-      <p style="margin:0 0 14px;color:var(--muted);font-size:14px">${nClips} phrases enregistrées par une voix native.</p>
-      <button class="btn sec block" data-act="test">${icon('i-spk')}Tester le son</button></div>`);
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on', b.dataset.nav===route().view));
+  document.querySelectorAll('[data-chips]').forEach(e=>e.innerHTML=tfr(chipsHTML()));
+  document.querySelectorAll('.nav-btn').forEach(b=>{ const on=b.dataset.nav===route().view; b.classList.toggle('on', on); on?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current'); });
 }
 
 /* ══════════════════════════════════════
    NAVIGATION (hash : #/vue/paramètres)
 ══════════════════════════════════════ */
 function route(){
-  let [view='learn', a='', b='', c=''] = location.hash.replace(/^#\/?/,'').split('/').map(decodeURIComponent);
+  let [view='learn', a='', b='', c=''] = location.hash.replace(/^#\/?/,'').split('/').map(x=>{ try{ return decodeURIComponent(x); }catch(e){ return ''; } });
   // Anciennes adresses (favoris, liens partagés) : Situations et Phrases sont désormais dans le Guide.
   if(view==='situ'){ c=b; b=a; a='situ'; view='guide'; }
   if(view==='phrases'){ view='guide'; if(a!=='cat'){ a=''; b=''; } }
@@ -1799,12 +1878,16 @@ function go(h){ if(location.hash!==h) location.hash=h; else render(); }
 window.addEventListener('hashchange', ()=>{ stopAudio(); render(); window.scrollTo(0,0); });
 
 let searchQ='';
+/* Ordinateur (≥ 1200 px) : mises en page élargies ; le téléphone garde sa présentation */
+const DESK_MQ = matchMedia('(min-width:1200px)');
+const isDesk = () => DESK_MQ.matches;
+(DESK_MQ.addEventListener ? DESK_MQ.addEventListener('change', ()=>render()) : DESK_MQ.addListener(()=>render()));
 function render(){
   const r=route(), m=$('#main');
   if(r.view==='learn') m.innerHTML=viewLearn();
   if(r.view==='guide') m.innerHTML=viewGuide(r);
-  if(r.view==='profile') m.innerHTML=viewProfile();
-  if(r.view==='comptoir') m.innerHTML=viewComptoir();
+  if(r.view==='profile'){ m.innerHTML=viewProfile(); voxCheck().then(voxRender); }
+  if(r.view==='comptoir'){ m.innerHTML=viewComptoir(); if(isDesk()){ trLoad(); if(!NB.val.date) NB.val.date=isoDay(new Date()); renderTrad(); renderNb(false); } }
   const qi=$('#q'); if(qi) qi.value=searchQ;
   renderChrome();
 }
@@ -1812,6 +1895,13 @@ function render(){
 /* ══════════════════════════════════════
    VUE « APPRENDRE »
 ══════════════════════════════════════ */
+function dashCards(){
+  const st=streakNow();
+  return `<div class="card"><h3>Objectif du jour</h3>${goalHTML()}</div>
+    <div class="card"><h3>Ma série</h3><div class="goal"><div class="ring" style="--p:${st?100:0}">${icon('i-flame')}</div>
+      <div class="goal-txt"><b>${st?plural(st,'jour')+' d\'affilée':'Pas encore de série'}</b><small>${S.last===today()?'Leçon du jour validée.':'Une leçon aujourd\'hui entretient ta série.'}</small></div></div>
+      <div class="dash-xp">${emo('⚡')} <b>${S.xp}</b> XP au total</div></div>`;
+}
 function viewLearn(){
   const nx=nextLesson(), name=S.name.trim();
   const nMist=S.mistakes.filter(k=>byKey(k)).length;
@@ -1821,7 +1911,7 @@ function viewLearn(){
       <h2>${esc(c.name)}</h2><p>Leçon ${nx.l+1} sur ${L.length} · ${plural(L[nx.l].length,'phrase')}</p>
       <div class="bar"><i style="width:${Math.round(unitProgress(nx.u)*100)}%"></i></div>
       <button class="btn light" data-act="continue">${done?'Reprendre':'Commencer'}${icon('i-chev')}</button>`; })()
-    : `<span class="eyebrow">Parcours terminé</span><h2>Ausgezeichnet !</h2><p>Toutes les leçons sont validées. Entretiens tes acquis avec l'entraînement rapide.</p>
+    : `<span class="eyebrow">Parcours terminé</span><h2 lang="de">Ausgezeichnet!</h2><p>Toutes les leçons sont validées. Entretiens tes acquis avec l'entraînement rapide.</p>
        <button class="btn light" data-act="practice">S'entraîner${icon('i-chev')}</button>`;
   const units = ORDER.map((u,ui)=>{
     const L=unitLessons(u), cat=catById(u), pr=Math.round(unitProgress(u)*100), isCur = nx && nx.u===u;
@@ -1844,7 +1934,7 @@ function viewLearn(){
     ${installCard()}
     <h1 class="h1">${name?`Guten Tag, ${esc(name)}`:'Guten Tag'} 👋</h1>
     <p class="lead">Ton allemand pour la réception, une leçon après l'autre.</p>
-    <div class="hero"><svg class="hero-art" aria-hidden="true"><use href="#i-wave"/></svg>${hero}</div>
+    ${isDesk()?`<div class="dash">`:''}<div class="hero"><svg class="hero-art" aria-hidden="true"><use href="#i-wave"/></svg>${hero}</div>${isDesk()?dashCards()+'</div>':''}
     <div class="quick">
       <button class="qk" data-act="practice"><span class="badge-ic">${emo('⚡')}</span><span><b>Entraînement rapide</b><small>Cinq phrases déjà vues, au hasard</small></span></button>
       <button class="qk" data-act="mistakes" ${nMist?'':'disabled'}><span class="badge-ic">${emo('🎯')}</span><span><b>Mes erreurs</b><small>${nMist?plural(nMist,'phrase')+' à retravailler':'Rien à réviser pour l\'instant'}</small></span></button>
@@ -1870,10 +1960,29 @@ function guideSections(){
     ['bases','🔢','Les bases','Nombres, jours et mois, heures'],
     ['rules','📜','Mémo règlement','Horaires, cautions, Wi-Fi, animaux, annulation…'],
     ['favs','⭐','Mes favoris', favs.size?plural(favs.size,'phrase')+' gardée'+(favs.size>1?'s':''):'Les phrases que tu marques d\'une étoile'],
-    ['pron','🔤','Prononciation','Lire l\'allemand sans se tromper'],
+    ['pron','🔤','Prononciation','Les règles de base pour bien lire l\'allemand'],
   ];
 }
+function viewGuideDesk(r){
+  const q=searchQ.trim();
+  const cur = r.a==='cat' ? (isBase(+r.b)?'bases':'themes') : (r.a||'situ');
+  let main;
+  if(q) main=viewGuide({a:'', b:'', c:'', search:true});
+  else if(r.a==='situ'||!r.a) main = r.b ? viewFlow(r.b, +r.c||0) : viewFlows();
+  else if(r.a==='cat') main=viewCat(+r.b);
+  else main=viewGuideSec(r.a);
+  return tfr(`<div class="wrap view"><div class="g2">
+    <aside class="g-nav" aria-label="Rubriques du Guide">
+      <h1 class="h1">Guide</h1>
+      <div class="search">${icon('i-search','ic s-ic')}
+        <input id="q" type="text" enterkeyhint="search" placeholder="Rechercher…  ( / )" autocomplete="off" aria-label="Rechercher une phrase ou une règle">
+        ${q?`<button class="icon-btn s-x" data-act="clearq" aria-label="Effacer la recherche">${icon('i-x')}</button>`:''}</div>
+      <nav class="g-list">${guideSections().map(([k,e,t,d])=>`<button class="g-item${!q&&cur===k?' on':''}" data-nav-to="#/guide/${k}" ${!q&&cur===k?'aria-current="page"':''}>${emo(e)}<span><b>${t}</b><small>${d}</small></span></button>`).join('')}</nav>
+    </aside>
+    <section class="g-main">${main}</section></div></div>`);
+}
 function viewGuide(r){
+  if(isDesk() && !r.search) return viewGuideDesk(r);
   if(r.a==='situ') return r.b ? viewFlow(r.b, +r.c||0) : viewFlows();
   if(r.a==='cat') return viewCat(+r.b);
   if(['themes','bases','rules','favs','pron'].includes(r.a)) return viewGuideSec(r.a);
@@ -1882,14 +1991,18 @@ function viewGuide(r){
   if(q){
     const nq=norm(q);
     const res=allSearchable().filter(({p})=>norm(p.fr).includes(nq)||norm(p.de).includes(nq)||(p.ph&&norm(p.ph).includes(nq)));
-    body = res.length
-      ? `<p class="eyebrow" style="margin:0 0 12px">${plural(res.length,'résultat')}</p><div class="plist two">${res.map(x=>phraseCard(x.p,x.key,q,x.src)).join('')}</div>`
+    const rules=[]; RULES.forEach(([e,t,items])=>items.forEach(i=>{ if(norm(i.replace(/<[^>]+>/g,'')).includes(nq)||norm(t).includes(nq)) rules.push([e,t,i]); }));
+    body = res.length||rules.length
+      ? `<p class="eyebrow" style="margin:0 0 12px">${plural(res.length+rules.length,'résultat')}</p>
+        ${rules.length?`<section class="rule rule-hit"><h3>${emo('📜')}Mémo règlement</h3><ul>${rules.map(([e,t,i])=>`<li><b class="rh-t">${t} :</b> ${i}</li>`).join('')}</ul></section>`:''}
+        <div class="plist two">${res.map(x=>phraseCard(x.p,x.key,q,x.src)).join('')}</div>`
       : `<div class="empty"><span class="badge-ic">${emo('🔍')}</span><b>Aucun résultat</b><p>Essaie un autre mot, en français ou en allemand.</p></div>`;
   } else {
     body = `<div class="hub">${guideSections().map(([k,e,t,d])=>`
       <button class="flow hub-i" data-nav-to="#/guide/${k}"><span class="badge-ic">${emo(e)}</span>
         <span class="flow-tx"><b>${t}</b><small>${d}</small></span>${icon('i-chev','ic chev')}</button>`).join('')}</div>`;
   }
+  if(r.search) return `<div class="wrap view"><div class="subbar"><div class="subbar-t"><span class="crumb">Recherche</span><b>« ${esc(q)} »</b></div></div><div id="pbody">${body}</div></div>`;
   return tfr(`<div class="wrap wide view">
     <h1 class="h1">Guide</h1>
     <p class="lead">Tout ce qu'il faut consulter au comptoir, au même endroit.</p>
@@ -1969,7 +2082,7 @@ function phraseCard(p, key, q, src){
 const PRON = [
   ['ei','aï','<i>drei</i> → draï'], ['eu · äu','oï','<i>heute</i> → hoïteu'], ['ie','i','<i>vier</i> → fir'],
   ['u','ou','<i>gut</i> → gout'], ['ü','u','<i>fünf</i> → funf'], ['ö','eu','<i>schön</i> → cheun'],
-  ['ä','è','<i>März</i> → mèrts'], ['w','v','<i>Wasser</i> → vassèr'], ['v','f','<i>vier</i> → fir'],
+  ['ä','è','<i>März</i> → mèrts'], ['w','v','<i>Wasser</i> → vassèr'], ['v','f (le plus souvent)','<i>vier</i> → fir'],
   ['z','ts','<i>zehn</i> → tsèn'], ['s + voyelle','z','<i>sieben</i> → zibène'], ['sch','ch','<i>Schwimmbad</i> → chvimbad'],
   ['st · sp (début)','cht · chp','<i>Strand</i> → chtrant'], ['ch (après a, o, u)','kh','<i>Nacht</i> → nakht, son raclé'],
   ['ch (ailleurs)','ch','<i>ich</i> → ich, son doux'], ['j','y','<i>Juli</i> → youli'], ['h (début)','h','<i>Hund</i> → hount, soufflé'],
@@ -1979,8 +2092,12 @@ let SEARCHABLE=null;
 function allSearchable(){
   if(SEARCHABLE) return SEARCHABLE;
   const out = P.map((p,i)=>({p, key:'p'+i, src:catById(p.c).name}));
-  FLOWS.forEach(f=>f.steps.forEach((s,si)=>s.blocks.forEach((b,bi)=>{ if(b.t==='say') out.push({p:b, key:`f${f.id}.${si}.${bi}`, src:'Situation · '+f.name}); })));
-  return SEARCHABLE=out;
+  FLOWS.forEach(f=>f.steps.forEach((s,si)=>s.blocks.forEach((b,bi)=>{
+    if(b.t==='say') out.push({p:b, key:`f${f.id}.${si}.${bi}`, src:'Situation · '+f.name});
+    if(b.t==='hear') b.items.forEach((it,ii)=>out.push({p:it, key:`h${f.id}.${si}.${bi}.${ii}`, src:'Le client peut dire · '+f.name}));
+  })));
+  // Une même phrase allemande n'apparaît qu'une fois dans les résultats
+  const seen=new Set(); return SEARCHABLE=out.filter(x=>{ const k=x.p.de+'|'+x.p.fr; if(seen.has(k)) return false; seen.add(k); return true; });
 }
 const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
 function viewGuideSec(k){
@@ -2015,13 +2132,54 @@ function viewGuideSec(k){
   return tfr(`<div class="wrap wide view">${subbar(title, sub, '#/guide')}<div id="pbody">${body}</div></div>`);
 }
 function viewCat(id){
-  const c=catById(id); if(!c) return viewPhrases();
+  const c=catById(id); if(!c) return viewGuide({a:''});
   const idx=unitPhrases(id), L=unitLessons(id), first=Math.max(0,L.findIndex((_,l)=>!lessonDone(id,l)));
   return tfr(`<div class="wrap wide view">
     <div class="subbar"><button class="back" data-nav-to="#/guide/${isBase(id)?'bases':'themes'}" aria-label="Retour">${icon('i-back')}</button>
       <div class="subbar-t"><span class="crumb">${isBase(id)?'Les bases':'Phrases par thème'}</span><b>${UEM[id]} ${esc(c.name)}</b><small>${plural(idx.length,'phrase')} · ${UNITS[id]}</small></div>
       <button class="btn sm" data-act="start" data-u="${id}" data-l="${first}">S'entraîner</button></div>
     <div class="plist two">${idx.map(i=>phraseCard(P[i],'p'+i,'')).join('')}</div></div>`);
+}
+
+/* ══════════════════════════════════════
+   VOIX HORS CONNEXION : état réel du cache, téléchargement reprenable
+   (on n'affiche « disponible sans internet » que pour les voix vraiment présentes sur l'appareil)
+══════════════════════════════════════ */
+const VOX={have:null, total:0, busy:false};
+const voxFiles = () => [...new Set(Object.values(window.AUDIO||{}))];
+const voxPath = u => new URL(u, location.href).pathname.split('/').slice(-2).join('/');
+async function voxCheck(){
+  const files=voxFiles(); VOX.total=files.length;
+  if(!('caches' in window)){ VOX.have=null; return; }
+  try{ const c=await caches.open('bgd-audio'); const keys=new Set((await c.keys()).map(k=>voxPath(k.url))); VOX.have=files.filter(f=>keys.has(f)).length; }catch(e){ VOX.have=null; }
+}
+function voxRowHTML(){
+  const {have,total,busy}=VOX;
+  const test=`<button class="btn sec sm" data-act="test">${icon('i-spk')}Tester</button>`;
+  if(have===null) return `<div class="s-tx"><b>Voix allemandes</b><small>${total} phrases lues par une voix allemande (internet nécessaire sur ce navigateur)</small></div>${test}`;
+  if(have>=total) return `<div class="s-tx"><b>Voix hors connexion</b><small class="ok-t">✅ ${total} / ${total} voix disponibles sans internet</small></div>${test}`;
+  return `<div class="s-tx"><b>Voix hors connexion</b><small>${busy?'Téléchargement… ':''}${have} / ${total} voix disponibles sans internet</small>
+      <span class="vox-bar" role="progressbar" aria-label="Voix téléchargées" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${have}"><i style="width:${Math.round(have/Math.max(1,total)*100)}%"></i></span></div>
+    <button class="btn sm" data-act="voxdl" ${busy?'disabled':''}>${busy?'En cours…':have?'Reprendre':'Télécharger'}</button>`;
+}
+function voxRender(){ const el=document.getElementById('voxRow'); if(el) el.innerHTML=tfr(voxRowHTML()); }
+async function voxDownload(){
+  if(VOX.busy) return;
+  if(!navigator.onLine){ toast('Connecte-toi à internet pour télécharger les voix'); return; }
+  if(!('caches' in window)) return;
+  VOX.busy=true; voxRender();
+  try{ navigator.serviceWorker && navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage({type:'precache-audio'}); }catch(e){}
+  let fail=0;
+  try{
+    const c=await caches.open('bgd-audio'), have=new Set((await c.keys()).map(k=>voxPath(k.url)));
+    const todo=voxFiles().filter(f=>!have.has(f));
+    const w=async()=>{ while(todo.length){ const f=todo.shift();
+      try{ const r=await fetch(f,{cache:'no-store'}); if(r.ok && r.status===200) await c.put(new URL(f,location.href).href, r); else if(!r.ok) fail++; }catch(e){ fail++; }
+      VOX.have=Math.min(VOX.total,(VOX.have||0)+1); voxRender(); } };
+    await Promise.all([w(),w(),w(),w()]);
+  }catch(e){ fail++; }
+  VOX.busy=false; await voxCheck(); voxRender();
+  toast(fail||VOX.have<VOX.total ? 'Certaines voix n\'ont pas pu être téléchargées : touche « Reprendre » plus tard' : '✅ Toutes les voix sont disponibles sans internet');
 }
 
 /* ══════════════════════════════════════
@@ -2036,6 +2194,7 @@ function viewProfile(){
   return tfr(`<div class="wrap view">
     <h1 class="h1">Profil</h1>
     <p class="lead">Ta progression est enregistrée sur cet appareil.</p>
+    <div class="prof-cols"><div>
     <div class="prof-head"><div class="mono" aria-hidden="true">${name?esc(name[0].toUpperCase()):icon('i-user')}</div>
       <div style="flex:1;min-width:0"><label class="eyebrow" for="name">Ton prénom</label>
       <input class="name-in" id="name" maxlength="24" placeholder="Facultatif" value="${esc(S.name)}" autocomplete="given-name"></div></div>
@@ -2049,6 +2208,7 @@ function viewProfile(){
     <div class="sec-t"><h2>Objectif quotidien</h2></div>
     <div class="card" style="margin-bottom:12px">${goalHTML()}</div>
     <div class="goals">${goals.map(([g,l])=>`<button class="goal-opt${S.goal===g?' on':''}" data-act="goal" data-g="${g}"><b>${l}</b><small>${g} XP par jour</small></button>`).join('')}</div>
+    </div><div>
     ${appSection()}
     <div class="sec-t"><h2>Réglages</h2></div>
     <div class="card" style="padding:0 20px">
@@ -2058,12 +2218,12 @@ function viewProfile(){
         <button class="switch" role="switch" aria-checked="${S.speak!==false}" data-act="toggle" data-k="speak" aria-label="Exercices à voix haute"></button></div>`:''}
       <div class="setting"><div class="s-tx"><b>Effets sonores</b><small>Sons discrets pendant les leçons</small></div>
         <button class="switch" role="switch" aria-checked="${S.sfx}" data-act="toggle" data-k="sfx" aria-label="Effets sonores"></button></div>
-      <div class="setting"><div class="s-tx"><b>Voix allemandes</b><small>${nClips} phrases enregistrées par une voix native</small></div>
-        <button class="btn sec sm" data-act="test">${icon('i-spk')}Tester</button></div>
+      <div class="setting" id="voxRow">${voxRowHTML()}</div>
     </div>
     <button class="danger" style="margin-top:18px" data-act="reset">Réinitialiser ma progression</button>
     <p class="about">Beach Garden Deutsch · Camping Les Méditerranées, Marseillan-Plage<br>${P.length} phrases et ${FLOWS.length} situations guidées.
       <span class="credit" style="display:block">© 2026 Omar Aznay Falkoun</span></p>
+    </div></div>
   </div>`);
 }
 
@@ -2084,22 +2244,25 @@ const COMPTOIR = [
     ['Carte ou espèces ?','Zahlen Sie mit Karte oder bar?'],
     ['Tarif par nuit','Der Preis beträgt … Euro pro Nacht.'],
     ['Caution mobil-home : 300 €','Für das Mobilheim beträgt die Kaution dreihundert Euro, nur bar oder mit Karte.'],
-    ['Adaptateurs électricité et eau : 20 € de caution','Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro.'],
+    ['Adaptateurs électricité et eau : 20 € de caution','Für die Stellplätze verleihen wir Adapter für den Strom- und Wasseranschluss gegen eine Kaution von zwanzig Euro, bar oder mit Karte.'],
   ]],
   ['🕐','Horaires et infos',[
     ['Horaires d\'arrivée','Sie können Ihr Fahrzeug ab zwölf Uhr abstellen. Der Stellplatz ist spätestens um vierzehn Uhr fertig, das Mobilheim spätestens um siebzehn Uhr.'],
-    ['Horaires de départ','Die Abreise erfolgt zwischen sieben und elf Uhr auf dem Stellplatz und zwischen sieben und zehn Uhr im Mobilheim.'],
+    ['Horaires de départ','Für Stellplätze ist die Abreise zwischen sieben und elf Uhr möglich, für Mobilheime zwischen sieben und zehn Uhr.'],
     ['Voici le plan','Hier ist der Campingplan.'],
     ['Numéro d\'emplacement','Ihr Stellplatz hat die Nummer…'],
     ['Wi-Fi des mobil-homes','Das WLAN ist in allen Mobilheimen inklusive, außer in der Cosy-Kategorie.'],
     ['Wi-Fi offert au bar','An der Bar sind alle sechs Stunden dreißig Minuten WLAN gratis.'],
+    ['Wi-Fi payant sur emplacement','Auf den Stellplätzen ist das WLAN kostenpflichtig. Fragen Sie an der Rezeption nach dem Code.'],
+    ['Draps et serviettes (sauf Cosy)','Bettwäsche und Handtücher sind inklusive, außer in der Cosy-Kategorie.'],
+    ['Emplacement : 6 personnes max.','Auf einem Stellplatz sind höchstens sechs Personen erlaubt, Besucher inbegriffen.'],
     ['Bracelet obligatoire','Das Armband muss jederzeit getragen werden.'],
     ['Silence à partir de 22 h','Ab zweiundzwanzig Uhr gilt Nachtruhe auf dem Campingplatz.'],
   ]],
   ['🗣️','Se comprendre',[
     ['Pouvez-vous répéter ?','Könnten Sie das bitte wiederholen?'],
     ['Parlez-vous anglais ?','Sprechen Sie Englisch?'],
-    ['Je ne parle pas allemand','Ich verstehe leider kein Deutsch.'],
+    ['Je ne comprends pas l\'allemand','Ich verstehe leider kein Deutsch.'],
   ]],
   ['🆘','Urgences et problèmes',[
     ['J\'appelle les secours','Ich rufe sofort den Notdienst an.'],
@@ -2123,14 +2286,14 @@ function viewComptoir(){
   return tfr(`<div class="wrap wide view">
     <h1 class="h1">Comptoir 🛎️</h1>
     <p class="lead">Un client devant toi ? Parle avec le traducteur, ou touche une phrase : l'app la dit en allemand et l'affiche en grand.</p>
-    <div class="tools">
+    ${isDesk()?`<div class="ws"><div id="trad" class="trad docked" aria-label="Traducteur vocal"></div><div id="nbx" class="trad nbx docked" aria-label="Prix, heures et dates"></div></div>`:`<div class="tools">
       <button class="tr-card" data-act="tropen"><span class="tr-card-ic">🎙️</span><span><b>Traducteur vocal</b><small>Toi et le client parlez à voix haute : l'app traduit en direct.</small></span>${icon('i-chev')}</button>
       <button class="tr-card alt" data-act="nbopen"><span class="tr-card-ic">💶</span><span><b>Prix, heures et dates</b><small>Tape un montant, une heure ou une date : l'app le dit en allemand.</small></span>${icon('i-chev')}</button>
-    </div>
+    </div>`}
     <div class="sec-t"><h2>Phrases express</h2></div>
-    ${COMPTOIR.map(([e,t,items])=>`<section class="cp-g"><h2 class="cp-h">${emo(e)}${t}</h2><div class="cp-grid">
+    <div class="cp-cols">${COMPTOIR.map(([e,t,items])=>`<section class="cp-g"><h2 class="cp-h">${emo(e)}${t}</h2><div class="cp-grid">
       ${items.map(([l,de])=>{ const x=findByDe(de); return x?`<button class="cp-tile" data-act="cp" data-key="${x.key}"><span>${esc(l)}</span>${icon('i-spk')}</button>`:''; }).join('')}
-    </div></section>`).join('')}
+    </div></section>`).join('')}</div>
   </div>`);
 }
 function showBig(key){
@@ -2173,7 +2336,7 @@ function speechMsg(score, err){
     if(err==='network') return ['ko','La reconnaissance vocale a besoin d\'internet.'];
     return ['ko','Je n\'ai rien entendu. Touche le micro, puis parle.'];
   }
-  if(score>=0.8) return ['ok','Parfait, très bien prononcé !'];
+  if(score>=0.8) return ['ok','Parfait, tous les mots ont été reconnus !'];
   if(score>=0.5) return ['mid','Presque ! Encore un petit effort.'];
   return ['ko','Pas tout à fait. Écoute le modèle et réessaie.'];
 }
@@ -2189,28 +2352,34 @@ function micPhrase(key, btn){
    Reconnaissance vocale du téléphone → traduction en ligne → texte dans les deux langues
    + lecture à voix haute de la traduction pour le client.
 ══════════════════════════════════════ */
-let TR = {log:[], busy:false, rec:null, face:false};
+let TR = {log:[], busy:false, rec:null, face:false, gen:0};
 /* Conversations du jour : gardées sur l'appareil jusqu'au lendemain, effaçables à tout moment. */
-function trLoad(){ try{ const j=JSON.parse(localStorage.getItem('bgd_trad')||'null'); TR.log = j && j.day===today() ? j.log : []; }catch(e){ TR.log=[]; } }
+function trLoad(){ try{ const j=JSON.parse(localStorage.getItem('bgd_trad')||'null'); if(j && j.day===today()) TR.log=j.log; else { TR.log=[]; localStorage.removeItem('bgd_trad'); } }catch(e){ TR.log=[]; } }
 function trSave(){ try{ localStorage.setItem('bgd_trad', JSON.stringify({day:today(), log:TR.log.filter(m=>m.dst).slice(-120)})); }catch(e){} }
 const hhmm = t => { const d=new Date(t||Date.now()); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); };
+/* Requête avec délai maximal : un réseau lent ne bloque jamais le comptoir */
+async function fetchT(url, opts={}, ms=6000){
+  const ctl=new AbortController(), t=setTimeout(()=>ctl.abort(), ms);
+  try{ return await fetch(url, {...opts, signal:ctl.signal}); } finally{ clearTimeout(t); }
+}
 async function translateText(text, from, to){
   const q=encodeURIComponent(text);
   /* DeepL en priorité si le relais est configuré dans config.js (voir docs/deepl.md). */
   const deepl=(window.BGD_CONFIG||{}).deeplProxy;
   if(deepl){
     try{
-      const r=await fetch(deepl,{method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({text, source:from, target:to})});
-      if(r.ok){ const j=await r.json(); if(j && j.text) return j.text; }
+      const r=await fetchT(deepl,{method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({text, source:from, target:to})});
+      if(r.ok){ const j=await r.json(); if(j && typeof j.text==='string' && j.text.trim()) return j.text; }
     }catch(e){}
   }
   try{
-    const r=await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${from}&tl=${to}&dt=t&q=${q}`);
-    if(r.ok){ const j=await r.json(); const t=(j[0]||[]).map(x=>x[0]).join(''); if(t) return t; }
+    const r=await fetchT(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${from}&tl=${to}&dt=t&q=${q}`);
+    if(r.ok){ const j=await r.json(); const t=(Array.isArray(j)&&Array.isArray(j[0])?j[0]:[]).map(x=>x&&x[0]||'').join(''); if(t.trim()) return t; }
   }catch(e){}
-  const r2=await fetch(`https://api.mymemory.translated.net/get?q=${q}&langpair=${from}|${to}`);
-  const j2=await r2.json(); const t2=j2 && j2.responseData && j2.responseData.translatedText;
-  if(!t2) throw new Error('translate');
+  const r2=await fetchT(`https://api.mymemory.translated.net/get?q=${q}&langpair=${from}|${to}`);
+  if(!r2.ok) throw new Error('translate');
+  const j2=await r2.json(); const t2=j2 && (j2.responseStatus===undefined || +j2.responseStatus===200) && j2.responseData && j2.responseData.translatedText;
+  if(!t2 || /MYMEMORY WARNING|QUERY LENGTH LIMIT|INVALID/i.test(t2)) throw new Error('translate');
   return t2;
 }
 /* Lecture instantanée : voix intégrée au téléphone en priorité (aucun téléchargement),
@@ -2221,39 +2390,47 @@ function deviceVoice(lang){
   const vs=speechSynthesis.getVoices().filter(v=>v.lang && v.lang.toLowerCase().replace('_','-').startsWith(lang));
   return vs.find(v=>/premium|enhanced|natural|neural|siri/i.test(v.name)) || vs.find(v=>v.localService) || vs[0] || null;
 }
+const ttsChunks = t => { const out=[]; let cur=''; for(const w of t.split(/\s+/)){ if(cur && (cur+' '+w).length>180){ out.push(cur); cur=w; } else cur=cur?cur+' '+w:w; } if(cur) out.push(cur); return out; };
 function preloadOnline(text, lang){
   const k=lang+'|'+text; if(TTS_CACHE.has(k)) return TTS_CACHE.get(k);
-  const a=new Audio(); a.preload='auto';
-  a.src=`https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=${lang}&q=${encodeURIComponent(text.slice(0,200))}`;
-  try{ a.load(); }catch(e){}
-  TTS_CACHE.set(k,a); return a;
+  const parts=ttsChunks(text).map((c,i,all)=>{ const a=new Audio(); a.preload='auto';
+    a.src=`https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=${lang}&total=${all.length}&idx=${i}&q=${encodeURIComponent(c)}`;
+    try{ a.load(); }catch(e){} return a; });
+  if(TTS_CACHE.size>40) TTS_CACHE.delete(TTS_CACHE.keys().next().value);
+  TTS_CACHE.set(k,parts); return parts;
 }
-function speakOnline(text, lang){
+function speakOnline(text, lang, rate){
   stopAudio();
   const v=deviceVoice(lang);
   if(v){
-    const u=new SpeechSynthesisUtterance(text); u.voice=v; u.lang=v.lang; u.rate=0.95;
+    const u=new SpeechSynthesisUtterance(text); u.voice=v; u.lang=v.lang; u.rate=rate||0.95;
     speechSynthesis.cancel(); speechSynthesis.speak(u); return;
   }
-  const a=preloadOnline(text, lang); curAudio=a;
-  try{ a.currentTime=0; }catch(e){}
-  a.play().catch(()=>{});
+  if(!navigator.onLine){ toast('Pas de voix sur cet appareil hors connexion : montre le texte affiché'); return; }
+  const parts=preloadOnline(text, lang); let i=0;
+  const next=()=>{ const a=parts[i++]; if(!a) return; curAudio=a; a.playbackRate=rate&&rate<0.9?0.75:1; try{ a.currentTime=0; }catch(e){}
+    a.onended=()=>{ if(curAudio===a) next(); };
+    a.play().catch(()=>{ if(curAudio===a) toast('Lecture impossible pour le moment : montre le texte affiché'); }); };
+  next();
 }
 function openTrad(){
   loadVoices(); if(window.speechSynthesis) speechSynthesis.getVoices();
+  const dk=document.querySelector('#trad.docked'); if(dk){ const i=dk.querySelector('#trIn'); if(i) i.focus(); return; }
   document.body.style.overflow='hidden';
   trLoad();
   let el=document.getElementById('trad');
-  if(!el){ el=document.createElement('div'); el.id='trad'; el.className='trad'; document.body.appendChild(el); }
-  el.hidden=false; renderTrad();
+  if(!el){ el=document.createElement('div'); el.id='trad'; el.className='trad'; el.setAttribute('role','dialog'); el.setAttribute('aria-modal','true'); el.setAttribute('aria-label','Traducteur vocal'); document.body.appendChild(el); }
+  el.hidden=false; renderTrad(); setInert(true);
+  if(!TR.restore) TR.restore=dialogA11y(el, closeTrad);
+  setTimeout(()=>{ const b=el.querySelector('[data-act="trclose"]'); if(b) b.focus(); },0);
 }
-function closeTrad(){ try{ TR.rec && TR.rec.abort(); }catch(e){} TR.rec=null; stopAudio(); const el=document.getElementById('trad'); if(el) el.hidden=true; document.body.style.overflow=''; }
+function closeTrad(){ TR.gen++; try{ TR.rec && TR.rec.abort(); }catch(e){} TR.rec=null; TR.busy=false; stopAudio(); const el=document.getElementById('trad'); if(el && !el.classList.contains('docked')) el.hidden=true; document.body.style.overflow=''; setInert(false); if(TR.restore){ const r=TR.restore; TR.restore=null; r(); } renderTrad(); }
 function renderTrad(status){
   const el=document.getElementById('trad'); if(!el) return;
   el.classList.toggle('face', TR.face);
   const top = `<div class="tr-top"><button class="icon-btn" data-act="trclose" aria-label="Fermer le traducteur">${icon('i-x')}</button>
       <b>Traducteur vocal</b>
-      <span class="tr-top-r">${TR.log.length&&!TR.face?`<button class="link" data-act="trclear">Effacer</button>`:''}
+      <span class="tr-top-r">${TR.log.length&&!TR.face?`<button class="link" data-act="trclear">Nouvelle conversation</button>`:''}
       <button class="tr-face-btn${TR.face?' on':''}" data-act="trface" aria-pressed="${TR.face}">${TR.face?'Mode liste':'Face au client'}</button></span></div>`;
   const btnMe = `<button class="tr-btn me${TR.busy==='me'?' rec':''}" data-act="trtalk" data-who="me">${icon('i-mic')}<span><b>🇫🇷 Je parle</b><small>français → allemand</small></span></button>`;
   const btnThem = `<button class="tr-btn them${TR.busy==='them'?' rec':''}" data-act="trtalk" data-who="them">${icon('i-mic')}<span><b>🇩🇪 Sprechen Sie</b><small>Deutsch → Französisch</small></span></button>`;
@@ -2271,18 +2448,37 @@ function renderTrad(status){
   const msgs = TR.log.length ? TR.log.map((m,i)=>`<div class="tr-msg ${m.who}">
       <span class="eyebrow">${m.who==='me'?'🇫🇷 Toi':'🇩🇪 Client · Gast'}${m.t?` · ${hhmm(m.t)}`:''}</span>
       <div class="tr-src" lang="${m.who==='me'?'fr':'de'}">${esc(m.src)}</div>
-      <div class="tr-dst" lang="${m.who==='me'?'de':'fr'}">${m.dst?esc(m.dst):'<span class="tr-wait">Traduction…</span>'}</div>
+      <div class="tr-dst" lang="${m.who==='me'?'de':'fr'}">${m.dst?esc(m.dst):m.err?'<span class="tr-err">⚠️ Traduction impossible pour le moment. Vérifie la connexion internet, puis réessaie.</span>':'<span class="tr-wait">Traduction…</span>'}</div>
       ${m.dst?`<button class="slow" data-act="trplay" data-i="${i}">🔊 ${m.who==='me'?'Écouter en allemand':'Écouter en français'}</button>`:''}
     </div>`).join('')
     : `<div class="tr-empty"><div class="tr-empty-ic">🎙️</div><b>Traducteur vocal</b>
         <p>Touche le bouton de la personne qui parle, puis parlez normalement. La phrase s'affiche dans les deux langues et la traduction est lue à voix haute.</p>
         <p class="tr-tip">💡 Téléphone posé sur le comptoir ? Touche <b>Face au client</b> : le client lit sa moitié d'écran à l'endroit.</p></div>`;
   el.innerHTML = tfr(`${top}
-    <div class="tr-body" id="trBody">${TR.log.length?`<p class="tr-day">Conversations d'aujourd'hui · effacées automatiquement demain</p>`:''}${msgs}${status?`<div class="tr-live">${status}</div>`:''}</div>
+    <div class="tr-body" id="trBody" aria-live="polite">${TR.log.length?`<p class="tr-day">Conversations d'aujourd'hui · effacées automatiquement demain</p>`:''}${msgs}${status?`<div class="tr-live">${status}</div>`:''}</div>
     <div class="tr-foot">
-      ${SR?btnMe+btnThem:`<p class="tr-na">La reconnaissance vocale n'est pas disponible dans ce navigateur. Utilise Chrome sur Android, ou Safari sur iPhone.</p>`}
+      ${SR?btnMe+btnThem:`<p class="tr-na">Micro indisponible dans ce navigateur : tape la phrase ci-dessous.</p>`}
+      <form class="tr-type" onsubmit="return false"><input id="trIn" type="text" autocomplete="off" enterkeyhint="send" placeholder="Ou tape une phrase…" aria-label="Phrase à traduire">
+        <button type="button" class="slow" data-act="trtype" data-who="me" title="Du français vers l'allemand">🇩🇪 En allemand</button>
+        <button type="button" class="slow" data-act="trtype" data-who="them" title="De l'allemand vers le français">🇫🇷 En français</button></form>
     </div>`);
   const b=document.getElementById('trBody'); if(b) b.scrollTop=b.scrollHeight;
+}
+async function trRun(who, src, pending){
+  const from = who==='me'?'fr':'de', to = who==='me'?'de':'fr', gen=TR.gen;
+  const m={who, src, dst:'', t:Date.now()}; TR.log.push(m); renderTrad();
+  try{
+    const d = pending ? await pending.catch(()=>translateText(src, from, to)) : await translateText(src, from, to);
+    if(gen!==TR.gen) return;            // traducteur fermé ou conversation effacée entre-temps : on ne lit rien
+    m.dst=d;
+    if(who==='me') speakOnline(m.dst,'de'); else preloadOnline(m.dst,'fr');
+    trSave(); renderTrad();
+  }catch(err){ if(gen!==TR.gen) return; m.dst=''; m.err=1; renderTrad(); }
+}
+function trType(who){
+  const i=document.getElementById('trIn'); if(!i) return; const t=i.value.trim(); if(!t) { i.focus(); return; }
+  if(!navigator.onLine){ toast('Le traducteur a besoin d\'une connexion internet'); return; }
+  i.value=''; stopAudio(); trRun(who, t, null);
 }
 function trTalk(who){
   if(!SR) return;
@@ -2303,12 +2499,7 @@ function trTalk(who){
     TR.busy=false; TR.rec=null; clearTimeout(preT);
     const src=finalTxt.trim();
     if(!src){ renderTrad(); return; }
-    const m={who, src, dst:'', t:Date.now()}; TR.log.push(m); renderTrad();
-    try{
-      m.dst = (pre && pre.text===src) ? await pre.p.catch(()=>translateText(src, from, to)) : await translateText(src, from, to);
-      if(who==='me') speakOnline(m.dst,'de'); else preloadOnline(m.dst,'fr');
-      trSave(); renderTrad();
-    }catch(err){ m.dst='⚠️ Traduction impossible pour le moment (vérifie la connexion internet).'; renderTrad(); }
+    trRun(who, src, pre && pre.text===src ? pre.p : null);
   };
   try{ r.start(); }catch(e){ TR.busy=false; renderTrad(); }
 }
@@ -2317,7 +2508,8 @@ document.addEventListener('click', e=>{
   switch(el.dataset.act){
     case 'tropen': openTrad(); break;
     case 'trclose': closeTrad(); break;
-    case 'trclear': TR.log=[]; trSave(); renderTrad(); break;
+    case 'trclear': TR.gen++; TR.log=[]; try{ localStorage.removeItem('bgd_trad'); }catch(e){} stopAudio(); renderTrad(); break;
+    case 'trtype': trType(el.dataset.who); break;
     case 'trface': TR.face=!TR.face; renderTrad(); break;
     case 'trtalk': trTalk(el.dataset.who); break;
     case 'trplay': { const m=TR.log[+el.dataset.i]; if(m&&m.dst) speakOnline(m.dst, m.who==='me'?'de':'fr'); break; }
@@ -2418,11 +2610,14 @@ function nbCompute(mode, ctxI, raw){
   }
   if(mode==='date'){
     const m=String(raw).match(/^(\d{4})-(\d{2})-(\d{2})$/); if(!m) return null;
-    const dt=new Date(+m[1], +m[2]-1, +m[3]); if(isNaN(dt)) return null;
+    const y=+m[1], dt=new Date(y, +m[2]-1, +m[3]);
+    // Refuse les dates impossibles (31 février…) au lieu de les décaler au mois suivant
+    if(isNaN(dt) || dt.getFullYear()!==y || dt.getMonth()!==+m[2]-1 || dt.getDate()!==+m[3] || y<2000 || y>2099) return null;
     const wd=dt.getDay(), d=dt.getDate(), mo=dt.getMonth(), art = cde==='Bis' ? 'den' : 'dem', o=ordDat(d);
-    const de=`${DAYS_DE[wd][0]}, ${art} ${o[0]} ${MONTHS_DE[mo][0]}`, ph=`${DAYS_DE[wd][1]}, ${art==='den'?'dène':'dème'} ${o[1]} ${MONTHS_DE[mo][1]}`;
-    const fr=`${DAYS_FR[wd]} ${d===1?'1er':d} ${MONTHS_FR[mo]}`;
-    return {...wrap(de,ph,cfr?fr:cap(fr)), show:`${DAYS_DE[wd][0]}, ${d}. ${MONTHS_DE[mo][0]}`};
+    const yr = y!==new Date().getFullYear();   // l'année n'est dite que si ce n'est pas l'année en cours
+    const de=`${DAYS_DE[wd][0]}, ${art} ${o[0]} ${MONTHS_DE[mo][0]}${yr?' '+nDe(y):''}`, ph=`${DAYS_DE[wd][1]}, ${art==='den'?'dène':'dème'} ${o[1]} ${MONTHS_DE[mo][1]}${yr?' '+nPh(y):''}`;
+    const fr=`${DAYS_FR[wd]} ${d===1?'1er':d} ${MONTHS_FR[mo]}${yr?' '+y:''}`;
+    return {...wrap(de,ph,cfr?fr:cap(fr)), show:`${DAYS_DE[wd][0]}, ${d}. ${MONTHS_DE[mo][0]}${yr?' '+y:''}`};
   }
   if(mode==='num'){
     const s=String(raw).replace(/\s/g,''); if(!/^\d{1,6}$/.test(s)) return null;
@@ -2443,12 +2638,15 @@ let NB = {mode:'price', ctx:{price:0,time:0,date:0,num:0}, val:{price:'', time:'
 function openNb(){
   loadVoices();
   if(!NB.val.date) NB.val.date=isoDay(new Date());
+  const dk=document.querySelector('#nbx.docked'); if(dk){ const i=dk.querySelector('#nbv'); if(i) i.focus(); return; }
   document.body.style.overflow='hidden';
   let el=document.getElementById('nbx');
-  if(!el){ el=document.createElement('div'); el.id='nbx'; el.className='trad nbx'; el.setAttribute('role','dialog'); el.setAttribute('aria-label','Prix, heures et dates'); document.body.appendChild(el); }
-  el.hidden=false; renderNb(true);
+  if(!el){ el=document.createElement('div'); el.id='nbx'; el.className='trad nbx'; el.setAttribute('role','dialog'); el.setAttribute('aria-modal','true'); el.setAttribute('aria-label','Prix, heures et dates'); document.body.appendChild(el); }
+  el.hidden=false; renderNb(true); setInert(true);
+  if(!NB.restore) NB.restore=dialogA11y(el, closeNb);
+  if(IS_MOBILE) setTimeout(()=>{ const b=el.querySelector('[data-act="nbclose"]'); if(b) b.focus(); },0);
 }
-function closeNb(){ stopAudio(); const el=document.getElementById('nbx'); if(el) el.hidden=true; document.body.style.overflow=''; }
+function closeNb(){ stopAudio(); const el=document.getElementById('nbx'); if(el && !el.classList.contains('docked')) el.hidden=true; document.body.style.overflow=''; setInert(false); if(NB.restore){ const r=NB.restore; NB.restore=null; r(); } }
 function nbInput(){
   const v=esc(NB.val[NB.mode]);
   if(NB.mode==='price') return `<div class="nb-in"><input id="nbv" type="text" inputmode="decimal" autocomplete="off" placeholder="43,50" value="${v}" aria-label="Montant en euros"><span class="nb-suf">€</span></div>`;
@@ -2476,20 +2674,14 @@ function renderNb(focus){
       <div class="nb-tabs" role="tablist">${Object.entries(NB_MODES).map(([k,m])=>`<button role="tab" aria-selected="${NB.mode===k}" class="${NB.mode===k?'on':''}" data-act="nbmode" data-m="${k}"><span>${emo(m.ic)}</span>${m.name}</button>`).join('')}</div>
       <div class="seg nb-ctx">${md.ctx.map((c,i)=>`<button class="${NB.ctx[NB.mode]===i?'on':''}" data-act="nbctx" data-i="${i}">${esc(c[0])}</button>`).join('')}</div>
       ${nbInput()}
-      <div id="nbOut">${nbOut()}</div>
+      <div id="nbOut" aria-live="polite">${nbOut()}</div>
     </div>`);
   const i=document.getElementById('nbv');
   if(focus && i && (NB.mode==='price'||NB.mode==='num') && !IS_MOBILE) i.focus();
 }
 function nbSpeak(slow){
   const r=nbCompute(NB.mode, NB.ctx[NB.mode], NB.val[NB.mode]); if(!r) return;
-  stopAudio();
-  const v=deviceVoice('de');
-  if(v && window.speechSynthesis){ const u=new SpeechSynthesisUtterance(r.de); u.voice=v; u.lang=v.lang; u.rate=slow?0.6:0.95; speechSynthesis.cancel(); speechSynthesis.speak(u); return; }
-  if(!navigator.onLine){ toast('Pas de voix allemande sur ce téléphone hors connexion : lis la phrase affichée'); return; }
-  const a=preloadOnline(r.de,'de'); curAudio=a; a.playbackRate=slow?0.7:1;
-  try{ a.currentTime=0; }catch(e){}
-  a.play().catch(()=>{});
+  speakOnline(r.de, 'de', slow?0.6:0.95);
 }
 document.addEventListener('click', e=>{
   const el=e.target.closest('[data-act]'); if(!el) return;
@@ -2511,12 +2703,13 @@ document.addEventListener('keydown', e=>{
   const el=document.getElementById('nbx');
   if(e.key==='Escape' && el && !el.hidden) closeNb();
   if(e.key==='Enter' && e.target.id==='nbv'){ e.preventDefault(); e.target.blur(); nbSpeak(false); }
+  if(e.key==='Enter' && e.target.id==='trIn'){ e.preventDefault(); trType('me'); }
 });
 
 /* ══════════════════════════════════════
    MOTEUR DE LEÇON
 ══════════════════════════════════════ */
-const PRAISE=['Excellent !','Parfait !','Bravo !','Très bien !','Sehr gut !','Wunderbar !'];
+const PRAISE=['Excellent !','Parfait !','Bravo !','Très bien !','Sehr gut!','Wunderbar!'];
 let L=null;
 const tokens = s => s.replace(/[.,!?;:…]/g,'').split(/\s+/).filter(Boolean);
 const canBuild = p => !p.de.includes('…') && tokens(p.de).length>=3 && tokens(p.de).length<=10;
@@ -2689,7 +2882,7 @@ function finishLesson(){
   $('#lesson').innerHTML=tfr(`<div class="l-body"><div class="l-inner"><div class="l-end">
       <div class="seal">${icon('i-check')}</div>
       <h2>${perfect?'Sans faute 🏆':'Leçon terminée 🎉'}</h2>
-      <p>${goalNow?'Objectif du jour atteint. Bravo !':perfect?'Ausgezeichnet ! Aucune erreur sur toute la leçon.':'Chaque leçon te rapproche d\'un accueil fluide en allemand.'}</p>
+      <p>${goalNow?'Objectif du jour atteint. Bravo !':perfect?'Ausgezeichnet! Aucune erreur sur toute la leçon.':'Chaque leçon te rapproche d\'un accueil fluide en allemand.'}</p>
       <div class="res">
         <div><b>+${xp}</b><small>XP gagnés</small></div>
         <div><b>${acc} %</b><small>Précision</small></div>
@@ -2758,11 +2951,27 @@ document.addEventListener('click', async e=>{
     case 'pmic': micPhrase(d.key, el); break;
     case 'next': if(L){ stopAudio(); L.pos++; renderEx(); } break;
     case 'endok': closeLesson(); break;
+    case 'voxdl': voxDownload(); break;
   }
 });
 document.addEventListener('input', e=>{
   if(e.target.id==='q'){ searchQ=e.target.value; const pos=e.target.selectionStart; render(); const i=$('#q'); i.focus(); i.setSelectionRange(pos,pos); }
   if(e.target.id==='name'){ S.name=e.target.value; save(); const m=$('.mono'); if(m) m.innerHTML=S.name.trim()?esc(S.name.trim()[0].toUpperCase()):icon('i-user'); }
+});
+/* Raccourcis clavier (ordinateur de la réception) */
+document.addEventListener('keydown', e=>{
+  const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable;
+  const inLesson = L && !$('#lesson').hidden;
+  if(e.key==='/' && !typing && !inLesson && !e.ctrlKey && !e.metaKey && !e.altKey){
+    e.preventDefault(); if(route().view!=='guide') go('#/guide'); setTimeout(()=>{ const q=$('#q'); if(q) q.focus(); },40); return;
+  }
+  if(e.altKey && !e.ctrlKey && !e.metaKey && (e.code==='KeyT'||e.code==='KeyP') && !inLesson){
+    e.preventDefault(); const t=e.code==='KeyT';
+    if(isDesk()){ if(route().view!=='comptoir') go('#/comptoir'); setTimeout(()=>{ const i=document.getElementById(t?'trIn':'nbv'); if(i) i.focus(); },60); }
+    else (t?openTrad:openNb)();
+    return;
+  }
+  if(e.key==='Escape' && !inLesson){ stopAudio(); const tr=document.getElementById('trad'); if(tr && !tr.hidden && !tr.classList.contains('docked')) closeTrad(); }
 });
 document.addEventListener('keydown', e=>{
   if(!L || $('#lesson').hidden || document.querySelector('.modal')) return;
@@ -2797,7 +3006,7 @@ if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
 function installHidden(){ try{ return +localStorage.getItem('bgd_install_later') > Date.now(); }catch(e){ return false; } }
 function installCard(){
   if(isStandalone() || installHidden()) return '';
-  if(!IS_MOBILE && !installEvt){
+  if(!IS_MOBILE){   // Sur ordinateur : uniquement le QR code pour les téléphones de l'équipe
     return `<div class="promo"><span class="promo-ic">📱</span><div class="promo-tx"><b>Installe l'app sur les téléphones de l'équipe</b>
       <small>Tes collègues scannent le QR code avec l'appareil photo : c'est tout.</small></div>
       <div class="promo-act"><button class="btn sm" data-act="share">Afficher le QR code</button>
@@ -2815,8 +3024,12 @@ function sheet(html, opts={}){
   const m=document.createElement('div'); m.className='modal';
   m.innerHTML=`<div class="modal-c sheet" role="dialog" aria-modal="true">${html}
     <button class="btn sec block" data-close>${opts.close||'Fermer'}</button></div>${opts.arrow?'<div class="ios-arrow" aria-hidden="true">⬇️</div>':''}`;
-  m.addEventListener('click',e=>{ if(e.target===m || e.target.closest('[data-close]')) m.remove(); });
+  let restore=()=>{};
+  const close=()=>{ m.remove(); restore(); };
+  m.addEventListener('click',e=>{ if(e.target===m || e.target.closest('[data-close]')) close(); });
   document.body.appendChild(m);
+  restore=dialogA11y(m, close);
+  const first=m.querySelector('.modal-c button, .modal-c [href]'); if(first) setTimeout(()=>first.focus({preventScroll:true}),0);
   return m;
 }
 const SHARE_IC = `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 11v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8"/></svg>`;
@@ -2934,7 +3147,7 @@ window.addEventListener('load', ()=>{ const t=setInterval(()=>{ if(welcomeReady)
 
 function appSection(){
   const rows=[];
-  if(!isStandalone()) rows.push(`<div class="setting"><div class="s-tx"><b>📲 Installer l'application</b><small>Une icône sur l'écran d'accueil, même sans internet</small></div>
+  if(!isStandalone() && IS_MOBILE) rows.push(`<div class="setting"><div class="s-tx"><b>📲 Installer l'application</b><small>Une icône sur l'écran d'accueil, même sans internet</small></div>
     <button class="btn sm" data-act="install">Installer</button></div>`);
   if(CFG.onesignalAppId) rows.push(`<div class="setting"><div class="s-tx"><b>🔔 Rappel de la leçon du jour</b><small>${notifOn()?'Activé : une notification chaque jour':'Une notification pour ne pas oublier ta leçon'}</small></div>
     ${notifOn()?'<span class="pill-ok">Activé</span>':'<button class="btn sm" data-act="notif">Activer</button>'}</div>`);
@@ -2964,6 +3177,9 @@ let welcomeReady = !document.getElementById('splash');
   let done=false;
   const end=()=>{ if(done) return; done=true; sp.classList.add('out'); setTimeout(()=>sp.classList.add('gone'),800); setTimeout(()=>{ sp.remove(); welcomeReady=true; },1300); };
   sp.addEventListener('click', end);
+  const onKey=e=>{ if(!done){ e.preventDefault(); end(); } document.removeEventListener('keydown', onKey, true); };
+  document.addEventListener('keydown', onKey, true);
+  const sk=sp.querySelector('.sp-skip'); if(sk) setTimeout(()=>{ try{ sk.focus({preventScroll:true}); }catch(e){} },50);
   setTimeout(end, reduce?1000:4200);
 })();
 

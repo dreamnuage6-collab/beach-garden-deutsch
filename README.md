@@ -12,6 +12,8 @@ XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque
 | **Guide** | Tout ce qu'on consulte, au même endroit, avec une recherche (français ou allemand, sans tenir compte des accents) : onze **situations pas à pas**, les **phrases par thème**, **les bases** (nombres, jours, heures), le **mémo règlement** (règlement intérieur, FAQ et CGV de lesmediterranees.com), les **favoris** et le guide de **prononciation**. |
 | **Profil** | Prénom, statistiques, objectif quotidien, réglages (affichage de la prononciation, effets sonores), test du son, partage avec un collègue. |
 
+Sur un **ordinateur** (écran large), l'app s'organise en espaces de travail : le Comptoir affiche côte à côte le traducteur et l'outil prix/heures/dates, le Guide se consulte en deux panneaux, Apprendre devient un tableau de bord. Raccourcis : <kbd>/</kbd> rechercher, <kbd>Alt</kbd>+<kbd>T</kbd> traducteur, <kbd>Alt</kbd>+<kbd>P</kbd> prix, heures et dates, <kbd>Échap</kbd> fermer.
+
 La progression est enregistrée **sur l'appareil** (navigateur), sans compte ni serveur.
 
 ## 📲 Installer l'application sur les téléphones de l'équipe
@@ -36,7 +38,7 @@ qu'une fois l'app installée sur l'écran d'accueil (iOS 16.4 ou plus récent).
 
 ## 📁 Contenu du dossier
 - `index.html` : l'application (contenu, design et logique).
-- `audio/` + `audio_map.js` : une voix allemande native (MP3) par phrase.
+- `audio/` + `audio_map.js` : une voix allemande (MP3, voix de synthèse) par phrase. L'état réel des voix disponibles hors connexion s'affiche dans Profil.
 - `generate_audio.ps1` : (re)génère les MP3 si tu ajoutes ou modifies des phrases.
 - `manifest.webmanifest`, `sw.js`, `icons/` : ce qui rend l'app installable et utilisable hors connexion.
 - `brand/logo.png` : logo des Méditerranées · `vendor/qrcode.js` : générateur de QR code (licence MIT).
