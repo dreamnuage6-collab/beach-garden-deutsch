@@ -6,7 +6,7 @@
    - Les voix ont leur propre cache, conservé d'une version à l'autre (chaque fichier a un nom unique).
      Elles sont téléchargées après l'activation (sauf en mode « économie de données ») ;
      l'application affiche l'état réel dans Profil et permet de reprendre le téléchargement. */
-const CACHE = 'bgd-v9';
+const CACHE = 'bgd-v10';
 const AUDIO_CACHE = 'bgd-audio';
 const SHELL = ['./', './index.html', './audio_map.js', './config.js', './manifest.webmanifest',
   './vendor/qrcode.js', './brand/logo.png', './brand/emblem-white.png', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
