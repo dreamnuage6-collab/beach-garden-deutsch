@@ -1002,10 +1002,6 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 @keyframes spShimmer{0%,100%{opacity:.25; transform:scaleX(.7)}50%{opacity:1; transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){ .sp-sun,.sp-title .l,.sp-sub,.sp-cap,.sp-sky{opacity:1; transform:none; filter:none} .sp-sun img{clip-path:none} .sp-line{transform:none} .sp-sea{transform:none} .sp-rays,.sp-bokeh{display:none} .sp-sea-in{transform:none} }
 
-/* Version courte de l'animation (après le premier lancement du jour) */
-#splash.short .sp-sun,#splash.short .sp-sun img,#splash.short .sp-ring,#splash.short .sp-title .l,#splash.short .sp-line,#splash.short .sp-sub,#splash.short .sp-cap,#splash.short .sp-sky,#splash.short .sp-sea-in,#splash.short .sp-glint,#splash.short .sp-rays{animation-duration:.4s!important; animation-delay:0s!important}
-#splash.short .sp-skip{display:none}
-#splash.short.out .sp-sea,#splash.short.out .sp-center{transition-duration:.5s}
 /* Accessibilité : informations actives lisibles, champs bien repérables, cibles tactiles plus grandes */
 .tr-wait,.pc-src,.tr-day{color:var(--muted)!important}
 .tr-type input:focus,.nb-in input:focus,.name-in:focus{box-shadow:0 0 0 3px var(--brand-200)!important; border-color:var(--brand)!important}
@@ -4254,23 +4250,20 @@ document.addEventListener('click', e=>{
 });
 
 /* ══ ANIMATION DE DÉMARRAGE ══
-   Jouée à l'ouverture de l'application : complète une fois par jour, courte ensuite ; passable d'un toucher. */
+   Jouée à l'ouverture de l'application (une fois par session), passable d'un toucher. */
 let welcomeReady = !document.getElementById('splash');
 (function(){
   const sp=document.getElementById('splash'); if(!sp) return;
   let seen=false; try{ seen=sessionStorage.getItem('bgd_splash'); sessionStorage.setItem('bgd_splash','1'); }catch(e){}
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(seen){ sp.remove(); welcomeReady=true; return; }
-  // Version complète au premier lancement du jour, version courte (≈ 1 s) ensuite
-  let full=true; try{ full = localStorage.getItem('bgd_splash_day')!==today(); localStorage.setItem('bgd_splash_day', today()); }catch(e){}
-  if(!full) sp.classList.add('short');
   let done=false;
-  const end=()=>{ if(done) return; done=true; sp.classList.add('out'); const k=sp.classList.contains('short')?.5:1; setTimeout(()=>sp.classList.add('gone'),800*k); setTimeout(()=>{ sp.remove(); welcomeReady=true; },1300*k); };
+  const end=()=>{ if(done) return; done=true; sp.classList.add('out'); setTimeout(()=>sp.classList.add('gone'),800); setTimeout(()=>{ sp.remove(); welcomeReady=true; },1300); };
   sp.addEventListener('click', end);
   const onKey=e=>{ if(!done){ e.preventDefault(); end(); } document.removeEventListener('keydown', onKey, true); };
   document.addEventListener('keydown', onKey, true);
   const sk=sp.querySelector('.sp-skip'); if(sk) setTimeout(()=>{ try{ sk.focus({preventScroll:true}); }catch(e){} },50);
-  setTimeout(end, full ? (reduce?1000:4200) : (reduce?300:750));
+  setTimeout(end, reduce?1000:4200);
 })();
 
 /* Liste des voix d'une ancienne version en cache : rechargée une fois si des phrases n'y figurent pas */
