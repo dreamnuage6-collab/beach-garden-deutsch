@@ -4,22 +4,21 @@ Application web pour **parler allemand à la réception** du camping Beach Garde
 (Les Méditerranées, Marseillan-Plage). Direction artistique blanc et prune aux couleurs de l'établissement. Leçons courtes,
 XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque phrase.
 
-## Les quatre espaces de l'application
-| Espace | À quoi ça sert |
+## Deux onglets
+| Onglet | À quoi ça sert |
 |---|---|
-| **Apprendre** | Parcours de 14 unités (accueil, politesse, comprendre les clients, nombres, réservation…). Chaque leçon mélange cinq types d'exercices : compréhension orale, vocabulaire, construction de phrase, association de paires et prononciation à voix haute (si le téléphone le permet). XP, série, objectif du jour, révision des erreurs. |
-| **Comptoir** | Pour un client devant soi. **Traducteur vocal en direct** (français ↔ allemand, internet requis ; Google Traduction par défaut, **DeepL** en option : voir `docs/deepl.md`), avec un mode **« Face au client »** (téléphone posé sur le comptoir, écran partagé en deux) et les conversations du jour gardées jusqu'au lendemain. Quand la phrase dite correspond à une **phrase validée** de l'application, elle est reprise telle quelle et lue aussitôt avec la voix enregistrée ; sinon la traduction est marquée **« Traduction automatique · à vérifier »** et n'est lue au client que si on touche « Lire au client ». La fenêtre « Ce qui part en ligne » explique quelles données quittent l'appareil. **Prix, heures et dates** : on tape un montant, une heure, une date ou un numéro, l'app le dit en allemand avec la prononciation (hors connexion). **Phrases express** en un geste, affichées en grand. |
-| **Guide** | Tout ce qu'on consulte, au même endroit, avec une recherche (français ou allemand, sans tenir compte des accents) : onze **situations pas à pas**, les **phrases par thème**, **les bases** (nombres, jours, heures), le **mémo règlement** (règlement intérieur, FAQ et CGV de lesmediterranees.com), les **favoris** et le guide de **prononciation**. |
-| **Profil** | Prénom, statistiques, objectif quotidien, réglages (affichage de la prononciation, effets sonores), test du son, partage avec un collègue. |
+| **Parcours** | Apprendre à se débrouiller en allemand, **à l'oral uniquement** (écouter le client, puis parler). Cinq **diplômes** à débloquer dans l'ordre : **Check-in client** (10 niveaux), Check-out, Infos camping, Problèmes, Téléphone. Chaque niveau réussi ouvre le suivant (un test court permet de sauter un niveau déjà maîtrisé). Un **examen final** (8 bonnes réponses sur 10) donne le **badge** du diplôme, de ★ Hôte d'accueil à ★★★★★ Ambassadeur·rice Beach Garden. L'exercice « Dis-le en allemand » est corrigé au micro quand le navigateur le permet (internet nécessaire) ; sinon, la personne le dit à voix haute et vérifie elle-même. |
+| **Comptoir** | Pour un client devant soi. **Traducteur vocal en direct** (français ↔ allemand, internet requis ; Google Traduction par défaut, **DeepL** en option : voir `docs/deepl.md`), avec un mode **« Face au client »** et les conversations du jour gardées jusqu'au lendemain. Quand la phrase dite correspond à une **phrase validée**, elle est reprise telle quelle et lue aussitôt ; sinon la traduction est marquée **« à vérifier »**. **Prix, heures et dates** en allemand (hors connexion). **Phrases express** en un geste. Lien **« Toutes les phrases et le mémo »** : situations pas à pas, phrases par thème, mémo règlement, prononciation, recherche. |
+
+Le profil (initiale en haut à droite) montre **Mes badges**, le titre obtenu et les réglages.
 
 Sur un **ordinateur** (écran d'au moins 1 200 px), l'app devient un poste de travail :
 - **Comptoir** : traducteur, prix/heures/dates et phrases rangées par situation (Arrivée, Paiement, Départ, Infos et Wi-Fi, Problème, Bruit, Se comprendre, Au revoir, Favoris), avec un filtre Emplacement / Mobil-home. Une phrase choisie s'affiche d'abord en **aperçu** (rien ne se lit tout seul), puis Écouter, Lent ou **Montrer au client** (plein écran, texte à l'endroit, taille réglable). Cartes guidées pour une **intervention** (technicien ou ménage, autorisation d'entrer obligatoire) et pour le **bruit** (sécurité et voisins). **Phrases à compléter** (numéro d'emplacement, tarif, acompte, créneau au spa, table, spectacle) : le modèle allemand est validé, seule la valeur saisie est calculée. Recherche avec liste de résultats au clavier, bouton **Nouveau client**. Sur les écrans d'au moins 1 600 px, tout tient en trois colonnes.
-- **Guide** : rubriques à gauche (situations dépliées), contenu à droite, place retrouvée en revenant en arrière.
-- **Apprendre** : tableau de bord avec l'objectif du jour, les phrases **à revoir** et l'entraînement par situation.
+- **Parcours** : le diplôme en cours et ses niveaux à gauche, les badges à droite.
 
 Raccourcis (jamais pendant une saisie) : <kbd>/</kbd> rechercher, <kbd>Alt</kbd>+<kbd>T</kbd> traducteur, <kbd>Alt</kbd>+<kbd>P</kbd> prix, heures et dates, <kbd>Alt</kbd>+<kbd>L</kbd> écouter la phrase choisie, <kbd>Échap</kbd> fermer. Aucun raccourci n'active le micro.
 
-La progression est enregistrée **sur l'appareil** (navigateur), sans compte ni serveur.
+La progression (niveaux et badges) est enregistrée **sur l'appareil** (navigateur), sans compte ni serveur.
 
 ## 📲 Installer l'application sur les téléphones de l'équipe
 Aucune boutique d'applications, aucun compte à créer :
@@ -59,7 +58,7 @@ Settings → Pages → *Branch* : **main** → **Save**. Chaque modification fus
 est en ligne une à deux minutes plus tard, et les téléphones la récupèrent automatiquement.
 
 ## ✏️ Modifier ou ajouter des phrases
-1. Dans `index.html`, modifie le tableau `P` (phrases) ou `FLOWS` (situations).
+1. Dans `index.html`, modifie le tableau `P` (phrases), `PV` (phrases courtes du parcours), `FLOWS` (situations) ou `DIPLOMAS` (niveaux et examens, qui désignent les phrases par leur texte allemand).
    Chaque phrase a trois champs : `fr` (français), `de` (allemand) et `ph` (prononciation).
 2. ⚠️ Le texte `de:"…"` sert de clé au fichier audio : si tu le modifies, relance
    `generate_audio.ps1` (clic droit → **Exécuter avec PowerShell**) pour régénérer la voix.
