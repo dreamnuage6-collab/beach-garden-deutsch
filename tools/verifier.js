@@ -47,9 +47,9 @@ for (const f of ['sw.js', 'audio_map.js', 'config.js']) {
 const app = inline.join('\n');
 
 /* 2. Données */
-let P, FLOWS, COMPTOIR, CP_SITU, CP_TPL, CP_GUIDE;
+let P, FLOWS, COMPTOIR, CP_SITU, CP_TPL, CP_GUIDE, PV, DIPLOMAS;
 try {
-  P = extract(app, 'P'); FLOWS = extract(app, 'FLOWS'); COMPTOIR = extract(app, 'COMPTOIR'); CP_SITU = extract(app, 'CP_SITU'); CP_TPL = extract(app, 'CP_TPL'); CP_GUIDE = extract(app, 'CP_GUIDE');
+  P = extract(app, 'P'); FLOWS = extract(app, 'FLOWS'); COMPTOIR = extract(app, 'COMPTOIR'); CP_SITU = extract(app, 'CP_SITU'); CP_TPL = extract(app, 'CP_TPL'); CP_GUIDE = extract(app, 'CP_GUIDE'); PV = extract(app, 'PV') || []; DIPLOMAS = extract(app, 'DIPLOMAS') || [];
 } catch (e) { err('lecture des données : ' + e.message); }
 if (!Array.isArray(P) || !Array.isArray(FLOWS) || !Array.isArray(COMPTOIR)) {
   err('tableaux P, FLOWS ou COMPTOIR introuvables dans index.html');
@@ -62,6 +62,7 @@ const AUDIO = sbox.window.AUDIO || {};
 /* Corpus : toutes les phrases validées, avec leur clé */
 const corpus = [];
 P.forEach((p, i) => corpus.push({where: 'phrase n° ' + i, ...p}));
+PV.forEach((p, i) => corpus.push({where: 'phrase du parcours n° ' + i, ...p}));
 FLOWS.forEach(f => f.steps.forEach((s, si) => s.blocks.forEach((b, bi) => {
   if (b.t === 'say') corpus.push({where: `situation « ${f.id} », étape ${si + 1}, bloc ${bi + 1}`, ...b});
   if (b.t === 'hear') b.items.forEach((it, ii) => corpus.push({where: `situation « ${f.id} », étape ${si + 1}, phrase du client ${ii + 1}`, client: true, ...it}));
@@ -76,6 +77,7 @@ for (const x of corpus) {
   if (!x.de || !x.fr) err(x.where + ' : texte allemand ou français manquant');
   if (x.de && /\s{2,}|^\s|\s$/.test(x.de)) warn(x.where + ' : espaces en trop dans « ' + x.de + ' »');
 }
+PV.forEach((p, i) => { if (p.k && p.k !== 'v' + i) warn(`phrase du parcours n° ${i} : clé « ${p.k} » (attendu « v${i} »)`); });
 P.forEach((p, i) => { if (p.k && p.k !== 'p' + i) warn(`phrase n° ${i} : clé « ${p.k} » (attendu « p${i} ») ; ne change jamais une clé existante, ajoute les nouvelles phrases à la fin`); });
 
 /* 4. Voix */
@@ -109,6 +111,13 @@ const GKEYS = new Set(['hear', 'ask', 'auth', 'send', 'after', 'client', 'phone'
   if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) walk(v, inDe || GKEYS.has(k) || Array.isArray(o));
 })(CP_GUIDE || {}, false);
 
+/* 5b. Parcours : chaque phrase des niveaux et des examens existe, chaque diplôme est complet */
+DIPLOMAS.forEach(d => {
+  if (!d.id || !d.levels || !d.levels.length) err(`diplôme « ${d.name} » : identifiant ou niveaux manquants`);
+  (d.levels || []).forEach((l, i) => [...(l.say || []), ...(l.hear || [])].forEach(de => { if (!byDe.has(de)) err(`diplôme « ${d.name} », niveau ${i + 1} : phrase absente du corpus (« ${de} »)`); }));
+  (d.exam || []).forEach((x, i) => { const de = x.c || x.me; if (!byDe.has(de)) err(`examen « ${d.name} », étape ${i + 1} : phrase absente du corpus (« ${de} »)`); });
+  if (d.exam && d.exam.length !== 10) err(`examen « ${d.name} » : ${d.exam.length} étapes au lieu de 10`);
+});
 /* 6. Voix orphelines (avertissement seulement) */
 const used = new Set(corpus.map(x => x.de));
 const orphanMap = Object.keys(AUDIO).filter(de => !used.has(de));
@@ -132,7 +141,7 @@ finish();
 function finish() {
   const nVoices = typeof AUDIO === 'object' && AUDIO ? Object.keys(AUDIO).length : 0;
   console.log('Beach Garden Deutsch : vérification');
-  if (P) console.log(`  ${P.length} phrases, ${FLOWS ? FLOWS.length : 0} situations, ${corpus.length} phrases au total, ${nVoices} voix, cache « ${cache || '?'} »`);
+  if (P) console.log(`  ${P.length} phrases, ${PV ? PV.length : 0} phrases du parcours, ${DIPLOMAS ? DIPLOMAS.length : 0} diplômes, ${FLOWS ? FLOWS.length : 0} situations, ${corpus.length} phrases au total, ${nVoices} voix, cache « ${cache || '?'} »`);
   for (const w of warnings) console.log('  ⚠ ' + w);
   for (const e of errors) console.log('  ✗ ' + e);
   console.log(errors.length ? `\n${errors.length} erreur(s) à corriger avant publication.` : '\n✓ Aucune erreur.');
