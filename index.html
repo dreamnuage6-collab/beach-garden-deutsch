@@ -847,6 +847,9 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
 .l-audio{display:flex; flex-direction:column; align-items:center; gap:14px; margin:4px 0 32px}
 .l-say{border:1px solid var(--line); background:var(--soft); border-radius:14px; padding:16px 18px; font-size:18px; font-weight:500; line-height:1.45; margin-bottom:24px}
 .opts{display:grid; gap:10px}
+.opts.spell .opt span{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; font-size:17px; letter-spacing:.06em}
+.fast-tip{font-size:13.5px; color:var(--muted); text-align:center; margin:-6px 0 12px}
+.memo-btn{display:flex; align-items:center; justify-content:center; gap:6px; width:100%; margin-top:10px}
 .opt{
   display:flex; align-items:center; gap:14px; text-align:left; width:100%; border:1px solid var(--line-2); border-radius:12px;
   background:#fff; padding:14px 16px; font-size:16px; font-weight:500; line-height:1.4; transition:border-color .12s, background .12s;
@@ -1154,6 +1157,23 @@ mark{background:var(--brand-100); color:inherit; border-radius:3px; padding:0 2p
   #poster li{display:flex; align-items:center; gap:14px; margin-bottom:6mm}
   #poster li .po-n{flex:0 0 40px; height:40px; border-radius:50%; background:#7E3654; color:#fff; display:grid; place-items:center; font-weight:700; -webkit-print-color-adjust:exact; print-color-adjust:exact}
   .po-url{font-size:12px; color:#555; margin-top:8mm}
+  /* Aide-mémoire imprimé */
+  #poster.memo{text-align:left; padding:8mm 10mm; font-size:11.5pt; line-height:1.35}
+  .mm-head{display:flex; align-items:center; gap:6mm; border-bottom:2px solid #7E3654; padding-bottom:4mm; margin-bottom:5mm; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .mm-head img{width:38mm; height:auto}
+  .mm-head h1{font-family:var(--serif); font-size:20pt; margin:0}
+  .mm-head p{margin:1mm 0 0; color:#555; font-size:10pt}
+  .mm-lv{break-inside:avoid; margin:0 0 5mm}
+  .mm-lv h2{font-size:13pt; margin:0 0 2mm; color:#7E3654; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .mm-lv table{width:100%; border-collapse:collapse; table-layout:fixed}
+  .mm-lv td:nth-child(2){width:38%} .mm-lv td:nth-child(3){width:30%}
+  .mm-lv td{border-bottom:1px solid #ddd; padding:1.6mm 2mm; vertical-align:top}
+  .mm-lv td:first-child{width:7mm; color:#7E3654}
+  .mm-de{font-weight:700}
+  .mm-ph{font-style:italic; color:#444}
+  .mm-fr{color:#333}
+  .mm-cl td{background:#F6EEF2; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .mm-foot{margin-top:6mm; font-size:9pt; color:#777}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important}
@@ -2071,6 +2091,59 @@ const PV = [
   {k:"v49", fr:"Tout droit.", de:"Geradeaus.", ph:"Guéradeu-aouss."},
   {k:"v50", fr:"Ici, sur le plan.", de:"Hier auf dem Plan.", ph:"Hir aouf dème Plan."},
   {k:"v51", fr:"Quatre nuits, jusqu'à samedi.", de:"Vier Nächte, bis Samstag.", ph:"Fir Nèchteu, biss Zamss-tak."},
+  /* ── Épeler (sp:'l' = lettre, sp:'w' = mot de l'adresse e-mail ; x = réponses pièges pour un mot épelé) ── */
+  {k:"v52", fr:"Pouvez-vous l'épeler, s'il vous plaît ?", de:"Können Sie das bitte buchstabieren?", ph:"Keunène zi dass biteu boukh-chta-birène?"},
+  {k:"v53", fr:"Ça s'écrit comment ?", de:"Wie schreibt man das?", ph:"Vi chraïpt man dass?"},
+  {k:"v54", fr:"Plus lentement, s'il vous plaît.", de:"Langsamer, bitte.", ph:"Lang-zamèr, biteu."},
+  {k:"v55", fr:"Je répète pour vérifier.", de:"Ich wiederhole zur Sicherheit.", ph:"Ich vidèr-holeu tsour Zichèr-haït."},
+  {k:"v56", sp:"l", fr:"La lettre A", de:"A", ph:"Ah"},
+  {k:"v57", sp:"l", fr:"La lettre E", de:"E", ph:"Éh"},
+  {k:"v58", sp:"l", fr:"La lettre I", de:"I", ph:"Ih"},
+  {k:"v59", sp:"l", fr:"La lettre J", de:"J", ph:"Yott"},
+  {k:"v60", sp:"l", fr:"La lettre G", de:"G", ph:"Gué"},
+  {k:"v61", sp:"l", fr:"La lettre H", de:"H", ph:"Hah"},
+  {k:"v62", sp:"l", fr:"La lettre U", de:"U", ph:"Ouh"},
+  {k:"v63", sp:"l", fr:"La lettre V", de:"V", ph:"Faou"},
+  {k:"v64", sp:"l", fr:"La lettre W", de:"W", ph:"Vé"},
+  {k:"v65", sp:"l", fr:"La lettre Y", de:"Y", ph:"Upsilone"},
+  {k:"v66", sp:"l", fr:"La lettre Z", de:"Z", ph:"Tsètt"},
+  {k:"v67", sp:"l", fr:"La lettre R", de:"R", ph:"Èr"},
+  {k:"v68", sp:"l", fr:"Ä (A tréma, se dit « è »)", de:"Ä", ph:"È"},
+  {k:"v69", sp:"l", fr:"Ü (U tréma, se dit « u »)", de:"Ü", ph:"U"},
+  {k:"v70", sp:"l", fr:"ß (double S allemand)", de:"Eszett", ph:"Èss-tsètt"},
+  {k:"v71", sp:"l", fr:"Deux fois la lettre L (« LL »)", de:"Doppel-L", ph:"Dopèl-Èl"},
+  {k:"v72", fr:"MÜLLER", x:["MULLER","MÜLER","MILLER"], de:"Müller: M, Ü, Doppel-L, E, R.", ph:"Mulèr : Èm, U, Dopèl-Èl, É, Èr."},
+  {k:"v73", fr:"SCHMIDT", x:["SCHMITT","SCHMIED","SHMIDT"], de:"Schmidt: S, C, H, M, I, D, T.", ph:"Chmitt : Èss, Tsé, Hah, Èm, Ih, Dé, Té."},
+  {k:"v74", fr:"WAGNER", x:["VAGNER","WANGER","WAGNIER"], de:"Wagner: W, A, G, N, E, R.", ph:"Vagnèr : Vé, Ah, Gué, Ènn, É, Èr."},
+  {k:"v75", fr:"MEYER", x:["MAYER","MEIER","MEJER"], de:"Meyer: M, E, Y, E, R.", ph:"Maïèr : Èm, É, Upsilone, É, Èr."},
+  {k:"v76", fr:"JÄGER", x:["JAGER","GÄGER","IÄGER"], de:"Jäger: J, Ä, G, E, R.", ph:"Yèguèr : Yott, È, Gué, É, Èr."},
+  {k:"v77", fr:"ZIMMERMANN", x:["SIMMERMANN","ZIMERMANN","ZIMMERMAN"], de:"Zimmermann: Z, I, Doppel-M, E, R, M, A, Doppel-N.", ph:"Tsimèr-mann : Tsètt, Ih, Dopèl-Èm, É, Èr, Èm, Ah, Dopèl-Ènn."},
+  {k:"v78", fr:"WEIß", x:["VEIß","WIEß","WEIS"], de:"Weiß: W, E, I, Eszett.", ph:"Vaïss : Vé, É, Ih, Èss-tsètt."},
+  {k:"v79", fr:"M-AB 1234", x:["N-AB 1234","M-AP 1234","M-AB 1243"], de:"Kennzeichen: M, A, B, eins, zwei, drei, vier.", ph:"Kènn-tsaï-chène : Èm, Ah, Bé, aïnss, tsvaï, draï, fir."},
+  {k:"v80", fr:"K-LY 705", x:["K-LI 705","C-LY 705","K-LY 750"], de:"Kennzeichen: K, L, Y, sieben, null, fünf.", ph:"Kènn-tsaï-chène : Kah, Èl, Upsilone, zibène, noul, funf."},
+  {k:"v81", fr:"HH-JU 289", x:["HH-GU 289","HH-JO 289","HH-JU 298"], de:"Kennzeichen: H, H, J, U, zwei, acht, neun.", ph:"Kènn-tsaï-chène : Hah, Hah, Yott, Ouh, tsvaï, akht, noïn."},
+  {k:"v82", fr:"B-WV 336", x:["B-VW 336","B-WF 336","P-WV 336"], de:"Kennzeichen: B, W, V, drei, drei, sechs.", ph:"Kènn-tsaï-chène : Bé, Vé, Faou, draï, draï, zèkss."},
+  {k:"v83", fr:"Pouvez-vous m'épeler votre adresse e-mail ?", de:"Können Sie mir Ihre E-Mail-Adresse buchstabieren?", ph:"Keunène zi mir ireu I-Mèïl-Adrèsseu boukh-chta-birène?"},
+  {k:"v84", sp:"w", fr:"Point ( . )", de:"Punkt", ph:"Pounkt"},
+  {k:"v85", sp:"w", fr:"Arobase ( @ )", de:"at", ph:"Èt"},
+  {k:"v86", sp:"w", fr:"Arobase ( @ ), autre façon de le dire", de:"Klammeraffe", ph:"Klamèr-afeu"},
+  {k:"v87", sp:"w", fr:"Tiret ( - )", de:"Bindestrich", ph:"Bindeu-chtrich"},
+  {k:"v88", sp:"w", fr:"Tiret du bas ( _ )", de:"Unterstrich", ph:"Ountèr-chtrich"},
+  {k:"v89", sp:"w", fr:"Tout en minuscules", de:"Alles klein geschrieben.", ph:"Aless klaïne gué-chribène."},
+  {k:"v90", fr:"anna.weber@gmx.de", x:["anna-weber@gmx.de","anna.weber@gmx.com","anna.webber@gmx.de"], de:"anna Punkt weber at gmx Punkt de", ph:"anna Pounkt vébèr èt Gué-Èm-Ix Pounkt Dé-É"},
+  {k:"v91", fr:"k.schulz@web.de", x:["k.schultz@web.de","k_schulz@web.de","k.schulz@web.com"], de:"K Punkt schulz at web Punkt de, alles klein geschrieben.", ph:"Kah Pounkt chouls èt vèp Pounkt Dé-É, aless klaïne gué-chribène."},
+  {k:"v92", fr:"familie-becker@t-online.de", x:["familie.becker@t-online.de","familie_becker@t-online.de","familie-becker@tonline.de"], de:"familie Bindestrich becker at t Bindestrich online Punkt de", ph:"famili-eu Bindeu-chtrich bèkèr èt Té Bindeu-chtrich onlaïne Pounkt Dé-É"},
+  {k:"v93", fr:"jens_koch@gmail.com", x:["jens-koch@gmail.com","jens.koch@gmail.com","jens_koch@gmail.de"], de:"jens Unterstrich koch at gmail Punkt com", ph:"yènss Ountèr-chtrich kokh èt Gué-mèïl Pounkt kom"},
+  /* ── Le client parle vite (formulations du quotidien) ── */
+  {k:"v94", fr:"Je ne vous ai pas compris.", de:"Ich habe Sie nicht verstanden.", ph:"Ich habeu zi nicht fèr-chtandène."},
+  {k:"v95", fr:"Dites, où peut-on acheter des petits pains ici ?", de:"Sagen Sie mal, wo kann man hier eigentlich Brötchen kaufen?", ph:"Zaguène zi mal, vo kann man hir aïguènt-lich Breut-chène kaoufène?"},
+  {k:"v96", fr:"Il nous faudrait un deuxième bracelet pour notre fils.", de:"Wir bräuchten noch ein zweites Armband für unseren Sohn.", ph:"Vir broïch-tène nokh aïn tsvaïtèss Arm-bant fur ounzèrène Zone."},
+  {k:"v97", fr:"La piscine est encore ouverte ce soir, ou elle ferme déjà ?", de:"Ist der Pool heute Abend noch offen, oder macht der schon zu?", ph:"Ist dèr Poul hoïteu Abènt nokh ofène, odèr makht dèr chone tsou?"},
+  {k:"v98", fr:"Peut-on encore changer d'emplacement ? Il y a trop de soleil.", de:"Können wir den Stellplatz noch wechseln? Da ist zu viel Sonne.", ph:"Keunène vir dène Chtèl-platss nokh vèkssèlne? Da ist tsou fil Zoneu."},
+  {k:"v99", fr:"Chez nous, l'électricité saute tout le temps.", de:"Bei uns fällt ständig der Strom aus.", ph:"Baï ounss fèlt chtèndich dèr Chtrome aouss."},
+  {k:"v100", fr:"Y a-t-il un supermarché près d'ici ?", de:"Gibt's hier in der Nähe einen Supermarkt?", ph:"Guipts hir in dèr Nèeu aïnène Zoupèr-markt?"},
+  {k:"v101", fr:"Nous aimerions rester deux nuits de plus.", de:"Wir würden gern noch zwei Nächte dranhängen.", ph:"Vir vurdène guèrne nokh tsvaï Nèchteu drane-hèngène."},
+  {k:"v102", fr:"Peut-on louer des vélos quelque part ici ?", de:"Kann man hier irgendwo Fahrräder ausleihen?", ph:"Kann man hir irguènt-vo Far-rèdèr aouss-laïène?"},
 ];
 
 /* ══════════════════════════════════════
@@ -2090,6 +2163,8 @@ const DIPLOMAS = [
     {e:"💳", t:"Paiement et caution", s:"Carte ou espèces, cautions", say:["Karte oder bar?","Die Kaution beträgt dreihundert Euro.","Für den Adapter: zwanzig Euro Kaution.","Hier unterschreiben, bitte.","Hier ist Ihre Quittung."], hear:["Kann ich mit Karte bezahlen?","Mit Karte, bitte.","Ich zahle bar."]},
     {e:"📏", t:"Les règles", s:"Bracelet, calme, portail, piscine", say:["Hier sind Ihre Armbänder.","Das Armband immer tragen, bitte.","Ab zweiundzwanzig Uhr ist Ruhe.","Das Tor ist von dreiundzwanzig bis sieben Uhr zu.","Im Pool: Badehose, keine Shorts.","Hier ist der Campingplan."], hear:["Was kostet das WLAN?"]},
     {e:"👂", t:"Comprendre le client", s:"Ses questions, tes réponses courtes", say:["Rechts.","Links.","Geradeaus.","Hier auf dem Plan."], hear:["Wo sind die Toiletten?","Wo ist der Strand?","Wann öffnet das Schwimmbad?","Gibt es hier WLAN?","Wo können wir unseren Müll entsorgen?"]},
+    {e:"🔤", t:"L'alphabet allemand", s:"Les lettres qui piègent : J, V, W, Z, Ü…", say:["Buchstabieren, bitte.","Können Sie das bitte buchstabieren?","Wie schreibt man das?","Langsamer, bitte."], hear:["A","E","I","J","G","H","U","V","W","Y","Z","R","Ä","Ü","Eszett","Doppel-L"]},
+    {e:"✍️", t:"Épeler un nom, une plaque", s:"Noter sans erreur ce que le client épelle", say:["Können Sie das bitte buchstabieren?","Ich wiederhole zur Sicherheit.","Ihre Autonummer, bitte?"], hear:["Müller: M, Ü, Doppel-L, E, R.","Schmidt: S, C, H, M, I, D, T.","Wagner: W, A, G, N, E, R.","Meyer: M, E, Y, E, R.","Jäger: J, Ä, G, E, R.","Zimmermann: Z, I, Doppel-M, E, R, M, A, Doppel-N.","Weiß: W, E, I, Eszett.","Kennzeichen: M, A, B, eins, zwei, drei, vier.","Kennzeichen: K, L, Y, sieben, null, fünf.","Kennzeichen: H, H, J, U, zwei, acht, neun.","Kennzeichen: B, W, V, drei, drei, sechs."]},
   ],
   exam:[
     {c:"Guten Tag, wir haben reserviert."},
@@ -2117,6 +2192,7 @@ const DIPLOMAS = [
     {e:"🎭", t:"Animations et enfants", s:"Soirées, clubs, spa", say:["In der Saison gibt es jeden Abend ein Unterhaltungsprogramm.","Der Kinderclub nimmt Kinder von fünf bis zwölf Jahren auf.","Es gibt einen Miniclub für Kinder und einen Club für Jugendliche.","Das Spa bietet Massagen und ein Hammam an."], hear:["Gibt es heute Abend eine Animation?"]},
     {e:"👥", t:"Les visiteurs", s:"Réception, redevance, horaires", say:["Jeder Besucher muss sich an der Rezeption melden; nach zwei Stunden wird eine Gebühr fällig.","Für Besucher kostet der Zugang zu den Pools und zum Animationsprogramm zwölf Euro pro Person und Tag.","Besucher müssen den Campingplatz spätestens um dreiundzwanzig Uhr verlassen."], hear:["Guten Tag, wir möchten Freunde besuchen, die hier Urlaub machen."]},
     {e:"📏", t:"La vie au camping", s:"Vitesse, barbecue, déchets, chiens", say:["Die Höchstgeschwindigkeit beträgt zehn Kilometer pro Stunde.","Nur Elektrogrills sind erlaubt.","Bitte trennen Sie Ihren Abfall.","Erlaubt ist ein Hund oder zwei kleine Hunde unter zehn Kilo."], hear:["Wo können wir unseren Müll entsorgen?"]},
+    {e:"⚡", t:"Le client parle vite", s:"Comprendre une vraie question, dite à vitesse normale", fast:true, say:["Langsamer, bitte.","Ich habe Sie nicht verstanden.","Könnten Sie das bitte wiederholen?"], hear:["Sagen Sie mal, wo kann man hier eigentlich Brötchen kaufen?","Wir bräuchten noch ein zweites Armband für unseren Sohn.","Ist der Pool heute Abend noch offen, oder macht der schon zu?","Können wir den Stellplatz noch wechseln? Da ist zu viel Sonne.","Bei uns fällt ständig der Strom aus.","Gibt's hier in der Nähe einen Supermarkt?","Wir würden gern noch zwei Nächte dranhängen.","Kann man hier irgendwo Fahrräder ausleihen?"]},
   ]},
   {id:"problemes", name:"Problèmes", stars:4, title:"Expert·e de l'accueil", desc:"Garder son calme et régler les soucis", ic:"buoy", levels:[
     {e:"🔧", t:"Une panne", s:"Technicien, autorisation d'entrer", say:["Oh, das tut mir leid. Können Sie mir Ihre Stellplatznummer geben?","Erlauben Sie unserem Techniker, das Mobilheim zu betreten, auch wenn Sie nicht da sind?","Ich schicke Ihnen so schnell wie möglich einen Techniker vorbei."], hear:["Im Mobilheim gibt es kein warmes Wasser.","Die Klimaanlage funktioniert nicht.","Die Dusche funktioniert nicht."]},
@@ -2131,6 +2207,7 @@ const DIPLOMAS = [
     {e:"💶", t:"Tarifs et conditions", s:"Acompte, annulation", say:["Bei einer Buchung mehr als dreißig Tage vor der Anreise ist eine Anzahlung von dreißig Prozent erforderlich.","Bis dreißig Tage vor dem Anreisetag ist die Stornierung kostenlos.","Bei früher Buchung erhalten Sie einen Rabatt."]},
     {e:"✉️", t:"La confirmation", s:"E-mail, modification", say:["Ich sende Ihnen die Bestätigung per E-Mail. Wie lautet Ihre E-Mail-Adresse?","Ihre Reservierung ist bestätigt.","Änderungen müssen mindestens dreißig Tage vor der Anreise schriftlich beantragt werden, je nach Verfügbarkeit."]},
     {e:"🙏", t:"Bien finir l'appel", s:"Faire répéter, remercier", say:["Könnten Sie das bitte wiederholen?","Vielen Dank für Ihren Anruf und bis bald im Beach Garden!"]},
+    {e:"📧", t:"Noter une adresse e-mail", s:"Point, arobase, tiret : noter sans erreur", say:["Können Sie mir Ihre E-Mail-Adresse buchstabieren?","Ich wiederhole zur Sicherheit.","Langsamer, bitte."], hear:["Punkt","at","Klammeraffe","Bindestrich","Unterstrich","Alles klein geschrieben.","anna Punkt weber at gmx Punkt de","K Punkt schulz at web Punkt de, alles klein geschrieben.","familie Bindestrich becker at t Bindestrich online Punkt de","jens Unterstrich koch at gmail Punkt com"]},
   ]},
 ];
 
@@ -2300,7 +2377,8 @@ function stopAudio(){
   if(window.speechSynthesis){ try{ speechSynthesis.cancel(); }catch(e){} }
   if(curBtn){ curBtn.classList.remove('playing'); curBtn=null; }
 }
-function play(de, btn, slow){
+/* slow : voix ralentie · fast : voix accélérée, comme un client qui parle à vitesse normale */
+function play(de, btn, slow, fast){
   if(btn && curBtn===btn){ stopAudio(); return; }
   stopAudio();
   if(btn){ btn.classList.add('playing'); curBtn=btn; }
@@ -2308,32 +2386,32 @@ function play(de, btn, slow){
   const src = window.AUDIO && window.AUDIO[de];
   if(src){
     const a=new Audio(src);
-    a.playbackRate = slow ? 0.6 : 1;
+    a.playbackRate = slow ? 0.6 : fast ? 1.3 : 1;
     try{ a.preservesPitch=true; a.mozPreservesPitch=true; a.webkitPreservesPitch=true; }catch(e){}
     curAudio=a;
     a.onended=()=>{ done(); if(curAudio===a) curAudio=null; };
-    a.onerror=()=>{ if(curAudio===a){ curAudio=null; tts(de,done,slow); } };
-    a.play().catch(()=>{ if(curAudio===a){ curAudio=null; tts(de,done,slow); } });
+    a.onerror=()=>{ if(curAudio===a){ curAudio=null; tts(de,done,slow,fast); } };
+    a.play().catch(()=>{ if(curAudio===a){ curAudio=null; tts(de,done,slow,fast); } });
     return;
   }
   // Phrase sans MP3 (pas encore régénéré) : sans voix allemande sur l'appareil, on prend la voix allemande en ligne
   loadVoices();
-  if(!deVoice && navigator.onLine){ playOnlineDe(de, done, slow); return; }
-  tts(de,done,slow);
+  if(!deVoice && navigator.onLine){ playOnlineDe(de, done, slow, fast); return; }
+  tts(de,done,slow,fast);
 }
-function playOnlineDe(de, done, slow){
+function playOnlineDe(de, done, slow, fast){
   const parts=preloadOnline(de, 'de'); let i=0;
-  const next=()=>{ const a=parts[i++]; if(!a){ done(); return; } curAudio=a; a.playbackRate=slow?0.75:1; try{ a.currentTime=0; }catch(e){}
+  const next=()=>{ const a=parts[i++]; if(!a){ done(); return; } curAudio=a; a.playbackRate=slow?0.75:fast?1.3:1; try{ a.currentTime=0; }catch(e){}
     a.onended=()=>{ if(curAudio===a) next(); };
-    a.onerror=()=>{ if(curAudio===a){ curAudio=null; tts(de,done,slow); } };
-    a.play().catch(()=>{ if(curAudio===a){ curAudio=null; tts(de,done,slow); } }); };
+    a.onerror=()=>{ if(curAudio===a){ curAudio=null; tts(de,done,slow,fast); } };
+    a.play().catch(()=>{ if(curAudio===a){ curAudio=null; tts(de,done,slow,fast); } }); };
   next();
 }
-function tts(de, done, slow){
+function tts(de, done, slow, fast){
   if(!window.speechSynthesis){ done(); return; }
   loadVoices();
   const u=new SpeechSynthesisUtterance(de);
-  u.lang='de-DE'; u.rate=slow?0.55:0.85; if(deVoice) u.voice=deVoice;
+  u.lang='de-DE'; u.rate=slow?0.55:fast?1.15:0.85; if(deVoice) u.voice=deVoice;
   u.onend=done; u.onerror=done;
   speechSynthesis.cancel(); speechSynthesis.speak(u);
 }
@@ -4362,7 +4440,8 @@ function viewParcours(r){
       <section class="dip"><div class="dip-badge">${badgeSVG(d,{lock:!got})}</div>
         <div class="dip-ey">Diplôme ${di+1} sur ${DIPLOMAS.length} · ${starsTxt(d.stars)}</div><h2>${esc(d.name)}</h2><p>${esc(d.desc)}</p>
         <div class="dip-bar" role="progressbar" aria-label="Niveaux réussis" aria-valuemin="0" aria-valuemax="${N}" aria-valuenow="${n}"><i style="width:${Math.round(n/N*100)}%"></i></div>
-        <div class="dip-n">${n} / ${N} niveaux${got?' · badge obtenu':''}</div>${btn}</section>
+        <div class="dip-n">${n} / ${N} niveaux${got?' · badge obtenu':''}</div>${btn}
+        ${open?`<button class="btn sec sm memo-btn" data-act="memo" data-d="${d.id}">🖨️ Aide-mémoire du diplôme à imprimer</button>`:''}</section>
       ${dipPath(di)}</div>
     <div class="parc-side">
       <section class="card"><div class="card-h"><h3>Mes badges</h3><button class="link" data-nav-to="#/profil">Tout voir</button></div>${badgeStrip()}
@@ -4382,7 +4461,8 @@ function viewLevel(di, i){
     <div class="lvh"><span class="eyebrow">Niveau ${i+1} sur ${d.levels.length}</span><h2>${l.e} ${esc(l.t)}</h2><p>${esc(l.s)}</p>
       <div class="lvm"><span>🎧 ${plural(l.say.length+(l.hear||[]).length,'phrase')}</span><span>⏱ environ 4 min</span><span>🗣️ 100 % oral</span></div>
       <div class="lv-go"><button class="btn block" data-act="lvstart" data-d="${d.id}" data-i="${i}">${lvDone(d,i)?'Refaire le niveau':'Commencer le niveau'}</button>
-      ${lvDone(d,i)?'':`<button class="link lv-skip" data-act="lvskip" data-d="${d.id}" data-i="${i}">Je connais déjà · passer le test pour sauter ce niveau</button>`}</div></div>
+      ${lvDone(d,i)?'':`<button class="link lv-skip" data-act="lvskip" data-d="${d.id}" data-i="${i}">Je connais déjà · passer le test pour sauter ce niveau</button>`}
+      <button class="btn sec sm memo-btn" data-act="memo" data-d="${d.id}" data-i="${i}">🖨️ Imprimer l'aide-mémoire de ce niveau</button></div></div>
     <p class="lw-tip">Écoute les phrases avant de commencer : l'exercice te les fera entendre, puis dire.</p>
     <div class="lw-list"><h3 class="lw-h">Ce que tu dis</h3>${l.say.map(de=>row(de)).join('')}
       ${(l.hear||[]).length?`<h3 class="lw-h">Ce que le client peut dire</h3>${l.hear.map(de=>row(de,1)).join('')}`:''}</div></div>`);
@@ -4396,14 +4476,22 @@ const micOK = () => !!SR && S.speak!==false && navigator.onLine && !MIC_OFF;
 function dipPool(d){ const s=new Set(); d.levels.forEach(l=>[...l.say,...(l.hear||[])].forEach(x=>s.add(x))); return [...s].map(voc).filter(Boolean); }
 /* 4 réponses : d'abord des phrases du même niveau, puis du reste du diplôme */
 function choices(p, d, li){
+  // Mot épelé (nom, plaque, e-mail) : la bonne réponse et des réponses pièges très proches
+  if(p.x) return shuffle([frShort(p), ...p.x]);
   const lvl = li>=0 && d.levels[li] ? [...d.levels[li].say,...(d.levels[li].hear||[])].map(voc).filter(Boolean) : [];
-  const pool=[...shuffle(lvl), ...shuffle(dipPool(d))].filter(x=>frShort(x)!==frShort(p));
+  // Une lettre se confond avec une autre lettre, un mot d'e-mail avec un autre mot d'e-mail
+  const same = x => !x.x && (x.sp||'')===(p.sp||'');
+  const pool=[...shuffle(lvl), ...shuffle(dipPool(d))].filter(x=>same(x) && frShort(x)!==frShort(p));
   const out=[frShort(p)]; for(const x of pool){ if(out.length>=4) break; if(!out.includes(frShort(x))) out.push(frShort(x)); }
   return shuffle(out);
 }
+/* Le client parle vite : voix accélérée sur ses phrases (pas sur les lettres ni les mots épelés) */
+const fastOK = de => { const p=voc(de); return p && !p.x && !p.sp; };
 function buildLevel(d, i){
-  const l=d.levels[i], all=[...l.say,...(l.hear||[])];
+  const l=d.levels[i], all=[...l.say,...(l.hear||[])], hear=new Set(l.hear||[]);
   const listen=shuffle(all).slice(0,8).map(de=>({t:'listen', de}));
+  if(l.fast) listen.forEach(x=>{ if(hear.has(x.de)) x.fast=true; });
+  else { const c=shuffle(listen.filter(x=>hear.has(x.de) && fastOK(x.de)))[0]; if(c) c.fast=true; }   // une question du client à vitesse réelle par niveau
   const speak=shuffle(l.say.filter(de=>!de.includes('…'))).slice(0,5).map(de=>({t:'speak', de}));
   return [...listen, ...speak];
 }
@@ -4435,12 +4523,17 @@ function renderQ(){
   const p=voc(ex.de); Q.state='ask'; Q.sel=null;
   if(ex.t==='listen'){
     Q.opts=choices(p, Q.d, Q.kind==='exam'?-1:Q.i); Q.answer=frShort(p);
-    const head = Q.kind==='exam' && ex.client ? `<span class="eyebrow l-kind">🎓 Le client parle</span><h2 class="l-q">Le client dit quoi ?</h2>` : `<span class="eyebrow l-kind">🎧 Écoute</span><h2 class="l-q">${Q.d.levels.some(l=>(l.hear||[]).includes(ex.de))?'Le client dit quoi ?':'Ça veut dire quoi ?'}</h2>`;
+    const head = Q.kind==='exam' && ex.client ? `<span class="eyebrow l-kind">🎓 Le client parle</span><h2 class="l-q">Le client dit quoi ?</h2>`
+      : p.x ? `<span class="eyebrow l-kind">✍️ Le client épelle</span><h2 class="l-q">Tu notes quoi ?</h2>`
+      : p.sp==='l' ? `<span class="eyebrow l-kind">🔤 Une lettre</span><h2 class="l-q">Quelle lettre as-tu entendue ?</h2>`
+      : ex.fast ? `<span class="eyebrow l-kind">⚡ Le client parle vite</span><h2 class="l-q">Le client dit quoi ?</h2>`
+      : `<span class="eyebrow l-kind">🎧 Écoute</span><h2 class="l-q">${Q.d.levels.some(l=>(l.hear||[]).includes(ex.de))?'Le client dit quoi ?':'Ça veut dire quoi ?'}</h2>`;
     box.innerHTML=tfr(qShell(`${head}
       <div class="l-audio"><button class="play lg" data-act="qplay" aria-label="Écouter">${icon('i-spk')}</button><button class="slow" data-act="qslow">🐢 Plus lentement</button></div>
-      <div class="opts" id="opts">${Q.opts.map((o,k)=>`<button class="opt" data-act="qopt" data-k="${k}" aria-pressed="false"><kbd>${k+1}</kbd><span>${esc(o)}</span></button>`).join('')}</div>`,
+      ${ex.fast?'<p class="fast-tip">Comme au comptoir : à vitesse normale. Besoin d\'aide ? « Langsamer, bitte. »</p>':''}
+      <div class="opts${p.x?' spell':''}" id="opts">${Q.opts.map((o,k)=>`<button class="opt" data-act="qopt" data-k="${k}" aria-pressed="false"><kbd>${k+1}</kbd><span>${esc(o)}</span></button>`).join('')}</div>`,
       `<div class="l-fb" id="lfb" role="status"></div><button class="btn" id="lbtn" data-act="qcheck" disabled>Valider</button>`));
-    setTimeout(()=>{ if(Q && Q.items[Q.pos]===ex) play(ex.de, $('.play.lg')); }, 300);
+    setTimeout(()=>{ if(Q && Q.items[Q.pos]===ex) play(ex.de, $('.play.lg'), false, ex.fast); }, 300);
     return;
   }
   // parler
@@ -4487,6 +4580,7 @@ function endQ(){
     box.innerHTML=tfr(`<div class="l-body"><div class="l-inner"><div class="l-end"><div class="seal">${icon('i-check')}</div>
       <h2>Niveau ${i+1} réussi !</h2><p>${last?'Tous les niveaux sont faits : l\'examen final est ouvert.':'Le niveau '+(i+2)+' est débloqué : '+esc(d.levels[i+1].t)+'.'}</p></div></div></div>
       <div class="l-foot"><div class="l-foot-in"><button class="btn block" data-act="qafter" data-go="${last?'exam':'next'}">${last?'Passer l\'examen final':'Niveau suivant'}</button>
+      <button class="btn sec block" data-act="memo" data-d="${d.id}" data-i="${i}">🖨️ Imprimer l'aide-mémoire du niveau</button>
       <button class="btn sec block" data-act="qclose">Revenir au parcours</button></div></div>`);
     $('[data-act="qafter"]').focus(); return;
   }
@@ -4528,10 +4622,11 @@ document.addEventListener('click', e=>{
   const d=el.dataset;
   switch(d.act){
     case 'vplay': play(d.de, el); break;
+    case 'memo': printMemo(d.d, d.i!==undefined ? +d.i : -1); break;
     case 'lvstart': case 'lvskip': { const dp=DIPLOMAS[dipIndex(d.d)]; startQ(d.act==='lvskip'?'skip':'level', dp, +d.i); break; }
     case 'exam': { const di=dipIndex(d.d); if(examOpen(di) || PS.badge[d.d]) startQ('exam', DIPLOMAS[di]); break; }
     case 'qquit': askQuitQ(); break;
-    case 'qplay': case 'qslow': if(Q){ const ex=Q.items[Q.pos]; if(ex) play(ex.de, el.classList.contains('lg')?el:null, d.act==='qslow'); } break;
+    case 'qplay': case 'qslow': if(Q){ const ex=Q.items[Q.pos]; if(ex) play(ex.de, el.classList.contains('lg')?el:null, d.act==='qslow', d.act==='qplay' && ex.fast && Q.state==='ask'); } break;
     case 'qopt': if(Q && Q.state==='ask'){ Q.sel=+d.k; document.querySelectorAll('#opts .opt').forEach((b,j)=>{ b.classList.toggle('sel', j===Q.sel); b.setAttribute('aria-pressed', j===Q.sel); }); $('#lbtn').disabled=false; } break;
     case 'qcheck': if(Q && Q.state==='ask' && Q.sel!==null){ const ok=Q.opts[Q.sel]===Q.answer; $('#opts').classList.add('locked');
         document.querySelectorAll('#opts .opt').forEach((b,j)=>{ if(Q.opts[j]===Q.answer) b.classList.add('ok'); else if(j===Q.sel) b.classList.add('ko'); b.classList.remove('sel'); }); qResult(ok); } break;
@@ -4670,9 +4765,26 @@ function doShare(){
     <div class="url">${esc(APP_URL)}</div>
     <div class="share-btns"><button class="btn block" data-act="poster">🖨️ Imprimer l'affiche pour la réception</button></div>`));
 }
+/* Aide-mémoire imprimable d'un diplôme (ou d'un seul niveau) : allemand, prononciation, français.
+   Les phrases du client sont sur fond rosé. */
+function printMemo(dipId, li){
+  const d=DIPLOMAS[dipIndex(dipId)]; if(!d) return;
+  const lvls = li>=0 ? [[li, d.levels[li]]] : d.levels.map((l,i)=>[i,l]);
+  const row = (de, client) => { const p=voc(de); if(!p) return '';
+    return `<tr${client?' class="mm-cl"':''}><td>${client?'👂':'🗣️'}</td><td class="mm-de" lang="de">${esc(de)}</td><td class="mm-ph">${esc(p.ph||'')}</td><td class="mm-fr">${esc(frShort(p))}</td></tr>`; };
+  let p=document.getElementById('poster');
+  if(!p){ p=document.createElement('div'); p.id='poster'; document.body.appendChild(p); }
+  p.className='memo';
+  p.innerHTML=tfr(`<div class="mm-head"><img src="brand/logo.png" alt="Les Méditerranées"><div><h1>Aide-mémoire · ${esc(d.name)}${li>=0?' · '+esc(d.levels[li].t):''}</h1>
+      <p>Beach Garden Deutsch · 🗣️ ce que tu dis · 👂 ce que le client peut dire (fond rosé)</p></div></div>
+    ${lvls.map(([i,l])=>`<section class="mm-lv"><h2>${l.e} ${i+1}. ${esc(l.t)}</h2><table>${l.say.map(de=>row(de)).join('')}${(l.hear||[]).map(de=>row(de,1)).join('')}</table></section>`).join('')}
+    <p class="mm-foot">Prononciation « à la française » : lis-la comme du français. Les voix sont dans l'application.</p>`);
+  setTimeout(()=>window.print(), 150);
+}
 function printPoster(){
   let p=document.getElementById('poster');
   if(!p){ p=document.createElement('div'); p.id='poster'; document.body.appendChild(p); }
+  p.className='';
   p.innerHTML=tfr(`<div class="po-brand"><img class="po-logo" src="brand/logo.png" alt="Les Méditerranées"><div><b>Beach Garden Deutsch</b><span>Camping Beach Garden · Marseillan-Plage</span></div></div>
     <h1>L'allemand de la réception,<br>sur ton téléphone 🇩🇪</h1>
     <div class="po-qr">${qrSvg(420)}</div>
