@@ -7,7 +7,7 @@ XP, série de jours, objectif quotidien, et **vraie voix allemande** pour chaque
 ## Deux onglets
 | Onglet | À quoi ça sert |
 |---|---|
-| **Parcours** | Apprendre à se débrouiller en allemand, **à l'oral uniquement** (écouter le client, puis parler). Cinq **diplômes** à débloquer dans l'ordre : **Check-in client** (10 niveaux), Check-out, Infos camping, Problèmes, Téléphone. Chaque niveau réussi ouvre le suivant (un test court permet de sauter un niveau déjà maîtrisé). Un **examen final** (8 bonnes réponses sur 10) donne le **badge** du diplôme, de ★ Hôte d'accueil à ★★★★★ Ambassadeur·rice Beach Garden. L'exercice « Dis-le en allemand » est corrigé au micro quand le navigateur le permet (internet nécessaire) ; sinon, la personne le dit à voix haute et vérifie elle-même. |
+| **Parcours** | Apprendre à se débrouiller en allemand, **à l'oral uniquement** (écouter le client, puis parler). Cinq **diplômes** à débloquer dans l'ordre : **Check-in client** (12 niveaux, dont l'alphabet allemand et « épeler un nom, une plaque »), Check-out, Infos camping, Problèmes, Téléphone. Chaque niveau réussi ouvre le suivant (un test court permet de sauter un niveau déjà maîtrisé). Un **examen final** (8 bonnes réponses sur 10) donne le **badge** du diplôme, de ★ Hôte d'accueil à ★★★★★ Ambassadeur·rice Beach Garden. Exercices d'écoute : **le client épelle** (nom, plaque, e-mail, avec des réponses pièges très proches) et **le client parle vite** (une question du client à vitesse réelle dans chaque niveau, et un niveau entier dans Infos camping ; le Téléphone a un niveau « Noter une adresse e-mail »). Chaque diplôme et chaque niveau a son **aide-mémoire à imprimer** (allemand, prononciation, français). L'exercice « Dis-le en allemand » est corrigé au micro quand le navigateur le permet (internet nécessaire) ; sinon, la personne le dit à voix haute et vérifie elle-même. |
 | **Comptoir** | Pour un client devant soi. **Traducteur vocal en direct** (français ↔ allemand, internet requis ; Google Traduction par défaut, **DeepL** en option : voir `docs/deepl.md`), avec un mode **« Face au client »** et les conversations du jour gardées jusqu'au lendemain. Quand la phrase dite correspond à une **phrase validée**, elle est reprise telle quelle et lue aussitôt ; sinon la traduction est marquée **« à vérifier »**. **Prix, heures et dates** en allemand (hors connexion). **Phrases express** en un geste. Lien **« Toutes les phrases et le mémo »** : situations pas à pas, phrases par thème, mémo règlement, prononciation, recherche. |
 
 Le profil (initiale en haut à droite) montre **Mes badges**, le titre obtenu et les réglages.
@@ -60,9 +60,10 @@ est en ligne une à deux minutes plus tard, et les téléphones la récupèrent 
 ## ✏️ Modifier ou ajouter des phrases
 1. Dans `index.html`, modifie le tableau `P` (phrases), `PV` (phrases courtes du parcours), `FLOWS` (situations) ou `DIPLOMAS` (niveaux et examens, qui désignent les phrases par leur texte allemand).
    Chaque phrase a trois champs : `fr` (français), `de` (allemand) et `ph` (prononciation).
-2. ⚠️ Le texte `de:"…"` sert de clé au fichier audio : si tu le modifies, relance
-   `generate_audio.ps1` (clic droit → **Exécuter avec PowerShell**) pour régénérer la voix.
-   Sinon, l'app utilise automatiquement la synthèse vocale du navigateur pour cette phrase.
+2. ⚠️ Le texte `de:"…"` sert de clé au fichier audio. Quand il change, **GitHub génère tout seul la nouvelle voix**
+   (`.github/workflows/voix.yml` lance `tools/voix-manquantes.js`) et l'ajoute au dépôt une à deux minutes plus tard.
+   `generate_audio.ps1` reste disponible pour le faire depuis Windows. En attendant la voix MP3, l'app lit la phrase
+   avec la voix allemande de l'appareil, ou à défaut avec la voix allemande en ligne de Google.
 3. Le français, la prononciation et les libellés peuvent être modifiés librement.
 4. Chaque phrase a aussi une **clé** (`k:"p12"`, `k:"fcheckin.1.5"`…) qui ne change jamais : favoris et erreurs à revoir en dépendent.
    Une nouvelle phrase s'ajoute **à la fin** du tableau `P`, avec la clé suivante.

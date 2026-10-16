@@ -1,0 +1,31 @@
+name: Voix allemandes
+# Quand index.html change, génère la voix MP3 des nouvelles phrases et l'enregistre dans le dépôt.
+on:
+  push:
+    paths: ['index.html']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: voix-${{ github.ref }}
+jobs:
+  voix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Générer les voix manquantes
+        run: node tools/voix-manquantes.js
+      - name: Contrôle de l'application
+        run: node tools/verifier.js
+      - name: Enregistrer les nouvelles voix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add audio audio_map.js
+          if git diff --cached --quiet; then echo "Aucune nouvelle voix."; else
+            git commit -m "Voix allemandes des nouvelles phrases"
+            git push
+          fi
