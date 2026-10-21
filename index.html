@@ -4336,6 +4336,12 @@ const PS_DEF = {lv:{}, badge:{}};
 let PS = {...PS_DEF};
 try{ PS = {...PS_DEF, ...JSON.parse(localStorage.getItem('bgd_parcours')||'{}')}; }catch(e){}
 const psSave = () => { try{ localStorage.setItem('bgd_parcours', JSON.stringify(PS)); }catch(e){} };
+/* Sauvegarde propre à l'appareil : on demande au navigateur de ne pas effacer ces données tout seul,
+   et on réécrit tout quand l'app passe en arrière-plan ou se ferme (important sur iPhone). */
+try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){}
+const flushAll = () => { try{ save(); psSave(); }catch(e){} };
+addEventListener('pagehide', flushAll);
+document.addEventListener('visibilitychange', () => { if(document.visibilityState==='hidden') flushAll(); });
 let VOC=null;
 /* Phrase par son texte allemand : phrases du parcours, phrases et situations validées */
 function voc(de){
